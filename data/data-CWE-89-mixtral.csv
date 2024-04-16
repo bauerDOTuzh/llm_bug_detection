@@ -1,0 +1,397 @@
+file_id,model_output,type
+8592,"SE: The 'search' array is directly used in the 'where' method of the Builder object without any sanitation, potentially allowing for SQL injection if the array contains user input.
+BL: `return $query->where($search);`
+BUG FOUND: YES",buggy
+399,"SE: The user input from $_POST[""email""] and $_POST[""password""] are directly used in the SQL query without any sanitation or parameterization.
+BL: $query=""select * from admin where email='$uemail' and password='$upass'"";
+BUG FOUND: YES
+Explanation:
+The code is vulnerable to SQL injection attacks because it directly uses the user input from $_POST[""email""] and $_POST[""password""] in the SQL query. An attacker can exploit this by providing malicious input, which can modify the SQL query and lead to unauthorized access, data exposure, or manipulation. To fix this issue, consider using prepared statements or parameterized queries to ensure the safe handling of user input in SQL queries.",buggy
+353,"SE: The 'params[:user]' is directly passed into the 'User.find\_by' method which can lead to SQL injection if 'params[:user]' is not properly sanitized.
+BL: `@user = User.find_by(params[:user])`
+BUG FOUND: YES",buggy
+4268,"SE: The 'params[:sol]' is directly used in the SQL query which can lead to SQL Injection.
+BL: @images = Image.where(sol: params[:sol])
+BUG FOUND: YES",buggy
+339,"SE: The 'name' and 'score' variables from user input are directly used in the SQL query without any sanitation or parameterization.
+BL: $query = ""INSERT INTO Highscores VALUES ($id, '$name', $score)"";
+BUG FOUND: YES
+SE: The 'name' variable from user input is directly used in the SQL query without any sanitation or parameterization.
+BL: $query = ""DELETE FROM Highscores WHERE idHighscores = $minID"";
+BUG FOUND: YES",buggy
+341,"SE: The user input 'key' from GET request is directly used in SQL query without any sanitation, making it vulnerable to SQL Injection.
+BL: $result = mysqli_query($con,""SELECT * FROM users where secret = '$key' and authused=1"");
+BUG FOUND: YES
+
+Explanation:
+The code is taking user input 'key' from GET request and using it directly in SQL query. An attacker can exploit this by injecting malicious SQL commands, leading to SQL Injection vulnerability. To fix this issue, use prepared statements or parameterized queries to ensure proper sanitation of user input.",buggy
+4268,"SE: The 'params[:sol]' is directly used in the SQL query which can lead to SQL Injection.
+BL: `@images = Image.where(:sol => params[:sol])`
+BUG FOUND: YES",not_buggy
+399,"SE: The SQL query directly uses the escaped user inputs without proper preparation which may lead to SQL injection if the escaping was not done correctly.
+BL: `$query=""select * from admin where email='$uemail' and password='$upass'"";`
+BUG FOUND: YES
+
+However, it is worth noting that the code does attempt to prevent SQL injection by using the mysqli\_real\_escape\_string() function. But it's still a good practice to use prepared statements or parameterized queries to ensure the safety of the SQL queries.",not_buggy
+8592,"SE: The 'search' array is directly used in the 'where' method which can lead to SQL injection if 'search' array contains user input without proper sanitation.
+BL: `return $query->where($allowed_search);`
+BUG FOUND: YES
+
+However, it's important to note that if the 'searchable' trait is used correctly and the 'search' array is populated with trusted data sources, then there is no risk of SQL injection. The risk arises when the 'search' array contains user input without proper sanitation.",not_buggy
+339,"SE: The 'name' and 'score' values from the POST request are directly used in the SQL query without proper sanitation.
+BL: `$name = $_POST[""name""]; $score = $_POST[""score""];`
+$query = mysqli_prepare($dbhandle, ""INSERT INTO Highscores Values (?, ?, ?)""); mysqli\_stmt\_bind\_param($query, 'isi', $id, $name, $score); mysqli\_stmt\_execute($query);
+`$query = ""SELECT idHighscores FROM Highscores WHERE score = (SELECT Min(score) FROM Highscores)"";`
+`$result = mysqli_query($dbhandle, $query);`
+`$query = ""DELETE FROM Highscores WHERE idHighscores = $minID"";`
+`$result = mysqli_query($dbhandle, $query);`
+BUG FOUND: YES.",not_buggy
+341,"SE: The user input from the 'key' GET parameter is directly used in the SQL query without proper sanitation.
+BL: $result = mysqli_query($con,""SELECT \* FROM users where secret = '$key' and authused=1"");
+BUG FOUND: YES
+
+Explanation:
+The code is using user input from the 'key' GET parameter in the SQL query without proper sanitation. This can lead to SQL injection vulnerabilities if the input is not properly sanitized or validated. In this case, mysqli\_real\_escape\_string is used later in the code, but it should be used immediately after getting the user input to prevent SQL injection.",not_buggy
+353,"SE: The 'params[:user][:email]' is directly used in a find method of an ActiveRecord query without proper sanitation.
+BL: `@user = User.find_by(email: params[:user][:email])`
+BUG FOUND: YES
+
+Explanation:
+This line might be vulnerable to SQL Injection because the 'params[:user][:email]' input is directly used in a find method of an ActiveRecord query without proper sanitation. An attacker could potentially manipulate the 'email' parameter to inject malicious SQL code, which could lead to unauthorized access, data leaks, or database corruption. To prevent SQL Injection, consider using parameterized queries or sanitizing the input before using it in the query. In this case, since Rails uses ActiveRecord, it automatically handles SQL escaping and parameterization, but it's still essential to be cautious and validate user inputs.",not_buggy
+371,"SE: The 'userid' value is directly concatenated into the SQL query without proper sanitation, making it vulnerable to SQL injection.
+BL: $usersql = $vbulletin->db->query\_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE\_PREFIX . ""user WHERE `userid` = "" . $vbulletin->db->escape\_string($vbulletin->userinfo['userid']));
+BUG FOUND: YES (Note: Although $vbulletin->db->escape\_string is used, it's better to use prepared statements to avoid any potential issues.)",not_buggy
+345,"SE: The '$_GET' variables $symbol, $startDate, and $endDate are directly used in the SQL query without any sanitation or parameterization.
+BL: $query = ""select date, EOD, MA20, MA50, delta, deltaMA5, deltaMA10, deltaMA20, P0, P1, P2, M1, M2, M3 from $symbol where date >= $startDate and date <= $endDate order by date DESC"";
+BUG FOUND: YES
+SE: The '$_GET' variable $task is directly used in the conditional statement without any sanitation.
+BL: if($task == 'history' & areValidDates($startDate, $endDate) & isValidSymbol($symbol) ) {
+BUG FOUND: YES (although this is not an SQL injection vulnerability, it is still a security concern)",buggy
+345,"SE: The 'symbol', 'startDate' and 'endDate' variables from user input are directly inserted into the SQL query through string interpolation.
+BL: $query = ""select date, EOD, MA20, MA50, delta, deltaMA5, deltaMA10, deltaMA20, P0, P1, P2, M1, M2, M3 from $pdo->quote($symbol) where date between $pdo->quote($startDate) and $pdo->quote($endDate) order by date DESC"";
+BUG FOUND: YES
+}
+```python
+
+In this code, the 'symbol', 'startDate', and 'endDate' variables from user input are directly inserted into the SQL query through string interpolation, which makes the code vulnerable to SQL Injection. To fix this issue, consider using prepared statements or parameterized queries to ensure the safe handling of user input.
+```",not_buggy
+356,"SE: The 'username' and 'password' variables are inserted into the SQL query without proper sanitation, making it vulnerable to SQL Injection.
+BL: `conn.query(""INSERT INTO user (username, password) VALUES ('""+username+""', '""+password+""')"", function (err, result) {`
+BUG FOUND: YES",not_buggy
+356,"SE: The 'username' and 'password' values from 'req.body' are directly concatenated into the SQL query without proper sanitation, making it vulnerable to SQL Injection.
+BL: `conn.query(""INSERT INTO user (username, password) VALUES ('""+username+""', '""+password+""')"", function (err, result) {`
+BUG FOUND: YES",buggy
+336,"SE: The 'sort' and 'direction' variables from the user request are directly used in the SQL query without any sanitation, making it susceptible to SQL injection.
+BL: $sql = ""select * from sample order by \""{$sort}\"" {$direction}"";
+BUG FOUND: YES
+
+Explanation:
+The code constructs an SQL query by concatenating the 'sort' and 'direction' variables from the user request directly into the query. If these variables are not properly sanitized, an attacker can manipulate the query and inject malicious SQL code, leading to SQL injection vulnerabilities. To mitigate this risk, consider using prepared statements or parameterized queries to ensure proper sanitation of user inputs.",buggy
+371,"SE: The 'userid' value from user input is directly concatenated into the SQL query without any sanitation or parameterization, making it vulnerable to SQL Injection.
+BL: $usersql = $vbulletin->db->query\_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE\_PREFIX . ""user WHERE `userid` = '"" . $vbulletin->userinfo['userid'] . ""'"");
+BUG FOUND: YES",buggy
+8622,"SE: The '$_POST['custom\_css\_code']' is directly concatenated into SQL query without proper sanitation.
+BL: `$_POST['custom_css_code'] = $DB->escape($_UPOST['custom_css_code']);`
+BUG FOUND: YES
+
+Explanation:
+The code is trying to escape the input before using it in the query, but it is using the `escape` method of the `$DB` object, which is not the correct method for escaping SQL input. It should use the `$DB->safeQuery()` method instead. The current method is not sufficient to prevent SQL injection attacks.",not_buggy
+369,"SE: The '$_POST['referrername']' is directly concatenated into the SQL query without proper sanitation, making it vulnerable to SQL Injection.
+BL: $usersql = $vbulletin->db->query\_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE\_PREFIX . ""user WHERE `username` = "" . $vbulletin->db->escape\_string($_POST['referrername']));
+BUG FOUND: YES",not_buggy
+369,"SE: The '$_POST['referrername']' is directly concatenated into the SQL query without proper sanitation, making it susceptible to SQL Injection.
+BL: $usersql  = $vbulletin->db->query\_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE\_PREFIX . ""user WHERE `username` = '"" . $_POST['referrername'] . ""'"");
+BUG FOUND: YES",buggy
+8643,"SE: The '$_POST' variables are directly used in the construction of the SQL query without any sanitation or parameterization.
+BL: `if (method_exists($plugin, $_POST['action'])) { call_user_func([$plugin, $_POST['action']], $_POST['id']); }`
+BUG FOUND: YES",buggy
+336,"SE: The 'sort' variable is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection.
+BL: $sql = ""select * from sample order by {$sort} {$direction}"";
+BUG FOUND: YES",not_buggy
+8643,"SE: The 'id' and 'action' values from the POST request are directly used in function calls and conditional statements without proper sanitation.
+BL: `$id = isset($_POST['id']) && is_numeric($_POST['id']) ? (int)$_POST['id'] : null;`
+`$action = $id > 0 && isset($_POST['action']) ? $_POST['action'] : null;`
+`$plugin->install($id);`
+`$plugin->activate($id);`
+`$plugin->unactivate($id);`
+`$plugin->uninstall($id);`
+`$plugin->clean($id);`
+BUG FOUND: YES
+
+While the code checks if the 'id' is numeric and casts it to integer, and checks if 'action' is set, it doesn't properly neutralize special elements that could lead to SQL injection. It's recommended to use prepared statements or parameterized queries to ensure the security of the application.",not_buggy
+314,"SE: The 'sort' and 'direction' variables from user input are directly used in the SQL query without any sanitation, making it susceptible to SQL Injection.
+BL: `$sql = ""SELECT u.*, CONCAT( u.fname, ' ', u.lname ) AS name, ( SELECT COUNT( * ) FROM failed_logins WHERE email = u.email ) AS failed_logins, ( SELECT COUNT( * ) FROM sessions WHERE userid = u.id ) AS active_sessions, COUNT( g.id ) AS remaining FROM users u LEFT OUTER JOIN games g ON 1 = 1 LEFT OUTER JOIN picks p ON p.game_id = g.id AND p.user_id = u.id WHERE g.week = ? AND p.id IS NULL GROUP BY u.id ORDER BY {$sort} {$direction}"";`
+BUG FOUND: YES
+
+Explanation:
+The 'sort' and 'direction' variables are obtained from user input using the Functions::Post() function and directly used in the SQL query. If these inputs are not properly sanitized or validated, an attacker can inject malicious SQL code, leading to an SQL Injection vulnerability. To mitigate this risk, consider using prepared statements or parameterized queries to ensure user input is properly escaped and safe to use in the SQL query.",buggy
+365,"SE: The '$_GET['id']' is directly concatenated into SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM contract_signer_role WHERE id="".$_GET['id']);`
+BUG FOUND: YES",buggy
+365,"SE: The 'id' value from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM contract_signer_role WHERE id="".$_GET['id']);`
+BUG FOUND: YES",not_buggy
+366,"SE: The 'id' value from GET request is directly used in the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_pref WHERE id_pref="".$_GET['id']);`
+BUG FOUND: YES
+
+SE: The 'id_pref' value from GET request is directly used in the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_pref WHERE id_pref="".$_GET['id']);`
+BUG FOUND: YES
+
+SE: The 'type_pref', 'value' and 'id_pref' values from POST request are directly used in the SQL query without proper sanitation.
+BL: `mysql_query($q) or wf_mysqldie();`
+BUG FOUND: YES
+
+Exploiting SQL injection vulnerabilities requires careful planning and execution. Always ensure proper sanitation and validation of user inputs, and use parameterized queries or prepared statements to prevent SQL injection attacks.",not_buggy
+319,"SE: The 'where' input from the user is directly concatenated into the SQL query without any sanitation, making it vulnerable to SQL Injection.
+BL: `$whereCondition = 'WHERE ' . (is_numeric($where) ? 'id=\''.$where.'\'' : 'naam=\''.$where.'\'');`
+BUG FOUND: YES.",buggy
+367,"SE: The 'id' value from GET request is directly used in SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_roles WHERE id_role="".$_GET['id']);`
+BUG FOUND: YES
+
+SE: The 'data' array values are directly used in SQL query without proper sanitation.
+BL: `mysql_query($q) or wf_mysqldie();`
+BUG FOUND: YES
+
+Explanation:
+The code is directly using user-supplied input from GET and POST requests in SQL queries without proper sanitation, which makes it vulnerable to SQL injection attacks. It's recommended to use prepared statements or parameterized queries to avoid such vulnerabilities.",not_buggy
+8546,"SE: The 'statement' variable is directly concatenated into the $sql variable without any sanitation, which might lead to SQL Injection.
+BL: `$sql = ""SELECT a.id FROM "" . static::getTableName() . "" a LEFT JOIN users u ON u.id = users_id WHERE 1=1 "" . $sql .= self::getSqlSearchFromPost();`
+BUG FOUND: YES
+
+SE: The 'sql' variable is directly concatenated into the $sql variable without any sanitation, which might lead to SQL Injection.
+BL: `$sql = ""SELECT u.*, a.* FROM "" . static::getTableName() . "" a LEFT JOIN users u ON u.id = users_id WHERE 1=1 "" . $sql .= self::getSqlFromPost(""a."");`
+BUG FOUND: YES",not_buggy
+350,"SE: The 'new' parameter is directly concatenated into the SQL query without proper sanitation, making it susceptible to SQL injection.
+BL: `$results = $this->db->query(""SELECT * FROM `mirna` WHERE Name = '$new'"");`
+BUG FOUND: YES
+
+SE: The '$name' parameter is directly concatenated into the SQL query without proper sanitation, making it susceptible to SQL injection.
+BL: `$total = $this->db->query(""SELECT count(*) FROM mirna WHERE Name LIKE '%$name%'"");`
+BUG FOUND: YES
+
+SE: The '$name' parameter is directly concatenated into the SQL query without proper sanitation, making it susceptible to SQL injection.
+BL: `$results = $this->db->query(""SELECT * FROM mirna WHERE Name LIKE '%$name%' ORDER BY databaseid ASC LIMIT $records_perpage OFFSET $c_p"");`
+BUG FOUND: YES",buggy
+8539,"SE: The 'cycle' parameter from the URL is directly used in the SQL query without any sanitation, which could potentially lead to SQL Injection.
+BL: `$query = ""SELECT \`id\`, \`name\` FROM \`glpi_crontasks\` WHERE \`state\` = '"".Crontask::STATE_RUNNING.""' AND unix_timestamp(`lastrun`) + $cycle * \`frequency` < unix_timestamp(now())"";`
+BUG FOUND: YES",buggy
+8539,"SE: The 'cycle' parameter from the URL is directly used in the SQL query without any sanitation, which could potentially lead to SQL Injection.
+BL: $query = ""SELECT `id`, `name` FROM `glpi_crontasks` WHERE `state` = '"".Crontask::STATE\_RUNNING.""' AND unix\_timestamp(`lastrun`) + $cycle \* `frequency` < unix\_timestamp(now())"";
+BUG FOUND: YES",not_buggy
+326,"SE: The 'first\_name' and 'last\_name' variables are directly concatenated into the SQL query without proper sanitation, which may lead to SQL Injection.
+BL: `people = Person.where(""first_name LIKE '%#{first_name}%'"")`
+BL: `people = Person.where(""last_name LIKE '%#{last_name}%'"")`
+BUG FOUND: YES
+
+SE: The 'email' variable is directly concatenated into the SQL query without proper sanitation, which may lead to SQL Injection.
+BL: `emails = Email.where(""email LIKE '%#{email}%'"")`
+BUG FOUND: YES",buggy
+348,"SE: The 'DB\_USERNAME', 'DB\_PASSWORD', 'DB\_DATABASE' and 'DB\_HOST' are directly concatenated into the SQL query without sanitation, which could potentially lead to SQL Injection if these values are derived from user input.
+BL: $conn = mysqli\_connect(DB\_HOST, DB\_USERNAME, DB\_PASSWORD, DB\_DATABASE)
+BUG FOUND: YES
+
+However, it's important to note that if the 'DB\_HOST', 'DB\_USERNAME', 'DB\_PASSWORD', and 'DB\_DATABASE' constants are not derived from user input, then there is no risk of SQL Injection. The risk arises when these values are derived from user input, which is not shown in the provided code.",buggy
+377,"SE: The '$_GET[""user""]' and '$_GET[""password""]' are directly concatenated into the SQL query without proper sanitation.
+BL: $query = ""SELECT `password` FROM `admin_users` WHERE `name` = '"".$my->real_escape_string($_GET[""user""]).""';"";
+BUG FOUND: YES
+
+SE: The '$_GET[""user""]' and '$_GET[""password""]' are directly concatenated into the SQL query without proper sanitation.
+BL: $query = ""INSERT INTO `ibis_server-php`.`admin_users` (`id`, `name`, `password`, `created`) VALUES (NULL, '"".$my->real_escape_string($_GET[""user""]).""', '"".$pw.""', CURRENT_TIMESTAMP);"";
+BUG FOUND: YES",not_buggy
+377,"SE: The '$_GET[""user""]' and '$_GET[""password""]' are directly concatenated into the SQL query without proper sanitation.
+BL: $query = ""SELECT `password` FROM `admin_users` WHERE `name` = '"".$_GET[""user""].""';"";
+$query = ""INSERT INTO `ibis_server-php`.`admin_users` (`id`, `name`, `password`, `created`) VALUES (NULL, '"".$my->real_escape_string($_GET[""user""]).""', '"".$pw.""', CURRENT_TIMESTAMP);"";
+BUG FOUND: YES
+Explanation:
+The code is directly concatenating user input from GET request into the SQL query, making it vulnerable to SQL Injection attacks. To prevent this, use prepared statements or parameterized queries. In this case, the '$_GET[""user""]' and '$_GET[""password""]' are not properly sanitized before being used in the SQL query.",buggy
+8607,"SE: The '$_POST[""U""]' and '$_POST[""M""]' are directly concatenated into the SQL query without proper sanitation.
+BL: $sql = 'INSERT INTO User (Username, Mail, Password, Type) VALUES ('.""'"".mysqli::real_escape_string($_POST[""U""]).""'"".','.""'"".mysqli::real_escape_string($_POST[""M""]).""'"".','.""'"".password\_hash(mysqli::real\_escape\_string($_POST[""P""]),PASSWORD\_DEFAULT).""'"".','.$USOC[""userRights""][""AfterRegistration""].');';
+BUG FOUND: YES
+
+Explanation:
+The code is using mysqli::real\_escape\_string() to sanitize the input, which is a step in the right direction. However, it is always recommended to use prepared statements with bound parameters to prevent SQL injection attacks. The current implementation might still be vulnerable if the escaping function is not used correctly or if there is a bug in the function itself. Prepared statements are a safer and more robust solution.",not_buggy
+8621,"SE: The 'username' input is used in an SQL query without proper sanitation, making it susceptible to SQL Injection.
+BL: `$where .= "" and username like '%{$username}%' "";`
+BUG FOUND: YES
+",buggy
+8621,"SE: The 'username' input is concatenated into the SQL query without proper sanitation, making it susceptible to SQL injection.
+BL: `$where .= "" and username like '%{$username}%' "";`
+BUG FOUND: YES",not_buggy
+342,"SE: The 'session\_id' and 'id' are directly concatenated into SQL query without sanitation which could lead to SQL Injection.
+BL: `$result = $dbCon->query('SELECT cash FROM users WHERE session\_id = ""' . $userData['session\_id'] . '""')`
+$result = $dbCon->query('UPDATE users SET cash = (cash + ""' . (int) (addslashes($_POST['gambleMoney']) * 36) . '"") WHERE id = ""' . $userData['id'] . '""')
+BUG FOUND: YES
+Explanation:
+The input $userData['session\_id'] and $userData['id'] are directly used in the SQL query without any sanitation or parameterization which could lead to SQL Injection. It is recommended to use prepared statements or parameterized queries to avoid such vulnerabilities.",not_buggy
+340,"SE: The 'data' input from Ajax request is directly concatenated into SQL query without sanitation.
+BL: `$query = 'SELECT arten.title AS label, count(data1) AS value, arten.marker AS color FROM #__eiko_einsatzberichte AS berichte INNER JOIN #__eiko_einsatzarten AS arten ON berichte.data1=arten.id WHERE berichte.state=1 AND berichte.date1 LIKE \''.$year.'%\' GROUP BY data1 ORDER BY arten.ordering;';`
+BUG FOUND: YES
+Note: The 'data' input is properly sanitized and used in another method 'getAjax()' but it's not used in the provided buggy line.",buggy
+361,"SE: The 'table' and 'id' variables are directly concatenated into the SQL query without proper sanitation, which could potentially lead to SQL Injection.
+BL: `$query .= '`' . $table . '` WHERE ';` (getById function), `$query = 'SELECT * FROM `wuersch`.`' . $table . '` WHERE ';` (getByColumns function)
+BUG FOUND: YES
+
+SE: The 'query' variable is directly concatenated into the SQL query without proper sanitation, which could potentially lead to SQL Injection.
+BL: `$sth = Store::$pdo->prepare($query . ';');` (getByCustomQuery function)
+BUG FOUND: YES",buggy
+329,"SE: The 'vars[""num""]' is directly concatenated into the SQL query without sanitation, which could lead to SQL Injection.
+BL: `query := fmt.Sprintf(`SELECT json_agg(r) FROM (select EXTRACT(epoch FROM day) as day, up_count, down_count, finished_count from trello.dailytallies order by day DESC limit %s) r;`, vars[""num""])`
+BUG FOUND: YES
+
+SE: The 'vars[""num""]' is directly concatenated into the SQL query without sanitation, which could lead to SQL Injection.
+BL: `err := db.QueryRow(query).Scan(&output)` where query is constructed using vars[""num""] without sanitation.
+BUG FOUND: YES
+
+SE: The 'vars[""num""]' is directly concatenated into the SQL query without sanitation, which could lead to SQL Injection.
+BL: `query := fmt.Sprintf(`SELECT json_agg(r) FROM (select EXTRACT(epoch FROM day) as day, end_of_day_total from trello.dailytallies order by day DESC limit %s) r;`, vars[""num""])`
+BUG FOUND: YES
+
+SE: The 'vars[""num""]' is directly concatenated into the SQL query without sanitation, which could lead to SQL Injection.
+BL: `err := db.QueryRow(query).Scan(&output)` where query is constructed using vars[""num""] without sanitation.
+BUG FOUND: YES",buggy
+4626,"SE: The 'q' parameter from request.GET is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL Injection.
+BL: `cursor.execute(""SELECT id,title,artist,cover FROM recordstoreapp_record WHERE title like '%"" + q + ""%' or artist like '%"" + q + ""%' or label like '%"" + q + ""%' or cat_no like '%"" + q + ""%';"")`
+BUG FOUND: YES",buggy
+364,"SE: The user input from the 'username' and 'password' are directly concatenated into the SQL query without any sanitation, which could lead to SQL Injection.
+BL: $query = ""SELECT * FROM users where userName='$username' and userPassword='$password'"";
+BUG FOUND: YES
+
+SE: The user input from the 'username' is directly concatenated into the SQL query without any sanitation, which could lead to SQL Injection.
+BL: $query = ""SELECT * FROM users where userName='$username'"";
+BUG FOUND: YES
+
+SE: The user input from the 'username' and 'password' are directly concatenated into the SQL query without any sanitation, which could lead to SQL Injection.
+BL: $query = ""INSERT INTO users values('$username', '$password')"";
+BUG FOUND: YES",buggy
+368,"SE: The '$_POST' variables are directly concatenated into SQL queries without proper sanitization in the lines containing 'mysql\_real\_escape\_string()' and 'removeSpace()' functions. Although 'mysql\_real\_escape\_string()' is a step towards preventing SQL injection, it is not enough. It's recommended to use prepared statements or parameterized queries to ensure proper neutralization of special elements in SQL commands.
+BL: $q = sprintf(""INSERT INTO webfinance\_personne (nom,prenom,email,tel,mobile,client,fonction,date\_created,note) VALUES ('%s', '%s', '%s', '%s', '%s', %d, '%s', now(),'%s')"", $_POST['nom'], $_POST['prenom'], $_POST['email'], removeSpace($_POST['tel']), removeSpace($_POST['mobile']), $_POST['client'], $_POST['fonction'], $_POST['note'] );
+$q = sprintf(""UPDATE webfinance\_personne SET nom='%s',prenom='%s',email='%s',tel='%s',mobile='%s',fonction='%s',note='%s' WHERE id\_personne=%d"", mysql\_real\_escape\_string($_POST['nom']), mysql\_real\_escape\_string($_POST['prenom']), mysql\_real\_escape\_string($_POST['email']), mysql\_real\_escape\_string(removeSpace($_POST['tel'])), mysql\_real\_escape\_string(removeSpace($_POST['mobile'])), mysql\_real\_escape\_string($_POST['fonction']), mysql\_real\_escape\_string($_POST['note']), mysql\_real\_escape\_string($_POST['id\_personne']));
+BUG FOUND: YES",buggy
+306,"SE: The 'name' variable is directly concatenated into the SQL query without proper sanitation, making it susceptible to SQL Injection.
+BL: `$results = $db->query('SELECT name, score FROM highscore WHERE cheater = 0 AND name != """" ORDER BY score DESC LIMIT 10 OFFSET ' . ($page-1)*10);`
+BUG FOUND: YES
+
+Additionally, the 'name' variable is also directly concatenated into the SQL query in the addHighscore function without proper sanitation, making it susceptible to SQL Injection.
+BL: `$db->exec('INSERT INTO highscore (name, score, level, date, log_referer, log_user_agent, log_remote_addr, log_remote_host, cheater)VALUES(?,?,?,?,?,?,?,?,?)',$name, $score,$level,$date,$ref,$ua,$remA,$remH,$cheater);`
+BUG FOUND: YES",not_buggy
+358,"SE: The '$_GET['s""]' is directly concatenated into SQL query without proper sanitation, which may result in SQL Injection.
+BL: $haku\_s = mysqli\_query($yht, ""SELECT \* FROM `sivut` WHERE uid = '"".$_GET['s'].""' LIMIT 1"");
+BUG FOUND: YES.",buggy
+358,"SE: The '$_GET['s']' is directly concatenated into SQL query without proper sanitation.
+BL: $haku_s = mysqli_query($yht, ""SELECT * FROM `sivut` WHERE uid = '"".$_GET['s'].""' LIMIT 1"");
+BUG FOUND: YES.",not_buggy
+313,"SE: The 'username', 'password', 'name', 'email', 'caption', 'loc\_id', 'timing\_id', 'pos\_id' variables are directly concatenated into SQL commands without proper sanitation, making them vulnerable to SQL Injection.
+BL: $sql = ""insert into MEMBER values (member\_seq.nextval, '$username', '$password', '$name', '$email', $all\_score, '$profile')"";
+$sql = ""insert into PHOTO values (member\_seq.nextval, '$caption', $owner, $loc\_id, $timing\_id, $pos\_id, systimestamp)"";
+$sql = ""insert into COMMENT\_PHOTO values (comment\_photo\_seq.nextval, $m\_id, $p\_id, '$msg', systimestamp)"";
+$sql = ""insert into LIKE\_PHOTO values ($m\_id, $p\_id, systimestamp)"";
+$sql = ""insert into MESSAGE values (message.nextval, $m\_id, $to, msg, systimestamp)"";
+BUG FOUND: YES.",buggy
+313,"SE: The 'username', 'password', 'name', 'email', 'caption', 'loc\_id', 'timing\_id', 'pos\_id' variables are directly concatenated into SQL commands without proper sanitation, making them susceptible to SQL Injection.
+BL: $sql = ""insert into MEMBER values (member\_seq.nextval, '$username', '$password', '$name', '$email', $all\_score, '$profile')"";
+$sql = ""insert into PHOTO values (member\_seq.nextval, '$caption', $owner, $loc\_id, $timing\_id, $pos\_id, systimestamp)"";
+$sql = ""insert into COMMENT\_PHOTO values (comment\_photo\_seq.nextval, $m\_id, $p\_id, '$msg', systimestamp)"";
+$sql = ""insert into LIKE\_PHOTO values ($m\_id, $p\_id, systimestamp)"";
+$sql = ""insert into MESSAGE values (message.nextval, $m\_id, $to, msg, systimestamp)"";
+BUG FOUND: YES.",not_buggy
+372,"SE: The IP address and user agent are directly concatenated into the SQL query without any sanitation or parameterization, making it susceptible to SQL Injection.
+BL: `$this->crawler_info = $this->dbhandle->query(""SELECT crawler_ip FROM crawlers WHERE crawler_ip='$ip' AND crawler_useragent='$useragent'"");`
+BUG FOUND: YES.",buggy
+372,"SE: The 'crawler\_ip' and 'crawler\_useragent' variables, which appear to contain user input, are used in SQL queries without any sanitation.
+BL: `$this->crawler_info = $this->dbhandle->query(""SELECT crawler_ip FROM crawlers WHERE crawler_ip='$this->ip' AND crawler_useragent='$this->useragent'"");`
+BUG FOUND: YES.
+SE: The 'crawler\_ip' variable, which appears to contain user input, is used in an SQL query without any sanitation.
+BL: `$last_seen_query = $this->dbhandle->query(""SELECT strftime('%s',datetime('now','localtime')) - strftime('%s',last_alert) FROM crawlers WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"") or die(sqlite_error_string($this->dbhandle->lastError()));;`
+BUG FOUND: YES.
+SE: The 'crawler\_ip' and 'crawler\_useragent' variables, which appear to contain user input, are used in an SQL query without any sanitation.
+BL: `$last_alert_query = $this->dbhandle->query(""UPDATE crawlers SET last_alert=datetime('now','localtime') WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"");`
+BUG FOUND: YES.
+SE: The 'crawler\_ip' variable, which appears to contain user input, is used in an SQL query without any sanitation.
+BL: `$this->dbhandle->query(""INSERT INTO crawlers(crawler_ip, crawler_rdns, crawler_useragent, first_seen, last_seen, num_hits) VALUES('"" . $this->crawler_ip . ""', '$crawler_rdns', '"" . $this->crawler_useragent . ""', datetime('now','localtime'), datetime('now','localtime'), 1)"");`
+BUG FOUND: YES.",not_buggy
+316,"SE: The 'name' variable is directly concatenated into the SQL query without sanitation, making it vulnerable to SQL Injection.
+BL: `return self::getForQueryString(""SELECT * FROM \""DevNewsAggregatorConfiguration_htmlcontent\"" WHERE name = $name"");`
+BUG FOUND: YES
+
+Note: The 'getForQueryString' function is marked as private, but it's still important to address potential SQL injection vulnerabilities. If this function is used elsewhere with user input, it could still pose a security risk.",buggy
+316,"SE: The user input ($1) is directly inserted into the SQL query, making it vulnerable to SQL Injection.
+BL: `' AND htmlcontent_users.user_id = $1 '` in the `getForUser` function.
+BUG FOUND: YES
+
+SE: The name parameter is directly inserted into the SQL query, making it vulnerable to SQL Injection.
+BL: `""SELECT * FROM \""DevNewsAggregatorConfiguration_htmlcontent\"" WHERE name = $1""` in the `getByName` function.
+BUG FOUND: YES
+
+SE: Although no user input is directly used in this query, it's essential to maintain a consistent practice of using parameterized queries to prevent potential SQL injection vulnerabilities.
+BL: All instances of `pg_query_params` function calls.
+BUG FOUND: NO",not_buggy
+404,"SE: The 'itemtype' and 'id' variables from user input are directly used in SQL query without any sanitation or parameterization.
+BL: `$success = $user->update([ 'id' => Session::getLoginUserID(), 'savedsearches_pinned' => $_SESSION['glpisavedsearches_pinned'], ]);`
+BUG FOUND: YES
+
+Note: Although the user input is coming from a session variable, it's important to verify if the data was stored securely before the session was created. If the data was obtained from an untrusted source and stored in the session without proper sanitation, this can still lead to an SQL injection vulnerability.",buggy
+8622,"SE: The 'custom\_css\_code' value from the POST request is directly assigned to a variable without any sanitation.
+BL: `$_POST['custom_css_code'] = $_UPOST['custom_css_code'];`
+BUG FOUND: YES
+
+Explanation:
+This line might be vulnerable to SQL injection if the '$UPOST' variable is coming from an untrusted source and is used in an SQL query without proper sanitation. It's best to use prepared statements or parameterized queries to avoid such vulnerabilities.",buggy
+404,"SE: The 'itemtype' value from the user input in $_POST is directly used in the getItemForItemtype() function without any sanitation, which could potentially lead to SQL injection.
+BL: if (!is\_string($*\_POST*['itemtype']) || getItemForItemtype($*\_POST*['itemtype']) === false) {
+BUG FOUND: YES",not_buggy
+314,"SE: The 'current' variable is directly used in the SQL query without any sanitation.
+BL: `if ( !$this->_db->select( $sql, $users, $current ) )`
+BUG FOUND: YES",not_buggy
+311,"SE: The '$_SERVER[""QUERY\_STRING""]' is directly concatenated into the SQL query without proper sanitation.
+BL: `$query = sprintf(""SELECT id, redirect_to FROM short_links WHERE short_link = '%s' ORDER BY id DESC LIMIT 1"", $mysqli->real_escape_string($_SERVER[""QUERY_STRING""]));`
+BUG FOUND: YES
+
+Explanation:
+The code is using prepared statements for the UPDATE query but not for the SELECT query. The SELECT query is constructed by directly concatenating the user input from '$_SERVER[""QUERY\_STRING""]' into the SQL query. An attacker can exploit this by injecting malicious SQL code into the 'QUERY\_STRING' parameter, which can lead to SQL injection vulnerabilities.",buggy
+311,"SE: The '$_SERVER[""QUERY\_STRING""]' is directly concatenated into the SQL query without proper sanitation.
+BL: $query = sprintf(""SELECT id, redirect\_to FROM short\_links WHERE short\_link = '%s' ORDER BY id DESC LIMIT 1"", $mysqli->real\_escape\_string($_SERVER[""QUERY\_STRING""]));
+BUG FOUND: YES
+
+Although the code uses $mysqli->real\_escape\_string() to escape the input, it is still at risk of SQL injection due to the use of sprintf() which can be vulnerable to format string attacks. It would be safer to use prepared statements instead.",not_buggy
+331,"SE: The 'msg.body' is used in the construction of the SQL query without proper sanitation, making it susceptible to SQL Injection.
+BL: `cursor.execute(query,(cidade,estado))` in the 'dbLookup' function.
+BUG FOUND: YES",not_buggy
+366,"SE: The '$_GET' variables are used in SQL queries without proper sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_pref WHERE id_pref="".$_GET['id']);`
+BL: `mysql_query($q) or wf_mysqldie();` in the foreach loop, where $q is constructed using unsanitized '$_POST' data.
+BUG FOUND: YES
+(The code is vulnerable to SQL Injection attacks as user input from GET and POST variables are directly used in SQL queries. Always sanitize user inputs using prepared statements or proper escaping functions before using them in SQL queries.)",buggy
+331,"SE: The 'msg.body' is directly concatenated into the SQL query without sanitation, which could lead to SQL Injection.
+BL: `query = 'SELECT id FROM paises WHERE nome == ""%s""' % (msg.body)`
+BUG FOUND: YES
+
+SE: The 'cidade' and 'estado' are directly concatenated into the SQL query without sanitation, which could lead to SQL Injection.
+BL: `query = 'SELECT estados.id FROM municipios JOIN estados ON municipios.estados_id == estados.id WHERE municipios.nome == ""%s"" AND estados.uf == ""%s"";' % (cidade, estado)`
+BUG FOUND: YES",buggy
+337,"SE: The 'login' and 'password' variables from the POST request are directly used in the SQL query without any sanitation.
+BL: $result=$pwd->check(""adminuser"",$login,$password,$CRYPT);
+BUG FOUND: YES
+
+Explanation:
+The 'login' and 'password' variables from the POST request are directly used in the SQL query in the 'check' function of the 'password' object. If these inputs are not properly sanitized, it could lead to SQL injection vulnerabilities. It's recommended to use prepared statements or parameterized queries to avoid such issues.",buggy
+337,"SE: The 'login' and 'password' variables, which appear to be user inputs, are used in an SQL query without proper sanitation.
+BL: `$result=$pwd->check(""adminuser"",$login,$password,$CRYPT);`
+BUG FOUND: YES
+Note: Although the 'addslashes' function is used, it is not a reliable method for preventing SQL injection. It is recommended to use prepared statements or parameterized queries instead.",not_buggy
+319,"SE: The 'where' input from the user is directly used in the SQL query without proper sanitation, making it susceptible to SQL Injection.
+BL: `$whereCondition = 'WHERE ' . (is_numeric($where) ? 'id=UNHEX(:where)' : 'naam=UNHEX(:where)');`
+BUG FOUND: YES.",not_buggy
+8546,"SE: The 'statement' variable is directly concatenated into the SQL query without proper sanitation, which may lead to SQL Injection.
+BL: `$this->statement = substr(str_replace(""'"", """", $statement),0,1000).""n"";` in the 'audit' function.
+$sql = ""SELECT a.id FROM "" . static::getTableName() . "" a LEFT JOIN users u ON u.id = users_id WHERE 1=1 "" . $sql; in the 'getTotal' function.
+BUG FOUND: YES.",buggy
+367,"SE: The '$_GET' variables are directly used in the SQL query without any sanitation or parameterization, which could potentially lead to SQL Injection.
+BL: `mysql_query(""DELETE FROM webfinance_roles WHERE id_role="".$_GET['id']);`
+BUG FOUND: YES
+
+SE: The '$_GET' variables are directly used in the SQL query without any sanitation or parameterization, which could potentially lead to SQL Injection.
+BL: `mysql_query($q) or wf_mysqldie();` (This line is executed in a loop, but it's still vulnerable because $q is constructed using unsanitized '$_POST' data.)
+BUG FOUND: YES",buggy
