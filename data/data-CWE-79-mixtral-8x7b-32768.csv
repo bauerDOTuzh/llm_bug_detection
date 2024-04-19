@@ -2126,3 +2126,660 @@ Note: These vulnerabilities are present in commented out lines of code, but they
 8347,"SE: The 'callback' variable is directly concatenated into the JSON response string without proper sanitation, which may lead to Cross-Site Scripting (XSS) vulnerabilities if the 'callback' value is user-controlled.
 BL: `result = callback+""(""+json.dumps(result)+"");""`
 BUG FOUND: YES",not_buggy
+7532,"SE: The 'validHtmlStr($zone['Name'])' is directly concatenated into HTML content without sanitation.
+BL: `<td class=""colName""><?php echo makePopupLink('?view=zone&mid=' . $mid . '&zid=' . $zone['Id'], 'zmZone', array('zone', $monitor->Width(), $monitor->Height()), validHtmlStr($zone['Name']), true, 'onclick=""streamCmdQuit( true ); return( false );""'); ?></td>`
+BUG FOUND: YES
+
+Explanation:
+The 'validHtmlStr($zone['Name'])' is directly output as part of the 'href' attribute in the 'makePopupLink' function call without proper sanitation, which could potentially lead to Cross-Site Scripting (XSS) if the 'Name' field contains malicious user input.",not_buggy
+180,"SE: The 'this.data.text' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `return '<a href=""' + fullpath + '"" class=""' + this.config[""class""] + ' ' + this.data[""class""] + '"">' + displayHtml + '</a>';`
+BUG FOUND: YES
+Explanation:
+An attacker can inject malicious scripts in 'this.data.text' which will be rendered as part of the HTML content without proper sanitation, leading to Cross-Site Scripting (XSS) vulnerability. In the given line, the 'displayHtml' variable, which contains 'this.data.text', is directly used in the HTML content. If 'this.data.text' contains any user input, it can lead to XSS.
+To fix this issue, always sanitize user inputs before using them in the HTML context. You can use functions like 'Ext.util.Format.htmlEncode' for JavaScript or 'htmlspecialchars()' for PHP to sanitize the user inputs.",not_buggy
+8362,"SE: The 'device' variable, which is derived from user input, is directly used in the 'Url::deviceLink($device)' function, which may concatenate the value into HTML content without proper sanitation.
+BL: `return [ 'source' => $device ? Url::deviceLink($device) : $message['message']['source'], ];`
+BUG FOUND: YES
+
+Note: Although the 'Url::deviceLink($device)' function is not provided in the code snippet, it is still possible that it directly concatenates the 'device' variable into HTML content. If 'Url::deviceLink($device)' function properly sanitizes the 'device' variable before concatenating it into HTML, then there is no Cross-Site Scripting vulnerability. However, based on the provided information, it is not possible to determine if 'Url::deviceLink($device)' function sanitizes the 'device' variable.",buggy
+7650,"SE: The 'fifo\_name' variable, which comes from a user input, is directly used as part of the 'id' attribute of the 'div' element without proper sanitation.
+BL: `echo ""<div id=\""ajax_reponse\""></div>\n"";`
+BUG FOUND: YES",buggy
+7767,"SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createLink(APPLICATION_ID)`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createLink(APPLICATION_ID . "".Inquiry"")`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createLink(APPLICATION_ID . "".Form"")`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createLink(APPLICATION_ID . "".Config"")`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createLink(APPLICATION_ID . "".Help"")`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createLink(APPLICATION_ID . "".webapp/"" . APPLICATION_ID . ""/js/tools/soy2_data_picker.css"")`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createLink(APPLICATION_ID . "".webapp/"" . APPLICATION_ID . ""/js/tools/soy2_data_picker.js"")`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `SOY2PageController::createRelativeLink(""./webapp/"" . APPLICATION_ID . ""/css/three.css"")`
+BUG FOUND: YES",not_buggy
+7767,"SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `CMSApplication::addLink(SOY2PageController::createRelativeLink(""./webapp/"" . APPLICATION\_ID . ""/js/tools/soy2_data_picker.css""));`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `CMSApplication::addScript(SOY2PageController::createRelativeLink(""./webapp/"" . APPLICATION\_ID . ""/js/tools/soy2_data_picker.js""));`
+BUG FOUND: YES
+
+SE: The 'APPLICATION\_ID' is directly concatenated into the HTML link without sanitation.
+BL: `$cssLink = SOY2PageController::createRelativeLink(""./webapp/"".APPLICATION\_ID.""/css/three.css"");`
+BUG FOUND: YES",buggy
+7863,"SE: The 'website.name' and 'zone.name' are directly concatenated into HTML content without sanitation.
+BL: `<label style=""white-space: nowrap""> <input id=""{$checkboxPrefix}w{$websiteid}"" name=""w{$websiteid}"" type=""checkbox"" class=""checkbox parent"" />{boldSearchPhrase text=$website.name search=$text}</label>`
+BL: `<label> <input id=""{$checkboxPrefix}w{$websiteid}_z{$zoneid}"" name=""z{$zoneid}"" type=""checkbox"" class=""checkbox"" /> {boldSearchPhrase text=$zone.name search=$text}</label>`
+BUG FOUND: YES",buggy
+7863,"SE: The 'website.name' and 'zone.name' are directly concatenated into HTML content without sanitation.
+BL: `<label><input type=""checkbox"" id=""{$checkboxPrefix}w{$websiteid}"" name=""w{$websiteid}"" type=""checkbox"" class=""checkbox parent"" />{boldSearchPhrase text=$website.name search=$text}</label>`
+BL: `<label><input id=""{$checkboxPrefix}w{$websiteid}_z{$zoneid}"" name=""z{$zoneid}"" type=""checkbox"" class=""checkbox"" />{boldSearchPhrase text=$zone.name search=$text}</label>`
+BUG FOUND: YES",not_buggy
+230,"SE: The 'this.data.text' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `return '<a href=""' + fullpath + '"" class=""' + this.config[""class""] + ' ' + Ext.util.Format.htmlEncode(this.data[""class""]) + '"">' + displayHtml + '</a>';`
+BUG FOUND: YES
+
+SE: The 'this.data.path' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `return '<a href=""' + fullpath + '"" class=""' + this.config[""class""] + ' ' + Ext.util.Format.htmlEncode(this.data[""class""]) + '"">' + displayHtml + '</a>';`
+BUG FOUND: YES
+
+SE: The 'this.config.textPrefix' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `displayHtml = this.config.textPrefix + displayHtml;`
+BUG FOUND: YES
+
+SE: The 'this.config.textSuffix' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `displayHtml += this.config.textSuffix;`
+BUG FOUND: YES",buggy
+230,"SE: The 'this.data.text' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `return '<a href=""' + fullpath + '"" class=""' + this.config[""class""] + ' ' + Ext.util.Format.htmlEncode(this.data[""class""]) + '"">' + displayHtml + '</a>';`
+BUG FOUND: YES
+
+SE: The 'this.data.path' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `return '<a href=""' + fullpath + '"" class=""' + this.config[""class""] + ' ' + Ext.util.Format.htmlEncode(this.data[""class""]) + '"">' + displayHtml + '</a>';`
+BUG FOUND: YES
+
+SE: The 'this.config.textPrefix' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `if (this.config.textPrefix !== undefined) { displayHtml = this.config.textPrefix + displayHtml; }`
+BUG FOUND: YES
+
+SE: The 'this.config.textSuffix' is directly concatenated into HTML content without sanitation in the 'getLinkContent' function.
+BL: `if (this.config.textSuffix !== undefined) { displayHtml += this.config.textSuffix; }`
+BUG FOUND: YES",not_buggy
+174,"SE: The 'e(vars('user\_display\_name'))' is concatenated into HTML content without proper sanitation.
+BL: `<a class=""nav-link dropdown-toggle"" href=""#"" data-bs-toggle=""dropdown"" data-tippy-content=""<?= lang('settings_hint') ?>""> <i class=""fas fa-user me-2""></i> <?= e(vars('user\_display\_name')) ?> </a>`
+BUG FOUND: YES",not_buggy
+174,"SE: The 'vars('user\_display\_name')' is directly concatenated into HTML content without sanitation.
+BL: `<a class=""nav-link dropdown-toggle"" href=""#"" data-bs-toggle=""dropdown"" data-tippy-content=""<?= lang('settings_hint') ?>""> <i class=""fas fa-user me-2""></i> <?= vars('user_display_name') ?> </a>`
+BUG FOUND: YES
+
+Explanation:
+============
+
+The function 'vars('user\_display\_name')' is being directly concatenated into the HTML content without any sanitation. This might lead to Cross-Site Scripting (XSS) vulnerabilities if the user input is not properly sanitized. An attacker can exploit this vulnerability by injecting malicious scripts which can lead to stealing user's session tokens or other sensitive information.
+
+To fix this issue, sanitize the output of 'vars('user\_display\_name')' using a proper sanitization method based on the context where it is being used. For example, you can use the 'htmlspecialchars' function in PHP to sanitize the output before concatenating it into the HTML content.
+
+Example:
+```bash
+<a class=""nav-link dropdown-toggle"" href=""#"" data-bs-toggle=""dropdown"" data-tippy-content=""<?= lang('settings_hint') ?>""> <i class=""fas fa-user me-2""></i> <?= htmlspecialchars(vars('user_display_name')) ?> </a>
+```",buggy
+258,"SE: The 'name' input from request is directly used in the error message without sanitation.
+BL: `return redirect()->back()->withInput()->withErrors([ 'rules' => __('Rules resulted in invalid query: ') . $e->getMessage(), ]);`
+BUG FOUND: YES",buggy
+258,"SE: The 'name' variable, which may contain user input, is used in the htmlentities function which is a form of output sanitation. However, it is used after the variable has been used in the creation of the error message, which may be displayed to the user without sanitation.
+BL: `return redirect()->back()->withInput()->withErrors([ 'rules' => __('Rules resulted in invalid query: ') . $e->getMessage(), ]);`
+BUG FOUND: YES
+
+Note: This is a potential security vulnerability as user input is included in an error message that may be displayed to the user without proper sanitation. It is recommended to sanitize the 'name' variable before using it in the creation of the error message.",not_buggy
+7632,"SE: The 'contact\_note' variable is directly output into the HTML content using the 'echo' statement without any sanitation.
+BL: `echo 			$contact_note.""&nbsp;"";`
+BUG FOUND: YES
+",buggy
+7632,"SE: The 'contact\_note' is directly concatenated into HTML content without sanitation.
+BL: `echo 			$contact_note.""&nbsp;"";`
+BUG FOUND: YES",not_buggy
+7732,"SE: The 'params' from external source is directly used as a part of URL generation without proper sanitation.
+BL: `params[:only_path] = true; @template.url_for params`
+BUG FOUND: YES",buggy
+7732,"SE: The 'page' method in the 'Link' module concatenates its return value into an HTML 'a' tag's 'href' attribute without proper sanitation.
+BL: `locals[:url] = url` in the 'to_s' method of the 'Link' module.
+BUG FOUND: YES",not_buggy
+8010,"SE: The 'text' variable is directly concatenated into the 'ak_data' dictionary which is then directly used in the 'ak.comment\_check()' method without proper sanitation.
+BL: `ak_data = { ... 'comment_author': '', ... }  ak.comment_check(smart_text(text), data=ak_data)`
+BUG FOUND: YES",not_buggy
+8010,"SE: The 'text' variable is directly concatenated into the 'comment_content' variable which is later used in HTML content without any sanitation.
+BL: `comment_content = ""Comment: %s"" % smart_text(text)`
+BUG FOUND: YES",buggy
+190,"SE: The 'openQuestion->getQuestion()' is directly concatenated into HTML content without sanitation.
+BL: `<td><strong><?= $category->categoryName[$openQuestion->getCategoryId()]['name'] ?></strong><br><?= Strings::htmlentities($openQuestion->getQuestion()) ?></td>`
+BUG FOUND: YES
+
+Explanation:
+The method 'getQuestion()' returns an input from the user that is directly concatenated into the HTML content using the 'echo' statement without any sanitation. This can lead to Cross-Site Scripting (XSS) attacks if the input contains malicious scripts. The 'Strings::htmlentities()' function call does not mitigate the risk as it is called after the 'echo' statement.",buggy
+190,"SE: The 'openQuestion->getQuestion()' is directly concatenated into HTML content without sanitation.
+BL: `<td><strong><?= Strings::htmlentities($category->categoryName[$openQuestion->getCategoryId()]['name']) ?></strong><br><?= Strings::htmlentities($openQuestion->getQuestion()) ?></td>`
+BUG FOUND: YES
+
+Please note that there is a Strings::htmlentities() function call, but it is not enough to prevent Cross-Site Scripting (XSS) attacks as it only converts a subset of special characters to their HTML entities. It's recommended to use a more robust method like htmlspecialchars() provided by PHP.",not_buggy
+7531,"SE: The 'pLang' function directly echoes the user-provided input without proper sanitation, which can lead to Cross-Site Scripting if the input contains malicious scripts.
+BL: `echo pLang($name)` in the foreach loop within the 'settingsPanel' division.
+BUG FOUND: YES.",buggy
+7531,"SE: The 'plugin' variable is directly concatenated into HTML content without sanitation.
+BL: `<h2><?php echo translate('Monitor') ?> <?php echo $monitor['Name'] ?> - <?php echo translate('Zone') ?> <?php echo $newZone['Name'] ?> - <?php echo translate('Plugin') ?> <?php echo validHtmlStr($plugin) ?></h2>`
+BUG FOUND: YES",not_buggy
+8069,"SE: The 'content' variable is directly outputted in the HTML content without any sanitation, which could potentially lead to Cross-Site Scripting if the 'content' variable is user-supplied and not properly sanitized.
+BL: `<div id=""widget-content-body""><?php echo $Result['content']; ?></div>`
+BUG FOUND: YES",buggy
+8069,"SE: The 'content' variable is directly outputted in HTML without any sanitation, which might lead to Cross-Site Scripting if the 'content' variable contains user input.
+BL: `<div id=""widget-content-body""><?php echo $Result['content']; ?></div>`
+BUG FOUND: YES.",not_buggy
+55,"SE: The 'user' input is directly used as a key for the 'filter' array, which might lead to Cross-Site Scripting if the 'user' input contains malicious scripts.
+BL: `$filter = ['active' => true, $data['user'] => $data['email']];`
+BUG FOUND: YES",buggy
+55,"SE: The 'user' input from the global $_GET array is directly used as a key in the $filter array without proper sanitation.
+BL: `$filter['user'] = $data['user'];`
+BUG FOUND: YES
+
+SE: The 'email' input from the global $_GET array is directly used as a key in the $filter array without proper sanitation.
+BL: `$filter['email'] = $data['email'];`
+BUG FOUND: YES
+
+Additional Notes:
+- Although the 'password' input is not directly used in HTML content generation, it is still important to note that it is stored in the database using password_hash() function, which is a good practice to prevent clear-text password storage.
+- The code seems to use a custom ACL (Access Control List) implementation for managing user permissions, which is a good practice for securing access to certain resources.
+- The code uses session_regenerate_id() function to prevent session fixation attacks, which is a good practice for securing user sessions.",not_buggy
+262,"SE: The 'vars[\'searchPhrase\']' is directly output as a value of the 'input' element without proper sanitation.
+BL: echo 'value=\""""+ <?php echo htmlspecialchars($vars['searchPhrase']) ?> +""\""';
+BUG FOUND: YES",not_buggy
+262,"SE: The 'value' is directly used in the 'title' attribute of the 'span' element without proper sanitation.
+BL: `return ""<span title=\'"" + value + "" ("" + vendor + "")\' data-toggle=\'tooltip\'>"" + value + ""</span>"";`
+BUG FOUND: YES
+
+Explanation:
+The 'value' variable is directly used in the 'title' attribute of the 'span' element without proper sanitation. This could potentially lead to Cross-Site Scripting (XSS) vulnerabilities if the 'value' variable contains user input. An attacker could exploit this by injecting malicious scripts, which would then be executed in the user's browser. To mitigate this risk, it is recommended to sanitize the 'value' variable before using it in the 'title' attribute.",buggy
+267,"SE: The 'p\_array' variable, which is passed to the 'toJSArray' function, seems to be directly concatenated into a JavaScript string without proper sanitation.
+BL: `$t_field_values_js = '[ ';`
+`$t_field_values_js .= '""'.string_attribute( $t_custom_field_value ).'"" ,';`
+BUG FOUND: YES
+Explanation:
+The 'toJSArray' function takes an array 'p\_array' as an argument and constructs a JavaScript array by concatenating the array elements into a JavaScript string. However, it appears that the 'string\_attribute' function is used to sanitize the array elements, but this might not be sufficient to prevent Cross-Site Scripting (XSS) attacks if the array elements contain user-supplied input. To mitigate the risk, it is recommended to use a more robust sanitization method that specifically targets XSS attacks.",buggy
+41,"SE: The 'username' input is directly used as a parameter for the 'user_exists' function which seems to output an error message if the username does not exist in the system. If an attacker can control the 'username' input, they might be able to trigger the error message and potentially cause Cross-Site Scripting (XSS) if the error message is displayed to the user without proper sanitation.
+BL: `$form->field('username', 'user_exists');`
+BUG FOUND: YES
+
+Note: The 'password_match' function also takes the 'password2' input directly from the form, but it seems to be used only for validation purposes and not displayed back to the user, so it should not pose a Cross-Site Scripting (XSS) risk.",buggy
+41,"SE: The 'ref' parameter value from GET request is directly used in html attribute 'href' without proper sanitation.
+BL: `gotopage(""../index.php?ref="" . $_GET['ref']);`
+BUG FOUND: YES
+
+SE: The 'username' value from form is directly used in html attribute 'value' without proper sanitation.
+BL: `$form->field('username', 'user_exists', $input['username']);`
+BUG FOUND: YES
+
+SE: The 'username' value from form is directly used in html attribute 'value' without proper sanitation.
+BL: `$form->field('username', 'user_exists', $input['username']);`
+BUG FOUND: YES
+
+Note: It's important to note that these lines could potentially be vulnerable to Cross-Site Scripting (XSS) attacks if the input is not properly sanitized. However, in this specific case, it seems that the input is being validated and sanitized earlier in the code with `htmlspecialchars()` function, which should mitigate the risk of XSS attacks.
+
+SE: The 'username' value from form is directly used in html attribute 'value' without proper sanitation.
+BL: `$form->field('username', 'user_exists', $input['username']);`
+BUG FOUND: NO, as input is validated and sanitized earlier.
+
+SE: The 'password' value from form is directly used in html attribute 'value' without proper sanitation.
+BL: `$form->field('password', '', $input['password']);`
+BUG FOUND: NO, as password input should not contain any special characters that could be used in XSS attacks.
+
+SE: The 'password2' value from form is directly used in html attribute 'value' without proper sanitation.
+BL: `$form->field('password2', '', $input['password2']);`
+BUG FOUND: NO, as input should not contain any special characters that could be used in XSS attacks.",not_buggy
+972,"SE: The 'room' and 'username' variables from the POST request are directly concatenated into HTML content without sanitation.
+BL: `echo ' <br> '.$room.'<br>';`, `echo '<div id=""chat"">'.$username.'<br>';`
+BUG FOUND: YES",not_buggy
+79,"SE: The '$_REQUEST['startDate']' and '$_REQUEST['endDate']' are directly concatenated into HTML content without sanitation.
+BL: `<input class=""dp"" id=""sd"" size=15 name=""startDate"" value=""<?php echo Format::htmlchars($_REQUEST['startDate']); ?>"" autocomplete=OFF>`
+BL: `<input class=""dp"" id=""ed"" size=15 name=""endDate"" value=""<?php echo Format::htmlchars($_REQUEST['endDate']); ?>"" autocomplete=OFF>`
+BUG FOUND: YES",not_buggy
+58,"SE: The 'getMsg' function is concatenated into HTML content without proper sanitation, which might lead to Cross-Site Scripting if 'getMsg' returns user-provided data.
+BL: `'<h4 class=""modal-title"" class=""modalTitle"">' + + '</h4>'`
+BUG FOUND: YES
+
+Explanation:
+The 'getMsg' function might return user-provided data, which is directly concatenated into HTML content using '+'. If the data contains malicious scripts, it could lead to Cross-Site Scripting (XSS) attacks. To prevent this, always sanitize user-provided data using functions like DOMPurify or escape the strings properly before concatenating them into HTML.",buggy
+58,"SE: The 'getMsg' function is used to get message, and its result is directly concatenated into HTML content without sanitation.
+BL: `'<div class=""history-list-header"">' + getMsg('history') +' (<span class=""history-num""></span>)</div>'`,
+`'<a class=""btn btn-primary back"">' + getMsg('restoreFromThisVersion') + '</a>'`,
+`'<p>' + getMsg(""historiesNum"") + '</p>'`,
+`'<button class=""btn btn-default all"">' + getMsg(""unfold"") + '</button> <button class=""btn btn-primary back"">' + getMsg('restoreFromThisVersion') + '</button>'`
+BUG FOUND: YES",not_buggy
+76,"SE: The 'data.category' and 'data[data.element]' are directly concatenated into HTML content without sanitation in the 'processEvent' function.
+BL: `row.insertCell(1).innerHTML = <td class=""category-name""><strong>${escapeHTML(data.category)}</strong></td>`;
+`row.insertCell(3).innerHTML = <td class=""matches""><strong>${escapeHTML(data[data.element])}</strong></td>;`
+BUG FOUND: YES
+
+(Note: I've also noticed that the 'escapeHTML' function is defined but not used in the provided lines. Using it would mitigate the cross-site scripting vulnerability.)",not_buggy
+76,"SE: The 'data.category' is directly used as a part of the 'row.id' and 'sigMenuItem.setAttribute('data-badge', ...)' without any sanitation, which might lead to Cross-Site Scripting if the input is not properly sanitized.
+BL: `row.id = eventId;`, `sigMenuItem.setAttribute('data-badge', parseInt(sigMenuItem.getAttribute('data-badge') || 0) + 1);`
+BUG FOUND: YES
+
+SE: The 'data.category' is directly used as a part of the 'row.insertCell(1).innerHTML' without any sanitation, which might lead to Cross-Site Scripting if the input is not properly sanitized.
+BL: `row.insertCell(1).innerHTML = <td class=""category-name""><strong>${data.category}</strong></td>`;
+BUG FOUND: YES
+
+SE: The 'data[data.element]' is directly used as a part of the 'row.insertCell(3).innerHTML' without any sanitation, which might lead to Cross-Site Scripting if the input is not properly sanitized.
+BL: `row.insertCell(3).innerHTML = <td class=""matches""><strong>${data[data.element]}</strong></td>`;
+BUG FOUND: YES
+
+SE: The 'JSON.stringify(data)' is directly used as a part of the 'row.insertCell(4).innerHTML' without any sanitation, which might lead to Cross-Site Scripting if the input is not properly sanitized.
+BL: `row.insertCell(4).innerHTML = <td class=""log-line""><div><pre>${JSON.stringify(data)}</pre></div></td>`;
+BUG FOUND: YES",buggy
+2724,"SE: The 'tdata' is directly concatenated into HTML content without sanitation in the 'replaceDropShadowNode' function.
+BL: `fmt.Fprintf(buf, feDropShadowTemplate, inID, offsetID, inAttrs.String(), blurAttrs.String(), offsetAttrs.String(), floodAttrs.String(), finalAttrs.String())`
+BUG FOUND: YES",not_buggy
+2724,"SE: The 'tdata' is directly concatenated into HTML content without sanitation in the 'buf.Write(tdata)' lines.
+BL: Multiple lines in 'Satitize' and 'FixUnsupported' functions.
+BUG FOUND: YES",buggy
+8496,"SE: The 'name' variable is directly output into the HTML content as a button label without sanitation.
+BL: `'<button type=""button"" class=""btn-sm icon-left no-hover btn btn-secondary"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-tag""></i> ' + name + '</button>'`
+BUG FOUND: YES
+
+SE: The 'name' variable is directly output into the HTML content as a button label without sanitation.
+BL: `'<button type=""button"" class=""btn btn-primary btn-sm btn-icon"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-pencil""></i></button>' + '<button type=""button"" class=""btn btn-primary btn-sm btn-icon"" onClick=""deleteTaggingTag('+id+')""><i class=""mdi mdi-close""></i></button>' + '</div>';`
+BUG FOUND: YES
+
+Note: The 'name' variable is also used in the 'getTagButtonHtmlInForm' function, but it is first passed through the jQuery text() method, which removes HTML tags. However, it's still possible for an attacker to exploit XSS by providing malicious input containing JavaScript code within the 'name' variable. To be completely safe, it's recommended to sanitize the 'name' variable before using it in the HTML content.",not_buggy
+8496,"SE: The 'name' value obtained from user input is directly used in the HTML content of the button without sanitation.
+BL: `'<button type=""button"" class=""btn-sm icon-left no-hover btn btn-secondary"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-tag""></i> ' + name + '</button>'`
+BUG FOUND: YES
+
+SE: The 'data.name' value obtained from user input is directly used in the HTML content of the div without sanitation.
+BL: `$('.js-admin-tags').append(getTagButtonHtmlInForm(data.id, data.name, data.slug));`
+BUG FOUND: YES
+
+SE: The 'name' value obtained from user input is directly used in the HTML content of the button without sanitation.
+BL: `'<button type=""button"" class=""btn-sm icon-left no-hover btn btn-secondary"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-tag""></i> ' + name + '</button>'`
+BUG FOUND: YES
+
+SE: The 'data.name' value obtained from user input is directly used in the HTML content of the input field without sanitation.
+BL: `$('.js-admin-tag-edit-form-tag-name').val(data.name);`
+BUG FOUND: YES
+
+SE: The 'data.slug' value obtained from user input is directly used in the HTML content of the input field without sanitation.
+BL: `$('.js-admin-tag-edit-form-tag-slug').val(data.slug);`
+BUG FOUND: YES
+
+SE: The 'data.description' value obtained from user input is directly used in the HTML content of the textarea field without sanitation.
+BL: `$('.js-admin-tag-edit-form-tag-description').val(data.description);`
+BUG FOUND: YES",buggy
+17,"SE: The 's' variable is directly concatenated into HTML content using the 'html()' function without proper sanitation.
+BL: `s = $('<span/>').text(s).html();`
+BUG FOUND: YES
+SE: The 's' variable is again directly concatenated into HTML content using the 'parseLinks' function without proper sanitation.
+BL: `s = parseLinks(s, nav);`
+BUG FOUND: YES (This line is dependent on the previous bug. If the previous bug is fixed, this line will not have a Cross-Site Scripting vulnerability.)
+SE: The 's' variable is directly concatenated into HTML content using the 'parseSmileys' function without proper sanitation.
+BL: `s = parseSmileys(s);`
+BUG FOUND: YES (This line is dependent on the previous bug. If the previous bug is fixed, this line will not have a Cross-Site Scripting vulnerability.)
+SE: The 's' variable is directly concatenated into HTML content using the 'parseColors' function without proper sanitation.
+BL: `s = parseColors(s);`
+BUG FOUND: YES (This line is dependent on the previous bug. If the previous bug is fixed, this line will not have a Cross-Site Scripting vulnerability.)",not_buggy
+17,"SE: The 's' variable is directly concatenated into HTML content using the `.html()` function without proper sanitation.
+BL: `s = $('<span/>').text(s).html();`
+BUG FOUND: YES",buggy
+171,"SE: The 'text' variable from the loggingData array is directly concatenated into HTML content without sanitation.
+BL: `$text = str_replace('Loginerror', $PMF_LANG['ad_log_lger'], $text);` (and other similar lines)
+BUG FOUND: YES",buggy
+171,"SE: The 'text' variable, which appears to contain user input, is directly concatenated into HTML content without sanitation.
+BL: `$text = str_replace('Loginerror', $PMF_LANG['ad_log_lger'], $text);` (and several similar lines following)
+BUG FOUND: YES",not_buggy
+16,"SE: The 'user_info->user\_email' is directly used in the 'to' parameter of the wp\_mail() function without sanitation.
+BL: `wp\_new\_user\_notification($user\_id, $password);` (inside resend\_welcome\_email() function)
+BUG FOUND: YES
+SE: The 'user\_info->user\_email' is directly used in the 'to' parameter of the wp\_mail() function without sanitation.
+BL: `wp\_new\_user\_notification($user\_id, $password);` (inside resend\_welcome\_email() function)
+BUG FOUND: YES",not_buggy
+16,"SE: The 'user_info->user_login' is directly output in the email content without sanitation.
+BL: `wp_new_user_notification($user_id, $password);`
+BUG FOUND: YES
+Explanation:
+The 'wp\_new\_user\_notification' function sends a welcome email to a new user. It takes two parameters: the user ID and the user's password. The function then generates and sends an email to the user with the provided password. In this case, the user's username ('user\_info->user\_login') is used in the email content without sanitation, which could potentially lead to a Cross-Site Scripting (XSS) vulnerability if an attacker can control the user's username.",buggy
+8477,"SE: The 'payload' variable is being passed directly into the sanitizer's sanitize method without any sanitation.
+BL: `self::assertSame($expectation, $sanitizer->sanitize($payload));`
+BUG FOUND: YES
+
+Explanation:
+The code seems to be testing a sanitizer's ability to process tags and attributes, but in the process, it is passing unsanitized user input (the 'payload' variable) to the sanitizer. If the sanitizer has a bug or is misconfigured, this could potentially lead to Cross-Site Scripting (XSS) vulnerabilities. It's good that they are testing the sanitizer, but they should use predefined, known-safe input for these tests instead of passing untrusted user input.",buggy
+8477,"SE: The 'payload' variable is directly concatenated into HTML content without sanitation in the test function 'allTagsAreRemovedOnMissingDeclaration'.
+BL: `self::assertSame($expectation, $sanitizer->sanitize($payload));` in `allTagsAreRemovedOnMissingDeclaration` function.
+BUG FOUND: YES.
+
+SE: The 'payload' variable is directly concatenated into HTML content without sanitation in the test function 'tagFlagsAreProcessed'.
+BL: `self::assertSame($expectation, $sanitizer->sanitize($payload));` in `tagFlagsAreProcessed` function.
+BUG FOUND: YES.
+
+SE: The 'payload' variable is directly concatenated into HTML content without sanitation in the test function 'isJsonLdScriptAllowed'.
+BL: `self::assertSame($expectation, $sanitizer->sanitize($payload));` in `isJsonLdScriptAllowed` function.
+BUG FOUND: YES.",not_buggy
+7582,"SE: The 'identifier' variable is directly concatenated into the error message without sanitation.
+BL: `app('session')->flash('error', trans('firefly.account_missing_transaction', ['name' => $account->name, 'id' => $account->id]));`
+BUG FOUND: YES",buggy
+7582,"SE: The 'identifier' variable is directly used as a key in the session array without proper sanitation.
+BL: `session()->put($identifier, $url);`
+BUG FOUND: YES",not_buggy
+3705,"SE: There is no direct concatenation of user input into HTML content in this file, so there is no apparent risk of Cross-Site Scripting (XSS) via CWE-79.
+BL: N/A
+BUG FOUND: NO",buggy
+3705,"SE: There is no direct concatenation of user input into HTML content in this file, so there is no immediate risk of Cross-Site Scripting (XSS) via CWE-79.
+BL: N/A
+BUG FOUND: NO",not_buggy
+7508,"SE: The 'name' variable is directly used in the 'filename' variable which is used in the 'set\_attachment\_header' method, without any sanitation.
+BL: `self.set_attachment_header(filename)`
+BUG FOUND: YES
+SE: The 'name' variable is directly used in the 'zip\_filename' variable which is used in the 'set\_header' method, without any sanitation.
+BL: `zip_filename = os.path.splitext(name)[0] + '.zip'`
+BUG FOUND: YES
+SE: The 'name' variable is directly used in the 'output\_filename' variable which is used in the 'writestr' method, without any sanitation.
+BL: `output_filename = os.path.splitext(name)[0] + resources['output_extension']`
+BUG FOUND: YES",not_buggy
+43,"SE: The 'para' element's 'begin' and 'end' attributes' values are directly output to the browser without proper sanitation, which may lead to Cross-Site Scripting if the 'begin' and 'end' attributes contain malicious user input.
+BL: `echo $para['begin'].' --> '.$para['end'].PHP_EOL`
+BUG FOUND: YES
+
+Explanation:
+The 'begin' and 'end' attributes' values of the 'para' element are directly output to the browser using the echo statement, without proper sanitation. If these attributes contain malicious user input, it may lead to Cross-Site Scripting (XSS) attacks. To prevent XSS attacks, it is recommended to sanitize the output by using a function like htmlspecialchars() provided by PHP.
+
+Solution:
+To fix this issue, sanitize the output of the 'begin' and 'end' attributes' values using the htmlspecialchars() function before outputting it to the browser.
+
+Example:
+`echo htmlspecialchars($para['begin']).' --> '.htmlspecialchars($para['end']).PHP_EOL`",not_buggy
+43,"SE: The 'para' variable, which appears to contain user input, is directly echoed without sanitation.
+BL: `echo $count.PHP_EOL .$para['begin'].' --> '.$para['end'].PHP_EOL .$text .PHP_EOL.PHP_EOL;`
+BUG FOUND: YES",buggy
+27,"SE: The 'title->getPrefixedText()' is directly concatenated into the JavaScript code without sanitation.
+BL: `$wgPiwikPageTitle = $title->getPrefixedText();`
+BUG FOUND: YES
+
+Explanation:
+------------
+
+The method 'getPrefixedText()' returns the text of the title object, which may contain user input if the title is user-editable. This user input is then directly used in the JavaScript code, without any sanitation or encoding, which could potentially allow an attacker to inject malicious JavaScript code and perform a Cross-Site Scripting (XSS) attack.
+
+To fix this issue, the 'getPrefixedText()' method should return a sanitized or encoded value that prevents any potential XSS attack. For example, the 'Xml::encodeJsVar()' function can be used to encode the value before using it in the JavaScript code.",not_buggy
+27,"SE: The 'customJs' variable is directly concatenated into the HTML content without sanitation.
+BL: `$script = <<<PIWIK<br> <!-- Piwik --><br><script type=""text/javascript""><br> ... </script><br><!-- End Piwik Code --><br><br><!-- Piwik Image Tracker --><br><noscript><img src=""$wgPiwikProtocol}://{$wgPiwikURL}/piwik.php?idsite={$wgPiwikIDSite}&amp;rec=1"" style=""border:0"" alt="""" /></noscript><br><!-- End Piwik --><br>PIWIK;`
+BUG FOUND: YES",buggy
+297,"SE: The 'message' value retrieved from the database is directly output as HTML content without sanitation.
+BL: `return (string) Db::getInstance()->getValue(' SELECT message FROM ' . _DB_PREFIX_ . 'customer_message WHERE id_customer_thread = ' . (int) $id_customer_thread . ' ORDER BY date_add DESC');`
+BUG FOUND: YES",buggy
+297,"SE: The 'message' value retrieved from the database is directly output as part of the HTML content without sanitation.
+BL: `return (string) Db::getInstance()->getValue('SELECT message FROM ' . _DB_PREFIX_ . 'customer_message WHERE id_customer_thread = ' . (int) $id_customer_thread . ' ORDER BY date_add DESC');`
+BUG FOUND: YES",not_buggy
+7688,"SE: The 'v\_title' and 'v\_description' variables are directly output to HTML content using echo and print\_file\_icon functions without sanitation.
+BL: `echo $t_href; print_file_icon( $v_filename ); echo '</a>&#160;' . $t_href . string_html_specialchars( file_get_display_name( $v_filename ) ) . '</a>';`
+BL: `echo $v_title;`
+BL: `echo $v_description;`
+BUG FOUND: YES
+Explanation:
+The 'v\_title' and 'v\_description' variables are directly output to HTML content using echo and print\_file\_icon functions without sanitation. If these variables contain user input, it may lead to Cross-Site Scripting (XSS) vulnerabilities. To prevent XSS attacks, it is recommended to sanitize user inputs and use proper encoding functions while outputting user input to HTML.",not_buggy
+7688,"SE: The 'v_title' is directly concatenated into HTML content without sanitation.
+BL: `echo '<input type=""text"" name=""title"" class=""input-sm"" size=""70"" maxlength=""250"" value=""' . $v_title . '"" required />'`
+BUG FOUND: YES
+
+SE: The 'v_description' is directly concatenated into HTML content without sanitation.
+BL: `echo '<textarea class=""form-control"" name=""description"" cols=""60"" rows=""7"">' . $v_description . '</textarea>'`
+BUG FOUND: YES
+
+SE: The 'file_get_display_name( $v_filename )' is directly concatenated into HTML content without sanitation.
+BL: `echo '</a>&#160;' . $t_href . file_get_display_name( $v_filename ) . '</a>'`
+BUG FOUND: YES",buggy
+7629,"SE: The 'escape' function is used in some places where user input is concatenated into HTML content, but it's not clear if this function properly handles XSS vectors.
+BL: `echo ""<td valign='top' class='"".$row_style[$c].""' style='width: 25%; max-width: 50px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>"".escape($row['address_street']).""&nbsp;</td>\n"";`
+BUG FOUND: MAYBE",buggy
+7629,"SE: The 'text' variable is directly concatenated into HTML content without proper sanitation, which may contain user input.
+BL: `echo ""<th>"".$text['label-address_label'].""</th>\n"";`
+BUG FOUND: YES",not_buggy
+120,"SE: The 'speedtest' array contains user input from the database and is directly concatenated into HTML content without sanitation in several places.
+BL: 
+<?php
+foreach ($speedtests as $speedtest) {
+?>
+<table>
+<tr>
+<th>Test ID</th>
+<td><?= htmlspecialchars($speedtest['id\_formatted'], ENT\_HTML5, 'UTF-8') ?></td>
+</tr>
+...
+<tr>
+<th>Extra info</th>
+<td><?= htmlspecialchars($speedtest['extra'], ENT\_HTML5, 'UTF-8') ?></td>
+</tr>
+</table>
+<?php
+}
+?>
+BUG FOUND: YES.",not_buggy
+120,"SE: The 'speedtest' variable, which appears to contain user input, is being directly output within a table cell without any sanitation using htmlspecialchars().
+BL: `<td><?= htmlspecialchars($speedtest['id_formatted'], ENT_HTML5, 'UTF-8') ?></td>`
+BUG FOUND: YES
+
+SE: The 'speedtest' variable, which appears to contain user input, is being directly output within a table cell without any sanitation using htmlspecialchars().
+BL: `<td><?= htmlspecialchars($speedtest['timestamp'], ENT_HTML5, 'UTF-8') ?></td>`
+BUG FOUND: YES
+
+SE: The 'speedtest' variable, which appears to contain user input, is being directly output within a table cell without any sanitation using htmlspecialchars().
+BL: `<td><?= htmlspecialchars($speedtest['ip'], ENT_HTML5, 'UTF-8') ?><br/><?= htmlspecialchars($speedtest['ispinfo'], ENT_HTML5, 'UTF-8') ?></td>`
+BUG FOUND: YES
+
+SE: The 'speedtest' variable, which appears to contain user input, is being directly output within a table cell without any sanitation using htmlspecialchars().
+BL: `<td><?= htmlspecialchars($speedtest['ua'], ENT_HTML5, 'UTF-8') ?><br/><?= htmlspecialchars($speedtest['lang'], ENT_HTML5, 'UTF-8') ?></td>`
+BUG FOUND: YES
+
+SE: The 'speedtest' variable, which appears to contain user input, is being directly output within a table cell without any sanitation using htmlspecialchars().
+BL: `<td><?= htmlspecialchars($speedtest['log'], ENT_HTML5, 'UTF-8') ?></td>`
+BUG FOUND: YES
+
+SE: The 'speedtest' variable, which appears to contain user input, is being directly output within a table cell without any sanitation using htmlspecialchars().
+BL: `<td><?= htmlspecialchars($speedtest['extra'], ENT_HTML5, 'UTF-8') ?></td>`
+BUG FOUND: YES",buggy
+7611,"SE: The 'profile\_param\_value' is directly concatenated into HTML content without sanitation.
+BL: `echo ""	<td valign='top' class='"".$row\_style[$c].""'>"".escape($row['profile\_param\_value']).""&nbsp;</td>\n"";`
+BUG FOUND: YES",buggy
+7611,"SE: The 'escape' function is used to sanitize the variables before they are concatenated into HTML content, which seems to be a good practice. However, if the 'escape' function does not properly neutralize all possible malicious inputs, it may still be vulnerable to Cross-Site Scripting.
+BL: `echo ""<tr "".$tr_link."">\n"";`
+`echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['profile_param_name']).""&nbsp;</td>\n"";`
+`echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['profile_param_value']).""&nbsp;</td>\n"";`
+`echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['profile_param_enabled']).""&nbsp;</td>\n"";`
+`echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['profile_param_description']).""&nbsp;</td>\n"";`
+BUG FOUND: NO.
+
+Note: It's difficult to determine if the 'escape' function used in this code snippet properly neutralizes all possible malicious inputs without knowing its implementation. However, since the code is using a custom escape function, it's crucial to review its implementation and ensure it properly handles all possible cases to prevent Cross-Site Scripting.",not_buggy
+1014,"SE: The 'r.url' is directly concatenated into the HTML content without sanitation.
+BL: `create_error(""No URL for result: #{r.id.to_s}"")`
+BUG FOUND: YES
+
+SE: The 'git_url' is directly concatenated into the file path without sanitation.
+BL: `repo_local_path = ""#{@temp_path}#{git_url.split('/').last.gsub(/\.git$/,"""")}""`
+BUG FOUND: YES
+
+SE: The 'vuln.type' is directly set from 'issue[""issue_text""]' without sanitation.
+BL: `vuln.type = issue[""issue_text""].to_s`
+BUG FOUND: YES
+
+SE: The 'vuln.source_code_file' is directly set from 'issue[""filename""]' without sanitation.
+BL: `vuln.source_code_file = issue[""filename""].to_s.gsub(@temp_path, """")`
+BUG FOUND: YES
+
+SE: The 'r.url' is directly concatenated into the metadata without sanitation.
+BL: `r.metadata[""python_results""][""git_repo""] = git_url`
+BUG FOUND: YES",buggy
+140,"SE: The code appears to be a XSS cleaning function that uses the voku/helper AntiXSS library to sanitize the input. However, if the AntiXSS library is not used correctly, it may still be vulnerable to XSS attacks.
+BL: The line where the AntiXSS library is used to sanitize the input is: `$html = $antiXss->xss_clean($html);`
+BUG FOUND: NO, as long as the AntiXSS library is used correctly.",buggy
+140,"SE: The 'html' variable is being passed through the 'xss\_clean' method of the AntiXSS class, but it's not clear if the 'addEvilHtmlTags', 'addEvilAttributes', 'addNeverAllowedOnEventsAfterwards' methods are being used with appropriate values to protect against Cross-Site Scripting.
+BL: `$antiXss->xss_clean($html);`
+BUG FOUND: MAYBE",not_buggy
+1014,"SE: The 'r.url' is directly concatenated into the HTML content without sanitation.
+BL: `create_error(""No URL for result: #{r.id.to_s}"")`
+BUG FOUND: YES
+
+SE: The 'r.url' is directly concatenated into the HTML content without sanitation.
+BL: `git_url = r.url + "".git""`
+BUG FOUND: YES
+
+SE: The 'r.url' is directly concatenated into the HTML content without sanitation.
+BL: `repo_local_path = ""#{@temp_path}#{git_url.split('/').last.gsub(/\.git$/,"""")}""`
+BUG FOUND: YES
+
+SE: The 'r.url' is directly concatenated into the HTML content without sanitation.
+BL: `r.metadata[""python_results""][""git_repo""] = git_url`
+BUG FOUND: YES",not_buggy
+3732,"SE: The 'identity.email' is directly concatenated into HTML content without sanitation.
+BL: `request_data[""email""] = identity.email`
+BUG FOUND: YES
+
+Explanation:
+The code constructs an HTML template using user-provided data (identity.email) without proper sanitization, which is a potential security risk. An attacker can exploit this by injecting malicious scripts, leading to Cross-Site Scripting (XSS) attacks. To mitigate this, consider using a secure method to sanitize the user input, such as using the jinja2 template engine's built-in escaping or a library specifically designed for sanitizing user inputs.",not_buggy
+3732,"SE: The 'requested_at' value is directly concatenated into HTML content without sanitation.
+BL: `request_data[""requested_at""] = privacy_request.requested_at.strftime('%%m/%%d/%%Y %%H:%%M %%Z')`
+BUG FOUND: YES
+
+Explanation:
+The 'strftime' function returns a string, which is then assigned to 'requested_at' without any sanitation. If the 'privacy\_request.requested\_at' object contains user input, it could lead to Cross-Site Scripting (XSS) vulnerabilities. To mitigate this, it is recommended to sanitize the output by using a secure method such as 'jsonify' or 'escape' before concatenating it into the HTML content.",buggy
+236,"SE: The 'name' variable is directly used in the 'Content-Disposition' header value without proper sanitation, which might lead to Cross-Site Scripting if an attacker can control the 'name' value.
+BL: `w.Header().Set(""Content-Disposition"", ""attachment; filename*=utf-8''""+url.PathEscape(name))`
+BUG FOUND: YES",buggy
+7594,"SE: The 'sGroupTitle' is directly output in HTML content without sanitation.
+BL: `Yii::app()->setFlashMessage(sprintf(gT(""The survey group '%s' was deleted.""), CHtml::encode($sGroupTitle)), 'success');`
+BUG FOUND: YES
+
+SE: The 'model->title' is directly output in HTML content without sanitation.
+BL: `$this->_renderWrappedTemplate('surveysgroups', 'update', $aData);` (and similar lines in other methods)
+BUG FOUND: YES
+
+SE: The 'oSurveySearch->name' is directly output in HTML content without sanitation.
+BL: `$this->_renderWrappedTemplate('surveysgroups', 'update', $aData);` (and similar lines in other methods)
+BUG FOUND: YES
+
+Note: The 'gT()' function might be performing some sanitation, but based on the provided code, it's not clear if it's sufficient to prevent XSS attacks. It's recommended to use a proven method for output escaping, like CHtml::encode().",not_buggy
+7612,"SE: The 'text' array, which may contain user-provided data, is directly concatenated into HTML content without proper sanitation.
+BL: `echo ""<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_type']).""&nbsp;</td>\n"";`
+BUG FOUND: YES
+
+Explanation:
+The 'text' array, which may contain user-provided data, is directly used in the HTML content using echo statement. If the 'text' array contains any user-provided data that is not properly sanitized, it may lead to Cross-Site Scripting (XSS) vulnerability. In the provided line, the 'escape' function is used, but it's not clear if it sanitizes the input for XSS attacks. It's recommended to use a well-tested and secure function to sanitize the user input before using it in the HTML content.",not_buggy
+7612,"SE: The 'escape' function is used to sanitize some of the inputs, but it's not clear if it provides sufficient protection against cross-site scripting (XSS) attacks. The 'text' array, which may contain user input, is used to generate HTML content without any further sanitation.
+BL: `echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_type']).""&nbsp;</td>\n"";`
+BL: `echo ""	<td valign='top' class='"".$row_style[$c].""'><a "".$tr_link."">"".escape($row['node_cidr']).""</a></td>\n"";`
+BL: `echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_domain']).""&nbsp;</td>\n"";`
+BL: `echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_description']).""&nbsp;</td>\n"";`
+BUG FOUND: YES
+
+Note: The 'escape' function might be providing sufficient protection against XSS attacks, but without knowing the exact implementation of this function, it's hard to say for sure. It's recommended to use a well-known and tested function for sanitizing output, such as htmlspecialchars() in PHP.",buggy
+102,"SE: The 'trow->text' is directly concatenated into HTML content without sanitation in the 'nl2br($trow->text)' function.
+BL: `<td><?php echo nl2br($trow->text) ?></td>`
+BUG FOUND: YES
+SE: The 'rrow->text' is directly concatenated into HTML content without sanitation in the 'nl2br(stripslashes($rrow->text))' function.
+BL: `<td><?php echo nl2br(stripslashes($rrow->text)) ?></td>`
+BUG FOUND: YES",not_buggy
+102,"SE: The 'author' variable is directly concatenated into HTML content without sanitation in the line <td><font color=""<?php echo Flux::config('StaffReplyColour') ?>""><?php echo $rrow->author ?></font></td>.
+BL: <td><font color=""<?php echo Flux::config('StaffReplyColour') ?>""><?php echo $rrow->author ?></font></td>
+BUG FOUND: YES
+
+SE: The 'action' variable is directly concatenated into HTML content without sanitation in the line <td><?php echo $rrow->action ?></td>.
+BL: <td><?php echo $rrow->action ?></td>
+BUG FOUND: YES
+
+SE: The 'timestamp' variable is directly concatenated into HTML content without sanitation in the line <td><?php echo $rrow->timestamp ?></td>.
+BL: <td><?php echo $rrow->timestamp ?></td>
+BUG FOUND: YES
+
+SE: The 'response' variable is directly concatenated into HTML content without sanitation in the line <textarea cols=""30"" rows=""10"" name=""response"" placeholder=""Click here to enter a response.""><?php echo $response ?></textarea>.
+BL: <textarea cols=""30"" rows=""10"" name=""response"" placeholder=""Click here to enter a response.""><?php echo $response ?></textarea>
+BUG FOUND: YES
+
+SE: The 'Flux::message()' function may contain user input that is directly concatenated into HTML content without sanitation.
+BL: <?php echo Flux::message('SDHuh') ?>
+BUG FOUND: YES
+
+Please note that the actual impact of these issues depends on the context and the source of the input. It is recommended to sanitize or contextually escape all user-supplied data before using it in an HTML context.",buggy
+8059,"SE: The 'originalname' from the 'opts' object is directly used in the 'filename' property of 'assetRow' object without sanitation.
+BL: `assetRow.filename = opts.originalname,`
+BUG FOUND: YES
+
+Explanation:
+The 'originalname' variable from the 'opts' object is directly used to set the 'filename' property of the 'assetRow' object without any sanitation. If the 'originalname' variable contains user input, it could lead to Cross-Site Scripting (XSS) vulnerability if the input is not properly sanitized. To fix this issue, sanitize the 'originalname' variable before using it in the 'filename' property.",buggy
+8059,"SE: The 'originalname' from 'opts' is directly used in the 'filename' property of 'assetRow' without sanitation.
+BL: `assetRow.filename = opts.originalname,`
+BUG FOUND: YES
+
+SE: The 'opts.path' is directly used in the 'fs.move' and 'fs.copy' functions without sanitation.
+BL: `await fs.move(opts.path, path.resolve(WIKI.ROOTPATH, WIKI.config.dataPath, `cache/${fileHash}.dat`), { overwrite: true })`,
+`await fs.copy(opts.path, path.resolve(WIKI.ROOTPATH, WIKI.config.dataPath, `cache/${fileHash}.dat`), { overwrite: true })`
+BUG FOUND: YES
+
+SE: The 'opts.path' is directly used in the 'svgSanitizeJob' without sanitation.
+BL: `const svgSanitizeJob = await WIKI.scheduler.registerJob({ name: 'sanitize-svg', immediate: true, worker: true }, opts.path)`
+BUG FOUND: YES
+
+Please note that the given code contains multiple instances where user-provided input (from 'opts') is used directly in file operations without proper sanitation. This could potentially lead to Cross-Site Scripting (XSS) vulnerabilities. It is recommended to sanitize or validate the user inputs before using them in such operations.",not_buggy
+7581,"SE: The 'title' and 'description' variables are directly concatenated into the blade view without sanitation.
+BL: `'title' => (string)trans('firefly.new_rule_for_bill_title', ['name' => $bill->name]), 'description' => (string)trans('firefly.new_rule_for_bill_description', ['name' => $bill->name]),`
+BUG FOUND: YES",buggy
+7581,"SE: The 'title' and 'description' variables are directly output in the view using the e() function, which only performs HTML entities encoding but does not protect against Cross-Site Scripting (XSS) attacks if the input contains malicious JavaScript code.
+BL: `$preFilled = [ 'strict' => true, 'title' => (string)trans('firefly.new_rule_for_bill_title', ['name' => $bill->name]), 'description' => (string)trans('firefly.new_rule_for_bill_description', ['name' => $bill->name]), ];`
+BUG FOUND: YES",not_buggy
+7461,"SE: The 'a_text' variable is directly concatenated into HTML content using the 'echo' statement without sanitation.
+BL: `echo htmlentities($newcontent);`
+BUG FOUND: YES
+
+Explanation:
+The 'a\_text' variable, which may contain user input, is passed to the 'highlightText' function and then concatenated into the 'newcontent' variable without proper sanitation. Later, the 'newcontent' variable is printed using the 'echo' statement without sanitizing the 'htmlentities'. This could potentially lead to Cross-Site Scripting (XSS) vulnerabilities if the 'a\_text' variable contains malicious scripts.",buggy
+8110,"SE: The 'created\_by' user's username is directly concatenated into HTML content without proper sanitation. If the 'created\_by' user's username contains user-supplied data, this may result in Cross-Site Scripting (XSS) vulnerability.
+BL: `<span class=""text-primary"">#<?php echo $entry_params['id']; ?></span></span></div> <div class=""col-6 col-sm""> <?php print date('M d, Y', strtotime($item['created_at'])); ?> <small class=""text-muted""><?php print date('h:s', strtotime($item['created_at'])); ?>h</small> </div> <div class=""col-6 col-sm""><?php print mw('format')->ago($item['created_at']); ?></div> </div> <div class=""collapse"" id=""notif-entry-item-<?php print $item_id ?>""> <hr class=""thin"" /> <div class=""row""> <?php`
+BUG FOUND: YES
+
+(Note: The buggy line is not provided as it's a larger block of code. However, the vulnerability is in the line where 'created\_by\_username' is used.)",not_buggy
+8110,"SE: The 'item_id' is directly concatenated into the HTML data-target attribute without sanitation.
+BL: `data-target=""#notif-entry-item-<?php print $item_id ?>""`
+BUG FOUND: YES",buggy
+7726,"SE: The 'name' variable from the 'vars' array is directly used in the SQL query without any sanitation.
+BL: `$row = static::objects()->filter(array('name'=>$name))->values_flat('id')->first();`
+BUG FOUND: YES",buggy
+7726,"SE: The 'name' variable is directly concatenated into the HTML content without sanitation.
+BL: `$entries[$row[0]] = sprintf(__('%s (%d hours - %s)' /* Tokens are <name> (<#> hours - <Active|Disabled>) */), self::getLocalById($row[0], 'name', $row[1]), $row[3], $row[2] ? __('Active') : __('Disabled'));`
+BUG FOUND: YES",not_buggy
+215,"SE: There is no direct concatenation of user input into HTML content in this file, so there is no immediate indication of a Cross-Site Scripting (XSS) vulnerability. However, it is important to note that the absence of user input in this particular file does not guarantee the absence of XSS vulnerabilities in the entire application. Other parts of the application might still be vulnerable if they concatenate user input into HTML without proper sanitation.
+
+BL: not applicable in this case.
+
+BUG FOUND: NO.",buggy
+215,"SE: There is no direct concatenation of user input into HTML content in this file, so there is no immediate indication of a Cross-Site Scripting (XSS) vulnerability. However, it is important to note that this file contains functions and class definitions, and it is not clear how user input is handled in other parts of the application.
+
+BL: N/A
+
+BUG FOUND: NO",not_buggy
+56,"SE: There is no line that directly concatenates user input into HTML content without sanitation in this file.
+BL: none
+BUG FOUND: NO",not_buggy
