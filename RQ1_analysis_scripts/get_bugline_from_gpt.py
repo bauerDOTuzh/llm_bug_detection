@@ -258,20 +258,24 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 		continue
 
 	datapoint_dict = datapoint_dict_list[i]
-	input_len = len(datapoint_dict['file_content'].split(' '))
 
 	code = extract_code_or_return_original(model_output)
 	has_bug_line = (bool(bug_line_pattern.search(model_output)) and 'BL: None'.lower() not in model_output.lower()) or (code and code != model_output)
+	input_len = len(datapoint_dict['file_content'].split(' '))
+	max_line = datapoint_dict['file_content'].count('\n')
 	if datapoint_dict['type'] == 'not_buggy':
 		if has_bug_line:
 			fp+=1
-			# length_outcomes.append({'input_len':input_len, 'tp': 0, 'tn': 0, 'fp': 1, 'fn': 0})
+			# length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'tp': 0, 'tn': 0, 'fp': 1, 'fn': 0, 'f': 1, 't': 0})
 		else:
 			tn+=1
-			# length_outcomes.append({'input_len':input_len, 'tp': 0, 'tn': 1, 'fp': 0, 'fn': 0})
+			# length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'tp': 0, 'tn': 1, 'fp': 0, 'fn': 0, 'f': 0, 't': 1})
 	else:
 		if not datapoint_dict['patch_line']:
 			continue
+		min_bug_line_pos = datapoint_dict['patch_line'][0]
+		max_bug_line_pos = datapoint_dict['patch_line'][-1]
+		avg_bug_line_pos = (min_bug_line_pos+max_bug_line_pos)//2
 		if has_bug_line:
 			bug_line = re.split(bug_line_pattern, model_output, 1)[-1]
 			bug_line = extract_code_or_return_original(bug_line).strip()
@@ -282,17 +286,17 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 			# length_outcomes.append({'input_len':input_len, 'tp': 1, 'tn': 0, 'fp': 0, 'fn': 0})
 			if bug_line in patch:
 				tp+=1
-				length_outcomes.append({'input_len':input_len, 'bug_line': datapoint_dict['patch_line'][0], 'max_line': datapoint_dict['file_content'].count('\n'), 'tp': 1, 'tn': 0, 'fp': 0, 'fn': 0})
+				length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_line_pos': min_bug_line_pos, 'max_bug_line_pos': max_bug_line_pos, 'avg_bug_line_pos': avg_bug_line_pos, 'tp': 1, 'tn': 0, 'fp': 0, 'fn': 0, 'f': 0, 't': 1})
 			else:
 				# print('#'*10)
 				# print(bug_line)
 				fn+=1
-				length_outcomes.append({'input_len':input_len, 'bug_line': datapoint_dict['patch_line'][0], 'max_line': datapoint_dict['file_content'].count('\n'), 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1})
+				length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_line_pos': min_bug_line_pos, 'max_bug_line_pos': max_bug_line_pos, 'avg_bug_line_pos': avg_bug_line_pos, 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1, 'f': 1, 't': 0})
 		else:
 			# print('-'*10)
 			# print(model_output)
 			fn+=1
-			length_outcomes.append({'input_len':input_len, 'bug_line': datapoint_dict['patch_line'][0], 'max_line': datapoint_dict['file_content'].count('\n'), 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1})
+			length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_line_pos': min_bug_line_pos, 'max_bug_line_pos': max_bug_line_pos, 'avg_bug_line_pos': avg_bug_line_pos, 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1, 'f': 1, 't': 0})
 
 # Create a DataFrame from the list length_outcomes
 df = pd.DataFrame(length_outcomes)
@@ -328,9 +332,9 @@ print("F1-Score:", f1_score)
 # Create a DataFrame from the length-outcome counts
 data = []
 for counts in length_outcomes:
-    data.append([counts['input_len'], counts['bug_line'], counts['tp'], counts['tn'], counts['fp'], counts['fn'], counts['fp']+counts['fn']])
+    data.append([counts['input_len'], counts['min_bug_line_pos'], counts['max_bug_line_pos'], counts['avg_bug_line_pos'], counts['tp'], counts['tn'], counts['fp'], counts['fn'], counts['fp']+counts['fn']])
 
-df = pd.DataFrame(data, columns=['Input Length', 'Bug Line', 'TP', 'TN', 'FP', 'FN', 'F'])
+df = pd.DataFrame(data, columns=['Input Length', 'Min Bug Line Position', 'Max Bug Line Position', 'Average Bug Line Position', 'TP', 'TN', 'FP', 'FN', 'F'])
 # print(df.head())
 
 # You can use statistical methods to analyze the correlation

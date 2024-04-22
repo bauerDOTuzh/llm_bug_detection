@@ -9,6 +9,7 @@ gpt_id = sys.argv[1]
 model = f'gpt-{gpt_id}-turbo'
 
 target_variable = 'tp'
+bug_line_type = 'min_bug_line_pos'
 
 # Load the data from the uploaded CSV files
 data_cwe_22 = pd.read_csv(f'../data/data_CWE-22_model-{model}.csv')
@@ -50,9 +51,9 @@ axes[0].set_title('File Size vs Probability of Finding the Bug')
 axes[0].legend()
 
 # Plot logistic regressions for bug line vs TP
-plot_logistic_regression(data_cwe_22, 'bug_line', target_variable, 'CWE-22: Path Traversal', axes[1], colors[0])
-plot_logistic_regression(data_cwe_89, 'bug_line', target_variable, 'CWE-89: SQL Injection', axes[1], colors[1])
-plot_logistic_regression(data_cwe_79, 'bug_line', target_variable, 'CWE-79: XSS', axes[1], colors[2])
+plot_logistic_regression(data_cwe_22, bug_line_type, target_variable, 'CWE-22: Path Traversal', axes[1], colors[0])
+plot_logistic_regression(data_cwe_89, bug_line_type, target_variable, 'CWE-89: SQL Injection', axes[1], colors[1])
+plot_logistic_regression(data_cwe_79, bug_line_type, target_variable, 'CWE-79: XSS', axes[1], colors[2])
 axes[1].set_xlabel('Bug-Line Position')
 axes[1].set_ylabel('Probability of Finding the Bug')
 axes[1].set_title('Bug-Line Position vs Probability of Finding the Bug')
