@@ -22,6 +22,10 @@ import ast
 cwe_id = sys.argv[2]
 gpt_model = sys.argv[1]
 
+only_check_removed_lines_in_patch = False
+only_provide_bug_window = False
+bug_window_size = 10
+
 n_processes = multiprocessing.cpu_count()*20
 openai_api_key = "..."
 temperature = 0
@@ -88,6 +92,13 @@ File Content:
 # {file_content}
 # """
 ########################################################
+
+def get_removed_lines(patch):
+	# Extract lines starting with -
+	removed_lines = re.findall(r'^-.*$', patch, re.MULTILINE)
+	# Remove the leading - character from each line
+	return [line[1:] for line in removed_lines]
+
 chatgpt_client = openai.OpenAI(api_key=openai_api_key)
 
 bug_line_pattern = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]\s*(.*?)(?=BUG FOUND:)', re.IGNORECASE | re.DOTALL)
@@ -100,10 +111,11 @@ buggy_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_before
 correct_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_after'].tolist())))
 patch_line_regexp = r'@@ -(\d+,\d+) \+(\d+,\d+) @@' # Regular expression pattern to match line numbers in the diff
 patch_line_list = list(map(lambda x: list(map(int,map(lambda y: y[0].split(',')[0], re.findall(patch_line_regexp, x)))), patch_list))
+buggy_lines_list = list(map('\n'.join, map(get_removed_lines, patch_list)))
 
 buggy_window_list = [
 	'\n\n'.join([
-		'\n'.join(b.split('\n')[p-10:p+10])
+		'\n'.join(b.split('\n')[p-bug_window_size:p+bug_window_size])
 		for p in p_list
 	])
 	for p_list,b in zip(patch_line_list,buggy_content_list)
@@ -111,12 +123,11 @@ buggy_window_list = [
 
 correct_window_list = [
 	'\n\n'.join([
-		'\n'.join(b.split('\n')[p-10:p+10])
+		'\n'.join(b.split('\n')[p-bug_window_size:p+bug_window_size])
 		for p in p_list
 	])
 	for p_list,b in zip(patch_line_list,correct_content_list)
 ]
-	
 
 
 datapoint_dict_list = [
@@ -124,16 +135,17 @@ datapoint_dict_list = [
 		'file_id': _id,
 		'file_content': _content,
 		'patch': _patch,
+		'buggy_lines': _buggy_lines,
 		'patch_line': _patch_line,
-		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_content),
+		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_window if only_provide_bug_window else _content),
 		'type': 'buggy',
 	}
-	for _id, _patch, _patch_line, _content, _window in zip(id_list,patch_list,patch_line_list,buggy_content_list,buggy_window_list)
+	for _id, _patch, _buggy_lines, _patch_line, _content, _window in zip(id_list,patch_list,buggy_lines_list,patch_line_list,buggy_content_list,buggy_window_list)
 ] + [
 	{
 		'file_id': _id,
 		'file_content': _content,
-		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_content),
+		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_window if only_provide_bug_window else _content),
 		'type': 'not_buggy',
 	}
 	for _id, _content, _window in zip(id_list,correct_content_list,correct_window_list)	
@@ -161,11 +173,11 @@ def load_or_create_cache(file_name, create_fn):
 		result = create_cache(file_name, create_fn)
 	return result
 
-def get_cached_values(value_list, cache, fetch_fn, cache_name=None, key_fn=lambda x:x, **args):
+def get_cached_values(value_list, cache, fetch_fn, cache_name=None, key_fn=lambda x:x, empty_is_missing=True, **args):
 	missing_values = tuple(
 		q 
 		for q in unique_everseen(filter(lambda x:x, value_list), key=key_fn) 
-		if key_fn(q) not in cache
+		if key_fn(q) not in cache or (empty_is_missing and not cache[key_fn(q)])
 	)
 	if len(missing_values) > 0:
 		cache.update({
@@ -248,31 +260,31 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 	)
 
 def extract_code_or_return_original(text):
-    # This regex matches text enclosed in triple backticks, capturing the content after the initial language specifier.
-    pattern = r"```([a-zA-Z]+)\n(.*?)```"
-    matches = list(re.finditer(pattern, text, re.DOTALL))
+	# This regex matches text enclosed in triple backticks, capturing the content after the initial language specifier.
+	pattern = r"```([a-zA-Z]+)\n(.*?)```"
+	matches = list(re.finditer(pattern, text, re.DOTALL))
 
-    if not matches:
-        # No code block found, return the original text
-        return text
+	if not matches:
+		# No code block found, return the original text
+		return text
 
-    # If matches are found, extract and return them
-    results = []
-    for match in matches:
-        # Extract the code content, excluding the language name
-        results.append(match.group(2).strip())
+	# If matches are found, extract and return them
+	results = []
+	for match in matches:
+		# Extract the code content, excluding the language name
+		results.append(match.group(2).strip())
 
-    # Join extracted code blocks with newlines, if there are multiple blocks
-    return "\n".join(results)
+	# Join extracted code blocks with newlines, if there are multiple blocks
+	return "\n".join(results)
 
 def clean_whitespace(text):
-    # Replace all newlines with a single space
-    text = text.replace('\n', ' ')
-    # Replace all sequences of whitespace with a single space
-    text = re.sub(r'\s+', ' ', text)
-    text = text.replace(' ', '')
-    text = text.replace('\\', '')
-    return text.strip().strip('`.')
+	# Replace all newlines with a single space
+	text = text.replace('\n', ' ')
+	# Replace all sequences of whitespace with a single space
+	text = re.sub(r'\s+', ' ', text)
+	# text = text.replace(' ', '')
+	text = text.replace('\\', '')
+	return text.strip().strip('`.')
 
 tp=0
 tn=0
@@ -280,23 +292,15 @@ fp=0
 fn=0
 # Dictionary to hold input length and outcome counts
 length_outcomes = []
-results = []
 for i,model_output in enumerate(instruct_model(prompt_list, model=model, temperature=temperature)):
 	if not model_output:
 		continue
 
 	datapoint_dict = datapoint_dict_list[i]
-	result_type = datapoint_dict['type']
-	results.append({
-        'file_id': datapoint_dict['file_id'],
-        'model_output': model_output,
-        'type': result_type
-    })
 
 	code = extract_code_or_return_original(model_output)
 	has_bug_line = (bool(bug_line_pattern.search(model_output)) and 'BL: None'.lower() not in model_output.lower()) or (code and code != model_output) and 'BUG FOUND: YES'.lower() in model_output
-	split_file_content = datapoint_dict['file_content'].split(' ')
-	input_len = len(split_file_content)
+	input_len = len(clean_whitespace(datapoint_dict['file_content']).split(' '))
 	max_line = datapoint_dict['file_content'].count('\n')
 	if datapoint_dict['type'] == 'not_buggy':
 		if has_bug_line:
@@ -308,74 +312,84 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 	else:
 		if not datapoint_dict['patch_line']:
 			continue
-		print(model_output)
-		print('#'*10)
-		min_bug_line_pos = len(' '.join(split_file_content[:datapoint_dict['patch_line'][0]]).split(' '))
-		max_bug_line_pos = len(' '.join(split_file_content[:datapoint_dict['patch_line'][-1]]).split(' '))
-		avg_bug_line_pos = (min_bug_line_pos+max_bug_line_pos)//2
+		# print(model_output)
+		# print('#'*10)
+		file_content_lines = datapoint_dict['file_content'].split('\n')
+		min_bug_pos = len(clean_whitespace('\n'.join(file_content_lines[:datapoint_dict['patch_line'][0]])).split(' '))
+		max_bug_pos = len(clean_whitespace('\n'.join(file_content_lines[:datapoint_dict['patch_line'][-1]])).split(' '))
+		avg_bug_pos = (min_bug_pos+max_bug_pos)//2
 		if has_bug_line:
 			bug_line = re.split(bug_line_pattern, model_output, 1)[-2]
 			bug_line = extract_code_or_return_original(bug_line).strip()
+
+			# if clean_whitespace(bug_line).replace(' ', '') in clean_whitespace(datapoint_dict['patch']).replace(' ', '') and not (clean_whitespace(bug_line).replace(' ', '') in clean_whitespace(datapoint_dict['buggy_lines']).replace(' ', '')):
+			# 	print(bug_line)
+			# 	print('$'*10)
+			# 	print(datapoint_dict['patch'])
+			# 	print('*'*10)
+			# 	print(datapoint_dict['buggy_lines'])
+			# 	print('#'*10)
+
 			bug_line = clean_whitespace(bug_line)
-			patch = clean_whitespace(datapoint_dict['patch'])
+			if only_check_removed_lines_in_patch:
+				patch = clean_whitespace(datapoint_dict['buggy_lines']) # giving many false negatives
+			else:
+				patch = clean_whitespace(datapoint_dict['patch'])
+
 			# print(bug_line in patch, json.dumps({'prompt': prompt_list[i], 'prediction': bug_line, 'ground_truth': patch}, indent=4))
 			# tp+=1
 			# length_outcomes.append({'input_len':input_len, 'tp': 1, 'tn': 0, 'fp': 0, 'fn': 0})
-			if bug_line in patch:
+			if bug_line.replace(' ', '') in patch.replace(' ', ''):
 				tp+=1
-				length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_line_pos': min_bug_line_pos, 'max_bug_line_pos': max_bug_line_pos, 'avg_bug_line_pos': avg_bug_line_pos, 'tp': 1, 'tn': 0, 'fp': 0, 'fn': 0, 'f': 0, 't': 1})
+				length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_pos': min_bug_pos, 'max_bug_pos': max_bug_pos, 'avg_bug_pos': avg_bug_pos, 'tp': 1, 'tn': 0, 'fp': 0, 'fn': 0, 'f': 0, 't': 1})
 			else:
 				# print('#'*10)
 				# print(bug_line)
 				fn+=1
-				length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_line_pos': min_bug_line_pos, 'max_bug_line_pos': max_bug_line_pos, 'avg_bug_line_pos': avg_bug_line_pos, 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1, 'f': 1, 't': 0})
+				length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_pos': min_bug_pos, 'max_bug_pos': max_bug_pos, 'avg_bug_pos': avg_bug_pos, 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1, 'f': 1, 't': 0})
 		else:
 			# print('-'*10)
 			# print(model_output)
 			fn+=1
-			length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_line_pos': min_bug_line_pos, 'max_bug_line_pos': max_bug_line_pos, 'avg_bug_line_pos': avg_bug_line_pos, 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1, 'f': 1, 't': 0})
+			length_outcomes.append({'input_len':input_len, 'max_line': max_line, 'min_bug_pos': min_bug_pos, 'max_bug_pos': max_bug_pos, 'avg_bug_pos': avg_bug_pos, 'tp': 0, 'tn': 0, 'fp': 0, 'fn': 1, 'f': 1, 't': 0})
 
 # Create a DataFrame from the list length_outcomes
 df = pd.DataFrame(length_outcomes)
 # Define the filename for the CSV file
-csv_filename = f'../data/lr_data_CWE-{cwe_id}_model-{model}.csv'
+csv_filename = f'../data/data_CWE-{cwe_id}_model-{model}.csv'
 # Save the DataFrame to a CSV file
 df.to_csv(csv_filename, index=False)
 
-df_results = pd.DataFrame(results)
-csv_filename = f'../data/data_CWE-{cwe_id}_{model}.csv'
-df_results.to_csv(csv_filename, index=False)
-
 try:
-    accuracy = (tp + tn) / (tp + tn + fp + fn)
+	accuracy = (tp + tn) / (tp + tn + fp + fn)
 except ZeroDivisionError:
-    accuracy = float('nan')  # Not a Number, used for undefined values
+	accuracy = float('nan')  # Not a Number, used for undefined values
 print("Accuracy:", accuracy)
 try:
-    precision = tp / (tp + fp)
+	precision = tp / (tp + fp)
 except ZeroDivisionError:
-    precision = float('nan')
+	precision = float('nan')
 print("Precision:", precision)
 try:
-    recall = tp / (tp + fn)
+	recall = tp / (tp + fn)
 except ZeroDivisionError:
-    recall = float('nan')
+	recall = float('nan')
 print("Recall:", recall)
 try:
-    if precision + recall == 0:
-        f1_score = float('nan')
-    else:
-        f1_score = 2 * (precision * recall) / (precision + recall)
+	if precision + recall == 0:
+		f1_score = float('nan')
+	else:
+		f1_score = 2 * (precision * recall) / (precision + recall)
 except ZeroDivisionError:
-    f1_score = float('nan')
+	f1_score = float('nan')
 print("F1-Score:", f1_score)
 
 # Create a DataFrame from the length-outcome counts
 data = []
 for counts in length_outcomes:
-    data.append([counts['input_len'], counts['min_bug_line_pos'], counts['max_bug_line_pos'], counts['avg_bug_line_pos'], counts['tp'], counts['tn'], counts['fp'], counts['fn'], counts['fp']+counts['fn']])
+	data.append([counts['input_len'], counts['min_bug_pos'], counts['max_bug_pos'], counts['avg_bug_pos'], counts['tp'], counts['tn'], counts['fp'], counts['fn'], counts['fp']+counts['fn']])
 
-df = pd.DataFrame(data, columns=['Input Length', 'Min Bug Line Position', 'Max Bug Line Position', 'Average Bug Line Position', 'TP', 'TN', 'FP', 'FN', 'F'])
+df = pd.DataFrame(data, columns=['Input Length', 'Min Bug Position', 'Max Bug Position', 'Average Bug Position', 'TP', 'TN', 'FP', 'FN', 'F'])
 # print(df.head())
 
 # You can use statistical methods to analyze the correlation

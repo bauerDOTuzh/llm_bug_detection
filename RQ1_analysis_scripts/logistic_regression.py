@@ -9,12 +9,39 @@ gpt_id = sys.argv[1]
 model = f'gpt-{gpt_id}-turbo'
 
 target_variable = 'tp'
-bug_line_type = 'min_bug_line_pos'
+bug_line_type = 'min_bug_pos'
 
 # Load the data from the uploaded CSV files
 data_cwe_22 = pd.read_csv(f'../data/data_CWE-22_model-{model}.csv')
 data_cwe_79 = pd.read_csv(f'../data/data_CWE-79_model-{model}.csv')
 data_cwe_89 = pd.read_csv(f'../data/data_CWE-89_model-{model}.csv')
+
+# Assuming data_cwe_22, data_cwe_79, data_cwe_89 are DataFrame objects already loaded in your environment
+# Calculate Q1, Q3, and IQR
+def calculate_outlier_thresholds(data):
+    Q1 = data['min_bug_pos'].quantile(0.25)
+    Q3 = data['min_bug_pos'].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    return lower_bound, upper_bound
+
+# Print the outlier thresholds for each dataset
+thresholds_cwe_22 = calculate_outlier_thresholds(data_cwe_22)
+thresholds_cwe_79 = calculate_outlier_thresholds(data_cwe_79)
+thresholds_cwe_89 = calculate_outlier_thresholds(data_cwe_89)
+
+print(f"Outliers for CWE-22 are below {thresholds_cwe_22[0]} or above {thresholds_cwe_22[1]}", data_cwe_22['min_bug_pos'].quantile(0.99))
+print(f"Outliers for CWE-79 are below {thresholds_cwe_79[0]} or above {thresholds_cwe_79[1]}", data_cwe_79['min_bug_pos'].quantile(0.99))
+print(f"Outliers for CWE-89 are below {thresholds_cwe_89[0]} or above {thresholds_cwe_89[1]}", data_cwe_89['min_bug_pos'].quantile(0.99))
+
+data_cwe_22 = data_cwe_22[data_cwe_22['min_bug_pos'] <= 2*thresholds_cwe_22[1]]
+data_cwe_79 = data_cwe_79[data_cwe_79['min_bug_pos'] <= 2*thresholds_cwe_79[1]]
+data_cwe_89 = data_cwe_89[data_cwe_89['min_bug_pos'] <= 2*thresholds_cwe_89[1]]
+
+# data_cwe_22 = data_cwe_22[data_cwe_22['min_bug_pos'] == data_cwe_22['max_bug_pos']]
+# data_cwe_79 = data_cwe_79[data_cwe_79['min_bug_pos'] == data_cwe_79['max_bug_pos']]
+# data_cwe_89 = data_cwe_89[data_cwe_89['min_bug_pos'] == data_cwe_89['max_bug_pos']]
 
 # Function to plot logistic regression with significance testing
 def plot_logistic_regression(data, x_col, y_col, label, ax, color):
@@ -54,9 +81,9 @@ axes[0].legend()
 plot_logistic_regression(data_cwe_22, bug_line_type, target_variable, 'CWE-22: Path Traversal', axes[1], colors[0])
 plot_logistic_regression(data_cwe_89, bug_line_type, target_variable, 'CWE-89: SQL Injection', axes[1], colors[1])
 plot_logistic_regression(data_cwe_79, bug_line_type, target_variable, 'CWE-79: XSS', axes[1], colors[2])
-axes[1].set_xlabel('Bug-Line Position')
+axes[1].set_xlabel('Bug Position')
 axes[1].set_ylabel('Probability of Finding the Bug')
-axes[1].set_title('Bug-Line Position vs Probability of Finding the Bug')
+axes[1].set_title('Bug Position vs Probability of Finding the Bug')
 axes[1].legend()
 
 # Adding a general title
