@@ -1,7 +1,7 @@
 ## last prompt:
 ```python
-prompt = '''Analyze the file content below and tell me if there's any line that may contain a bug of type {cwe_type} {cwe_description}. Your output must adhere to the following structure.
- 
+prompt = """Analyze the file content below and tell me if there's any line that may contain a bug of type CWE-{bug_type_id} ({bug_type_label}). Your output must adhere to the following structure.
+
 Expected Output Structure:
 SE: very Short Explanation of why the line may contain a bug of given type (e.g., The 'user_input' is directly concatenated into HTML content without sanitation).
 BL: the Bugged Line, if any is found, else none (e.g., `response = "<html><body><h1>Welcome, " + user_input + "!</h1></body></html>"`).
@@ -14,5 +14,5 @@ BUG FOUND: YES
 
 File Content:
 {file_content}
-    '''
+"""
 ```
