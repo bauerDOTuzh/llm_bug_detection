@@ -22,6 +22,7 @@ import ast
 cwe_id = sys.argv[2]
 gpt_model = sys.argv[1]
 
+n_processes = multiprocessing.cpu_count()*20
 openai_api_key = "..."
 temperature = 0
 file_path = f'../files_CWE-{cwe_id}.csv'
@@ -39,8 +40,14 @@ cwe_id_label_dict = {
 prompt = """Analyze the file content below and tell me if there's any line that may contain a bug of type CWE-{bug_type_id} ({bug_type_label}). Your output must adhere to the following structure.
 
 Expected Output Structure:
-SE: very Short Explanation of why the line may contain a bug of type CWE-{bug_type_id} (e.g., The 'user_input' is directly concatenated into HTML content without sanitation).
+SE: very Short Explanation of why the line may contain a bug of given type (e.g., The 'user_input' is directly concatenated into HTML content without sanitation).
 BL: the Bugged Line, if any is found, else none (e.g., `response = "<html><body><h1>Welcome, " + user_input + "!</h1></body></html>"`).
+BUG FOUND: YES if a bug is found, else NO.
+
+Example output:
+SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `response = "<html><body><h1>Welcome, " + user_input + "!</h1></body></html>"`
+BUG FOUND: YES
 
 File Content:
 {file_content}
@@ -83,7 +90,7 @@ File Content:
 ########################################################
 chatgpt_client = openai.OpenAI(api_key=openai_api_key)
 
-bug_line_pattern = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]', re.IGNORECASE)
+bug_line_pattern = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]\s*(.*?)(?=BUG FOUND:)', re.IGNORECASE | re.DOTALL)
 
 data = pd.read_csv(file_path)
 
@@ -94,24 +101,42 @@ correct_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_afte
 patch_line_regexp = r'@@ -(\d+,\d+) \+(\d+,\d+) @@' # Regular expression pattern to match line numbers in the diff
 patch_line_list = list(map(lambda x: list(map(int,map(lambda y: y[0].split(',')[0], re.findall(patch_line_regexp, x)))), patch_list))
 
+buggy_window_list = [
+	'\n\n'.join([
+		'\n'.join(b.split('\n')[p-10:p+10])
+		for p in p_list
+	])
+	for p_list,b in zip(patch_line_list,buggy_content_list)
+]
+
+correct_window_list = [
+	'\n\n'.join([
+		'\n'.join(b.split('\n')[p-10:p+10])
+		for p in p_list
+	])
+	for p_list,b in zip(patch_line_list,correct_content_list)
+]
+	
+
+
 datapoint_dict_list = [
 	{
 		'file_id': _id,
-		'file_content': _buggy_content,
+		'file_content': _content,
 		'patch': _patch,
 		'patch_line': _patch_line,
-		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_buggy_content),
+		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_content),
 		'type': 'buggy',
 	}
-	for _id, _patch, _patch_line, _buggy_content in zip(id_list,patch_list,patch_line_list,buggy_content_list)	
+	for _id, _patch, _patch_line, _content, _window in zip(id_list,patch_list,patch_line_list,buggy_content_list,buggy_window_list)
 ] + [
 	{
 		'file_id': _id,
-		'file_content': _correct_content,
-		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_correct_content),
+		'file_content': _content,
+		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_content),
 		'type': 'not_buggy',
 	}
-	for _id, _correct_content in zip(id_list,correct_content_list)	
+	for _id, _content, _window in zip(id_list,correct_content_list,correct_window_list)	
 ]
 prompt_list = [d['prompt'] for d in datapoint_dict_list]
 # print(prompt_list[0])
@@ -203,7 +228,7 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 			return missing_prompt, None
 	def parallel_fetch_fn(missing_prompt_list):
 		# Using ThreadPoolExecutor to run queries in parallel with tqdm for progress tracking
-		with concurrent.futures.ThreadPoolExecutor(max_workers=max(1,multiprocessing.cpu_count())) as executor:
+		with concurrent.futures.ThreadPoolExecutor(max_workers=max(1,n_processes)) as executor:
 			futures = [executor.submit(fetch_fn, prompt) for prompt in missing_prompt_list]
 			for e,future in enumerate(tqdm(concurrent.futures.as_completed(futures), total=len(missing_prompt_list), desc="Sending prompts to OpenAI")):
 				i,o=future.result()
@@ -245,6 +270,8 @@ def clean_whitespace(text):
     text = text.replace('\n', ' ')
     # Replace all sequences of whitespace with a single space
     text = re.sub(r'\s+', ' ', text)
+    text = text.replace(' ', '')
+    text = text.replace('\\', '')
     return text.strip().strip('`.')
 
 tp=0
@@ -260,8 +287,9 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 	datapoint_dict = datapoint_dict_list[i]
 
 	code = extract_code_or_return_original(model_output)
-	has_bug_line = (bool(bug_line_pattern.search(model_output)) and 'BL: None'.lower() not in model_output.lower()) or (code and code != model_output)
-	input_len = len(datapoint_dict['file_content'].split(' '))
+	has_bug_line = (bool(bug_line_pattern.search(model_output)) and 'BL: None'.lower() not in model_output.lower()) or (code and code != model_output) and 'BUG FOUND: YES'.lower() in model_output
+	split_file_content = datapoint_dict['file_content'].split(' ')
+	input_len = len(split_file_content)
 	max_line = datapoint_dict['file_content'].count('\n')
 	if datapoint_dict['type'] == 'not_buggy':
 		if has_bug_line:
@@ -273,11 +301,13 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 	else:
 		if not datapoint_dict['patch_line']:
 			continue
-		min_bug_line_pos = datapoint_dict['patch_line'][0]
-		max_bug_line_pos = datapoint_dict['patch_line'][-1]
+		print(model_output)
+		print('#'*10)
+		min_bug_line_pos = len(' '.join(split_file_content[:datapoint_dict['patch_line'][0]]).split(' '))
+		max_bug_line_pos = len(' '.join(split_file_content[:datapoint_dict['patch_line'][-1]]).split(' '))
 		avg_bug_line_pos = (min_bug_line_pos+max_bug_line_pos)//2
 		if has_bug_line:
-			bug_line = re.split(bug_line_pattern, model_output, 1)[-1]
+			bug_line = re.split(bug_line_pattern, model_output, 1)[-2]
 			bug_line = extract_code_or_return_original(bug_line).strip()
 			bug_line = clean_whitespace(bug_line)
 			patch = clean_whitespace(datapoint_dict['patch'])
