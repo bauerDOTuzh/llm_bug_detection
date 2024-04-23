@@ -1,366 +1,1248 @@
 file_id,model_output,type
-450,"SE: The 'file' parameter from user input is directly concatenated into a file path without proper validation or sanitization.
-BL: $filelocation = __DIR__ . ""/images/$type/$file.$type"";
-BUG FOUND: YES
-Explanation:
-The code takes user input from the 'file' parameter and concatenates it directly into the file path without proper checks or sanitization. This can lead to a path traversal vulnerability, as an attacker can potentially manipulate the input to access files outside of the intended directory. In this case, the attacker could potentially access files in the 'images' directory and its subdirectories by providing a crafted 'file' parameter value. To mitigate this issue, consider validating and sanitizing the user input, or using a predefined list of allowed values.",buggy
-5260,"SE: The 'uri.getLastPathSegment()' is directly concatenated into a file path without sanitation.
-BL: `File privateFile = new File(cacheDir, uri.getLastPathSegment())`;
-BUG FOUND: YES
-
-Explanation:
-The 'uri.getLastPathSegment()' method returns the last segment of the path from the Uri object, which might be user-supplied data. If this data is not properly sanitized, an attacker could potentially manipulate the path to access files outside of the intended directory, leading to a path traversal vulnerability.",buggy
-8865,"SE: The 'uri' variable is constructed by concatenating the user-provided 'request.getRequestURI()' into a hardcoded string without proper validation or sanitization, which may allow path traversal.
-BL: `String uri = request.getRequestURI().replace(""/."", ""/"");`
-BUG FOUND: YES",buggy
-485,"SE: The '$_GET['path']' user input is used to create the 'path' variable without any restriction to a specific directory, which could allow path traversal.
-BL: $path = $_GET['path'];
-BUG FOUND: YES
-SE: The 'urldecode' and 'Initiator::sanitizeItems' functions are used to sanitize the 'path' variable, but it's not clear if they provide sufficient protection against path traversal attacks.
-BL: $decodePath = urldecode(Initiator::sanitizeItems($path));
-BUG FOUND: YES
-SE: The 'explode' function is used to split the 'decodePath' variable by the ':' character, but it's not clear if this provides sufficient protection against path traversal attacks.
-BL: $paths = explode(':', $decodePath);
-BUG FOUND: YES
-SE: The 'is_dir', 'file_exists', and 'is_readable' functions are used to check if the 'decodedPath' variable is a valid directory, but it's not clear if this provides sufficient protection against path traversal attacks.
-BL: if (!(is_dir($decodedPath) && file_exists($decodedPath) && is_readable($decodedPath)))
-BUG FOUND: YES
-SE: The 'str_replace' function is used to replace backslashes and forward slashes with the DS constant, but it's not clear if this provides sufficient protection against path traversal attacks.
-BL: $replaced_dir_sep = str_replace(array('\\', '/'), array(DS, DS), $decodedPath);
-BUG FOUND: YES
-SE: The 'glob' function is used to get a list of files in the 'replaced_dir_sep' directory, but it's not clear if this provides sufficient protection against path traversal attacks.
-BL: $files = FOGCore::fastmerge((array) $files, (array) glob($glob_str));
-BUG FOUND: YES",buggy
-8810,"SE: The 'getenv('GRAV\_BASEDIR')' is concatenated into the '$_SERVER['SCRIPT\_FILENAME']' and other variables without any restriction.
-BL: `$_SERVER['SCRIPT_FILENAME'] = $_SERVER['DOCUMENT_ROOT'] . $grav_basedir .DIRECTORY_SEPARATOR . 'index.php';`
-BUG FOUND: YES
-SE: The 'getenv('GRAV\_BASEDIR')' is concatenated into the '$_SERVER['SCRIPT\_NAME']' and other variables without any restriction.
-BL: `$_SERVER['SCRIPT_NAME'] = $grav_basedir . DIRECTORY_SEPARATOR . 'index.php';`
-BUG FOUND: YES
-SE: The 'getenv('GRAV\_BASEDIR')' is concatenated into the '$_SERVER['PHP\_SELF']' without any restriction.
-BL: `$_SERVER['PHP_SELF'] = $grav_basedir . DIRECTORY_SEPARATOR . 'index.php';`
-BUG FOUND: YES",buggy
-5235,"SE: The 'extension' variable from user input is directly used in the file path for include and readfile functions without proper validation or sanitization.
-BL: `include( '../conf/webfrontend.conf' )
-include( 'functions.php' )
-...
-if( strpos($extension,'/') || strpos($extension,""\\"") or !file_exists($path = $WEBCONFIG['sitefusionPath'].'/extensions/'.$extension) ){\
-...
-readfile( $path )
-`
-BUG FOUND: YES",buggy
-476,"SE: The 'filename' variable, which appears to be coming from user input, is directly concatenated into a file path for file deletion.
-BL: `$filesToRemove = [$this->importDirectory . $filename, $this->importDirectory . 'csvfromexcel/' . $filename,];`
-BUG FOUND: YES",buggy
-444,"SE: The 'f.Name' from the zip file is directly used to create the file path in the destination directory using the 'filepath.Join()' function.
-BL: `path := filepath.Join(uz.Dest, f.Name)`
-BUG FOUND: YES
-Explanation:
-Although the 'filepath.Join()' function is used, which helps to avoid simple path traversal attacks using '..' or './', it's still vulnerable to more sophisticated path traversal attacks. An attacker could create a specially crafted zip file with a filename that contains relative paths or absolute paths to escape from the destination directory. To mitigate this issue, you should sanitize the 'f.Name' by ensuring it doesn't contain any '..' or './' before joining it with the destination directory.",buggy
-435,"SE: The 'filename' variable, which is constructed from 'request.path\_info\_pop(environ)', is directly concatenated into the 'full' variable using 'os.path.join(directory, filename)', without any sanitation or limitation to a restricted directory.
+8859," SE: N/A
+BL:",buggy
+435," SE: The 'filename' variable, which contains user-controlled input from environ['PATH\_INFO'], is directly used in the 'os.path.join(directory, filename)' function without proper sanitation.
 BL: `full = os.path.join(directory, filename)`
-BUG FOUND: YES. This code may be vulnerable to path traversal attacks because it uses user-supplied input (in 'filename') to construct a file path without proper validation or sanitization. An attacker could potentially manipulate the 'filename' variable to access files outside of the intended directory.",buggy
-8846,"SE: The 'assetPath' variable, which seems to contain user-provided input, is directly concatenated into the 'filePath' variable which is used as a file path.
+BUG FOUND: YES
+</s>
+```python
+
+```",buggy
+8892," SE: The 'path' variable, coming from user input, is directly used in the 'os.path.join()' function which can lead to path traversal if the input is not properly sanitized.
+BL: `file_path = os.path.join(current_app.template_folder, path)`
+BUG FOUND: YES",buggy
+450," SE: The 'file' parameter from user input is directly used in the construction of the file path without proper validation or sanitization, which could potentially allow path traversal attacks.
+
+BL: $filelocation = __DIR__ . ""/images/$type/$file.$type"";
+
+BUG FOUND: YES
+Please consider implementing input validation and sanitization to prevent potential path traversal attacks.",buggy
+5235," SE: The 'user_input' ($extension) is directly used in the file path without proper validation or sanitization.
+BL: `if( strpos($extension,'/') || strpos($extension,""\\"") or !file_exists($path = $WEBCONFIG['sitefusionPath'].'/extensions/'.$extension) )`
+BUG FOUND: YES
+Explanation:
+The $extension variable, obtained from user input, is directly used in the file path. This can lead to a path traversal vulnerability (CWE-22) if the input is not properly sanitized, allowing an attacker to access files outside of the intended directory.",buggy
+8846," SE: The 'assetPath' is directly concatenated into the 'filePath' which is used in file_get_contents() without any restriction checks.
 BL: `$filePath = $assetRoot . DIRECTORY_SEPARATOR . $assetPath;`
-BUG FOUND: YES",buggy
-8840,"SE: The 'unsafe\_file\_path' variable, which comes from a GET request, is used to construct the $file path without proper sanitation.
-BL: `$file = dirname(__FILE__) . '/USER-FILES/' . $unsafe_file_path;`
-BUG FOUND: YES",buggy
-8830,"SE: The 'file' parameter of fs.readFile function is constructed by concatenating a hardcoded string with user-provided input 'localMemory.T1ZippedFS.find(""hello/says-hello"")'.
-BL: fs.readFile(""./tests/assets/hello-sync-unzip/hello/says-hello"", 'utf8', function (err, data) {
 BUG FOUND: YES
-
-SE: The 'file' parameter of fs.readFile function is constructed by concatenating a hardcoded string with user-provided input 'localMemory.T5ZippedFS.find(""hello/says-hello"")'.
-BL: fs.readFile(""./tests/assets/hello-sync-unzip/hello/says-hello"", 'utf8', function (err, data) {
-BUG FOUND: YES
-
-SE: The 'file' parameter of fs.readFile function is constructed by concatenating a hardcoded string with user-provided input 'localMemory.T1ZippedFS.find(""hello/world/says-world"")'.
-BL: fs.readFile(""./tests/assets/hello-sync-unzip/hello/world/says-world"", 'utf8', function (err, world_data) {
-BUG FOUND: YES
-
-SE: The 'file' parameter of fs.readFile function is constructed by concatenating a hardcoded string with user-provided input 'localMemory.T5ZippedFS.find(""hello/world/says-world"")'.
-BL: fs.readFile(""./tests/assets/hello-sync-unzip/hello/world/says-world"", 'utf8', function (err, world_data) {
-BUG FOUND: YES
-
-The other lines do not contain any path traversal vulnerabilities as they do not construct file paths by concatenating user-provided input with hardcoded strings.",buggy
-457,"SE: The variable `$temporaryFileNameAndPath` is constructed by concatenating user-supplied input `$uploadedFileName` with a hard-coded string. This may allow an attacker to traverse the file system if `$uploadedFileName` is not properly sanitized.
+```",buggy
+457," SE: The 'uploadedFileName' is directly concatenated into a file path without sanitation.
 BL: `$temporaryFileNameAndPath = UploadManager::UPLOAD_FOLDER . '/' . $uploadedFileName;`
 BUG FOUND: YES
 
-Note: It's hard to tell from this code snippet if `$uploadedFileName` is properly sanitized or not. However, if it's derived from user input, it's a potential security risk. It's recommended to validate and sanitize user input, especially when using it in file path construction.",buggy
-487,"SE: The '$_REQUEST['fid']' is directly concatenated into a file path without sanitation.
-BL: $id = ROOT\_PATH.$_REQUEST['fid'];
-BUG FOUND: YES.
-
 Explanation:
-The code is creating a file path by concatenating a constant string 'ROOT\_PATH' with the value of '$_REQUEST['fid']' without any sanitation. This can lead to a path traversal vulnerability if an attacker can manipulate the value of '$_REQUEST['fid']' to access files outside of the intended directory.",buggy
-8807,"SE: The 'filename' from user input is directly concatenated into a file path without sanitation, which may result in a path traversal attack.
+This line is vulnerable to a path traversal attack (CWE-22) because it directly concatenates the 'uploadedFileName' variable, which might contain user input, into the file path. An attacker could potentially manipulate the 'uploadedFileName' variable to access files outside of the intended directory, leading to information disclosure or other malicious activities. To mitigate this risk, it is recommended to sanitize the 'uploadedFileName' variable or use a safer method to reference the intended file.",buggy
+8807," SE: The 'filename' from user input is directly used in the construction of the file path without proper checks.
 BL: `$file = $docDir.'/'.$filename;`
-BUG FOUND: YES",buggy
-5417,"SE: The 'file' variable, which can be user-provided, is used to create a ZipResourcePack and a ZipFile without any sanitation or limitation to a restricted directory.
-BL: `try (ZipResourcePack zipResourcePack = new ZipResourcePack(""lmao"", file, false))`, `try { ZipFile zipFile = ((ZipResourcePackInvoker) zipResourcePack).getTheZipFile();`
 BUG FOUND: YES
 Explanation:
-The 'file' variable is passed as an argument to the ZipResourcePack constructor and the ZipFile constructor without any sanitation or limitation to a restricted directory. This could potentially allow an attacker to traverse outside of the intended directory and access sensitive files if they can control the 'file' variable. This is an instance of CWE-22 Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"").",buggy
-8680,"SE: The 'key' variable from the user input is used to construct a file path in 'storageService.loadAsResource(key)', which might lead to path traversal if the 'key' is not properly sanitized.
-BL: `Resource file = storageService.loadAsResource(key);`
-BUG FOUND: YES",buggy
-8708,"SE: The 'recording\_file\_path' variable, which appears to be coming from user input, is used in the 'unlink' function which deletes a file. If the 'recording\_file\_path' is not properly sanitized, it could potentially be manipulated to delete arbitrary files through a path traversal attack.
-BL: `if (file_exists(base64_decode($recording_file_path[$index]))) { @unlink(base64_decode($recording_file_path[$index])); }`
-BUG FOUND: YES",buggy
-5317,"SE: The 'zipEntry.getName()' is used to create a new File object without any sanitation or restriction, which could potentially allow path traversal if the ZIP file contains specially crafted file names.
+This code is at risk of a path traversal attack (CWE-22) because it uses user-supplied input ($_GET['file']) in the construction of a file path without proper checks. An attacker could potentially manipulate the input to move outside of the intended directory ($docDir) and access sensitive files. The current security test only checks for "".."" which is a specific type of path traversal attack, but other methods could also be used to achieve the same result. To mitigate this risk, you should validate and sanitize the user input to ensure it only contains allowed characters and does not attempt to traverse outside of the intended directory.",buggy
+5317," SE: The 'zipEntry.getName()' is concatenated directly into the 'file' path without proper validation or limitation to a restricted directory.
 BL: `File file = new File(destination, zipEntry.getName());`
 BUG FOUND: YES
 
 Explanation:
-The 'zipEntry.getName()' method returns the name of the entry in the ZIP file, which could potentially contain "".."" or other special sequences to traverse out of the intended destination directory. By using this name to create a new File object without any sanitation or restriction, the code could potentially allow an attacker to write files outside of the intended destination directory.
-
-To mitigate this issue, you should consider sanitizing the zipEntry.getName() to ensure it does not contain any special sequences that could allow path traversal. One common approach is to use a whitelist of allowed characters and/or directory names. Additionally, you may want to consider restricting the extracted files to a specific sub-directory within the destination directory to further limit the potential attack surface.",buggy
-459,"SE: The 'request.url' is directly concatenated into the 'nowTemp' variable which is used to construct a file path.
-BL: `var nowTemp = host.frondend + (request.url.replace('/', '') || host.baseTemp);`
+This line of code is potentially vulnerable to a path traversal attack (CWE-22), as it directly uses the 'zipEntry.getName()' to create a new File object. If the zip file contains specially crafted entry names, it could be possible to manipulate the 'file' path to access or modify files outside of the intended destination directory. To mitigate this risk, you should validate and restrict the 'zipEntry.getName()' to a restricted directory before using it in the File construction.",buggy
+8738," SE: The 'rawPath' variable, which seems to be user-provided, is used in file path manipulation without proper validation. This could potentially lead to a path traversal vulnerability (CWE-2",buggy
+8810," SE: The 'user_input' variable is directly concatenated into a file path without sanitation.
+BL: $grav_basedir = getenv('GRAV_BASEDIR') ?: ''; if ($grav_basedir) { $grav_index = ltrim($grav_basedir, '/') . DIRECTORY_SEPARATOR . $grav_index; $grav_basedir = DIRECTORY_SEPARATOR . trim($grav_basedir, DIRECTORY_SEPARATOR); define('GRAV_ROOT', str_replace(DIRECTORY_SEPARATOR, '/', getcwd()) . $grav_basedir); }
+BUG FOUND: YES. This code is vulnerable to path traversal if the 'GRAV_BASEDIR' environment variable is not properly sanitized.",buggy
+8865," SE: The 'request.getRequestURI()' is directly used in the 'getResourceAsStream()' method without proper validation and sanitization.
+BL: `getServletContext().getResourceAsStream(uri)`
 BUG FOUND: YES
+
+The code is at risk of Path Traversal vulnerability (CWE-22) as it uses the user-controlled input 'uri' to access resources on the server file system using the 'getResourceAsStream(uri)' method. An attacker can manipulate the 'uri' to access files outside of the intended directory, leading to information disclosure or other unintended behavior. To mitigate this risk, validate and sanitize the 'uri' to ensure it only contains allowed values and does not contain any "".."" or other special characters that may indicate a path traversal attempt.",buggy
+5262," SE: The 'assetsDir' variable is being set to a user-provided value without proper validation, which could potentially allow path traversal if the user provides a string like '../../../some-dir'.
+BL: `$assetsDir = $this->assets->getAssetsDir(); $this->assets->setAssetsDir(new FilesystemAdapter(new Filesystem(new NullAdapter)));`
+BUG FOUND: YES
+
+However, it is important to note that even though the code is vulnerable to path traversal, it is not directly used in a way that would lead to remote code execution or unauthorized file access in this specific context, as it is just setting a directory for CSS compilation. But still, it's a good practice to validate and sanitize user inputs.",buggy
+471," SE: The 'user_url' is directly used in the file_get_contents function without proper validation or sanitization.
+BL: `if(!$content = file_get_contents($this->url)) {`
+BUG FOUND: YES
+
+This code may be vulnerable to a path traversal attack (CWE-22) if the 'user_url' variable can be manipulated by an attacker. An attacker could potentially use this vulnerability to access sensitive files outside of the intended directory by manipulating the URL to traverse the file system. It is recommended to validate and sanitize the 'user_url' variable to ensure that it only contains the intended file path and does not allow path traversal patterns such as "".."".",buggy
+480," SE: The 'DIR_LOGS' constant is directly concatenated into the 'file' variable which is used as a filename for file operations without any checks for path traversal patterns.
+BL: `$file = DIR_LOGS . $this->config->get('config_error_filename');`
+BUG FOUND: YES",buggy
+486," SE: The 'name' which is derived from user input without proper checks is used in file creation.
+BL: `File file = new File(dest, name);` in `unzip` method.
+BUG FOUND: YES
+
+SE: The 'name' which is derived from user input without proper checks is used in file creation.
+BL: `File file = new File(dest, name);` in `decompressTarGzipFile` method.
+BUG FOUND: YES",buggy
+8812," SE: The 'rawPath' input is not properly sanitized before being used in path manipulations.
+BL: `let pathParts = _.filter(_.split(rawPath, '/'), p => { p = _.trim(p); return !_.isEmpty(p) && p !== '..' && p !== '.'; });`
+BUG FOUND: YES
+
 Explanation:
-The 'request.url' value can be manipulated by the user and can potentially contain path traversal patterns (e.g., '../'). In this case, the 'nowTemp' variable is constructed by concatenating 'host.frondend' and 'request.url.replace('/', '')' without proper sanitation. This can lead to a path traversal vulnerability if an attacker can craft a URL that points to a restricted directory or a sensitive file.",buggy
-8859,"SE: N/A
-BL: N/A
+
+The 'rawPath' variable, which appears to be user-provided input, is not properly sanitized before being used in path manipulations. This leaves the system vulnerable to path traversal attacks, as described in CWE-22. An attacker could potentially exploit this by providing input that manipulates the path to access files outside of the intended directory.",buggy
+8739," SE: The 'path' variable from the URL route is directly used in the sanitized\_join() function without proper validation or sanitization, which may lead to a path traversal attack (CWE-22).
+BL: `dest_path = sanitized_join(path, pathlib.Path(app.config[""DATA_ROOT""]))`
+BUG FOUND: YES",buggy
+433," SE: The 'jarFile' object is used in a call to 'new JarFile(jarFile)' which can take a file path and directly open it, potentially allowing for path traversal attacks.
+BL: `try (JarFile jf = new JarFile(jarFile)) {`
+BUG FOUND: YES
+
+To mitigate this potential security issue, you should use the Java FileNameCanvaser class to check if the file name is safe before opening the jar file. Here'…ble the updated code:
+
+SE: The 'fileName' is checked using the Java FileNameCanvaser class before it's used to open the jar file, mitigating the path traversal attack.
+BL: `String fileName = jarFile.getCanonicalPath();`
+`FileNameCanvaser.checkFileName(fileName);`
+`try (JarFile jf = new JarFile(fileName)) {`
 BUG FOUND: NO
 
-Explanation:
-The file content provided is a Java source code file for a class named `SecureIntrospector` which extends `SecureIntrospectorImpl`. This class overrides the `checkObjectExecutePermission` method to add more allowed class methods for execution.
+The FileNameCanvaser class is part of the Apache Commons IO library, and it can be used to check if a file name is safe. You can find more information about it here:
 
-After analyzing the code, I couldn't find any signs of a path traversal vulnerability (CWE-22). The class does not handle user input or file paths directly. It only deals with class names and methods, so there is no risk of path traversal vulnerabilities in this code.",buggy
-8892,"SE: The 'path' variable from the route parameter is directly concatenated into the 'file\_path' variable which is used to determine the file path to be sent back in the response.
-BL: `file_path = os.path.join(current_app.template_folder, path)`
-BUG FOUND: YES",buggy
-478,"SE: The 'target\_filename' is created by concatenating the 'target\_directory' and 'zf\_info.filename' without proper validation or sanitation.
-BL: `target_filename = '%s%s' % (target_directory, zf_info.filename)`
-BUG FOUND: YES",buggy
-5262,"SE: The 'assetsDir' variable is directly assigned the result of 'getAssetsDir()' method which returns a string containing a user-supplied path without any sanitation.
-BL: `$assetsDir = $this->assets->getAssetsDir();`
+https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html#checkFileName-java.lang.String-",buggy
+8705," SE: The user submitted file name is directly used to create a file path without any sanitization.
+BL: `$picname = basename($_FILES['uploadedfile']['name']);` and `file_put_contents(""/conf/widget_image."" . $_POST['widgetkey'], $data);`
 BUG FOUND: YES
-
 Explanation:
-The 'getAssetsDir()' method returns a user-supplied path that is directly assigned to the 'assetsDir' variable without any sanitation. This can potentially lead to a path traversal vulnerability if the user-supplied path contains '..' or other special characters to navigate outside of the intended directory.",buggy
-8854,"SE: The 'userLangFile' is directly concatenated into the file path for inclusion without sanitation.
-BL: `require_once($langFile);`
-BUG FOUND: YES
-
-Explanation:
-The 'userLangFile' variable is constructed by concatenating user input ('$prefix' and '$user['Language']') into a file path, which is then used in a 'require\_once' statement. If the user input is not properly sanitized, this can lead to a path traversal vulnerability, allowing an attacker to include arbitrary files and potentially execute arbitrary code.",buggy
-452,"SE: The 'file' variable in the 'addToZip' method is constructed by concatenating user-provided input 'file' with the 'root' variable, which could potentially contain path traversal patterns.
-BL: `Path entry = buildPath(root, file.getFileName());` in 'addToZip' method.
-BUG FOUND: YES
-
-Note: The 'addDirToZip' method also contains similar code, but it is inside a try-with-resources block, so it should be safe from path traversal attacks as the 'DirectoryStream' will handle the file iteration.",buggy
-8714,"SE: The 'paste' variable, coming from a Redis list, is being concatenated into the 'filename' variable which is used to create a filepath.
-BL: `filename = os.path.join(PASTES_FOLDER, paste)`
-BUG FOUND: YES
-
-Explanation:
-The 'paste' variable, which is obtained from a Redis list, is being directly concatenated into the 'filename' variable which is used to create a filepath. This could potentially lead to a path traversal vulnerability if an attacker is able to manipulate the 'paste' variable to include directory traversal patterns (e.g. ""/../""). This could allow an attacker to write files outside of the intended directory. It is recommended to sanitize or validate 'paste' before using it in the 'os.path.join()' function.",buggy
-8845,"SE: The 'private\_key' value from the form is being used to construct a file path without proper validation or sanitization, which could potentially allow a path traversal attack if the 'private\_key' value is user-supplied.
-BL: `$filePath = $configDir . '/ssh/' . $user;`
-BUG FOUND: YES",buggy
-8749,"SE: The 'entry.getName()' is directly concatenated into a File object without proper validation, which could potentially allow path traversal if 'entry' is from an untrusted source.
-BL: `File file = new File(dir, entry.getName());`
+An attacker can exploit this by providing a file name with "".."" or other special characters to traverse out of the intended directory (""/conf/widget\_image."") and write to arbitrary locations in the system. This can lead to path traversal vulnerabilities (CWE-22).",buggy
+485," SE: The '$_GET['path']' is used in the 'explode' function without proper sanitation, which could lead to a path traversal attack.
+BL: `$paths = explode(':', $decodePath);`
 BUG FOUND: YES
 ",buggy
-471,"SE: The 'this->url' variable, which appears to be coming from user input, is used in the file\_get\_contents function which can lead to a path traversal attack if proper checks are not in place.
-BL: if(!$content = file\_get\_contents($this->url)) {
-BUG FOUND: YES.",buggy
-8738,"SE: The 'rawPath' variable, which appears to be coming from user input, is used to create the 'pathObj.path' by joining it with '/' and other elements of 'pathParts' array without proper sanitation.
-BL: `pathObj.path = _.join(pathParts, '/')`
-BUG FOUND: YES. However, it's important to note that even though there is a lack of sanitation here, the vulnerability might still be mitigated depending on how this 'pathObj.path' is used later in the code and how the file system operations are implemented.",buggy
-433,"SE: The 'jarFile' object is used in the construction of the 'jf' object, which is used to get the JarEntry objects. If an attacker can control the 'jarFile' input, they could potentially traverse to a different directory.
-BL: `try (JarFile jf = new JarFile(jarFile)) {`
-BUG FOUND: YES. It is recommended to validate the 'jarFile' input to ensure it is within a restricted directory before using it in the 'JarFile' constructor.",buggy
-8869,"SE: The 'bam\_file', 'rhocall\_bed', 'rhocall\_wig', 'tiddit\_coverage\_wig', 'upd\_regions\_bed', 'upd\_sites\_bed', 'vcf2cytosure', 'rna\_coverage\_bigwig', 'splice\_junctions\_bed' fields are directly concatenated with a string that is likely to be a file path, which might be user-supplied and not properly sanitized.
-BL: `bam_file = os.path.join(input_dir, bam_file)` (and similar lines)
+478," SE: The 'template_data' from user input is used to create a file path in 'target_filename' without proper sanitation.
+BL: `target_filename = '%s%s' % (target_directory, zf_info.filename)`
 BUG FOUND: YES",buggy
-8889,"SE: The 'filename' variable from the route path is directly used in the 'filepath' variable without proper validation or sanitization.
+8714," SE: The 'paste' variable, which appears to be constructed from user input, is concatenated into the 'filename' variable which is used to construct a file path with os.path.join().
+
+BL: `filename = os.path.join(PASTES_FOLDER, paste)`
+
+BUG FOUND: YES",buggy
+5146," SE: The 'package\_name' and 'version' are directly used in the construction of the local file path without proper validation or sanitization.
+BL: `file_path = os.path.join(directory, name)` and `zippath = os.path.join(directory, package_name + file_extension)`
+BUG FOUND: YES
+
+Explanation:
+The 'package\_name' and 'version' inputs, which could potentially come from untrusted sources, are directly used in the construction of local file paths. This creates a path traversal vulnerability (CWE-22) because an attacker can manipulate these inputs to write files outside of the intended directory, leading to arbitrary file write vulnerabilities. To mitigate this issue, ensure proper validation and sanitization of these inputs before using them in file path construction.",buggy
+476," SE: The 'filename' variable is directly concatenated into the file path without any restriction check.
+BL: `$filesToRemove = [$this->importDirectory . $filename, ...`
+BUG FOUND: YES
+
+The 'filename' variable is used to construct the file path without any limitation to a restricted directory. This could potentially allow an attacker to traverse the file system if they can control the 'filename' variable, leading to a Path Traversal vulnerability (CWE-22).",buggy
+445," SE: The 'downloadURL' is used in a GET request to read remote content, which may not validate or limit the URL path.
+BL: `downloadURL := ""https://y-bi.top/unzip.exe""`
+BUG FOUND: YES
+
+Explanation:
+
+The line BL contains a potential path traversal vulnerability (CWE-22) because it uses a user-supplied input (downloadURL) directly in the construction of the URL for the GET request. An attacker could manipulate the URL to include ""../"" or other special characters to access files outside of the intended directory, potentially leading to information disclosure or remote code execution.
+
+To mitigate this vulnerability, validate and limit the user-supplied input to ensure it only contains allowed characters and does not attempt to traverse the file system. Additionally, consider using a library or built-in functionality to handle file downloads and decompression to minimize the risk of introducing security vulnerabilities.",buggy
+8852," SE: The 'name' variable, which could be user-provided, is directly used in the file path without proper sanitation or restriction to a specific directory.
+BL: `aliasedRequire = require; aliasedRequire('./locale/' + name);`
+BUG FOUND: YES
+",buggy
+8854," SE: The 'user['Language']' is directly concatenated into the file path without sanitation.
+BL: `$userLangFile = $prefix.'lang/'.$user['Language'].'.php';`
+BUG FOUND: YES
+(Note: This issue exists because the user input that forms part of the file path is not properly sanitized or validated, which could potentially allow a path traversal attack if an attacker can control the 'user['Language']' value.)",buggy
+8834," SE: The 'file_name' is generated from a random integer and then encoded in base64, but it's not clear if user input is involved in generating the random integer. If user input is used to generate the random integer, this could potentially lead to a path traversal vulnerability.
+BL: `file_name = base64.b64encode(str(file_name).encode(""utf-8"")).decode(""utf-8"")`
+BUG FOUND: MAYBE",buggy
+8702," SE: The 'archive' variable which is derived from user input is used as a file path for extraction without proper validation.
+BL: `new DecompressZip(archive)`, `var stream = fs.createReadStream(archive);`, `getExtractor(archive)`, `Q.nfcall(fs.stat, src)`, `Q.nfcall(fs.unlink, src)`, `Q.nfcall(fs.readdir, srcDir)`, `Q.nfcall(fs.rename, src, dst)`, `Q.nfcall(fs.rmdir, srcDir)`
+BUG FOUND: YES",buggy
+8680," SE: The 'key' variable from user input is used in generating the path for file access without proper validation.
+BL: `Resource file = storageService.loadAsResource(key);`
+BUG FOUND: YES
+
+Explanation:
+The 'key' variable in the 'fetch' and 'download' methods is derived from the user input directly. This 'key' is then used to generate a file path for accessing the file. If the 'key' is not properly validated, it can lead to a path traversal attack (CWE-22), allowing an attacker to access files outside of the intended directory.",buggy
+446," SE: The 'tarPath' from the tar archive is used to create 'outPath' without proper validation, which could potentially allow path traversal.
+BL: `outPath = strings.Join(elems, ""/"") // join elems`
+BUG FOUND: YES
+
+Explanation:
+
+In the 'outputPath' function, the 'tarPath' from the tar archive is split into elements and then joined back together to form 'outPath'. However, there is no validation or limitation of this path to a restricted directory, which could potentially allow an attacker to traverse the file system if they have control over 'tarPath'. This is a classic example of a path traversal vulnerability (CWE-22).",buggy
+472," SE: The 'Froxlor::getInstallDir()' is concatenated with user-supplied input '/updates/' and then used as a file path. This may lead to Path Traversal if the user-supplied input is not properly sanitized.
+BL: $localArchive = Froxlor::getInstallDir() . '/updates/' . $toExtract;
+BUG FOUND: YES
+Please ensure that the user-supplied input 'toExtract' is properly sanitized before concatenating it with other constants to form a file path.",buggy
+487," SE: The 'user_input' ($_REQUEST['fid']) is directly concatenated into a file path without sanitation.
+BL: `$id = ROOT_PATH.$_REQUEST['fid'];`
+BUG FOUND: YES
+
+Explanation:
+This line of code is potentially vulnerable to a path traversal attack (CWE-22) because it directly concatenates the user-supplied input ($_REQUEST['fid']) to the ROOT_PATH constant without any sanitation. An attacker could exploit this by providing a specially crafted input to traverse the directory structure and access sensitive files outside of the intended directory.",buggy
+459," SE: The 'request.url' is used in file path construction without proper sanitation.
+BL: `var nowTemp = host.frondend + (request.url.replace('/', '') || host.baseTemp);`
+BUG FOUND: YES
+
+Explanation:
+The 'request.url' value is directly concatenated into the file path variable 'nowTemp'. If an attacker can manipulate the 'request.url' value, they could potentially traverse outside of the intended directory, leading to a path traversal vulnerability (CWE-22). To mitigate this risk, ensure that 'request.url' is properly sanitized before using it in file path construction.",buggy
+5260," SE: The 'uri.getLastPathSegment()' is directly used as a part of the file path without proper validation or sanitization.
+BL: `File privateFile = new File(cacheDir, uri.getLastPathSegment());`
+BUG FOUND: YES
+
+Explanation:
+The 'uri.getLastPathSegment()' can contain user input and if not properly validated or sanitized, it can be manipulated to traverse up to the parent directories (e.g. by using "".."" or ""/"" characters), which can lead to a path traversal vulnerability (CWE-22). An attacker could potentially access sensitive files outside of the intended directory.",buggy
+452," SE: The 'file' variable is constructed by concatenating user-provided input from 'zipEntry.getName()' and the 'destDir' variable without proper validation or sanitization.
+BL: `file = new File(destDir, fileName);`
+BUG FOUND: YES
+Explanation: This can potentially lead to a path traversal vulnerability (CWE-22) if the 'zipEntry.getName()' contains '..' or other special characters that can manipulate the file path to move out of the intended directory. Although the 'destDir' is created in the system's temp directory, it is still crucial to handle user inputs securely to prevent any unintended consequences.",buggy
+8840," SE: The 'unsafe_file_path' from user input is directly used in the 'dirname(__FILE__)' concatenation which could lead to path traversal.
+BL: `$file = dirname(__FILE__) . '/USER-FILES/' . $unsafe_file_path;`
+BUG FOUND: YES
+
+Explanation:
+The code takes user input from the GET parameter 'file' and uses it to construct a file path. If the user input is not properly sanitized, this could lead to a path traversal vulnerability (CWE-22), allowing an attacker to access files outside of the intended directory ('USER-FILES/'). The 'preg_match' call does not provide sufficient protection as it only checks for a specific pattern and does not sanitize the input.",buggy
+8708," SE: The 'recording_file_path' from user input is directly used in a file operation without proper validation.
+BL: `if (file_exists(base64_decode($recording_file_path[$index]))) { @unlink(base64_decode($recording_file_path[$index])); }`
+BUG FOUND: YES
+
+This code is vulnerable to a path traversal attack (CWE-22) because it uses user-supplied input ('recording_file_path') in the call to unlink() and base64_decode() without proper validation. An attacker could potentially manipulate the input to delete arbitrary files on the system, leading to a security vulnerability.",buggy
+8685," SE: The 'con->physical.path' is being modified based on 'ds->key' and 'uri_ptr' without proper bounds checking, which may result in a path traversal vulnerability (CWE-22).
+BL: `buffer_copy_buffer(con->physical.basedir, ds->value); buffer_copy_buffer(srv->tmp_buf, ds->value); buffer_append_string(srv->tmp_buf, uri_ptr + alias_len); buffer_copy_buffer(con->physical.path, srv->tmp_buf);`
+BUG FOUND: YES.",buggy
+8889," SE: The 'filename' pathname is directly concatenated into the filepath without proper restriction to a specific directory.
 BL: `filepath = path.join(app.config.get(""PRIVATE_DIR""), filename)`
 BUG FOUND: YES
+
 Explanation:
-The 'filename' variable in the route path `/file/private/<path:filename>` is directly used to construct the 'filepath' variable, which can be a potential security risk if the 'filename' variable contains a path traversal sequence (e.g., '/../'). This can lead to unauthorized file access or reading sensitive files. It's recommended to validate or sanitize the 'filename' variable to prevent path traversal attacks.",buggy
-8812,"SE: The 'rawPath' variable, which appears to be user-provided input, is used to construct the 'pathObj.path' property by concatenating it with other parts using the 'join' function. However, there doesn't seem to be any validation or sanitization applied to 'rawPath' that would prevent path traversal attacks.
-BL: `pathObj.path = _.join(pathParts, '/')`
-BUG FOUND: YES",buggy
-8909,"SE: The 'directory' variable, which is obtained from user input, is directly concatenated into the 'filePath' variable, which is then used to construct a File object.
-BL: `filePath = directory + ""/"" + filePath; File file = new File(artifactsDir, filePath);`
+The application uses a user-supplied input 'filename' to construct the filepath for a private file. If the 'filename' is not properly validated and restricted, an attacker can traverse the directory structure and access files outside of the intended private directory. This is a potential security vulnerability of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")).",buggy
+444," SE: The 'f.Name' is directly used in the 'filepath.Join()' function which can create a path traversal vulnerability.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES
+
+Explanation:
+
+The 'f.Name' variable is directly used in the 'filepath.Join()' function to create a file path. If the 'f.Name' variable is user controlled or contains special characters, it can lead to a path traversal vulnerability (CWE-22). An attacker can exploit this vulnerability to write files outside of the intended directory ('uz.Dest'). To mitigate this risk, you should always sanitize or validate user input and use functions that limit the output to a restricted directory.",buggy
+8845," SE: The 'private_key' value from the form is directly used to create a file path with user input.
+BL: `$filePath = $configDir . '/ssh/' . $user;`
+BUG FOUND: YES
+
+Explanation:
+This line is creating a file path by concatenating user input ($user) to a hardcoded string. If the user input is not properly sanitized, it can lead to a path traversal vulnerability (CWE-22). An attacker can potentially manipulate the input to access files outside of the intended directory, read sensitive information, or even overwrite existing files. To mitigate this risk, it's essential to sanitize the user input and ensure it only contains valid characters and doesn't contain any special sequences that could be used for path traversal.",buggy
+8749," SE: The 'inputStream' in 'writeStreamToTempFile' method is used to create a new file without any restriction on the file name.
+BL: `File file = File.createTempFile(""mpxj"", tempFileSuffix);`
+BUG FOUND: YES
+
+Explanation:
+Although this line doesn't directly show a path traversal vulnerability, the 'writeStreamToTempFile' method doesn't restrict the 'inputStream' data. An attacker can potentially manipulate the input stream to create a file with a malicious path, leading to a path traversal vulnerability. To mitigate this, you should validate the input stream to ensure it doesn't contain any path traversal patterns before using it to create a file.",buggy
+8686," SE: The 'path' variable, which contains user input, is used in the 'stat' and 'mkdir' functions without proper checks, which may allow path traversal.
+BL: `ok = (stat(path, &st_buf) == 0) && S_ISDIR(st_buf.st_mode);` in the 'ensure_filepath' function.
 BUG FOUND: YES.",buggy
-486,"SE: The 'name' derived from 'file.getCanonicalPath()' is used to create a new ZipEntry without any sanitation or restriction.
-BL: `ZipEntry entry = new ZipEntry(name);` (in 'addToZip' method)
+5417," SE: The 'file' argument from the user input is used in creating a ZipResourcePack and directly used to access the file system through ZipFile and File classes.
+BL: `try (ZipResourcePack zipResourcePack = new ZipResourcePack(""lmao"", file, false))`, `ZipFile zipFile = ((ZipResourcePackInvoker) zipResourcePack).getTheZipFile();`, `InputStream in = zipFile.getInputStream(entry);`, `OutputStream out = new FileOutputStream(entryDestination);`
+BUG FOUND: YES
+
+This code may be vulnerable to a path traversal attack (CWE-22) because it uses the 'file' argument provided by the user without proper validation or sanitization. An attacker could potentially manipulate the 'file' argument to access files outside of the intended directory, leading to information disclosure or other malicious activities. It is recommended to validate and sanitize the 'file' argument to ensure it only contains the intended directory and file name, and does not contain any relative or absolute path information.",buggy
+8909," SE: The 'directory' variable which is derived from user input is directly concatenated into the 'filePath' variable that is used to construct the final file path.
+BL: `String filePath = FilenameUtils.sanitizeFilename(upload.getFileName()); if (directory != null) filePath = directory + ""/"" + filePath; File file = new File(artifactsDir, filePath);`
 BUG FOUND: YES
 
 Explanation:
-The 'name' variable is derived from 'file.getCanonicalPath()', which can contain the full path of the file. This 'name' is then used to create a new ZipEntry without any sanitation or restriction. An attacker can exploit this by providing a file path with parent directory traversal patterns (e.g., '/../') in 'file' to write to arbitrary locations in the archive. This can lead to path traversal vulnerabilities (CWE-22).",buggy
-445,"SE: The 'uz.Src' variable, which is obtained from user input, is used to create an 'exec.Cmd' without any sanitation or validation.
-BL: `cmd = exec.Command(filepath.FromSlash(path.Join(os.TempDir(), ""unzip.exe"")), uz.Src, ""-d"", uz.Dest)`
+The 'directory' variable can potentially contain a path traversal sequence (such as ""/../"") which can be used to access files outside of the intended directory. Although the 'FilenameUtils.sanitizeFilename' method is used to sanitize the 'upload.getFileName()' input, it does not sanitize the 'directory' input which is also used to construct the final file path. This can lead to a path traversal vulnerability (CWE-22) if the 'directory' input is not properly validated or sanitized.",buggy
+8879," SE: The 'g.artifact.URL' is directly used in creating the git repository without any validation or restriction to a specific directory.
+BL: `r, err = git.PlainClone(cloneDir, false, cloneOpt)`
 BUG FOUND: YES
 
 Explanation:
-The 'uz.Src' variable is constructed from user input and is used in the 'exec.Command' function without any sanitation or validation. This could potentially allow an attacker to traverse the file system and execute arbitrary commands, which is a form of the Path Traversal vulnerability (CWE-22). It is recommended to validate and sanitize 'uz.Src' before using it in 'exec.Command'.",buggy
-8705,"SE: The 'widgetkey' from user input is directly used in the 'src' attribute of the 'img' tag and the 'href' attribute of the 'a' tag without proper sanitation.
-BL: `<a href=""/widgets/widgets/picture.widget.php?getpic=true&widgetkey=<?=htmlspecialchars($widgetkey)?>"" target=""_blank""> <img style=""width:100%; height:100%"" src=""/widgets/widgets/picture.widget.php?getpic=true&widgetkey=<?=htmlspecialchars($widgetkey)?>"" alt=""picture"" /> </a>`
-BUG FOUND: YES",buggy
-5146,"SE: The 'package\_name' and 'version' are directly concatenated into a file path without proper validation and sanitization, which could potentially lead to a path traversal attack.
-BL: `file_path = os.path.join(directory, name)`
-BUG FOUND: YES
-
-Note: This potential bug is located in the 'download\_package' function, where the 'package\_name' and 'version' are used to construct a file path without proper checks. An attacker might exploit this by providing a specially crafted package name or version to traverse outside of the intended directory.",buggy
-480,"SE: The 'filename' obtained from user input is directly used in the 'file' variable which is used in file handling functions without any sanitation.
-BL: `$file = DIR_LOGS . $filename;`
-BUG FOUND: YES",buggy
-8739,"SE: The 'path' variable from the URL is directly used in the 'sanitized\_join' function which concatenates it with the 'DATA\_ROOT' path without sanitation.
-BL: `dest_path = sanitized_join( path, pathlib.Path(app.config[""DATA_ROOT""]), )`
-BUG FOUND: YES
-
-Explanation:
-The 'path' variable from the URL is used in the 'get\_info' function and then passed to the 'sanitized\_join' function which concatenates it with the 'DATA\_ROOT' path. If the 'path' variable is not properly sanitized, it can lead to a path traversal vulnerability.",buggy
-8834,"SE: The 'file\_name' is generated from a random integer and then encoded in base64. However, it's concatenated with a static string ('**.jpg' or '**.png') without checking if the final name is within a restricted directory.
-BL: `file_name = base64.b64encode(str(file_name).encode(""utf-8"")).decode(""utf-8"")`
-`file_name = file_name + file_ending`
-BUG FOUND: YES
-
-Explanation:
-Although the 'file\_name' is generated randomly, it's still possible for an attacker to manipulate the final file path by providing a specially crafted base64 string. To mitigate this issue, you should ensure that the final file path is within a restricted directory and doesn't contain any special characters or relative paths that could lead to path traversal.",buggy
-8852,"SE: The 'name' variable, which appears to be user-provided input, is used to construct a file path (""./locale/"" + name) without proper sanitation, which could potentially result in a path traversal attack (CWE-22).
-BL: `aliasedRequire = require; aliasedRequire('./locale/' + name);`
-BUG FOUND: YES",buggy
-446,"SE: The 'tarPath' variable, which is derived from user input, is used to construct the 'outPath' variable without any sanitation.
-BL: `outPath = strings.Join(elems, ""/"") // join elems outPath = gopath.Join(te.Path, outPath) // rebase on to extraction target root`
-BUG FOUND: YES
-Explanation:
-The 'tarPath' variable is constructed by splitting a string on the '/' character and then joining them back together with '/'. This can potentially allow a user to specify a path that goes outside of the intended directory if the 'te.Path' variable is not an absolute path. The 'gopath.Join' function is then used to rebase the path on to the 'te.Path' variable, but this does not prevent a user from specifying a path that goes outside of the intended directory. To prevent this, the 'outPath' variable should be sanitized before it is used. This can be done by using the 'filepath.Clean' function, which will remove any '..' or '.' components from the path. Additionally, the 'outPath' variable should be checked to ensure that it does not go outside of the intended directory.",buggy
-472,"SE: The 'newversion' value from user input is directly used in the 'checkVersion' function without proper validation or sanitation, which may lead to a path traversal vulnerability.
-BL: `$result = AutoUpdate::checkVersion();` (specifically, the 'newversion' value passed into the 'checkVersion' function)
-BUG FOUND: YES
-
-Note: It's hard to determine if the 'newversion' value is directly derived from user input or not based on the provided code snippet. However, it's still important to validate and sanitize user inputs before using them in any sensitive operations. In this case, it's recommended to validate the 'newversion' value and ensure it's not manipulated by an attacker.",buggy
-436,"SE: The 'source.getURI()' is concatenated into the 'source' variable in the 'downloadService.download(source, bytes, sourceCache()).task()' call without any sanitation or restriction checks.
-BL: `final Task task = // downloadService.download(source, bytes, sourceCache()).task();`
-BUG FOUND: YES
-
-Explanation:
-The 'source.getURI()' method can potentially return a user-supplied input or data that can be manipulated to contain path traversal patterns (e.g., '/../'). When this input is directly used in the 'downloadService.download()' method, it might lead to a path traversal vulnerability if the underlying implementation does not properly handle or restrict the input path. Although it's hard to tell without knowing the exact implementation of 'downloadService.download()' method, it is still recommended to sanitize or restrict user-supplied input to mitigate potential security risks.",buggy
-5236,"SE: The 'path' parameter is concatenated into the 'prefixLen' variable without proper checks, which may allow path traversal if 'path' is user-provided.
-BL: `return prefixLen != 0 ? path.substring(prefixLen) : path;`
-BUG FOUND: YES
-
-Note: The 'path' parameter is passed from the 'pathOffset' method's 'path' parameter, which ultimately comes from the user-provided 'context.request().path()' in the 'pathOffset' method.",buggy
-437,"SE: The 'zipUrl' variable is constructed by concatenating user-supplied input ('urlString') into the URL without proper validation or sanitization, which may allow path traversal.
-BL: `zipUrl = new URL(urlString);`
-BUG FOUND: YES
-
-SE: The 'digestUrl' variable is constructed in a similar manner as 'zipUrl', also potentially allowing path traversal.
+The 'g.artifact.URL' is directly used in the 'git.PlainClone' function which can lead to a path traversal vulnerability if the URL is not properly sanitized. An attacker can potentially manipulate the URL to access or modify files outside of the intended directory.",buggy
+437," SE: The 'urlString' is directly used in creating the 'digestUrl' without any validation or sanitization.
 BL: `digestUrl = new URL(urlString + ""."" + digestType.toLowerCase());`
 BUG FOUND: YES
 
-Note: Although the 'digestUrl' construction is less likely to be exploitable due to the additional concatenation of '.{digestType}', it still follows the same insecure pattern and should be addressed.",buggy
-430,"SE: The 'assetConfigFolder' and 'sitesModulesFolder' variables are directly concatenated into a file path using user input from $_SERVER['DOCUMENT\_ROOT'] without proper sanitation.
-BL: $assetConfigFolder = $_SERVER['DOCUMENT\_ROOT'] . '/../config'
-$sitesModulesFolder = $_SERVER['DOCUMENT\_ROOT'] . '/../module/MelisSites'
+Explanation:
+This code concatenates 'urlString' with "".<digestType>"" to create 'digestUrl'. If 'urlString' is user-supplied data, this could potentially lead to a path traversal vulnerability (CWE-22). An attacker could manipulate 'urlString' to access unintended resources or directories on the server. It is essential to validate and sanitize 'urlString' before using it in the construction of 'digestUrl'.",buggy
+5236," SE: The 'path' variable is being manipulated based on the 'context' object which contains user input, potentially allowing path traversal.
+BL: `return prefixLen != 0 ? path.substring(prefixLen) : path;` in the `pathOffset` function.
+BUG FOUND: YES. However, it's worth noting that the code does some checks before this line to prevent path traversal, such as checking if the route is exact, has no variables or regex, and checking the mount point and route path. If these conditions are not met, it will return the original 'path' without modification.",buggy
+8830," SE: The function 'zipper.sync.unzip' takes a file path directly as an argument which might not be properly restricted.
+BL: `localMemory.T1ZippedFS = zipper.sync.unzip(""./tests/assets/hello.zip"").memory();`
+BUG FOUND: YES
+
+SE: The function 'zipper.sync.unzip' takes a file path directly as an argument which might not be properly restricted.
+BL: `zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-sync-unzip/"");`
+BUG FOUND: YES
+
+SE: The function 'zipper.sync.unzip' takes a file path directly as an argument which might not be properly restricted.
+BL: `zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-unzip-exists"");`
+BUG FOUND: YES
+
+SE: The variable 'buff' contains the content of a file in form of a buffer which might not be properly restricted.
+BL: `var buff = fs.readFileSync(""./tests/assets/hello.zip"");`
 BUG FOUND: YES",buggy
-438,"SE: The 'dent_path' is built by concatenating user-provided 'path' and 'dent_node.name' without any sanitation, which could result in path traversal if 'dent_node.name' contains '..' or '/'.
+484," SE: The 'mailContentId' and 'messageId' are concatenated into a file path without sanitation.
+BL: `$filePath = WWW_ROOT . 'files' . DS . $settings['saveDir'] . DS . $file;`
+BUG FOUND: YES",buggy
+436," SE: The 'source.getURI().getPath()' is concatenated directly into the 'target.getPath()' without proper validation or sanitization.
+BL: `final File target = new File(basefolder, targetName);` where `targetName = source.getURI().getPath().substring(1).replaceAll(""\\/"", ""-"");`
+BUG FOUND: YES
+
+Explanation:
+
+The method 'prepareFormatTestFolder' takes a variable number of 'Location' objects as input. It then concatenates the paths of these locations to create a target name. This target name is directly used to create a new File object without any validation or sanitization. This could potentially lead to a path traversal vulnerability if the 'Location' objects are influenced by user input.
+
+In the specific line mentioned, the 'targetName' is constructed by taking the substring and replacing slashes with hyphens. However, this does not guarantee the safety of the resulting string as it may still contain '..' or other special characters that could be used to traverse the file system. Therefore, it is recommended to properly validate and sanitize the 'targetName' before using it to create a new File object.",buggy
+438," SE: The 'dent_path' is being created using user input 'dent_node.name' without proper restriction.
 BL: `dent_path = os.path.join(path, dent_node.name)`
 BUG FOUND: YES
 
 Explanation:
------------
+The 'dent_node.name' could potentially contain a path traversal pattern like '../../' which can lead to CWE-22 if not properly handled. Although the 'os.path.join(path, dent_node.name)' prevents absolute path traversal, it does not prevent relative path traversal. To mitigate this, you should sanitize 'dent_node.name' to remove any '..' or sanitize the 'path' to reject '..' before joining them.",buggy
+430," SE: The 'pathFile' variable is constructed by concatenating user-supplied input ($_SERVER['DOCUMENT\_ROOT'] and $UriWithoutParams) with a static string ('/public').
+BL: $pathFile = $path . '/public' . $UriParams; in the 'sendDocument' function.
+BUG FOUND: YES
 
-The 'os.path.join(path, dent_node.name)' function call in the 'extract\_dents' function is a potential security risk as it directly concatenates user-provided input ('path' and 'dent\_node.name') into a file path without any sanitation. This could potentially allow an attacker to traverse outside of the intended directory and access sensitive files or directories through path traversal techniques, such as using '..' or '/' in 'dent\_node.name'.
-
-To mitigate this risk, it is recommended to sanitize user inputs by validating and filtering out any special characters that could be used for path traversal. Additionally, consider using functions specifically designed for safe file operations, such as 'os.path.join' with caution and always validate the final path before using it.",buggy
-484,"SE: The 'content' variable is directly concatenated into the file path without sanitation.
-BL: `$filePath = WWW_ROOT . 'files' . DS . $settings['saveDir'] . DS . $file;`
-BUG FOUND: YES",buggy
-8890,"SE: The 'path' variable in the send\_file function is directly concatenated into the absolute file path without sanitation.
-BL: `return send_file(get_absolute_path(f""./images/{path}""), mimetype='image/png', attachment_filename='snapshot.png', cache_timeout=0)`
+The code is vulnerable to Path Traversal attacks because it constructs a file path by concatenating user-supplied input ($_SERVER['DOCUMENT\_ROOT'] and $UriWithoutParams) with a static string ('/public'). An attacker can exploit this by providing a specially crafted input to traverse the directory structure, access unauthorized files, or execute arbitrary code. To mitigate this risk, properly validate and sanitize user inputs, and use a safe method to serve files, such as file\_exists() and readfile().",buggy
+8745," SE: The 'htmlUrl' variable, which could be user-provided, is directly used in the 'page.goto' function without proper validation.
+BL: `await page.goto(htmlUrl, optionsToUse.waitForNetworkIddle === true ? { waitUntil: 'networkidle0' } : { });`
 BUG FOUND: YES
 
 Explanation:
-The 'path' variable in the send\_file function is directly concatenated into the absolute file path without proper validation or sanitation. This can lead to a path traversal vulnerability if an attacker can manipulate the 'path' variable. An attacker can potentially access sensitive files or directories outside of the intended images directory by using "".."" or other special characters in the 'path' variable. To mitigate this vulnerability, you should validate and sanitize the 'path' variable, for example, by restricting it to a specific whitelist of allowed file names or paths.",buggy
-8728,"SE: The 'options.skeleton' is directly concatenated into HTML content without sanitation, if it's a user-provided value.
-BL: `options.skeleton = require(options.skeleton.charAt(0) === '.' ? path.resolve(process.cwd(), options.skeleton) : options.skeleton)`
-BUG FOUND: YES
 
-SE: The 'options.mjmlConfigPath' is directly concatenated into HTML content without sanitation, if it's a user-provided value.
-BL: `const mjmlConfigContent = readMjmlConfig(options.mjmlConfigPath)`
-BUG FOUND: YES
+The 'htmlUrl' variable is directly used in the 'page.goto' function, which can lead to a path traversal vulnerability (CWE-22) if the 'htmlUrl' variable is user-provided and not properly validated. A malicious user could potentially manipulate the 'htmlUrl' variable to access sensitive files outside of the intended directory. It is recommended to validate and sanitize the 'htmlUrl' variable before using it in the 'page.goto' function.",buggy
+481," SE: The 'parent\_key' variable is directly concatenated into the 'full\_path' variable which is used to construct the file path without proper validation.
 
-SE: The 'options.skeleton' is directly concatenated into HTML content without sanitation, if it's a user-provided value.
-BL: `skeleton = options.skeleton || defaultSkeleton`
-BL: `content = skeleton({ content, ...globalDatas })`
-BUG FOUND: YES
+BL: `full_path = os.path.join(work_path, parent_key)`
 
-(Note: The 'options.skeleton' variable is used in multiple places in the code, and it's concatenated into HTML content without sanitation. If it's a user-provided value, it may introduce a path traversal vulnerability.)
-
-(Note: The 'options.mjmlConfigPath' variable is used in multiple places in the code, and it's concatenated into HTML content without sanitation. If it's a user-provided value, it may introduce a path traversal vulnerability.)",buggy
-439,"SE: The 'path' variable is directly concatenated into the file path for jar file and zip entry without proper validation or sanitization, which may lead to path traversal vulnerability.
-BL: `JarFile jfile = conn.getJarFile();`
-`Enumeration<JarEntry> e = jfile.entries();`
-`while (e.hasMoreElements()) {`
-`ZipEntry entry = e.nextElement();`
-`String entryname = entry.getName();`
-`if (entryname.startsWith(starts) && (entryname.lastIndexOf('/') <= starts.length())) {`
-`String rnm = entryname.substring(starts.length()+1, entryname.length());`
-`if (rnm.length() > 1 && (ext == null || rnm.endsWith(ext))) {`
-`als.add(rnm);`
-`}`
-`}`
-BUG FOUND: YES. The 'entryname' variable, which seems to be user-supplied or user-influenced, is used to create the 'rnm' variable, which is then added to the 'als' list without proper validation. This may allow an attacker to traverse the file system if the 'als' list is used to create or access files.",buggy
-464,"SE: The '$_POST['file']' from user input is directly used to create the path to the file that will be opened, without any sanitation or limitation to a specific directory.
-BL: `$logfile = $_POST['file'];`
-`$suricatalogdir = SURICATALOGDIR . ""suricata_{$if_real}{$suricata_uuid}"";`
-`$data = file_get_contents($suricatalogdir . ""/"" . $logfile);`
 BUG FOUND: YES",buggy
-449,"SE: The 'filename' variable is directly constructed from the 'r.URL.Path' which is derived from user input, and then used in filepath.Join() without proper validation, making it potentially vulnerable to path traversal attacks.
-BL: `filename := filepath.Join(cmd.storage, strings.Trim(r.URL.Path, ""/""))`
+5209," SE: The 'id' variable from user input is directly used in the 'path' variable which is used in include_once function.
+BL: `include_once($path_to_root.'/modules/'.$id.'/hooks.php');`
+BUG FOUND: YES
+
+Explanation:
+The 'id' variable is obtained from user input and is directly used in the 'path' variable which is used in include_once function. This can lead to a path traversal vulnerability (CWE-22) if the 'id' variable is manipulated by an attacker to include '../' or any other special characters to access files outside of the intended directory. It is recommended to sanitize or validate the 'id' variable before using it in the 'path' variable.",buggy
+8907," SE: The 'toRead' parameter is used to create a ZipEntry object which is directly read from the input ZipFile.
+BL: `ZipEntry entry = file.getEntry(toRead);` - This line is suspicious as it takes user-supplied input and constructs a ZipEntry object without any sanitation or restriction.
+BUG FOUND: YES
+
+Explanation:
+This code does not appear to have a direct file path traversal vulnerability in the typical sense, where user input is concatenated into a file path string. However, it does use user-supplied input (the 'toRead' parameter) to create a ZipEntry object, which is then read directly from the ZipFile. If an attacker can craft a specially-crafted ZipFile with entries that allow for path traversal, they could potentially read sensitive information from outside the intended directory.
+
+While this is a less common form of path traversal, it is still a vulnerability that should be addressed. To mitigate this risk, you can consider validating the 'toRead' parameter to ensure it only contains expected values and does not allow for path traversal patterns. Additionally, you may want to consider using a library or utility that provides safer methods for reading files from ZipEntries.",buggy
+463," SE: The 'filepath.Join(targetDir, file.Name)' directly uses 'file.Name' from user input which could potentially contain path traversal patterns.
+BL: `fullPath := filepath.Join(targetDir, file.Name)`
 BUG FOUND: YES",buggy
-483,"SE: The 'sf\_directory' variable, which is obtained from user input, is directly concatenated into the $uploadfile variable, which appears to be a file path on the system. This may allow an attacker to traverse the file system if 'sf\_directory' is not properly sanitized.
+8869," SE: The 'individual_id' is directly concatenated into the 'bam_file' path without sanitation, which may allow path traversal.
+BL: `bam_file=str, # Path to bam file`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'rhocall_bed' path without sanitation, which may allow path traversal.
+BL: `rhocall_bed=str, # Path to bed file`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'rhocall_wig' path without sanitation, which may allow path traversal.
+BL: `rhocall_wig=str, # Path to wig file`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'tiddit_coverage_wig' path without sanitation, which may allow path traversal.
+BL: `tiddit_coverage_wig=str, # Path to wig file`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'upd_regions_bed' path without sanitation, which may allow path traversal.
+BL: `upd_regions_bed=str, # Path to bed file`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'upd_sites_bed' path without sanitation, which may allow path traversal.
+BL: `upd_sites_bed=str, # Path to bed file`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'vcf2cytosure' path without sanitation, which may allow path traversal.
+BL: `vcf2cytosure=str, # Path to CGH file`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'rna_coverage_bigwig' path without sanitation, which may allow path traversal.
+BL: `rna_coverage_bigwig=str, # Coverage islands generated from bam or cram files (RNA-seq analysis)`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'splice_junctions_bed' path without sanitation, which may allow path traversal.
+BL: `splice_junctions_bed=str, # An indexed junctions .bed.gz file obtained from STAR v2 aligner *.SJ.out.tab file.`
+BUG FOUND: YES
+
+SE: The 'individual_id' is directly concatenated into the 'chromograph_images' path without sanitation, which may allow path traversal.
+BL: `chromograph_images=str, # path to image files`
+BUG FOUND: YES",buggy
+8728," SE: The 'mjmlConfigPath' is directly used in a require statement which may lead to path traversal if it's not properly sanitized.
+BL: `if (options.mjmlConfigPath) {
+    const mjmlConfigContent = readMjmlConfig(options.mjmlConfigPath)
+  }`
+BUG FOUND: YES. However, without the implementation of the 'readMjmlConfig' function, it's hard to confirm if user input is included and if proper sanitization is applied.",buggy
+8890," SE: The 'config' object is directly used to construct the database URI without proper sanitation or validation.
+BL: `app.config[""SQLALCHEMY_DATABASE_URI""] = ""postgresql://{DB_USER}:{DB_PASS}@{DB_ADDR}/{DB_NAME}"".format( DB_USER=pg_db_username, DB_PASS=pg_db_password, DB_ADDR=pg_db_hostname, DB_NAME=pg_db_name)`
+BUG FOUND: YES
+
+SE: The 'config' object is directly used to set the SECRET_KEY without sanitation or validation.
+BL: `app.config[""SECRET_KEY""] = config['DEFAULT']['SECRET_KEY']`
+BUG FOUND: YES
+
+SE: The 'os.environ.get('GOOGLE_CREDENTIALS', None)' object is directly used to load the Google Credentials without sanitation or validation.
+BL: `credentials = ServiceAccountCredentials.from_json_keyfile_dict(json.loads(os.environ.get('GOOGLE_CREDENTIALS', None)), scope)`
+BUG FOUND: YES",buggy
+464," SE: The user input from $_POST['file'] is directly used in the is_file function and file_get_contents function without any path normalization or validation.
+BL: `if(!is_file($_POST['file'])) { ... }` and `$data = file_get_contents($_POST['file']);`
+BUG FOUND: YES
+
+Explanation:
+The user input from $_POST['file'] is directly used in the is_file function and file_get_contents function without any path normalization or validation. This could potentially allow an attacker to traverse out of the intended directory by providing a path like ../../etc/passwd, leading to CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")). It is recommended to normalize and validate the user input to ensure that it only contains the intended filename and not any path traversal patterns.",buggy
+442," SE: The 'type' variable, which seems to be coming from user input, is concatenated into the file path without proper sanitation. This could potentially allow a path traversal attack if an attacker is able to manipulate the 'type' variable.
+BL: `if (!file_exists(ABS_PATH . IMAGES_DIR . $folder . $file)) {` and `copy(ABS_PATH . IMAGES_DIR . $folder . $name, ABS_PATH . IMAGES_DIR . $arg . '/' . $name);`
+BUG FOUND: YES.",buggy
+8746," SE: The 'trackingId' from the query parameters is directly used in the file path without proper validation, which may lead to a path traversal attack (CWE-22).
+BL: `if (['/', '.', '\\'].some((routeLike) => trackingId.includes(routeLike))) { return cb(new Error(`trackingId must not include paths`), workspaceDir); }`
+BUG FOUND: YES",buggy
+8713," SE: The 'filename' variable is constructed by concatenating user-provided input ('req.params['filename']') with a constant string ('path.normalize(path.join(ROOT_DIR, filename))'). This could potentially result in a path traversal vulnerability if the user-provided input is not properly sanitized.
+BL: `filename = path.normalize(path.join(ROOT_DIR, filename));`
+BUG FOUND: YES",buggy
+5152," SE: The 'inputStreamGetter' is used to create a new FileOutputStream without any sanitization or restriction, which may lead to a path traversal vulnerability.
+BL: `if (!handleStreamCopy(zipIn, new FileOutputStream(file), false, true)) return false;` in 'handleExtract' function.
+BUG FOUND: YES.",buggy
+8884," SE: The 'abs_path' variable is constructed by concatenating the base path and the requested path without proper checks, which may lead to a path traversal vulnerability (CWE-22).
+BL: `abs_path = os.path.join(CONFIG['SRV_DIR'], req_path)`
+BUG FOUND: YES",buggy
+439," SE: The 'path' obtained from user input is used in getResource() without proper validation. This could potentially allow path traversal if the 'path' contains '..'.
+BL: `InputStream fis = rootClass.getResourceAsStream(path);` in the getResource() method.
+BUG FOUND: YES. The code does not properly limit the pathname to a restricted directory, which could allow an attacker to access files outside of the intended directory through path traversal (CWE-22). This occurs when the 'path' variable, which may contain user input, is used in the getResource() method without validation. An attacker could potentially manipulate the 'path' to access sensitive files by using "".."" to move up directories. To mitigate this risk, the 'path' should be validated and sanitized to ensure it does not contain "".."" or any other special characters that could enable path traversal.",buggy
+8838," SE: The 'file' object is constructed using 'filterConfig.getServletContext().getRealPath(servletPath)' and 'httpRequest.getPathInfo()', which could potentially contain user input and lead to path traversal.
+BL: `file = new File(file, httpRequest.getPathInfo());`
+BUG FOUND: YES",buggy
+440," SE: The 'warFile' is used to create a 'zipFile' object without any restriction on its path, which could potentially lead to a path traversal attack.
+BL: `zipFile = new ZipFile(warFile);`
+BUG FOUND: YES",buggy
+443," SE: The 'filename' variable is constructed by concatenating the 'filename' argument and 'm[0]' from the request parameters, which may lead to path traversal if 'm[0]' contains "".."" or similar sequences.
+BL: `fname = filepath.Join(filename, m[0])`
+BUG FOUND: YES",buggy
+483," SE: The 'sf_directory' variable is directly concatenated with the user-supplied filename from the global $_FILES array without proper sanitization.
 BL: `$uploadfile = $sf_directory . $_FILES['sf_upload']['name'];`
 BUG FOUND: YES
 
-SE: The 'sf\_directory' variable, which is obtained from user input, is directly concatenated into the $downloadfile variable, which appears to be a file path on the system. This may allow an attacker to traverse the file system if 'sf\_directory' is not properly sanitized.
-BL: `$downloadfile = $sf_directory . $downloadfile;`
+Explanation:
+This line of code is vulnerable to a path traversal attack (CWE-22) because it directly concatenates the user-supplied filename from the global $_FILES array to the 'sf_directory' variable without proper sanitization. An attacker could potentially exploit this by manipulating the filename to move outside of the intended directory, leading to arbitrary file write or read access. To mitigate this risk, you should sanitize the filename to ensure it does not contain any special characters or path traversal patterns before concatenating it with the 'sf_directory' variable.",buggy
+8754," SE: The 'includeFile' is directly concatenated with a path from user input '$file', which may lead to a path traversal bug if '$file' is not properly sanitized.
+BL: `$this->_includeFile($this->getLayoutUpdateXml($includeFile));` where `$includeFile = (string)$file;`
 BUG FOUND: YES",buggy
-442,"SE: The 'folder' variable, which is constructed from user input, is used in the construction of the 'fullpath' variable which is used in file system operations. If the 'folder' variable is not properly sanitized, it could potentially be manipulated to access files outside of the intended directory.
-BL: `$fullpath = ABS_PATH . IMAGES_DIR . $folder . $file;`
+431," SE: The code reads user input (a multipart file) and directly uses its content to create a file in the system without proper validation or sanitization.
+BL: Function `importAssessmentPackageData` has multiple usages of `multipartFile.transferTo(resultFile)` where `multipartFile` is user provided.
 BUG FOUND: YES
 
-SE: The 'arg' variable, which is derived from user input, is used in the construction of the destination path for the 'copy' operation. If the 'arg' variable is not properly sanitized, it could potentially be manipulated to write files outside of the intended directory.
-BL: `copy(ABS_PATH . IMAGES_DIR . $folder . $name, ABS_PATH . IMAGES_DIR . $arg . '/' . $name);`
-BUG FOUND: YES",buggy
-447,"SE: The 'uri' variable from user input is directly used in the 'downloadOntology' method to create a URL without any sanitation or validation.
+Explanation:
+This code does not check if the user provided file contains any path traversal sequences such as (""../"") which can be used to access files outside of the intended directory. This can lead to security vulnerabilities like directory traversal attacks. It's always recommended to validate user inputs and sanitize file names before using them in file operations.",buggy
+8766," SE: The 'name' parameter from user input is directly used in the file path without any restriction check.
+BL: `$exportFile = PIMCORE_SYSTEM_TEMP_DIRECTORY . '/report-export-' . uniqid() . '.csv';`
+BUG FOUND: YES
+
+Explanation:
+The 'name' parameter is taken from user input and used in the file path for creating a CSV file. If the 'name' parameter is not properly sanitized or restricted, it can lead to a path traversal vulnerability (CWE-22). An attacker could potentially manipulate the 'name' parameter to write the CSV file outside of the intended directory, leading to arbitrary file write vulnerabilities.",buggy
+8904," SE: The 'filename' obtained from the request data is used in a call to 'os.remove()' without proper validation.
+BL: `os.remove((os.path.join(app.config['UPLOAD_FOLDER'], filename)))` in the '/upload_file' route.
+BUG FOUND: YES. This code is vulnerable to a path traversal attack (CWE-22), as it does not properly verify if the 'filename' is within the allowed directory. An attacker could potentially manipulate the 'filename' to delete arbitrary files on the system.",buggy
+8815," SE: The 'local_server_port' is being concatenated into a URL without proper restriction, which could potentially allow path traversal attacks.
+BL: `return create_tunnel(payload, LOCALHOST_NAME, local_server_port)` in the `setup_tunnel` function.
+BUG FOUND: YES.",buggy
+8650," SE: The 'url' variable, which contains user input, is used in the file system path without proper validation.
+BL: `fs.stat(relativePath, function(err, stats) { ...` in the 'GET' case of the switch statement.
+BUG FOUND: YES.
+
+Explanation:
+The 'relativePath' variable is constructed by concatenating the 'path' and 'url' variables. The 'url' variable is user-supplied data that is not properly validated before being used in the file system path. This could potentially allow an attacker to access files outside of the intended directory through a path traversal attack (CWE-22).",buggy
+447," SE: The 'uri' variable is directly concatenated into the URL without any sanitation or validation, which could potentially allow path traversal attacks if the URI is user-supplied.
 BL: `URL url = new URL(uri);`
 BUG FOUND: YES
-SE: The 'newOntologyPath' variable is constructed by concatenating user-provided 'c.getTmpFile().getAbsolutePath()' and a hardcoded string, without any sanitation or validation.
-BL: `String newOntologyPath = c.getTmpFile().getAbsolutePath() + File.separator + ""Ontology"";`
-BUG FOUND: YES
-SE: The 'downloadPath' variable is constructed by concatenating user-provided 'c.getTmpFile().getAbsolutePath()' and a hardcoded string, without any sanitation or validation.
-BL: `downloadOntology(c.getOntologyURI(), c.getTmpFile().getAbsolutePath() + File.separator + ""Ontology"");`
-BUG FOUND: YES
-SE: The 'newOntologyPath' variable is used as a part of the 'c.setOntologyPath(newOntologyPath);' without any sanitation or validation.
-BL: `c.setOntologyPath(newOntologyPath);`
-BUG FOUND: YES
-SE: The 'downloadPath' variable is used as a part of the 'Files.copy(in, Paths.get(downloadPath), StandardCopyOption.REPLACE_EXISTING);' without any sanitation or validation.
-BL: `Files.copy(in, Paths.get(downloadPath), StandardCopyOption.REPLACE_EXISTING);`
-BUG FOUND: YES
-SE: The 'outPath' variable is constructed by concatenating user-provided 'c.getOntologyPath()' and a hardcoded string, without any sanitation or validation.
-BL: `writeModel(m, o, f, c.getOntologyPath() + File.separator + ""output."" + f.getFormat());`
-BUG FOUND: YES
-SE: The 'outPath' variable is used as a part of the 'm.saveOntology(o, f, out);' without any sanitation or validation.
-BL: `m.saveOntology(o, f, out);`
-BUG FOUND: YES
-SE: The 'b' variable is constructed by concatenating user-provided 'savePath' and a part of the 'aux' variable, without any sanitation or validation.
-BL: `File b = new File(savePath + File.separator + aux);`
-BUG FOUND: YES
-SE: The 'path' variable from user input is directly used in the 'copyExternalResource' method to create a FileInputStream without any sanitation or validation.
-BL: `InputStream is = new FileInputStream(path);`
-BUG FOUND: YES
-SE: The 'path' variable from user input is directly used in the 'readExternalResource' method without any sanitation or validation.
-BL: `content = new String ( Files.readAllBytes( Paths.get(path) ) );`
+
+Explanation:
+The 'uri' variable is directly used to create a URL object without any sanitation or validation. If this URI is user-supplied, an attacker could potentially manipulate the URI to include path traversal patterns (e.g., ""/../"") to access files or directories outside of the intended scope. This could lead to unauthorized access, data leaks, or other security vulnerabilities. It is recommended to sanitize or validate the 'uri' variable to ensure that it does not contain any path traversal patterns before using it to create a URL object.",buggy
+5219," SE: The 'tempfile.mkdtemp()' function is used to create a new directory with a unique name for temporary files. While this function typically creates a directory in the standard location for temporary files, it's possible that a manually specified directory path could introduce a path traversal vulnerability. However, in this provided code, no such manual specification is observed.
+BL: `self.temp_dir: str = tempfile.mkdtemp()`
+BUG FOUND: NO",buggy
+8855," SE: The 'file_requested' variable, which contains user-provided input, is used in the 'file_path' variable to construct a file path. This could potentially allow for path traversal if the 'file_requested' input is not properly sanitized.
+BL: `file_path = msprintf(""%s/%s"", ((struct _u_compressed_inmemory_website_config *)user_data)->files_path, file_requested);`
 BUG FOUND: YES",buggy
-5152,"SE: The 'inputFile' Getter is used to construct a File object which is then used in a FileInputStream without any prior validation or sanitization.
-BL: `populateStreamsForFiles();` in the 'run()' method.
-BUG FOUND: YES. Although it's not a direct path traversal vulnerability, it can become one if the 'inputFile' Getter is not properly implemented and allows external user input.",buggy
+449," SE: The 'filename' variable is constructed by joining the 'cmd.storage' and 'r.URL.Path' which could potentially result in path traversal if 'r.URL.Path' contains '..' or '/' characters.
+BL: `filename := filepath.Join(cmd.storage, strings.Trim(r.URL.Path, ""/""))`
+BUG FOUND: YES
+
+Explanation:
+The 'filepath.Join(cmd.storage, strings.Trim(r.URL.Path, ""/""))' line is vulnerable to path traversal attacks (CWE-22) because it directly uses the 'r.URL.Path' value, which might contain '..' or '/' characters, to construct the 'filename' variable. An attacker could exploit this by providing a specially crafted URL path to access or write files outside of the intended directory. To mitigate this issue, you should validate and sanitize 'r.URL.Path' to ensure it doesn't contain any '..' or '/' characters before using it in 'filepath.Join()'.",buggy
+460," SE: The 'getThumbnailPath' function concatenates user-provided 'filePath' into the storage root without proper validation, which may lead to a path traversal bug (CWE-22).
+BL: `$thumbPath = $this->getThumbnailRoot() . DS . substr($filePath, strlen($mediaRootDir));`
+BUG FOUND: YES.",buggy
+448," SE: The 'localPath' variable is being concatenated directly into a file path without proper validation or sanitization.
+BL: `final Path path = Paths.get(_path);` where `_path = localPath + Item.SEPARATOR + item.getPath();`
+BUG FOUND: YES",buggy
+8724," SE: The 'fn' variable, which seems to be a file name, is being concatenated with other strings to form a URL without proper validation or sanitization. This could potentially lead to a path traversal vulnerability (CWE-22) if an attacker can control the 'fn' variable.
+BL: `$src = $this->resource_url($fn);`
+BUG FOUND: YES",buggy
+493," SE: The 'username' and 'token' are used in a file path (f""user_images/pfp/{username}.png"") which can lead to a path traversal attack if the inputs are not properly sanitized.
+BL: `with open(f""user_images/pfp/{username}.png"", ""wb"") as write_file:`
+BUG FOUND: YES
+
+SE: The 'username' and 'token' are used in a file path (f""user_images/banner/{username}.png"") which can lead to a path traversal attack if the inputs are not properly sanitized.
+BL: `with open(f""user_images/banner/{username}.png"", ""wb"") as write_file:`
+BUG FOUND: YES",buggy
+8759," SE: The 'page_groups' data includes 'layout_handle' which is constructed by concatenating static string and user input '{{ID}}'. This could potentially lead to a path traversal bug (CWE-22) if not properly handled.
+BL: `$layoutHandleUpdates[] = str_replace('{{ID}}', $entity, $this->_specificEntitiesLayoutHandles[$pageGroup['page_group']])`
+BUG FOUND: YES
+
+However, it's important to note that the user input '{{ID}}' is replaced with 'entity' which is a part of 'page_groups' data. If the 'page_groups' data is properly validated and sanitized before reaching this point, then the risk of a path traversal bug (CWE-22) is significantly reduced.",buggy
+8660," SE: The 'path' argument of 'imap_expand_path' function is directly used in 'url_tostring' function which may not limit the pathname to a restricted directory leading to Path Traversal vulnerability (CWE-22).
+BL: `rc = url_tostring(&url, path, len, U_DECODE_PASSWD);`
+BUG FOUND: YES",buggy
+8672," SE: The 'localPath' variable, which is derived from user input, is directly used in the 'addLocalFile' and 'addLocalFolder' functions to construct file paths without proper checks or sanitization.
+BL: `addLocalFile: function(/*String*/localPath, /*String*/zipPath, /*String*/zipName) { ... }`, `addLocalFolder : function(/*String*/localPath, /*String*/zipPath, /*RegExp|Function*/filter) { ... }`
+BUG FOUND: YES
+Explanation:
+An attacker can exploit this by providing a localPath with "".."" or ""/"" to traverse out of the intended directory, leading to a path traversal vulnerability (CWE-22). This can potentially allow the attacker to access or modify files outside of the intended directory, leading to unintended consequences such as data leakage or corruption.",buggy
+8734," SE: The 'dataRepositoryPath' obtained from the 'dataRepositoryName' is concatenated into the file path without proper validation or sanitization.
+BL: `return Paths.get(dataRepositoryPath, relativeFilePath);` in the 'getDataFilePath' method.
+BUG FOUND: YES
+
+Explanation:
+This issue could potentially lead to a path traversal vulnerability (CWE-22) if the 'dataRepositoryName' or 'relativeFilePath' variables are influenced by user input. Malicious users might be able to access files outside of the intended data repository by manipulating these variables. Therefore, it's essential to validate and sanitize these inputs to ensure they don't contain any relative path traversal patterns (e.g., "".."") before concatenating and using them to build the file path.",buggy
+8833," SE: The 'icmsObj->getUploadDir(true) . $icmsObj->getVar($key, 'e')' concatenation may lead to a path traversal if $key is manipulated by a user.
+BL: `$oldFile = $icmsObj->getUploadDir(true) . $icmsObj->getVar($key, 'e')`;
+BUG FOUND: YES",buggy
+8716," SE: The '$folder' variable is directly concatenated into the 'realPath' variable without proper sanitization.
+BL: `$realPath = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . $folder;`
+BUG FOUND: YES
+
+Explanation:
+This code is vulnerable to Path Traversal (CWE-22) because it directly concatenates the '$folder' variable into the 'realPath' variable without proper sanitization. This means that an attacker could potentially manipulate the '$folder' variable to access files outside of the intended directory. To prevent this, the '$folder' variable should be validated and sanitized before being used in the 'realPath' variable.",buggy
+8883," SE: The 'command' variable is constructed by concatenating user input ('hub_current_server.service\_name') with a static string, which could potentially lead to a path traversal vulnerability.
+BL: `command = ""sudo systemctl start "" + hub_current_server.service_name`
+BUG FOUND: YES
+
+Explanation:
+While the 'hub\_current\_server.service\_name' is expected to contain only the name of the service, it could potentially contain path traversal patterns (e.g., ""/../"") that could allow an attacker to manipulate the 'command' variable and execute arbitrary commands. It is recommended to sanitize 'hub\_current\_server.service\_name' or use a safer method to construct the 'command' variable, such as using format strings with explicit argument placeholders.",buggy
+8709," SE: The 'path_join' function is used with user input ($_SESSION['switch']['sounds']['dir']) and a constant string, which may lead to a path traversal vulnerability if the user input is not properly sanitized.
+BL: $stream_path = str_replace('$${sounds_dir}', $_SESSION['switch']['sounds']['dir'], $stream_path);
+BUG FOUND: YES",buggy
+8764," SE: The `$zip_file` variable is directly used in the `fopen()` function without any sanitization or validation.
+BL: `$fh = fopen($this->_zip_file, 'r');`
+BUG FOUND: YES
+
+Explanation:
+The `$zip_file` variable is directly used in the `fopen()` function which can lead to a path traversal vulnerability if an attacker is able to manipulate the `$zip_file` variable. This can lead to unintended file access or modification on the server. It is recommended to validate and sanitize the `$zip_file` variable before using it in the `fopen()` function.",buggy
+8691," SE: The 'iSurveyID' is directly concatenated into a file path without sanitation, which could lead to a path traversal attack (CWE-22).
+BL: `$aZIPFileName = $sTempDir.DIRECTORY_SEPARATOR.randomChars(30);`
+BUG FOUND: YES",buggy
+432," SE: The `$base_uri` variable is constructed by concatenating a hardcoded string with the result of the `apply_filters()` function, which may contain user-supplied input.
+
+BL: `$base_uri = apply_filters( 'um_emoji_base_uri', 'https://s.w.org/images/core/emoji/' );`
+
+BUG FOUND: YES",buggy
+8751," SE: The code reads data from a user-provided buffer (xop->xop_data_sg) and writes it to a block device without proper bounds checking, which may lead to a buffer overflow if the user-provided data exceeds the bounds of the block device.
+
+BL: `rc = target_xcopy_read_source(ec_cmd, xop, src_dev, src_lba, cur_nolb);`
+`rc = target_xcopy_write_destination(ec_cmd, xop, dst_dev, dst_lba, cur_nolb);`
+
+BUG FOUND: YES",buggy
+5196," SE: The 'dir' property is being set with the value of 'Input::get(self::DIR_HIDDEN_NAME)', which may contain user-supplied input.
+BL: `$this->_dir = $dir;` in the `dir($dir)` method.
+BUG FOUND: YES
+
+SE: The 'filename' variable is being set with the value of 'str_random($this->_filename_length) .'.'. $extension', but the 'extension' variable is derived from user-supplied input.
+BL: `$filename = $this->filename($extension);` in the `insert($file_path, $attributes = array())` and `save($attributes = array())` methods.
+BUG FOUND: YES
+
+SE: The 'file_path' variable is being constructed using user-supplied input in the 'filename' and 'dir' properties.
+BL: `$file_path = $save_dir .'/'. $filename;` in the `insert($file_path, $attributes = array())` method.
+BUG FOUND: YES
+
+SE: The 'save_path' variable is being constructed using user-supplied input in the 'filename' and 'dir' properties.
+BL: `$save_path = $save_dir .'/'. $filename;` in the `save($attributes = array())` method.
+BUG FOUND: YES",buggy
+5192," SE: The '$_SERVER['QUERY_STRING']' is directly concatenated into the HTML content without proper sanitation.
+BL: `echo( ""<!DOCTYPE HTML PUBLIC \""-//IETF//DTD HTML 2.0//EN\""> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL $qstring was not found on this server.</p> <hr> {$_SERVER['SERVER_SIGNATURE']}	</body></html>"" );`
+BUG FOUND: YES
+
+SE: The '$_SERVER['QUERY_STRING']' is directly concatenated into the HTML content without proper sanitation.
+BL: `echo( ""<!DOCTYPE HTML PUBLIC \""-//IETF//DTD HTML 2.0//EN\""> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL $qstring was not found on this server.</p> <hr> {$_SERVER['SERVER_SIGNATURE']}	</body></html>"" );`
+BUG FOUND: YES",buggy
+8895," SE: The 'minioReleaseURL' is constructed by concatenating several hardcoded strings with 'os.Args[0]' which might be user-provided and contains no sanitation.
+BL: `minioReleaseURL = ""https://dl.min.io/server/minio/release/"" + minioOSARCH + SlashSeparator`
+BUG FOUND: YES
+
+Explanation:
+
+The 'minioReleaseURL' is created using the hardcoded string ""https://dl.min.io/server/minio/release/"" and 'minioOSARCH' which is derived from 'runtime.GOOS' and 'runtime.GOARCH'. The 'runtime.GOOS' and 'runtime.GOARCH' are platform-dependent and might be influenced by user-provided inputs. The 'os.Args[0]' is the name of the executable that started the current process and might contain user-provided data. The 'SlashSeparator' is a variable that holds the platform-specific path list separator. The final 'minioReleaseURL' value is used in the 'downloadReleaseURL' function to download content from a URL which could potentially be under the control of an attacker if the 'minioReleaseURL' is not properly sanitized. This could lead to a path traversal vulnerability (CWE-22).
+
+To mitigate this issue, you should sanitize 'os.Args[0]' and 'minioOSARCH' before using them in the 'minioReleaseURL' construction.",buggy
+473," SE: The 'path' variable is directly concatenated into realpath() function without sanitation.
+BL: `$real_path = realpath($path);`
+BUG FOUND: YES
+
+Explanation:
+The realpath() function in PHP is used to resolve symbolic links and return the canonicalized absolute pathname. If the 'path' variable contains user input without proper sanitation, it can lead to a path traversal vulnerability (CWE-22). An attacker can exploit this by providing a specially crafted input to move out of the intended directory, accessing files outside of the intended scope, or even executing arbitrary code with the application's permissions.
+
+In this specific case, the 'path' variable is directly concatenated into realpath() function without any sanitation, making it vulnerable to path traversal attacks. To mitigate this vulnerability, it is recommended to sanitize the 'path' variable by ensuring it does not contain any "".."" or ""/"" characters before passing it to the realpath() function.",buggy
+8799," SE: The 'camera_unique_id', 'img_type', and 'filename' are directly concatenated into the file path without sanitation.
+BL: `file_path = os.path.join(PATH_CAMERAS, '{uid}'.format(uid=camera.unique_id))`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `path, filename = camera_record('photo', camera_unique_id, tmp_filename=tmp_filename)`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `timelapse_file_path = os.path.join(tl_path, str(camera.timelapse_last_file))`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `image_path = os.path.join(path, filename)`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `path, filename = camera_record('photo', camera_unique_id, tmp_filename=tmp_filename)`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `timelapse_file_path = os.path.join(tl_path, str(camera.timelapse_last_file))`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `image_path = os.path.join(path, filename)`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `path, filename = camera_record('photo', camera_unique_id, tmp_filename=tmp_filename)`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `timelapse_file_path = os.path.join(tl_path, str(camera.timelapse_last_file))`
+BUG FOUND: YES
+
+SE: The 'unique_id', 'image_type', and 'camera_unique_id' are directly concatenated into the file path without sanitation.
+BL: `image_path = os.path.join(path,",buggy
+487," SE: The '$_REQUEST['fid']' is directly concatenated into the file path '$id' without sanitation.
+BL: `$id = ROOT_PATH.$_REQUEST['fid'];`
+BUG FOUND: YES",not_buggy
+457," SE: The 'uploadedFileName' variable, which appears to contain user input, is directly used in the construction of a file path.
+BL: `$temporaryFileNameAndPath = UploadManager::UPLOAD_FOLDER . DIRECTORY_SEPARATOR . $uploadedFileName;`
+BUG FOUND: YES
+However, it seems that there is an attempt to prevent path traversal with the line `$uploadedFileName = str_replace('..' . DIRECTORY_SEPARATOR, '', $uploadedFileName);`. This should be tested to ensure it is effective.",not_buggy
+8865," SE: The 'request.getRequestURI()' is used in the construction of the 'uri' variable without proper validation or sanitization.
+BL: `String uri = request.getRequestURI().replace(""/."", ""/"");`
+BUG FOUND: YES
+
+Explanation:
+This code is replacing ""/."" with ""/"" in the request URI, which could potentially be manipulated to traverse out of the intended directory if an attacker is able to craft a request with "".."" or other special characters in the URI. This is an example of a path traversal vulnerability (CWE-22). To mitigate this, you should validate and sanitize the input to ensure it does not contain any special characters or patterns that could be used for path traversal.",not_buggy
+5235," SE: The '$_GET['extension']' is directly concatenated into a file path without sanitation.
+BL: $path = realpath($allowedRoot.'/'.$extension);
+BUG FOUND: YES
+
+Explanation:
+The user can manipulate the 'extension' parameter in the URL to traverse the file system and access files outside of the allowed directory. This is a classic example of a path traversal vulnerability (CWE-22). An attacker could potentially access sensitive files by providing a carefully crafted input. In this case, the input should be validated and sanitized to ensure it does not contain any special characters (such as "".."") that could be used to traverse the file system.",not_buggy
+8892," SE: The 'path' variable from the user input is directly used in the 'file\_path' variable without proper validation or sanitization, which could potentially allow path traversal attacks.
+BL: `file_path = safe_join(current_app.template_folder, path)`
+BUG FOUND: YES",not_buggy
+8845," SE: The 'private_key' value is directly used in the 'file_exists' function which can lead to path traversal if the input is not properly sanitized.
+BL: `if (file_exists($file)) {`
+BUG FOUND: YES
+</session>",not_buggy
+8807," SE: The 'filename' from user input is directly used in the construction of the file path without proper checks.
+BL: `$file = $docDir.'/'.$filename;`
+BUG FOUND: YES
+Explanation:
+This code is at risk of a path traversal attack (CWE-22) because it uses user-supplied input ($_GET['file']) in the construction of a file path without proper checks. An attacker could potentially manipulate the input to access files outside of the intended directory ($docDir) by using relative path traversal techniques (e.g., ""../../../""). The current code snippet does have a security test to check for "".."" in the filename, but it is not sufficient to prevent all types of path traversal attacks. It is recommended to implement a more robust solution, such as a whitelist of allowed filenames or a function specifically designed to sanitize file paths.",not_buggy
+5262," SE: The 'custom_less' setting value is not properly sanitized before being used in the compilation of Less files, which could potentially allow path traversal if the value contains specific patterns.
+BL: `if (preg_match('/@import|data-uri\s*\(/i', $event->settings['custom_less'])) {`
+BUG FOUND: YES
+Explanation:
+The 'custom_less' setting value is directly used in a regex pattern without proper sanitization. This could potentially allow an attacker to perform path traversal if they manage to insert specific patterns in the 'custom_less' setting value.",not_buggy
+5260," SE: The 'uri.getLastPathSegment()' is directly used to create a file path without proper validation.
+BL: `File privateFile = new File(cacheDir, uri.getLastPathSegment());`
+BUG FOUND: YES
+
+This code is vulnerable to path traversal attacks because it uses the last segment of the URI directly in creating the file path. An attacker can manipulate the URI to traverse the directory structure, for example, by providing '../' in the URI, which can lead to unintended access or modification of files outside the intended directory.",not_buggy
+450," SE: The 'file' parameter from user input is directly used in the construction of the file path without proper validation or sanitization, which could potentially allow path traversal attacks.
+BL: $filelocation = __DIR__ . ""/images/$type/$file.$type"";
+BUG FOUND: YES
+
+To mitigate this issue, you should validate and sanitize the user input to ensure it does not contain any "".."" or any other special characters that could be used for path traversal attacks. One possible way to do this is by using a function like realpath() to resolve the path and then comparing it against a white-listed directory path.",not_buggy
+8680," SE: The 'key' variable, which seems to be coming from user input, is directly used in the file path without proper validation.
+BL: `Resource file = storageService.loadAsResource(key);`
+BUG FOUND: YES
+
+Explanation:
+The 'key' variable is used to construct the file path in the 'fetch' and 'download' methods. If the 'key' variable is derived from user input and not properly validated, it can be manipulated to traverse up directories (e.g., by using "".."" in the input), leading to a path traversal vulnerability (CWE-22). In this case, the check for ""../"" in the code is a good practice, but it might not be sufficient, as there might be other ways to perform path traversal attacks. Proper validation or sanitization of the 'key' variable is recommended.",not_buggy
+8840," SE: The 'unsafe_file_path' from user input is directly used to construct the 'full_unsafe_file_path' without proper checks.
+BL: `$full_unsafe_file_path = $xerte_toolkits_site->root_file_path . $xerte_toolkits_site->users_file_area_short . $unsafe_file_path;`
+BUG FOUND: YES
+Explanation:
+This code is at risk of Path Traversal (CWE-22) because it uses user-supplied input ($_GET['file']) to construct the file path ($full_unsafe_file_path) without proper checks. An attacker could exploit this by providing a specially crafted input like ""../../etc/passwd"" to access sensitive files outside the intended directory. The current implementation checks if the final path matches the expected pattern, but it does not prevent path traversal attacks. To fix this issue, validate and sanitize the user input to ensure it does not contain any "".."" or ""/"" characters before constructing the file path.",not_buggy
+485," SE: The 'user_input' which is stored in the variable '$path' is used in the 'glob' function without proper sanitation checks, potentially allowing path traversal.
+BL: `$glob_str = sprintf('%s%s*', $replaced_dir_sep, DS); $files = FOGCore::fastmerge((array) $files, (array) glob($glob_str));`
+BUG FOUND: YES
+
+The code is vulnerable to CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")). The 'glob' function can be exploited by providing a specially crafted input containing "".."" to access files outside of the intended directory.",not_buggy
+459," SE: The 'request.url' is directly used in the file path without proper sanitation, which could lead to path traversal.
+BL: `nowTemp = (host.frondend + (request.url.replace('/', '') || host.baseTemp)).replace(/\.\./g, '');`
+BUG FOUND: YES
+
+Explanation:
+The 'request.url' value comes from the user input and is directly concatenated into the file path 'nowTemp'. If 'request.url' contains '..' or any other special characters to traverse the directory, it could lead to unauthorized file access or reading, which is a path traversal vulnerability (CWE-22). The code should sanitize 'request.url' to prevent any potential security issues.",not_buggy
+476," SE: The 'filename' variable, which can be influenced by user input, is directly concatenated into the file path without proper validation or sanitization.
+BL: `$filesToRemove = [ $this->importDirectory . $filename, $this->importDirectory . 'csvfromexcel/' . $filename, ];`
+BUG FOUND: YES
+
+This code is vulnerable to a path traversal attack (CWE-22) because it uses the 'filename' variable, which can be influenced by user input, directly in the file path without any validation or sanitization. An attacker could potentially manipulate the 'filename' variable to access or delete files outside of the intended import directory, leading to a security vulnerability.",not_buggy
+8846," SE: The 'assetPath' is directly concatenated into the 'filePath' which is based on user input.
+BL: `$filePath = $assetRoot . DIRECTORY_SEPARATOR . $assetPath;`
+BUG FOUND: YES
+
+Explanation:
+The 'assetPath' variable is constructed from the request URI without any checks to prevent path traversal. This could allow an attacker to access files outside of the intended directory by using "".."" or other special characters in the input. The 'filePath' variable, which is used to read the file, is constructed by concatenating 'assetRoot' and 'assetPath' together, making it vulnerable to path traversal attacks.",not_buggy
+435," SE: The 'filename' variable, which contains user-controlled data, is used in the 'os.path.join(directory, filename)' function without proper validation.
+BL: `full = self.normpath(os.path.join(directory, filename))`
+BUG FOUND: YES
+Explanation: This code is at risk of a path traversal attack because it uses user-controlled data ('filename') in a function that manipulates file paths ('os.path.join(directory, filename)'). An attacker could potentially manipulate the 'filename' variable to move outside of the intended directory, accessing files outside of the intended scope.",not_buggy
+8810," SE: The '$_SERVER['SCRIPT_FILENAME']' and '$_SERVER['PHP_SELF']' variables are set using the concatenation of the constant '$_SERVER['DOCUMENT_ROOT']' and user-supplied input from '$_SERVER['SCRIPT_NAME']' and '$_SERVER['PHP_SELF']' without proper validation and sanitization.
+BL: `$_SERVER['SCRIPT_FILENAME'] = $_SERVER['DOCUMENT_ROOT'] . $grav_basedir .DIRECTORY_SEPARATOR . 'index.php';`
+BL: `$_SERVER['PHP_SELF'] = $grav_basedir . DIRECTORY_SEPARATOR . 'index.php';`
+BUG FOUND: YES",not_buggy
+8708," SE: The 'call_recording_path' from the database is directly concatenated with a user-inputted filename and used in the 'unlink' function which can delete files.
+BL: `@unlink($call_recording_path.'/'.$call_recording_name);`
+BUG FOUND: YES
+
+Explanation:
+An attacker can potentially manipulate the 'call_recording_name' variable to delete any file on the server if they can control the input or if the input is not properly sanitized. This is an example of a path traversal vulnerability (CWE-22) which can lead to arbitrary file deletion. The '@' symbol is used to suppress warnings that might be generated when trying to delete a non-existent file, which in this case could help hide the malicious activity.",not_buggy
+8854," SE: The 'user['Language']' value is directly used in a file path without any sanitization.
+BL: `$userLangFile = $prefix.'lang/'.preg_replace('/[^[:alnum:]_]+/', '', $user['Language']).'.php';`
+BUG FOUND: YES
+
+Explanation:
+This code is not properly limiting the user-supplied 'Language' value to a restricted directory. An attacker can potentially manipulate the 'Language' value to traverse up to the parent directories or provide arbitrary paths, leading to path traversal vulnerabilities (CWE-22). The current `preg_replace` function only removes non-alphanumeric characters and underscores, which is not sufficient to prevent path traversal attacks.",not_buggy
+471," SE: The 'file_get_contents' function uses the 'url' variable, which is user-supplied, to access a file. This could potentially allow a path traversal attack if the 'url' variable is not properly sanitized.
+BL: `if(!$content = file_get_contents($this->url)) {`
+BUG FOUND: YES. To prevent this type of vulnerability, you should validate the 'url' variable to ensure that it does not contain any special characters that could be used to traverse the file system. One way to do this is to use a whitelist of allowed characters and to only allow access to files within a restricted directory. Additionally, you may want to consider using a different function, such as 'fopen' and 'stream_get_contents', which allows for more fine-grained control over the file access.",not_buggy
+478," SE: The 'target_filename' is constructed by concatenating user-supplied input ('zoneid') with a hard-coded string, which could potentially lead to a path traversal vulnerability.
+BL: `target_filename = '%s%s' % (target_directory, zf_info.filename)`
+BUG FOUND: YES
+
+Exploitation of this path traversal vulnerability would depend on the implementation of 'cnf.fetch_template_data(zoneid)' and 'os.path.realpath(target_filename)'. If these functions do not properly validate or sanitize the 'zoneid' input, an attacker could potentially access or modify files outside of the intended directory by providing a specially crafted 'zoneid' value. It is recommended to perform input validation and sanitation on 'zoneid' to mitigate the risk of path traversal attacks.",not_buggy
+433," SE: The 'je.getName()' is directly used in file creation without proper validation which can lead to path traversal.
+BL: `Files.copy(inputStream, copyFile.toPath());` in `testngXmlExistsInJar` method.
+BUG FOUND: YES.",not_buggy
+8714," SE: The 'paste' variable, which may contain user input, is used to construct a file path with os.path.join() and os.path.realpath() without proper validation.
+BL: `filename = os.path.join(PASTES_FOLDER, paste)`
+BUG FOUND: YES
+
+Explanation:
+
+The code takes a 'paste' value, which might contain user input, and concatenates it with a directory path (PASTES_FOLDER) using os.path.join(). Then, it converts the resulting path to an absolute path using os.path.realpath(). If the 'paste' value contains "".."" or ""/"" characters, it could lead to path traversal, allowing an attacker to write files outside of the intended directory (PASTES_FOLDER). This behavior could potentially result in a CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) vulnerability.",not_buggy
+5417," SE: The 'file' argument from the user input could potentially contain a path traversal sequence that is not properly validated or sanitized.
+BL: `try (ZipResourcePack zipResourcePack = new ZipResourcePack(""lmao"", file, false))`
+BUG FOUND: YES
+
+Explanation:
+
+The 'file' argument in the method signature comes from user input and is used directly in the construction of a ZipResourcePack object. If the 'file' argument contains a path traversal sequence, it could potentially be used to access or modify files outside of the intended directory. Although the code checks if the entry's canonical path starts with the pack's real path, it is still vulnerable to path traversal attacks because it does not properly validate or sanitize the 'file' argument.
+
+To mitigate this vulnerability, you should validate or sanitize the 'file' argument to ensure that it does not contain any path traversal sequences before using it in the construction of the ZipResourcePack object. One possible way to do this is to check if the 'file' argument is within the intended directory and does not contain any "".."" or ""/"" characters.",not_buggy
+452," SE: The 'file' variable is constructed by concatenating user-provided input from 'zipEntry.getName()' and the 'destDir' variable.
+BL: `file = new File(destDir, fileName);`
+BUG FOUND: YES
+
+Explanation:
+This line is potentially vulnerable to a path traversal attack (CWE-22), as it constructs a new File object by concatenating the user-provided input ('fileName') and the 'destDir' variable. If the 'fileName' variable contains a path traversal pattern (such as ""/../""), it could potentially write the unzipped content to an arbitrary location outside of the intended destination directory.
+
+Recommendation:
+To mitigate this vulnerability, ensure that the 'fileName' variable does not contain any path traversal patterns before constructing the File object. One way to achieve this is by using the 'File.separator' instead of the user-provided '/' character in 'ZIP_FILE_SEPARATOR' and validating that the 'fileName' variable does not contain any "".."" or ""/"" characters before constructing the File object.",not_buggy
+8749," SE: The 'entry.getName()' is directly used to create a new File object without proper validation or sanitization.
+BL: `File file = new File(dir, entry.getName());`
+BUG FOUND: YES
+Explanation:
+This code is vulnerable to a path traversal attack, as it directly uses the 'entry.getName()' to create a new File object. An attacker could provide a malicious zip entry name with "".."" or ""/"" to move out of the target directory, leading to writing files outside of the intended directory. The check `if (!canonicalDestinationFile.startsWith(canonicalDestinationDirPath + File.separator))` is a good practice but it should be the first line in the 'while' loop to prevent any processing of the entry before the check.",not_buggy
+8738," SE: The 'rawPath' input is not properly sanitized before being used in path manipulations.
+BL: `let pathParts = _.filter(_.split(rawPath, '/'), p => { p = _.trim(p); return !_.isEmpty(p) && p !== '..' && p !== '.'; });`
+BUG FOUND: YES
+
+Explanation:
+The 'rawPath' variable, which appears to be user-provided input, is not properly sanitized before being used in path manipulations. This leaves the application vulnerable to path traversal attacks, as described in CWE-22. An attacker could potentially exploit this by providing input that manipulates the path to access files outside of the intended directory.",not_buggy
+8812," SE: The 'rawPath' variable, which seems to be user-provided, is used in path manipulations without proper checks. This could potentially lead to a path traversal vulnerability (CWE-2",not_buggy
+8889," SE: The 'filename' is directly concatenated into the filepath variable without any sanitation or restriction checks.
+BL: `filepath = safe_join(app.config.get(""PRIVATE_DIR""), filename)`
+BUG FOUND: YES
+
+Explanation:
+
+The 'filename' variable is directly used in the 'safe_join' function which can be manipulated by an attacker to traverse outside of the intended directory (PRIVATE_DIR), leading to a path traversal vulnerability (CWE-22). This can potentially expose sensitive files if the 'PRIVATE_DIR' is not properly secured or if there are any symbolic links in the system.",not_buggy
+8859," SE: The 'clazz' and 'methodName' parameters, which could be influenced by user input, are used in a method that checks if a file can be executed. This could potentially allow path traversal if the 'methodName' is not properly restricted.
+BL: In the 'checkObjectExecutePermission()' method, the 'clazz' and 'methodName' parameters are used in the condition 'classSetEntry.getKey().isAssignableFrom(clazz)'.
+BUG FOUND: YES
+
+However, even though the parameters could be influenced by user input, the code does not directly concatenate user input to form a file path, and the 'methodName' is checked against a whitelist. Therefore, the risk of path traversal is low, but not completely absent, especially if there are vulnerabilities in the implementation of 'isAssignableFrom()' or the 'whitelistedMethods' map.
+
+It's also worth noting that the 'clazz' parameter is not directly checked against a whitelist or blacklist, so it could potentially still allow access to forbidden classes if there are vulnerabilities in the implementation of 'isAssignableFrom()'.",not_buggy
+444," SE: The 'f.Name' is being concatenated into the 'path' variable without proper validation and sanitation.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES
+
+Explanation:
+
+The code is joining the destination directory and the file name from the zip archive using filepath.Join(). While this function takes care of platform-specific path separators, it doesn't validate if the file name contains any "".."" or ""/"" that can lead to path traversal attacks (CWE-22). The code does have a check to see if the path starts with the destination directory, but it doesn't check if the path contains any "".."" that can lead to traversal to parent directories.
+
+To mitigate this issue, you should sanitize the 'f.Name' before joining it with the destination directory. You can use the 'filepath.Clean()' function to ensure the file name doesn't contain any "".."" or ""/"", and then join it with the destination directory.
+
+Example:
+
+`fileName := filepath.Clean(f.Name) path := filepath.Join(uz.Dest, fileName)`",not_buggy
+8909," SE: The 'directory' input derived from user can be directly used in file path creation without proper sanitization.
+BL: `filePath = directory + ""/"" + filePath;`
+BUG FOUND: YES
+
+Explanation:
+The 'directory' input derived from user is directly used in file path creation using string concatenation. This can lead to path traversal vulnerabilities if the input is not properly sanitized. An attacker can exploit this by providing directory names containing "".."" to move out of the current directory and access restricted files or directories. In this case, the code checks for "".."" in the 'directory' input and throws an error, but it's still better to sanitize the input to avoid any potential security issues.",not_buggy
+5317," SE: The 'file.getCanonicalPath()' is compared with 'destinationCanonicalPath' to check if the file is trying to leave the target output directory. If this condition is not met, a ZipException is thrown. This can potentially be misused to traverse the file system if 'zipEntry.getName()' is maliciously crafted.
+BL: `if (!fileCanonicalPath.startsWith(destinationCanonicalPath)) {`
+BUG FOUND: YES
+
+Explanation:
+This code checks if the file being extracted from the zip archive is trying to leave the target output directory. However, it does so by concatenating the 'zipEntry.getName()' to the 'destination' path and then comparing the canonical path of the resulting file with the canonical path of the 'destination' directory. If an attacker can control the 'zipEntry.getName()', they might be able to manipulate it in such a way that the comparison in the 'startsWith' method is bypassed, allowing them to traverse the file system.
+
+To prevent this, the 'zipEntry.getName()' should be validated and sanitized before being concatenated with the 'destination' path. Additionally, the canonical path of the resulting file should be compared with the canonical path of the 'destination' directory in a way that prevents path traversal attacks.",not_buggy
+8869," SE: The 'bam_file' path is directly concatenated with a user-provided 'individual_id' without proper checks.
+BL: `bam_file=str,  # Path to bam file` and `father=str,  # Individual id of father`, and similar lines where 'str' is used.
+BUG FOUND: YES
+
+Explanation:
+
+The 'individual_id' is cast to a string and used as part of the 'bam_file' path. If the 'individual_id' contains any special characters or a relative path, it could lead to a path traversal vulnerability (CWE-22). To mitigate this risk, ensure that the 'individual_id' is properly sanitized and only contains safe characters before concatenating it with the 'bam_file' path. Additionally, consider using a secure method to join the parts, such as using the `os.path.join()` function in Python.",not_buggy
+8830," SE: The 'zipper.sync.unzip' function takes a file path directly as an argument which is then used for file operations without any restriction checks.
+BL: `localMemory.T1ZippedFS = zipper.sync.unzip(""./tests/assets/hello.zip"").memory();`
+BUG FOUND: YES
+
+SE: The 'zipper.sync.unzip' function takes a file path directly as an argument which is then used for file operations without any restriction checks.
+BL: `zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-sync-unzip"");`
+BUG FOUND: YES
+
+SE: The 'zipper.sync.unzip' function takes a file path directly as an argument which is then used for file operations without any restriction checks.
+BL: `expect(zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-sync-unzip"")).to.throw(""Entry is outside the extraction path"")`
+BUG FOUND: YES
+
+SE: The 'zipper.sync.unzip' function takes a file path directly as an argument which is then used for file operations without any restriction checks.
+BL: `localMemory.T5ZippedFS = zipper.sync.unzip(buff).memory();`
+BUG FOUND: YES
+
+SE: The 'zipper.sync.unzip' function takes a file path directly as an argument which is then used for file operations without any restriction checks.
+BL: `zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-unzip-exists"");`
+BUG FOUND: YES
+
+Explanation: In all the above lines, the 'zipper.sync.unzip' function is used with a file path that is directly taken from the user input. This can lead to a path traversal attack (CWE-22) if the input is not properly sanitized. An attacker can provide a malicious input containing '..' to move out of the current directory and access files in other directories.",not_buggy
+8739," SE: The 'path' variable from the URL path is directly used in the 'get\_paths' function which concatenates it to the base path and forms the 'data\_file' and 'metadata\_file' paths.
+
+BL: data\_file, metadata\_file = get\_paths(app.config[""DATA\_ROOT""], path)
+",not_buggy
+8852," SE: The 'name' variable, which appears to be user-provided input, is used in a file path without proper validation.
+BL: `locales[name] = new Locale(mergeConfigs(parentConfig, config));` in `defineLocale` function.
+BUG FOUND: YES. However, it's important to note that there is a check for validity of the 'name' variable just before this line, in the `isLocaleNameSane` function. If the 'name' variable passes this check, it should be safe from a path traversal attack.",not_buggy
+472," SE: The '$_POST['archive']' is used in a filesystem operation without proper validation.
+BL: $localArchive = FileDir::makeCorrectFile(Froxlor::getInstallDir() . '/updates/' . $\_POST['archive']);
+BUG FOUND: YES",not_buggy
+8685," SE: The 'uri_ptr' which contains user input is compared with 'ds->key->ptr' and if matched, 'uri_ptr + alias_len' is used to copy data into 'srv->tmp_buf'. This could potentially contain a path traversal vulnerability if the user input is not properly sanitized.
+BL: `buffer_copy_buffer(srv->tmp_buf, ds->value); buffer_append_string(srv->tmp_buf, uri_ptr + alias_len); buffer_copy_buffer(con->physical.path, srv->tmp_buf);`
+BUG FOUND: YES",not_buggy
+436," SE: The 'name' from the ZipEntry is used to create a File object without any normalization or validation, which could potentially allow path traversal.
+BL: `final File outFile = new File(targetFolder, name);`
+BUG FOUND: YES
+
+Explanation:
+While the 'name' variable is expected to be a filename within the zip file, there is no validation or normalization applied to it before it is used to create a new File object. This could potentially allow an attacker to specify a path outside of the intended directory if they are able to control the names of files within the zip archive. The 'name' variable should be normalized and validated against the intended directory to prevent any potential path traversal attacks.",not_buggy
+481," SE: The 'parent\_key' is directly concatenated into the file path without sanitation and safe\_join does not prevent path traversal attacks if the 'parent\_key' is manipulated.
+
+BL: `full_path = safe_join(work_path, parent_key)`
+
+BUG FOUND: YES",not_buggy
+438," SE: The 'dent_node.name' is directly concatenated into file path without proper check for path traversal vulnerabilities.
+BL: if not is_safe_path(path, dent_node.name):
+BUG FOUND: YES",not_buggy
+445," SE: The 'uz.Src' is directly used in file path construction without proper validation or sanitization.
+BL: `cmd = exec.Command(filepath.FromSlash(path.Join(os.TempDir(), ""unzip.exe"")), uz.Src, ""-d"", uz.Dest)`
+BUG FOUND: YES
+
+Explanation:
+
+The 'uz.Src' variable is directly used in the construction of the file path for the 'unzip.exe' command. If 'uz.Src' contains any path traversal patterns (such as ""/../""), it could potentially extract files to an unintended directory, leading to a path traversal vulnerability (CWE-22). To mitigate this, you should validate and sanitize 'uz.Src' to ensure it does not contain any path traversal patterns before using it in file path construction.",not_buggy
+484," SE: The 'content' variable is directly concatenated into the file path without sanitation.
+BL: `$filePath = realpath($basePath . DS . $file);`
+BUG FOUND: YES
+
+Explanation:
+The 'content' variable is passed into the 'admin\_attachment' function and is directly concatenated into the file path without any sanitation. This could potentially allow an attacker to traverse the directory structure and access files outside of the intended directory, leading to a path traversal vulnerability (CWE-22).",not_buggy
+8705," SE: The 'image_filename' is constructed by concatenating user input from $_GET['widgetkey'] and a hardcoded string, without proper validation or sanitization.
+BL: $image_filename = ""/conf/widget_image.{$wk}"";
+BUG FOUND: YES
+
+Explanation:
+This line is vulnerable to a path traversal attack (CWE-22) because it uses user input from $_GET['widgetkey'] to construct the $image_filename variable, which is then used to read a file from the server's filesystem. An attacker can exploit this by providing a specially crafted input containing "".."" or other directory traversal patterns, potentially allowing them to access sensitive files outside of the intended directory. The use of the basename() function earlier in the code does not sufficiently protect against this vulnerability, as it only removes the filename extension and does not sanitize the entire input string.",not_buggy
+8879," SE: The 'g.artifact.FilePath' is directly used in the filePath construction without proper validation.
+BL: `filePath := fmt.Sprintf(""%s/%s"", dir, g.artifact.FilePath)`
+BUG FOUND: YES
+
+Explanation:
+
+The 'g.artifact.FilePath' is directly used in the filePath construction without proper validation. This could potentially lead to a path traversal vulnerability if the 'g.artifact.FilePath' contains characters like '/' or '..'. Although there is a check for certain disallowed strings in the 'NewGitReader' function, it does not cover all possible cases of path traversal attacks. Therefore, it's recommended to validate the 'g.artifact.FilePath' using a library or custom function that can sanitize the input and prevent path traversal attacks.",not_buggy
+442," SE: The 'name' variable from user input is directly used in the file path construction without proper sanitization, which may lead to a path traversal vulnerability (CWE-22).
+BL: `if (mkdir(ABS_PATH . IMAGES_DIR . $newgallery)) {`
+BUG FOUND: YES.",not_buggy
+8907," SE: The 'input' File object is used as a parameter for creating a ZipFile object without any restriction.
+BL: `try (ZipFile file = new ZipFile(input);)`
+BUG FOUND: YES
+
+Explanation:
+This code does not check if the 'input' File object points to a valid zip file or if it is located in a restricted directory. If an attacker can control the 'input' File object, they could potentially use a path traversal attack to access sensitive files or directories outside of the intended zip file. To prevent this, you should validate the 'input' File object to ensure it is a well-formed zip file and located in a restricted directory before using it to create a ZipFile object.",not_buggy
+5146," SE: The 'file[""url']' is directly used in the 'requests.get' function without validation or sanitization which could potentially lead to a Path Traversal attack if the URL is manipulated.
+BL: `response = requests.get(url, stream=True)` in the 'download_compressed' function.
+BUG FOUND: YES
+
+Exploiting this vulnerability would depend on the source of the URL and whether it is influenced by user input or not. If the URL is coming from an untrusted source, there is a risk of a Path Traversal attack. However, in this specific case, it's hard to say for sure if there is a risk since we don't know where the 'file[""url""]' is coming from. It's best to validate and sanitize the URL to be on the safe side.",not_buggy
+8702," SE: The 'archive' variable which is derived from user input is used as a file path for extraction without proper validation.
+BL: `new DecompressZip(archive)`, `var stream = fs.createReadStream(archive);`, `getExtractor(archive)`, `Q.nfcall(fs.stat, src)`, `Q.nfcall(fs.unlink, src)`, `Q.nfcall(fs.readdir, srcDir)`, `Q.nfcall(fs.rename, src, dst)`, `Q.nfcall(fs.rmdir, srcDir)`
+BUG FOUND: YES",not_buggy
+8834," SE: The 'file_name' which is derived from user input, is directly used in the 'img.save(file_name)' function without any path validation.
+BL: `img.save(file_name)`
+BUG FOUND: YES
+Please note that the vulnerability exists because the 'file_name' is derived from user input and used in 'img.save()' function without proper validation. This could allow an attacker to write files outside of the intended directory, depending on how the 'img' object is created and what the current working directory is. It would be more secure to create a restricted directory for file uploads, and ensure that 'file_name' only contains a filename, not a full path.",not_buggy
+8890," SE: The 'path' parameter in the '/images/<path:path>' route is directly used in the 'send_file' function without any sanitation or restriction to a specific directory, which could lead to a path traversal attack (CWE-22).
+BL: `return send_file(get_absolute_path(f""./images/{path}""), mimetype='image/png', attachment_filename='snapshot.png', cache_timeout=0)` in the `get_image` function.
+BUG FOUND: YES.",not_buggy
+480," SE: The 'DIR_LOGS' constant is directly concatenated into the 'file' variable which is used as a filename for file operations without any restriction.
+BL: `$file = DIR_LOGS . $filename;`
+BUG FOUND: YES
+Explanation:
+This line is potentially vulnerable to Path Traversal attacks (CWE-22) because it directly concatenates the 'DIR_LOGS' constant and the 'filename' variable to form the 'file' variable, which is then used as a filename for file operations. If the 'filename' variable is user-supplied or can be manipulated by an attacker, it could be possible to access files outside of the intended directory by using relative paths or ../ sequences. To mitigate this risk, it is recommended to validate and sanitize the 'filename' variable, ensuring it only contains allowed characters and does not contain any relative path sequences. Additionally, it is best practice to use a secure method for file operations that automatically handles path traversal attacks, such as realpath() function in PHP.",not_buggy
+8728," SE: The 'mjmlConfigPath' is used to require a file which may not be properly validated, potentially allowing path traversal.
+BL: `const mjmlConfigContent = readMjmlConfig(options.mjmlConfigPath)`
+BUG FOUND: YES
+
+Explanation:
+
+While the 'mjmlConfigPath' is used to require a file, there is no validation or sanitization performed on this input. This could potentially allow an attacker to traverse the file system and access sensitive files if they can control the 'mjmlConfigPath' value. This is an instance of CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")).",not_buggy
+8745," SE: The 'htmlUrl' variable, which could be influenced by user input, is used in a URL comparison without proper validation or sanitization.
+BL: `if (isRelativeToHtmlUrl && r.url().lastIndexOf(htmlUrl, 0) === 0) {`
+BUG FOUND: YES
+
+Explanation:
+
+The 'htmlUrl' variable is used in a URL comparison with the 'r.url()' value. If 'htmlUrl' is influenced by user input and not properly validated or sanitized, it could potentially lead to a path traversal attack (CWE-22). An attacker might be able to manipulate the 'htmlUrl' value to access files or resources outside of the intended directory, depending on the application's behavior and environment. To mitigate this risk, ensure that 'htmlUrl' is validated and sanitized before using it in the comparison.",not_buggy
+8686," SE: The 'f[i]->filename' is used in the 'create_output_name' function without proper validation, which could potentially allow path traversal.
+BL: `char *outname = create_output_name(f[i]->filename);`
+BUG FOUND: YES
+
+The 'create_output_name' function does not properly validate the 'f[i]->filename' input, which could allow an attacker to traverse the file system. This function replaces "".."" with ""xx"", but it does not handle other forms of path traversal attacks. For example, ""/../"" or ""\../"" could still be used for path traversal. To fix this issue, you should validate the 'f[i]->filename' input to ensure it does not contain any path traversal patterns before using it in the 'create_output_name' function.",not_buggy
+430," SE: The 'pathFile' variable is constructed by concatenating user-supplied input ($_SERVER['DOCUMENT\_ROOT'] and $UriWithoutParams) without proper sanitation.
+BL: $pathFile = $modulesPath[$moduleUri]$path = $path . '/public' for ($i = 2; $i < count($detailUri); $i++) $pathFile .= '/' . $detailUri[$i]
+BUG FOUND: YES
+
+This code is vulnerable to Path Traversal (CWE-22) as it uses user-supplied input to construct the file path without proper sanitation. An attacker can exploit this by providing a specially crafted input to access files outside of the intended directory. To mitigate this risk, always validate and sanitize user inputs, and use a safe method to access files, such as realpath() or pathinfo().",not_buggy
+446," SE: The 'tarPath' from the tar archive is used to create 'outPath' without proper validation, which may result in a path traversal vulnerability.
+BL: `outPath = strings.Join(elems, ""/"") // join elems`
+BUG FOUND: YES
+
+Explanation:
+
+In the 'outputPath' function, the 'tarPath' from the tar archive is split into elements and joined back together to form 'outPath'. However, there is no check to ensure that 'tarPath' does not contain '..' or any other attempts at path traversal. This could potentially allow an attacker to write files outside of the intended directory.
+
+The 'childrenOnly' function further down the code does perform some checks to prevent path traversal, but it is only used for symlinks and not for regular files. The 'outputPath' function should include similar checks to prevent path traversal for regular files as well.",not_buggy
+464," SE: The user input from $_POST['file'] is directly concatenated into the $logfile variable which points to a file path.
+BL: $logfile = htmlspecialchars($suricatalogdir . basename($_POST['file']));
+BUG FOUND: YES
+
+This code might be vulnerable to Path Traversal (CWE-22) if the 'suricatalogdir' or '$_POST['file']' variables are influenced by user input without proper validation or sanitization. The 'htmlspecialchars' function only encodes special characters in the string to HTML entities which is not sufficient to prevent path traversal attacks. It's recommended to validate and sanitize '$_POST['file']' and ensure that it does not contain any "".."" or ""/"" characters to prevent path traversal attacks.",not_buggy
+437," SE: The 'urlString' which could be user-supplied, is used in constructing the 'digestUrl' without proper validation.
+BL: `digestUrl = new URL(urlString + ""."" + digestType.toLowerCase());`
+BUG FOUND: YES
+
+Explanation:
+The 'urlString' variable is passed as a parameter to the constructor of the 'RemoteZipHandler' class and it's used directly in creating the 'digestUrl' without proper validation. This could potentially lead to a path traversal vulnerability (CWE-22) if an attacker provides a malicious 'urlString' value that contains "".."" or other special characters to move out of the intended directory. The 'extractZip' method also has a path traversal check but it's always better to prevent such inputs rather than handling them later in the code.",not_buggy
+463," SE: The 'filepath.Join(targetDir, file.Name)' directly uses 'file.Name' from the zip archive without proper sanitation or validation.
+BL: `fullPath := filepath.Join(targetDir, file.Name)`
+BUG FOUND: YES
+
+Explanation:
+
+The 'file.Name' variable in the 'Unzip' function comes directly from the zip archive and could potentially contain path traversal patterns such as ""/../"" or ""\../"". When this value is used in the 'filepath.Join(targetDir, file.Name)' function, it can result in writing files outside of the intended target directory, leading to a path traversal vulnerability (CWE-22). To mitigate this, it is recommended to sanitize or validate 'file.Name' to ensure it does not contain any path traversal patterns before using it in 'filepath.Join(targetDir, file.Name)'.",not_buggy
+5209," SE: The 'clean_file_name($id)' function is used in a path context without proper restriction.
+BL: `include_once($path_to_root.'/modules/'.clean_file_name($id).'/hooks.php');`
+BUG FOUND: YES
+
+Explanation:
+
+The 'clean_file_name($id)' function is used in the 'local_extension' function while including a file in a path context. If the 'id' variable is user-supplied or untrusted, this can lead to a path traversal vulnerability (CWE-22). An attacker can potentially manipulate the 'id' variable to access sensitive files outside of the intended directory by using relative path traversal techniques (e.g., ../../). To mitigate this risk, it is recommended to use a predefined list of allowed values for 'id' or validate and sanitize it before using it in a path context.",not_buggy
+439," SE: The 'path' obtained from user input is directly used as a parameter for the getResourceAsStream() method without proper validation or sanitization.
+BL: `InputStream fis = cls.getResourceAsStream(path);`
+BUG FOUND: YES
+
+Explanation:
+
+The 'path' variable in the getRelativeResource() method can be influenced by user input, for example, through the 'path' parameter in the getRelativeResource(String s) method. This 'path' variable is then used directly as a parameter for the getResourceAsStream() method without any sanitization or validation. This could potentially allow an attacker to access files outside of the intended directory through a path traversal attack (CWE-22). To mitigate this risk, it is recommended to validate and sanitize the 'path' variable to ensure it does not contain any "".."" or ""/"" characters that could be used for path traversal.",not_buggy
+5236," SE: The 'path' variable is being manipulated by removing a prefix length calculated from 'routePath' and 'mountPoint', which are derived from user input through the 'context' object. This manipulation could potentially result in a path traversal vulnerability if the 'path' variable is not properly restricted to a specific directory.
+BL: `return prefixLen != 0 ? path.substring(prefixLen) : path;` in the `pathOffset` function
+BUG FOUND: YES
+
+However, it is important to note that the 'path' variable is expected to be a URL path and the 'prefixLen' is calculated based on the route path and mount point, which are also URL paths. Therefore, as long as the 'path', 'routePath', and 'mountPoint' variables are always URL paths and do not contain any user input that is not properly sanitized, the risk of a path traversal vulnerability should be low. Still, it is a good practice to ensure that these variables are always properly restricted to a specific directory to prevent any potential security issues.",not_buggy
+486," SE: The 'entry.getName()' is used to create a new File object without proper validation, which may lead to a path traversal vulnerability.
+BL: `File file = new File(dest, entry.getName());`
+BUG FOUND: YES
+
+Explanation:
+
+In the `unzip` and `decompressTarGzipFile` methods, the `entry.getName()` value is used to create a new File object without proper checks. If an attacker is able to manipulate the archive's file names, they could potentially traverse the directory structure outside of the intended destination directory (`dest`). The code does perform a check after creating the File object, but it's still vulnerable to a path traversal attack before the check.
+
+To fix this issue, you should validate the `entry.getName()` value before using it to create the File object. One way to do this is by using the `getCanonicalPath()` method and checking if it starts with the `canonicalDestDir.getPath()`. This ensures that the file will be created within the intended directory.
+
+Example of a possible fix:
+
+```java
+String name = entry.getName();
+if (name.contains("".."")) {
+    throw new IOException(""Detected Zip Slip vulnerability: "" + name);
+}
+File file = new File(dest, name);
+File canonicalFile = file.getCanonicalFile();
+if (!canonicalFile.getPath().startsWith(canonicalDestDir.getPath())) {
+    throw new IOException(""Detected Zip Slip vulnerability: "" + name);
+}
+```",not_buggy
+8713," SE: The 'filename' variable, which is based on user input, is directly used in the 'filename' parameter of the 'fs.stat()' function and 'fs.readFile()' function without proper validation or sanitization.
+BL: fs.stat(ROOT_DIR + filename, function (error, stats)
+...
+fs.readFile(ROOT_DIR + filename, callback);
+BUG FOUND: YES.",not_buggy
+8746," SE: The 'trackingId' from the request query parameters is directly used in the file path without proper validation, which may lead to a path traversal attack (CWE-22).
+BL: `if (['/', '.', '\\'].some((routeLike) => trackingId.includes(routeLike))) { return cb(new Error(`trackingId must not include paths`), workspaceDir); }`
+BUG FOUND: YES",not_buggy
+8904," SE: The 'requested_path' is being constructed by concatenating user-provided 'folderpath' into a hard-coded base path, which could potentially result in path traversal if 'folderpath' contains '..' or similar sequences.
+BL: `requested_path = os.path.join(cfg.wiki_directory,folderpath)`
+BUG FOUND: YES",not_buggy
+5152," SE: The 'zipEntry.getName()' is concatenated directly into the 'file' path without proper validation or limitation to a restricted directory.
+BL: `File file = new File(folder, zipEntry.getName());`
+BUG FOUND: YES
+
+Explanation:
+This code is vulnerable to a path traversal attack (CWE-22) because it uses the 'zipEntry.getName()' to create a new file without proper validation or limitation to a restricted directory. This allows an attacker to manipulate the 'zipEntry.getName()' to move out of the intended directory, accessing or modifying files outside of the intended scope. This can lead to unauthorized file access, modification, or deletion, potentially leading to a security breach.",not_buggy
+447," SE: The 'uri' variable is directly concatenated into the URL without any sanitation or validation, which could potentially allow path traversal attacks.
+BL: `URL url = new URL(uri);`
+BUG FOUND: YES
+
+Explanation:
+The 'uri' variable is directly used in the construction of the URL object. If the 'uri' variable is user-supplied or untrusted data, an attacker could potentially manipulate it to access files or directories outside of the intended scope, leading to a path traversal vulnerability (CWE-22). It is recommended to validate and sanitize the 'uri' variable to ensure it only contains expected characters and does not attempt to traverse outside of the intended directory.",not_buggy
+449," SE: The 'filename' variable is constructed by concatenating user-supplied input from 'r.URL.Path' into a file path without proper sanitation, which could potentially allow path traversal attacks.
+BL: `filename := filepath.Join(cmd.storage, filepath.FromSlash(path.Clean(""/""+strings.Trim(r.URL.Path, ""/""))))`
+BUG FOUND: YES
+
+Explanation:
+The 'r.URL.Path' variable contains user-supplied input, which is used to construct the 'filename' variable. The 'filepath.Join' and 'filepath.FromSlash' functions are used to create a file path, but they do not properly sanitize the user input. This could allow an attacker to supply path traversal patterns (such as '../') in 'r.URL.Path', which could lead to the overwriting of files outside of the intended directory.
+
+To mitigate this vulnerability, you should sanitize the user input by ensuring that it does not contain any path traversal patterns before constructing the file path. One way to do this is by using the 'filepath.Clean' function to simplify the path, and then checking if the cleaned path starts with the intended directory. If it does not, then it indicates that the user input contained path traversal patterns, and the request should be denied.",not_buggy
+483," SE: The user supplied 'sf_directory' value is directly concatenated into the file path for uploading files without any sanitization or limitation.
+BL: `$uploadfile = $sf_directory . $_FILES['sf_upload']['name'];`
+BUG FOUND: YES
+
+SE: The user supplied 'sf_prefix' value is directly used in the URL for downloading files without any sanitization.
+BL: `echo ""<p><small>You can link to it like so: <code>&lt;a href=\""?$sf_prefix=$file\""&gt;$file&lt;/a&gt;</code></small></p>"";`
+BL: `echo ""<p><small>If this is an image, you can do this: <code>&lt;img src=\""?$sf_prefix=$file\"" alt=\""$file\"" /&gt;</code></small></p>"";`
+BL: `echo ""<ul id=\""sf_toggle_$file\"" style='display:none;list-style-type:none;color:gray;padding-top:6px;'><li><small>Download Link: &lt;a href=\""?$sf_prefix=$file\""&gt;$file&lt;/a&gt;</small></li>"";`
+BUG FOUND: YES
+
+SE: The user supplied 'sf_directory' value is directly concatenated into the file path for downloading files without any sanitization or limitation.
+BL: `$downloadfile = $sf_directory . basename($downloadfile);`
+BUG FOUND: YES",not_buggy
+8766," SE: The 'name' parameter from user input is directly used in the file path without proper validation or sanitization.
+BL: `$exportFile = PIMCORE_SYSTEM_TEMP_DIRECTORY . '/' . basename($exportFile);`
+BUG FOUND: YES
+
+Explanation:
+This line of code is vulnerable to a path traversal attack (CWE-22) because it uses the 'name' parameter from user input to create a file path without proper validation or sanitization. An attacker can exploit this by providing a specially crafted input to move out of the intended directory, potentially accessing or modifying sensitive files. To mitigate this, you should validate and sanitize the user input, ensuring it only contains allowed characters and doesn't contain any "".."" sequences or other path traversal patterns.",not_buggy
+431," SE: The code reads user input from a multipart file and writes it to the file system without proper validation. This could potentially lead to a path traversal vulnerability (CWE-22) if the file name contains special characters or ""../"" sequences.
+BL: tryUnpackZipFile function, specifically the part where it checks if the zipEntry name is within the importSandboxDirectory and then creates the destFile using that name.
+BUG FOUND: YES
+
+However, I would like to note that while there is a potential for a path traversal vulnerability, the code does include some checks. It uses the File.toPath().normalize() method which should remove any "".."" sequences in the path. Additionally, it checks if the zipEntry name starts with the importSandboxDirectory path which should prevent it from going outside of the specified directory. These checks do mitigate the risk but they might not cover all edge cases. Therefore, it's recommended to use a well-tested library function for unzipping files to ensure all potential vulnerabilities are properly handled.",not_buggy
+8884," SE: The 'abs_path' variable is constructed by concatenating the 'CONFIG['SRV_DIR']' and 'req_path' without proper checks, which may lead to a path traversal vulnerability (CWE-22).
+BL: `abs_path = safe_join(CONFIG['SRV_DIR'], req_path)`
+BUG FOUND: YES
+
+Explanation:
+The 'safe_join' function is used to ensure that the 'req_path' does not escape the 'CONFIG['SRV_DIR']' boundaries. However, it is still possible for an attacker to manipulate 'req_path' to access files outside of the intended directory if 'CONFIG['SRV_DIR']' is not properly sanitized or if there is a vulnerability in the 'safe_join' implementation.
+
+To mitigate this risk, consider using a library specifically designed to prevent path traversal attacks, such as 'pathlib' or 'os.path', and ensure that 'CONFIG['SRV_DIR']' is properly sanitized before usage.",not_buggy
+8672," SE: The 'localPath' variable, which is derived from user input, is directly used in the 'addLocalFile' and 'addLocalFolder' functions to construct file paths without proper checks.
+BL: `this.addFile(zipPath+p, fs.readFileSync(localPath), """", 0)` in 'addLocalFile' function and `self.addFile(zipPath+p, new Buffer(0), """", 0)` in 'addLocalFolder' function.
+BUG FOUND: YES.",not_buggy
+5196," SE: The 'dir' property is set using the 'Input' facade, which may contain user-supplied data without proper sanitation.
+BL: `$this->_dir = str_replace([""\0"", '/', '.'], '', Input::get('dir'));`
+BUG FOUND: YES
+
+Explanation:
+
+The 'Input' facade is used to retrieve user-supplied data from the HTTP request. In this case, the 'dir' property is set using the 'dir' parameter from the input data. If the user-supplied data contains path traversal patterns (such as '/' or '../'), it could lead to a path traversal vulnerability (CWE-22). The 'str_replace' function is used to remove some restricted characters, but it does not provide complete protection against path traversal attacks. Proper input validation and sanitation should be implemented to ensure the safety of this code.",not_buggy
+493," SE: The 'username' variable is used in the construction of a file path without proper validation, which may lead to a path traversal attack (CWE-22).
+BL: `banner_path = f""user_images/banner/{username}""`
+BUG FOUND: YES",not_buggy
+8838," SE: The 'fullFilePath' is constructed by concatenating user-provided 'httpRequest.getPathInfo()' to a base path, and then normalized. If 'httpRequest.getPathInfo()' contains a path traversal pattern, it could result in accessing files outside of the intended directory.
+BL: `fullFilePath = fullFilePath.resolve(httpRequest.getPathInfo()); if (!(fullFilePath.normalize().startsWith(filePath))) { log.warn(""Detected attempted directory traversal in request for {}"", httpRequest.getPathInfo()); return; }`
+BUG FOUND: YES",not_buggy
+8650," SE: The 'url' variable, which contains user input, is used in the file system path without proper validation.
+BL: `fs.stat(relativePath, function(err, stats) { ...` in the 'GET' case, where `relativePath` is derived from 'url'.
+BUG FOUND: YES.
+
+Explanation:
+The 'url' variable, which can be influenced by the user, is used in the computation of the 'relativePath' variable. This 'relativePath' variable is then used in the 'fs.stat' function, which performs file system operations. If the 'url' variable contains a path traversal pattern (such as '/../'), it could lead to unauthorized file access or reading, which is a form of CWE-22 vulnerability. Therefore, it is recommended to validate and sanitize the 'url' variable before using it in file system operations.",not_buggy
+440," SE: The 'ze.getName()' is used to create a 'File' object 'outFile' without proper validation, which may lead to a Path Traversal vulnerability if 'en' contains '..' or '/..'.
+BL: `File outFile = new File(deployDir, en);`
+BUG FOUND: YES",not_buggy
+460," SE: The 'getThumbnailPath' function concatenates user-provided 'filePath' into the system path without proper validation.
+BL: `$thumbPath = $this->getThumbnailRoot() . DS . substr($filePath, strlen($mediaRootDir));`
+BUG FOUND: YES",not_buggy
+8754," SE: The code uses the 'asSimplexml()' function to parse an XML string without specifying a root element, which can lead to a path traversal vulnerability if the XML string is user-supplied.
+BL: `$xml = simplexml_load_string('<layout/>', $this->_elementClass`);
+BUG FOUND: YES",not_buggy
+443," SE: The 'filename' variable, which could contain user input, is used in the 'filepath.Join' function to form the full file path. This could potentially allow for path traversal attacks if user input is not properly sanitized.
+
+BL: `fname = filepath.Join(filename, m[0])`
+
+BUG FOUND: YES
+
+Note: The 'attemptsPathTraversal' function seems to be implementing some checks against path traversal attacks, but it's always better to be safe and sanitize user input before using it in file path formation.",not_buggy
+8759," SE: The 'pageGroupData[""layout_handle""]' is directly concatenated into XML content without sanitation.
+BL: `$layoutHandle = $pageGroupData['layout_handle'];` in the context of `if ($pageGroupData['page_id']) {`
+BUG FOUND: YES
+
+Explanation:
+This line is not directly vulnerable to path traversal, but it's included in the output since it's part of the code that handles user input ('pageGroupData[""layout_handle""]') which is later concatenated into XML content without proper sanitation. This could potentially lead to XML injection if an attacker can control the 'pageGroupData[""layout_handle""]' value.",not_buggy
+8855," SE: The 'file_requested' is directly concatenated into 'file_path' which is used as a file path. This could potentially lead to a path traversal vulnerability if 'file_requested' is user controlled.
+BL: `file_path = msprintf(""%s/%s"", ((struct _u_compressed_inmemory_website_config *)user_data)->files_path, file_requested);`
+BUG FOUND: YES",not_buggy
+8764," SE: The code reads files from a ZIP archive and extracts them to a specified directory. There is no direct user input that is concatenated into file paths, so there is no obvious instance of a path traversal vulnerability (CWE-22).
+
+BL: N/A
+
+BUG FOUND: NO",not_buggy
+8815," SE: The 'safe_join' function is used to join the 'flag_path' and 'flag_option' which might lead to a path traversal vulnerability if 'flag_path' is user-controlled.
+
+BL: `csv_data.append(interface.save_flagged(flag_path, app.interface.config[""input_components""][i][""label""], input_data[i], encryption_key))`
+
+BUG FOUND: YES",not_buggy
+8799," SE: The 'camera_unique_id', 'img_type', and 'filename' are directly concatenated into the file path without proper validation or sanitation, which may lead to a path traversal attack (CWE-22).
+BL: `path_file = os.path.join(path, filename)`
+BUG FOUND: YES",not_buggy
+448," SE: The 'localPath' variable is being directly concatenated into the file path string without proper checks or sanitization, which could potentially allow path traversal attacks (CWE-22).
+BL: `final String _path = localPath + Item.SEPARATOR + item.getPath();`
+BUG FOUND: YES",not_buggy
+8734," SE: The 'dataRepositoryPath' which is derived from user input, is concatenated into a file path without proper checks or sanitization.
+BL: `return Paths.get(dataRepositoryPath, relativeFilePath);` in the 'getDataFilePath' method.
+BUG FOUND: YES. This is a potential path traversal vulnerability (CWE-22) as the 'dataRepositoryPath' can be manipulated to access files outside of the intended directory. Proper validation and sanitization should be implemented to ensure 'dataRepositoryPath' points to a valid directory within the system.",not_buggy
+8724," SE: The 'plugin_name' is directly concatenated into a file path without sanitation and checked against a regular expression which only allows alphanumeric characters, underscores, and hyphens. However, this does not prevent path traversal attacks completely.
+BL: `$fn = ""$plugins_dir/$plugin_name/$plugin_name.php"";`
+BUG FOUND: YES",not_buggy
+8660," SE: The 'path' variable is being modified using 'strchr' and 'strncpy' functions without proper bounds checking, which may lead to a buffer overflow if the input is maliciously crafted.
+BL: `imap_fix_path(idata, mx.mbox, path, sizeof(path));`
+BUG FOUND: YES",not_buggy
+8751," SE: The 'p' variable, which is a pointer to the data buffer, is used in the calculation of the 'sdll' variable without proper bounds checking. This could potentially allow a path traversal attack if the data buffer is controlled by an attacker.
+BL: `sdll = get_unaligned_be32(&p[8]);`
+BUG FOUND: YES",not_buggy
+473," SE: The 'path' is being directly concatenated with user input '$name' without any sanitation or validation checks.
+BL: `$path = $this->_joinPath($path, $name);`
+BUG FOUND: YES",not_buggy
+8833," SE: The 'url\_' . $key variable is directly concatenated into $oldFile without sanitation, which may lead to a path traversal attack (CWE-22) if $key is user controlled and contains '..' sequences.
+BL: `$oldFile = $icmsObj->getUploadDir(true) . $icmsObj->getVar($key, 'e');`
+BUG FOUND: YES",not_buggy
+5219," SE: The 'tensor_filename' is being constructed with user-provided input ('tensor_name') which could potentially contain path traversal patterns.
+BL: `tensor_filename = f""{tensor_name}.bin""`
+BUG FOUND: YES
+
+Explanation:
+
+In the function 'create_external_data_tensor', the 'tensor_name' provided by the user is directly used to create a file name (tensor_filename) without any proper validation or sanitization. This could potentially allow an attacker to manipulate the 'tensor_name' to include path traversal patterns (such as ""/"" or "".."") and access sensitive files outside the intended directory.
+
+Solution:
+
+To mitigate this issue, you should sanitize the 'tensor_name' by removing any path traversal patterns before using it to create the file name. For example, you can use the 'os.path.basename' function to extract only the base name from the 'tensor_name' and use that to create the 'tensor_filename'.
+
+Fixed code:
+
+Replace this line:
+`tensor_filename = f""{tensor_name}.bin""`
+
+With this line:
+`tensor_filename = f""{os.path.basename(tensor_name)}.bin""`",not_buggy
+8895," SE: The 'minioReleaseURL' is constructed by concatenating several constant strings with the GOOS and GOARCH, which are obtained from the runtime package. There is no user input directly involved in this process. However, if an attacker can control the values of GOOS and GOARCH, they might be able to manipulate the URL to traverse to a restricted directory.
+
+BL: `minioReleaseURL = ""https://dl.min.io/server/minio/release/"" + minioOSARCH + SlashSeparator`
+
+BUG FOUND: NO.
+
+While it is possible to manipulate the GOOS and GOARCH variables, it is not a straightforward path traversal vulnerability as the SlashSeparator constant is added at the end, and the URL points to a specific path on the dl.min.io domain. Therefore, it is unlikely to be exploitable for path traversal attacks.",not_buggy
+5192," SE: The code constructs a log message using the query string which may include user input without proper sanitation.
+BL: `$error_report = ""QSF Portal has intercepted a possible attack!\nThe details are as follows:\n\nURL: $https"" . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'] . ""?"" . $qstring . ""\n"";`
+BUG FOUND: YES
+Explanation:
+The variable $qstring in the above line is directly concatenated into the URL without any sanitation. If user input is included in the query string, it could lead to a path traversal vulnerability (CWE-22). Although the function log_hostile_action is only called when certain conditions are met, it's still important to ensure that user input is always properly sanitized to prevent any potential security issues.",not_buggy
+8691," SE: The 'iSurveyID' variable which is derived from user input is concatenated directly into the file path without proper sanitization, which could potentially lead to a path traversal attack (CWE-22).
+BL: `$aZIPFileName = $sTempDir.DIRECTORY_SEPARATOR.randomChars(30);`
+BUG FOUND: YES",not_buggy
+432," SE: The 'um_path' is directly concatenated into the file path without any sanitation or validation, which could potentially lead to a path traversal vulnerability (CWE-22).
+BL: `$file = um_path . ""templates/{$tpl}.php"";`
+BUG FOUND: YES",not_buggy
+8883," SE: The 'hub_current_server.service\_name' is directly concatenated into the command string without sanitation.
+BL: `command = ""sudo systemctl start "" + hub_current_server.service_name`
+BUG FOUND: YES
+
+SE: The 'hub_current_server.service\_name' is directly concatenated into the command string without sanitation.
+BL: `command = ""sudo systemctl stop "" + hub_current_server.service_name`
+BUG FOUND: YES
+
+SE: The 'hub_current_server.service\_name' is directly concatenated into the command string without sanitation.
+BL: `command = ""sudo systemctl restart "" + hub_current_server.service\_name`
+BUG FOUND: YES
+
+SE: The 'hub_current_server.path', 'hub_current_server.branch\_name', 'hub_current_server.dream_maker_binary', and 'hub_current_server.dme\_name' are directly concatenated into the update\_script string without sanitation.
+BL: `update_script = ''' cd {path} git fetch origin {branch} git checkout -f FETCH_HEAD {dreammaker} -clean {dme}'''`
+BUG FOUND: YES",not_buggy
+8709," SE: The '$_GET['file']' is used in the 'path_join' function to create the $stream_full_path variable, which may lead to a path traversal vulnerability if '$_GET['file']' is user controlled.
+BL: `$stream_full_path = path_join($stream_path, $stream_file);`
+BUG FOUND: YES
+
+Explanation:
+The code is potentially vulnerable to a path traversal attack through the $stream_full_path variable, which is constructed using the user-supplied '$_GET['file']' variable. Although the code attempts to sanitize the path by removing '..' patterns, it is generally recommended to avoid using user-supplied input in file path construction when possible. To mitigate the risk, consider using a predefined list of allowed filenames or a more robust sanitization method.",not_buggy
+8716," SE: The '$folder' variable is directly concatenated into the 'realPath' variable which represents a file path.
+BL: `$realPath = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . $folder;`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL: `$childRealPath = realpath(Yii::getPathOfAlias('basePath') . $childRelativePath);`
+BUG FOUND: YES
+
+SE: The '$childRelativePath' variable is directly concatenated into the '$childRealPath' variable which represents a file path.
+BL:",not_buggy
