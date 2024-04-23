@@ -1,0 +1,726 @@
+file_id,model_output,type
+4268,"SE: The parameter `params[:sol]` is directly used in the SQL query without proper sanitization, which may lead to SQL injection vulnerability.
+BL: @images = Image.where(sol: params[:sol])",buggy
+399,"SE: The user input variables $uemail and $upass are directly concatenated into the SQL query without proper sanitization, making the code vulnerable to SQL Injection attacks.
+
+BL: $query=""select * from admin where email='$uemail' and password='$upass'"";",buggy
+8592,"SE: The user input in the $search array is directly used in the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: return $query->where($search);",buggy
+339,"SE: The variable `$name` is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection attacks.
+BL: $query = ""INSERT INTO Highscores VALUES ($id, '$name', $score)"";",buggy
+353,"SE: The 'params[:user]' in the line `@user = User.find_by(params[:user])` may contain user input that is not properly sanitized, making it vulnerable to SQL injection.
+BL: @user = User.find_by(params[:user])",buggy
+341,"SE: The variable `$key` from the `$_GET` superglobal is directly concatenated into the SQL query without proper sanitization, which may lead to SQL Injection vulnerability.
+BL: $result = mysqli_query($con,""SELECT * FROM users where secret = '$key' and authused=1"");",buggy
+371,"SE: The SQL query in line 5 may contain a bug of type CWE-89 as user input ($vbulletin->userinfo['userid']) is directly concatenated into the query without proper sanitization.
+
+BL: $usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `userid` = '"" . $vbulletin->userinfo['userid'] . ""'"");",buggy
+369,"SE: The `$_POST['referrername']` variable is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `username` = '"" . $_POST['referrername'] . ""'"");",buggy
+8622,"SE: The line may contain a bug of type CWE-89 because user input ($_POST['custom_css_code']) is directly assigned to another variable without proper sanitization.
+BL: `$_POST['custom_css_code'] = $_UPOST['custom_css_code'];`",buggy
+345,"SE: The variable $symbol is directly concatenated into the SQL query without proper sanitization, making the code vulnerable to SQL Injection attacks.
+
+BL: $query = ""select date, EOD, MA20, MA50, delta, deltaMA5, deltaMA10, deltaMA20, P0, P1, P2, M1, M2, M3 from $symbol where date >= $startDate and date <= $endDate order by date DESC"";",buggy
+8643,"SE: The line may contain a bug of type CWE-89 because user input ($_POST['action']) is directly used in a method call without proper sanitization.
+BL: `if (method_exists($plugin, $_POST['action'])) {`",buggy
+316,"SE: The query in the `getByName` method may contain a bug of type CWE-89 because the variable `$name` is directly concatenated into the SQL query without proper sanitization.
+BL: `return self::getForQueryString(""SELECT * FROM \""DevNewsAggregatorConfiguration_htmlcontent\"" WHERE name = $name"");`",buggy
+356,"SE: The 'username' and 'password' variables are directly concatenated into the SQL query without proper sanitization, making the code vulnerable to SQL injection attacks.
+BL: conn.query(""INSERT INTO user (username, password) VALUES ('""+username+""', '""+password+""')"", function (err, result) {",buggy
+404,"SE: The `$_POST['itemtype']` variable is directly used in the SQL query without proper sanitization, which may lead to SQL injection.
+BL: $already_pinned = $all_pinned[$_POST['itemtype']] ?? 0;",buggy
+336,"SE: The SQL query in the line may contain a bug of type CWE-89 as it directly concatenates user input into the query without proper sanitization.
+BL: $sql = ""select * from sample order by \""{$sort}\"" {$direction}"";",buggy
+314,"SE: The SQL query in the `_Load_Users` function concatenates the `$sort` variable directly into the query without proper sanitization, which may lead to a SQL injection vulnerability.
+BL: $sql = ""SELECT
+							u.*,
+							CONCAT( u.fname, ' ', u.lname ) AS name,
+							( SELECT COUNT( * ) FROM failed_logins WHERE email = u.email ) AS failed_logins,
+							( SELECT COUNT( * ) FROM sessions WHERE userid = u.id ) AS active_sessions,
+							COUNT( g.id ) AS remaining
+						FROM
+							users u
+							LEFT OUTER JOIN games g ON 1 = 1
+							LEFT OUTER JOIN picks p ON p.game_id = g.id AND p.user_id = u.id
+						WHERE
+							g.week = ? AND
+							p.id IS NULL
+						GROUP BY
+							u.id
+						ORDER BY
+							{$sort} {$direction}"";",buggy
+311,"SE: The line may contain a bug of type CWE-89 because user input ($_SERVER[""QUERY_STRING""]) is directly concatenated into the SQL query without proper sanitization.
+BL: $query = sprintf(""SELECT id, redirect_to FROM short_links WHERE short_link = '%s' 
+                    ORDER BY id DESC LIMIT 1"", $mysqli->real_escape_string($_SERVER[""QUERY_STRING""]));",buggy
+365,"SE: The user input from $_GET['id'] is directly concatenated into the SQL query without proper sanitization.
+BL: mysql_query(""DELETE FROM contract_signer_role WHERE id="".$_GET['id']);",buggy
+331,"SE: The 'msg' variable is directly concatenated into SQL queries without proper sanitization, making the code vulnerable to SQL injection attacks.
+BL: query = 'SELECT id FROM paises WHERE nome == ""%s""' % (msg)",buggy
+366,"SE: The user input from $_GET['id'] is directly concatenated into the SQL query without proper sanitization.
+BL: mysql_query(""DELETE FROM webfinance_pref WHERE id_pref="".$_GET['id']);",buggy
+337,"SE: None
+
+BL: None",buggy
+319,"SE: The 'where' parameter in the GetAnimal method is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $query = $query . $whereCondition . ' LIMIT 1';",buggy
+8546,"SE: The 'statement' variable is being manipulated without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $this->statement = substr(str_replace(""'"", """", $statement),0,1000).""n"";",buggy
+367,"SE: The 'id' parameter in the DELETE query is directly concatenated without proper sanitization.
+BL: mysql_query(""DELETE FROM webfinance_roles WHERE id_role="".$_GET['id']);",buggy
+396,"SE: The function freedomrss_search may contain a bug of type CWE-89 as user input is concatenated directly into the SQL query without proper sanitization.
+BL: $filter[0] = ""(title ~* '"" . pg_escape_string($str) . ""')"";",buggy
+350,"SE: The SQL query in the function count_rna may contain a bug of type CWE-89 as the $name variable is directly concatenated into the query without proper sanitization.
+BL: $total = $this->db->query(""SELECT count(*) FROM mirna WHERE Name LIKE '%$name%'"");",buggy
+373,"SE: The 'value' parameter is directly concatenated into the SQL query without proper sanitization.
+BL: `MySQLiteHelper.TAGS_COLUMN_TAG + "" = '"" + tag.getValue() + ""'""`",buggy
+8539,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $query    = ""SELECT `id`, `name`
+             FROM `glpi_crontasks`
+             WHERE `state` = '"".Crontask::STATE_RUNNING.""'
+                   AND unix_timestamp(`lastrun`) + $cycle * `frequency` < unix_timestamp(now())"";",buggy
+326,"SE: The user input for the email search is directly concatenated into the SQL query without proper sanitization.
+BL: emails = Email.where(""email LIKE '%#{email}%'"")",buggy
+370,"SE: The 'user_input' is directly concatenated into SQL queries without proper sanitization.
+BL: None.",buggy
+348,"SE: The 'user_input' is directly concatenated into SQL queries without proper sanitization.
+BL: None.",buggy
+377,"SE: The line may contain a bug of type CWE-89 because user input ($_GET[""user""]) is directly concatenated into the SQL query without proper sanitization.
+BL: $query = ""SELECT `password` FROM `admin_users` WHERE `name` = '"".$_GET[""user""].""';"";",buggy
+8607,"SE: The line may contain a bug of type CWE-89 because user input ($_POST[""U""], $_POST[""M""], $_POST[""P""]) is directly concatenated into an SQL query without proper sanitization.
+BL: $sql = 'INSERT INTO User (Username, Mail, Password, Type) VALUES ('.""'"".$_POST[""U""].""'"".','.""'"".$_POST[""M""].""'"".','.""'"".password_hash($_POST[""P""],PASSWORD_DEFAULT).""'"".',0);';",buggy
+362,"SE: The SQL query in the `checkItemBelongs` method concatenates the `$this->iid` variable directly into the query without proper sanitization, which may lead to SQL injection vulnerabilities.
+
+BL: `$result=$this->db_query(""SELECT sessions.user_id
+            FROM $DB[sessions], $DB[items]
+            WHERE sessions.user_id=items.user_id
+                AND item_id=$this->iid
+                AND session_id='$this->sid'
+            LIMIT 1"");`",buggy
+8610,"SE: The user input ($_GET[""Name""] and $_GET[""Mail""]) is directly concatenated into the SQL query without proper sanitization, making the code vulnerable to SQL injection attacks.
+
+BL: 
+```php
+$sql = ""SELECT * FROM User WHERE Username='"".$_GET[""Name""].""';"";
+```
+```php
+$sql = ""SELECT * FROM User WHERE Mail='"".$_GET[""Mail""].""';"";
+```",buggy
+8621,"SE: The 'username' variable is not properly sanitized before being concatenated into the SQL query, which may lead to SQL injection vulnerabilities.
+BL: `$where .= "" and username like '%{$username}%' "";`",buggy
+310,"SE: The line may contain a bug of type CWE-89 because the 'email' variable is directly concatenated into the SQL query without proper sanitization.
+BL: connection.query(""select * from users where email = '"" + email + ""'"", function (err, rows) {",buggy
+342,"SE: The SQL query on line 41 may contain a bug of type CWE-89 as it directly concatenates user input ($_POST['gambleMoney']) into the query without proper sanitization.
+BL: $result = $dbCon->query('SELECT cash FROM users WHERE session_id = ""' . $userData['session_id'] . '""');",buggy
+340,"SE: The line may contain a bug of type CWE-89 because it directly concatenates the $year variable into the SQL query without proper sanitization.
+BL: WHERE berichte.state=1 AND berichte.date1 LIKE \''.$year.'%\'
+
+It is important to sanitize user input before directly using it in SQL queries to prevent SQL injection vulnerabilities.",buggy
+329,"SE: The SQL query strings are constructed using user input without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None.",buggy
+361,"SE: The line may contain a bug of type CWE-89 because user input ($table) is directly concatenated into the SQL query without proper sanitization.
+BL: $query = 'SELECT * FROM `wuersch`.`' . $table . '` WHERE ';",buggy
+4080,"SE: The `order=(input)` method may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because the `input` parameter is directly used in the SQL query without proper sanitization.
+BL: `@order = ORDER_BY_OPTIONS.include?(input) ? input : default_order`",buggy
+4626,"SE: The line may contain a bug of type CWE-89 because user input 'q' is directly concatenated into an SQL query without proper sanitization.
+BL: cursor.execute(""SELECT id,title,artist,cover FROM recordstoreapp_record WHERE title like '%"" + q + ""%' or artist like '%"" + q + ""%' or label like '%"" + q + ""%' or cat_no like '%"" + q + ""%';"")",buggy
+357,"SE: The 'id1' and 'id2' variables are directly concatenated into an SQL query without proper sanitization.
+BL: `cursor.execute(sql_function+sql_inside_of_function+"",""+str(id1)+"",""+str(id2)+"", true,true) join \""Data_minnesotabiketrails\"" as bt on bt.id=id2"")`",buggy
+4092,"SE: The 'word' parameter is directly concatenated into the SQL query without proper sanitization.
+BL: String query = ""select * from news n ""
+    			+ ""inner join newshighlights h on n.newsid=h.newsid and h.highlight like '%murder%' order by date desc"";",buggy
+364,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $query = ""SELECT * FROM  users where userName='$username' and userPassword='$password'"";",buggy
+368,"SE: The line may contain a bug of type CWE-89 because user input ($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['tel'], $_POST['mobile'], $_POST['fonction'], $_POST['note'], $_POST['id_personne'], $_POST['client']) is directly concatenated into the SQL query without proper sanitization.
+BL: None.",buggy
+8532,"SE: The `$_POST` variables are directly concatenated into SQL commands without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None.",buggy
+8511,"SE: None
+BL: None",buggy
+8630,"SE: The line may contain a bug of type CWE-89 because the SQL query is constructed by directly concatenating user-controlled input (the 'word' variable) without proper sanitization.
+BL: cursor.execute(f""SELECT term FROM terms WHERE term > \""{floor}\"" AND term < \""{ceiling}\"" AND term LIKE \""{word}%%\"" ORDER BY length(term),term LIMIT {requested_limit}"")",buggy
+4743,"SE: The 'title' parameter in the function findPostWhereLikeNameTitle may contain user-controlled input that is directly concatenated into an SQL query without proper sanitization.
+BL: $where .= "" (post_type = 'post' OR post_type = 'page') AND post_status = 'publish' AND (post_name like '%"".$title.""%' OR post_title like '%"".$title.""%')"";",buggy
+8584,"SE: The SQL query in the `get_info` method concatenates user input directly into the query without proper sanitization, making it vulnerable to SQL injection.
+BL: $sql        = ""SELECT * FROM `$table_name` WHERE `id`='$object_id'"";",buggy
+306,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $db->exec('INSERT INTO highscore (name, score, level, date, log_referer, log_user_agent, log_remote_addr, log_remote_host, cheater) '
+		. 'VALUES (""' 
+			. $name . '"", ' 
+			. $score . ', ' 
+			. $level . ', ""' 
+			. $date . '"", ""' 
+			. $ref .'"", ""'
+			. $ua . '"", ""'
+			. $remA .'"", ""'
+			. $remH . '"", ""'
+			. $cheater
+		.'"")'
+	);",buggy
+391,"SE: The SQL query in the line may contain a bug of type CWE-89 as it directly concatenates user input into the query without proper sanitization.
+BL: `$segmentIds = \Pimcore\Db::get()->fetchOne(""SELECT `segments` FROM $assignmentTable WHERE `elementId` = ? AND `elementType` = ?"", [$id, $type]);`",buggy
+8614,"SE: The line may contain a bug of type CWE-89 because user input ($_GET[""Name""]) is directly concatenated into an SQL query without proper sanitization.
+BL: $sql = ""SELECT * FROM User WHERE Username='"".mysqli::real_escape_string($_GET[""Name""]).""';"";",buggy
+8639,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `REPLACE INTO ' . _DB_PREFIX_ . 'smarty_cache (id_smarty_cache, name, cache_id, content)
+		VALUES (
+			""' . pSQL($id, true) . '"",
+			""' . pSQL(sha1($name)) . '"",
+			""' . pSQL($cache_id, true) . '"",
+			""' . pSQL($content, true) . '""
+		)'`",buggy
+354,"SE: The SQL query in the `GetCountryCoor` class may contain a bug of type CWE-89 because the `$country_code` variable is directly concatenated into the SQL query without proper sanitization.
+BL: 
+```php
+$sql = ""SELECT lat, lng
+        FROM country_name_map
+        WHERE code = '$country_code'"";
+```
+```",buggy
+401,"SE: The variable `$vars['address']` is directly concatenated into the SQL query without proper sanitization.
+BL: `[$address,$prefix] = explode('/', $vars['address']);`",buggy
+358,"SE: The `$_GET['s']` parameter is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection.
+BL: $haku_s = mysqli_query($yht, ""SELECT * FROM `sivut` WHERE uid = '"".$_GET['s'].""' LIMIT 1"");",buggy
+359,"SE: The SQL query in the authenticate method may contain a bug of type CWE-89 because the password parameter is concatenated directly into the query without proper sanitization.
+BL: String sql = ""SELECT * FROM "" + table + "" WHERE ""
+					+ columns.get(""username"") + ""= ? AND ""
+					+ columns.get(""password"") + ""= '?'"";",buggy
+8555,"SE: The `within_bounding_box` method may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because it directly concatenates user input into the SQL query without proper sanitization.
+BL: `spans = ""#{lat_attr} BETWEEN #{sw_lat} AND #{ne_lat} AND ""`",buggy
+8599,"SE: The line may contain a bug of type CWE-89 because user input ($job_id) is directly concatenated into an SQL query without proper sanitization.
+BL: `$sql = 'INSERT INTO plugin_hudson_widget (widget_name, owner_id, owner_type, job_id) VALUES (""' . $this->id . '"", ' . $this->owner_id . "", '"" . $this->owner_type . ""', "" . db_escape_int($job_id) . "" )"";`",buggy
+321,"SE: The user input from the query string is directly concatenated into the SQL query without proper sanitization.
+BL: $query  = ""SELECT * FROM $robustDB.regions WHERE regionName='$region';"";",buggy
+8504,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `$query .= ""WHERE Job.Name = '$jobname' AND Job.JobStatus = 'T' AND Job.Type = 'B' "";`",buggy
+8571,"SE: The variable `$device_id` is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: `$query = ""SELECT * FROM `devices` WHERE `device_id` = $device_id LIMIT 1"";`",buggy
+376,"SE: The `safeForSql` function is used to check for SQL injection vulnerabilities, but there is a potential vulnerability in the line where the `safeForSql` function is called with the `ps.tag` parameter without proper validation.
+
+BL: `if (!safeForSql(ps.tag)) throw 'Injection';`",buggy
+8598,"SE: The SQL query in the `save` method may contain a bug of type CWE-89 (SQL Injection) because user input is directly concatenated into the SQL query without proper sanitization.
+BL: $sql = ""REPLACE INTO plugin_cardwall_on_top_column_mapping_field_value (cardwall_tracker_id, tracker_id, field_id, value_id, column_id)
+                VALUES ($cardwall_tracker_id, $tracker_id, $field_id, $value_id, $column_id)"";",buggy
+334,"SE: The 'name' variable is directly concatenated into an SQL query without proper sanitization.
+BL: keks = self.DBcursor.execute(u""SELECT nickname, count from kekse WHERE nickname like '%s' AND item =='%s' LIMIT 1"" % (name, item)).fetchall()",buggy
+8625,"SE: The 'filterFullText' parameter is directly concatenated into the SQL query without proper sanitization.
+BL: `$conditionFilters[] = 'path LIKE ' . $list->quote('%'. $list->escapeLike($request->get('filterFullText')) .'%');`",buggy
+394,"SE: None
+BL: None",buggy
+346,"SE: The query string in the line may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection).
+BL: `$query = ""UPDATE `#instances` SET "". ""`VERSION_STRING` = '"".$res_searx_version.""', "". ""`RETURN_CODE` = '"".$res_http_code.""', "". ""`LAST_UPDATE` = '"".date('Y-m-d H:i:s',$res_timestamp).""' "". ""WHERE `#instances`.`ID` ="".$single_instance['id']."";"";`",buggy
+335,"SE: The SQL query in the line may be vulnerable to SQL injection as it directly concatenates user input without proper sanitization.
+BL: $sql = 'SELECT word_id FROM ' . SEARCH_WORDLIST_TABLE . ' WHERE word_text = ""' . $word . '""';",buggy
+330,"SE: The 'fetch' parameter from the GET request is not properly sanitized before being used in a SQL query, which may lead to SQL injection.
+BL: None.",buggy
+338,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: None.",buggy
+8637,"SE: The 'id_wishlist' parameter in the line may not be properly sanitized, leading to a possible SQL injection vulnerability.
+BL: `$querySearch->where('wp.id_wishlist = ' . (int) $this->wishList->id);`",buggy
+383,"SE: The 'login' variable is directly concatenated into the SQL query without proper sanitization.
+BL: $userInfoRes = $this->select(""SELECT id, pw, public_key, private_key, personal_folder, fonction_id, groupes_visibles, groupes_interdits, user_api_key FROM "" . prefixTable('users') . "" WHERE login='"".$login.""'"");",buggy
+372,"SE: The 'crawler_ip' and 'crawler_useragent' variables are directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $this->crawler_info = $this->dbhandle->query(""SELECT crawler_ip FROM crawlers WHERE crawler_ip='$ip' AND crawler_useragent='$useragent'"");",buggy
+313,"SE: The 'caption' variable is directly concatenated into the SQL query without proper sanitization.
+BL: `$sql = ""insert into PHOTO values (member_seq.nextval, '$caption', $owner, $loc_id, $timing_id, $pos_id, systimestamp)"";`",buggy
+320,"SE: The line may contain a bug of type CWE-89 because user input (username) is directly concatenated into the SQL query without proper sanitization.
+BL: var strQuery = ""SELECT * FROM adult WHERE username= '"" +connection.escape(username)+""'"";",buggy
+4673,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: q = ""select * from cards where cc_number = '%s'"" % cc_number.replace('-', '')",buggy
+8588,"SE: The 'user_id' parameter in the SQL query may not be properly sanitized, leading to a possible SQL injection vulnerability.
+BL: None.",buggy
+324,"SE: The `$requestData` variable is directly used in SQL queries without proper sanitization.
+BL: None.",buggy
+390,"SE: The 'id' variable is directly concatenated into the SQL query without proper sanitization.
+BL: $estmt = $edb->conn->query(""SELECT email, username FROM $tbl_name WHERE id = '$id'"");",buggy
+322,"SE: The line may contain a bug of type CWE-89 because user input ($_POST['D2files']) is directly concatenated into the SQL query without proper sanitization.
+BL: `$model->attributes = $_POST['D2files'];`",buggy
+318,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `Settings::$sql->query(""replace into sio_sessiondata (sid,name,value,session) values ('"" . static::$sqlsess . ""','{$sqlnam}',{$value},{$sonly})"");`",buggy
+333,"SE: The 'peer_id' parameter is directly concatenated into an SQL query without proper sanitization.
+BL: mysql_query('INSERT INTO `peer` (`peer_id`, `user_agent`, `ip_address`, `key`, `port`) ' . ""VALUES ('"" . mysql_real_escape_string(bin2hex($_GET['peer_id'])) . ""', '"" . mysql_real_escape_string(substr($_SERVER['HTTP_USER_AGENT'], 0, 80)) . ""', INET_ATON('"" . mysql_real_escape_string($_SERVER['REMOTE_ADDR']) . ""'), '"" . mysql_real_escape_string(sha1($_GET['key'])) . ""', "" . intval($_GET['port']) . "") "" . 'ON DUPLICATE KEY UPDATE `peer_id`=VALUES(`peer_id`), `user_agent` = VALUES(`user_agent`), `ip_address` = VALUES(`ip_address`), `key`=VALUES(`key`), `port` = VALUES(`port`), `id` = LAST_INSERT_ID(`peer`.`id`)') or die(track('Cannot update peer: '.mysql_error()));",buggy
+351,"SE: The line may contain a bug of type CWE-89 because it concatenates user input directly into a SQL query without proper sanitization.
+BL: None.",buggy
+8596,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL commands without proper sanitization.
+BL: None.",buggy
+403,"SE: The `filter_materialized_view` function may contain a bug of type CWE-89 because it directly concatenates the `state_code` variable into the SQL query without proper sanitization.
+BL: `filter_cond = f"" WHERE {view_name}.{key}='{state_code}'""`",buggy
+325,"SE: None
+BL: None",buggy
+385,"SE: The 'searchname' variable is directly concatenated into an SQL query without proper sanitization.
+BL: $searchnum = get_item($mydbh, ""userid"", ""accounts"", ""username"", $searchname);",buggy
+307,"SE: The 'field' key in the $filters array is directly concatenated into the SQL query without proper sanitization.
+BL: None.",buggy
+317,"SE: None
+BL: None",buggy
+303,"SE: The `saveEvent` function may contain a bug of type CWE-89 because user input (`id`, `userID`, `body`, `eventType`, `hidden`, `timestamp`, `image`, `link`, `title, and `subtitle`) is directly concatenated into an SQL query without proper sanitization.
+BL: `stmt, err := tx.Prepare(""INSERT INTO messages(id, user_id, body, eventType, hidden_at, timestamp, image, link, title, subtitle) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"")`",buggy
+378,"SE: The SQL query in the line may contain a bug of type CWE-89 due to improper neutralization of special elements.
+BL: `$wpdb->get_results( 'SELECT * FROM '.$wpdb->prefix.$this->table_items .' WHERE id='.$this->item);`",buggy
+375,"SE: The 'key' and 'val' variables are concatenated directly into SQL queries without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None.",buggy
+8635,"SE: The 'condition' parameter in the `addConditionParam` method is directly concatenated into the SQL query without proper sanitization.
+BL: None.",buggy
+402,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: None.",buggy
+405,"SE: The line may contain a bug of type CWE-89 because user input ($_REQUEST['page']) is directly concatenated into the HTML content without proper sanitization.
+BL: `$page = sanitize_text_field($_REQUEST['page']);`",buggy
+407,"SE: The 'dni_profe' parameter in the line may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection).
+BL: mysqli_query($db_con, ""delete from departamentos where dni = '"".$_GET['dni_profe'].""'"");",buggy
+8545,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into an SQL query without proper sanitization.
+BL: $exist = $wpdb->get_row( ""SELECT `page_id` FROM `"" . DB::table( 'pages' ) . ""` WHERE `date` = '"" . TimeZone::getCurrentDate( 'Y-m-d' ) . ""' "" . ( array_key_exists( ""search_query"", $current_page ) === true ? ""AND `uri` = '"" . $page_uri . ""'"" : """" ) . ""AND `type` = '{$current_page['type']}' AND `id` = {$current_page['id']}"", ARRAY_A );",buggy
+379,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $q = ""select l.lid, l.cid, l.title, l.ext, l.res_x, l.res_y, l.bgcolor, l.status, l.members, l.date, l.hits, l.rating, l.votes, l.comments, l.submitter, t.description, l.gametype, l.license, l.classfile from "".$xoopsDB->prefix(""flashgames_games"")."" l, "".$xoopsDB->prefix(""flashgames_text"")."" t where l.lid=$lid and l.lid=t.lid and status>0"";",buggy
+4931,"SE: The `query` method directly concatenates the `query_string` variable into the SQL command without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: `proxy = cursor.execute(qs, query_data)`",buggy
+8916,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into an SQL query without proper sanitization.
+BL: None.",buggy
+408,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into an SQL query without proper sanitization.
+BL: 'SELECT * FROM ' . static::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\''",buggy
+315,"SE: The 'searchstring' parameter in the SQL query may not be properly sanitized, leading to a possible SQL injection vulnerability.
+BL: $query = ""SELECT * FROM domain AS a WHERE domain_name LIKE '%"".$_GET['searchstring'].""%' AND "".$allowed_domains1.""') ORDER BY domain_name"";",buggy
+305,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `$q = ""SELECT id, name, form FROM "".$_SESSION['dbprefix'].""people WHERE "". implode(' AND ', $w) .""  ORDER BY name ASC LIMIT 0, 50"";`",buggy
+393,"SE: The line may contain a bug of type CWE-89 because the variable `$type` is directly concatenated into the SQL query without proper sanitization.
+BL: `$sql = ""SELECT id FROM scheduled_report_types WHERE identifier="".$db->escape($type);`",buggy
+8535,"SE: The SQL query in the `getCoursesToAvoid` method may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because the `$extraFieldType` variable is directly concatenated into the SQL query without proper sanitization.
+BL: `$sql = ""SELECT item_id FROM $TABLE_COURSE_FIELD_VALUE tcfv
+                INNER JOIN $TABLE_COURSE_FIELD tcf
+                ON tcfv.field_id =  tcf.id
+                WHERE
+                    tcf.extra_field_type = $extraFieldType AND
+                    tcf.variable = 'hide_from_catalog' AND
+                    tcfv.value = 1
+                "";`",buggy
+392,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `$GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_mhhttpbl_blocklog', 'block_ip = '.$GLOBALS['TYPO3_DB']->fullQuoteStr(t3lib_div::_GP('delete'), 'tx_mhhttpbl_blocklog'));`",buggy
+384,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $queryCondition = '( MATCH (`data`,`properties`) AGAINST (' . $db->quote($query) . ' IN BOOLEAN MODE) )';",buggy
+4627,"SE: The line may contain a bug of type CWE-89 because the `nome` variable is directly concatenated into the SQL query without proper sanitization.
+BL: `private final String stmtBuscarNome = ""select * from Cliente where nome like "";`",buggy
+8541,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into SQL queries without proper sanitization.
+BL: $query = ""SELECT * FROM users WHERE id=?"";",buggy
+8566,"SE: The method `setValue` allows user input to be directly set as a new value for a column in the database table without proper validation, potentially leading to SQL injection.
+BL: None.",buggy
+323,"SE: The 'id' parameter in the URL is directly concatenated into the SQL query without proper validation or sanitization.
+BL: var query = connection.query('SELECT Section.id, Section.name AS secname, Section.description AS secdesc, Survey.title AS stitle, Survey.description AS sdesc, Survey.id AS sid, Survey.holder from Section,Survey WHERE Survey.sectionId=Section.id AND Section.status=1 AND Survey.status=1 AND sectionId='+id, function(err, rows, fields) {",buggy
+8611,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: None.",buggy
+304,"SE: The 'query' parameter is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection attacks.
+BL: `String SQL = ""SELECT bible.*,book.book_name FROM "" + bible.getTableName() + "" as bible left join "" + book.getTableName() + "" as book on bible.book_id=book.book_id where "" + condition + "" order by bible.book_id,bible.chapter_id limit "" + startIndex + "","" + pageSize;`",buggy
+4155,"SE: The 'req.params.shortname' is directly concatenated into the SQL query without proper sanitization.
+BL: `connection.query('SELECT * FROM bi_posts where shortname = ' + connection.escape(req.params.shortname), function(err, rows) {`",buggy
+309,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: `tx.nonquery(""SELECT COUNT(*) FROM users WHERE userid = ? AND gsbrcd = ?"", (userid, gsbrcd))`",buggy
+8641,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL command without proper sanitization.
+BL: `connection.query(sql, params, function(err, data) {`",buggy
+4738,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into a SQL query without proper sanitization.
+BL: None.",buggy
+312,"SE: The 'user_stats_dict' dictionary is used to populate SQL queries without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None.",buggy
+8633,"SE: The `connString` variable is constructed by concatenating user-controlled inputs without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: `connString := fmt.Sprintf(""host=%s port=%d user=%s dbname=%s sslmode=%s password=%s"", config.Host, config.Port, config.User, config.Name, config.SSLMode, config.Password)`",buggy
+349,"SE: The SQL queries in the `getStudentGrades`, `getStudentAbsences`, `getStudentNotes`, `getStudentSubjects`, `getTeacherSubjects`, `getSubjectStudents`, `addStudentGrade`, `addStudentNote`, `addStudentAbsence`, `addCompletedLesson`, `addStudent`, `addclass`, `addTeacher`, `addSubject`, `addScheduleLesson`, `yearEnd`, `deactivateStudent`, `addStudentUser`, `addTeacherUser`, `signIn`, `getLessonShedule`, `getStudentsWithoutUser`, `getTeachersWithoutUser`, `changeStudentPassword`, `changeTeacherPassword`, `getActivities`, `getLessonsByDate`, `getStudentsByLesson`, `getAllClasses`, `getAllStudents`, `getAllStudentsByAdmin`, `getTeachersWithoutClass`, `getAllTeachers`, `getTeacherSchedule` methods concatenate user inputs directly into SQL queries, making them vulnerable to SQL Injection attacks.
+BL: None.",buggy
+360,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL command without proper sanitization.
+BL: `cursor.execute(""SELECT id, type, replace(url, '%OWNER%', %s) FROM portrepositories WHERE id = %s AND ( username = %s OR username IS NULL )"", ( req.authname, self.repository, self.owner ))`",buggy
+387,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: None.",buggy
+8629,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into a SQL query without proper sanitization.
+BL: None.",buggy
+352,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: None.",buggy
+374,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: None.",buggy
+8575,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: None.",buggy
+400,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: None.",buggy
+398,"SE: The 'filterJson' parameter is used in the 'getFeatureAndSlugFilters' method without proper sanitization, which may lead to SQL injection.
+BL: $filters = json_decode($filterJson, true);",buggy
+8606,"SE: The line may contain a bug of type CWE-89 because user input ($_branch) is directly concatenated into an SQL query without proper sanitization.
+BL: `$branch_str = ""AND cvs_checkins.branchid="" . db_ei($_branch);`",buggy
+8544,"SE: The 'params' array is directly used in the `makeLink` method without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None",buggy
+8572,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL commands without proper sanitization.
+BL: None.",buggy
+8917,"SE: The 'QUERY_DATAGRID_BROWSE_FOR_CATEGORY' line may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because the category_id parameter is directly concatenated into the SQL query without proper sanitization.
+BL: const QUERY_DATAGRID_BROWSE_FOR_CATEGORY =
+        'SELECT i.id, i.revision_id, i.title, UNIX_TIMESTAMP(i.publish_on) AS publish_on, i.user_id, i.num_comments AS comments
+         FROM blog_posts AS i
+         WHERE i.category_id = ? AND i.status = ? AND i.language = ?';",buggy
+388,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: None.",buggy
+386,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into a SQL query without proper sanitization.
+BL: None.",buggy
+8638,"SE: The 'id' and 'type' parameters are directly concatenated into an SQL query in the `validate()` method, which may lead to an SQL Injection vulnerability.
+
+BL: $type = $this->input->post('type', TRUE);     //Mandatory field checked by frontend
+$id = $this->input->post('id', TRUE);     //Mandatory field checked by frontend
+
+This line concatenates the 'id' and 'type' parameters directly into an SQL query without proper sanitization, making it vulnerable to SQL Injection.",buggy
+8512,"SE: The 'search' parameter values are directly concatenated into the SQL query without proper sanitization, which can lead to SQL injection vulnerabilities.
+BL: $sall=trim((GETPOST('search_all', 'alphanohtml')!='')?GETPOST('search_all', 'alphanohtml'):GETPOST('sall', 'alphanohtml'));",buggy
+8591,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: None.",buggy
+4767,"SE: The 'post_id' parameter in the AJAX callback function may contain unsanitized input from the user, which can lead to SQL Injection.
+BL: `function ajax_callback($post_id)`",buggy
+8527,"SE: The 'query' method may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because user input is directly concatenated into the SQL query without proper sanitization.
+BL: `public function query($str, $fetchSql = false, $master = false)`",buggy
+8616,"SE: The `deletePropertyAction` method may contain a bug of type CWE-89 because user input (`id`) is directly used in a database query without proper validation or sanitization.
+BL: `$id = $request->get('id');`",buggy
+4268,"SE: The parameter `params[:sol]` is directly used in the SQL query without proper sanitization, which may lead to SQL injection vulnerability.
+BL: @images = Image.where(:sol => params[:sol])",not_buggy
+399,"SE: The user input variables $uemail and $upass are directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $query=""select * from admin where email='$uemail' and password='$upass'"";",not_buggy
+8592,"SE: The line may contain a bug of type CWE-89 because the input array $search is directly used in the where clause without proper sanitization.
+BL: return $query->where($allowed_search);",not_buggy
+339,"SE: The line may contain a bug of type CWE-89 because the variable $minID is directly concatenated into the SQL query without proper sanitization.
+BL: $query = ""DELETE FROM Highscores WHERE idHighscores = $minID"";",not_buggy
+353,"SE: The 'params[:id]' parameter is directly used in the SQL query without proper sanitization, which may lead to SQL injection vulnerability.
+BL: @user = User.load_from_reset_password_token(params[:id])",not_buggy
+341,"SE: The variable `$key` is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection attacks.
+
+BL: $result = mysqli_query($con,""SELECT * FROM users where secret = '$key' and authused=1"");",not_buggy
+371,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the URL without proper sanitization.
+BL: $endpoint = ""https://api.gimmieworld.com/1/trigger.json?async=webnotify&source_uid="".$vbulletin->options['bburl'].""&event_name="" . $gimmie['gimmie_trigger_login'];",not_buggy
+369,"SE: The `$_POST['referrername']` parameter is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `username` = "" . $vbulletin->db->escape_string($_POST['referrername']));",not_buggy
+8622,"SE: The 'custom_css_code' parameter from $_POST is not properly sanitized before being used in the SQL query.
+BL: $_POST['custom_css_code'] = $DB->escape($_UPOST['custom_css_code']);",not_buggy
+345,"SE: The SQL query in the `getHistory` function concatenates user input directly into the query without proper sanitization, making it vulnerable to SQL injection.
+BL: $query = ""select date, EOD, MA20, MA50, delta, deltaMA5, deltaMA10, deltaMA20, P0, P1, P2, M1, M2, M3 from $pdo->quote($symbol) where date between $pdo->quote($startDate) and $pdo->quote($endDate) order by date DESC"";",not_buggy
+8643,"SE: The 'id' parameter from $_POST is not properly sanitized before being used in SQL commands, which may lead to SQL injection vulnerabilities.
+BL: $id     = isset($_POST['id']) && is_numeric($_POST['id']) ? (int)$_POST['id'] : null;",not_buggy
+316,"SE: The query in the `getForUser` method may contain a bug of type CWE-89 as the user input `$userId` is directly concatenated into the SQL query without proper sanitization.
+BL: `AND htmlcontent_users.user_id = $1` in the query variable.",not_buggy
+356,"SE: The line may contain a bug of type CWE-89 because user input (username and password) is directly concatenated into the SQL query without proper sanitization.
+BL: `conn.query(""INSERT INTO user (username, password) VALUES ('""+username+""', '""+password+""')"", function (err, result) {`",not_buggy
+404,"SE: The `$_POST['itemtype']` variable is directly used in the SQL query without proper sanitization, which may lead to SQL injection vulnerability.
+BL: if (!is_string($_POST['itemtype']) || getItemForItemtype($_POST['itemtype']) === false) {",not_buggy
+336,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $sql = ""select * from sample order by {$sort} {$direction}"";",not_buggy
+314,"SE: The line may contain a bug of type CWE-89 because the $sort variable is directly concatenated into the SQL query without proper sanitization.
+BL: $sql = ""SELECT
+							u.*,
+							CONCAT( u.fname, ' ', u.lname ) AS name,
+							( SELECT COUNT( * ) FROM failed_logins WHERE email = u.email ) AS failed_logins,
+							( SELECT COUNT( * ) FROM sessions WHERE userid = u.id ) AS active_sessions,
+							COUNT( g.id ) AS remaining
+						FROM
+							users u
+							LEFT OUTER JOIN games g ON 1 = 1
+							LEFT OUTER JOIN picks p ON p.game_id = g.id AND p.user_id = u.id
+						WHERE
+							g.week = ? AND
+							p.id IS NULL
+						GROUP BY
+							u.id
+						ORDER BY
+							{$sort} {$direction}"";",not_buggy
+311,"SE: The '$_SERVER[""QUERY_STRING""]' is directly concatenated into the SQL query without proper sanitization.
+BL: $query = sprintf(""SELECT id, redirect_to FROM short_links WHERE short_link = '%s' 
+                    ORDER BY id DESC LIMIT 1"", $mysqli->real_escape_string($_SERVER[""QUERY_STRING""]));",not_buggy
+365,"SE: The user input from $_GET['id'] is not properly sanitized before being concatenated into the SQL query, which may lead to SQL injection vulnerabilities.
+BL: mysql_query(""DELETE FROM contract_signer_role WHERE id="".$_GET['id']);",not_buggy
+331,"SE: The 'msg' variable is directly concatenated into the SQL query without proper sanitization.
+BL: query = 'SELECT id FROM paises WHERE nome == ?;'",not_buggy
+366,"SE: The 'id' parameter from $_GET is not properly sanitized before being used in the SQL query, which may lead to SQL injection vulnerability.
+BL: mysql_query(""DELETE FROM webfinance_pref WHERE id_pref="".$_GET['id']);",not_buggy
+337,"SE: The 'login' and 'password' variables are being used in an SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+
+BL: $result=$pwd->check(""adminuser"",$login,$password,$CRYPT);",not_buggy
+319,"SE: The user input in the GetAnimal function is not properly sanitized before being used in the SQL query, which may lead to SQL injection vulnerabilities.
+BL: None.",not_buggy
+8546,"SE: The 'statement' variable is being manipulated without proper sanitization before being concatenated into the SQL query, which may lead to SQL injection vulnerabilities.
+BL: None.",not_buggy
+367,"SE: The user input from $_GET['id'] is not properly sanitized before being concatenated into the SQL query, which may lead to SQL injection vulnerabilities.
+BL: mysql_query(""DELETE FROM webfinance_roles WHERE id_role="".$_GET['id']);",not_buggy
+396,"SE: The variable `$str` is directly concatenated into the SQL query without proper sanitization.
+BL: $filter[0] = ""(title ~* "" . pg_escape_literal($str) . "")"";",not_buggy
+350,"SE: The user input variables $name, $tissue, and $onc are directly concatenated into SQL queries without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None.",not_buggy
+373,"SE: The 'getTagArgs' array is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: String[] getTagArgs = {String.valueOf(tag.getMasterAccountId()), tag.getValue()};",not_buggy
+8539,"SE: The line may contain a bug of type CWE-89 because user input ($_GET['only_tasks']) is directly concatenated into the SQL query without proper sanitization.
+BL: $only_tasks = explode(',', $_GET['only_tasks']);",not_buggy
+326,"SE: The 'last_name' variable is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection.
+BL: people = Person.where(""last_name LIKE '%#{last_name}%'"")",not_buggy
+370,"SE: The line may contain a bug of type CWE-89 because user input ($_POST['t']) is directly concatenated into an SQL query without proper sanitization.
+BL: $threadsql  = $vbulletin->db->query_read(""SELECT * FROM "" . TABLE_PREFIX . ""thread WHERE `threadid` = "" . $vbulletin->db->escape_string($_POST['t']));",not_buggy
+348,"SE: The 'value' parameter in the sqlInjectionPrevent function is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: if(is_string($value)) $arrTempWhere[] = '' . $key . "" = '"" . $this->sqlInjectionPrevent($value) . ""'"";",not_buggy
+377,"SE: The user input ($_GET[""user""]) is directly concatenated into the SQL query without proper sanitization.
+BL: $query = ""SELECT `password` FROM `admin_users` WHERE `name` = '"".$my->real_escape_string($_GET[""user""]).""';"";",not_buggy
+8607,"SE: The line may contain a bug of type CWE-89 because user input ($_POST[""U""], $_POST[""M""], $_POST[""P""]) is directly concatenated into an SQL query without proper sanitization.
+BL: $sql = 'INSERT INTO User (Username, Mail, Password, Type) VALUES ('.""'"".mysqli::real_escape_string($_POST[""U""]).""'"".','.""'"".mysqli::real_escape_string($_POST[""M""]).""'"".','.""'"".password_hash(mysqli::real_escape_string($_POST[""P""]),PASSWORD_DEFAULT).""'"".','.$USOC[""userRights""][""AfterRegistration""].');';",not_buggy
+362,"SE: The SQL query in the line may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because it directly concatenates variables into the query without proper sanitization.
+BL: $result = $this->db_query(""SELECT session_id FROM $DB[sessions] WHERE session_id='$this->sid' AND ADDTIME(last_activity, '06:00:00:00')>NOW() LIMIT 1"");",not_buggy
+8610,"SE: The line may contain a bug of type CWE-89 because user input ($_GET[""Name""]) is directly concatenated into an SQL query without proper sanitization.
+BL: $sql = ""SELECT * FROM User WHERE Username='"".mysqli::real_escape_string($_GET[""Name""]).""';"";",not_buggy
+8621,"SE: The 'username' variable is directly concatenated into the SQL query without proper sanitization.
+BL: `$where .= "" and username like '%{$username}%' "";`",not_buggy
+310,"SE: The email input is directly concatenated into the SQL query without proper sanitization.
+BL: connection.query(""select * from users where email = ?"" + [email], function (err, rows) {",not_buggy
+342,"SE: The user input ($_POST['number']) is directly concatenated into an SQL query without proper sanitization, making it vulnerable to SQL injection.
+BL: $result = $dbCon->query('SELECT cash FROM users WHERE session_id = ""' . $userData['session_id'] . '""');",not_buggy
+340,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into an SQL query without proper sanitization.
+BL: WHERE berichte.state=1 AND berichte.date1 LIKE '.$db->quote($year.'%').'",not_buggy
+329,"SE: The SQL query strings in the lines may contain a bug of type CWE-89 as they directly concatenate user input without proper sanitization.
+BL: None.",not_buggy
+361,"SE: The line may contain a bug of type CWE-89 because user input ($table) is directly concatenated into the SQL query without proper sanitization.
+BL: $query = 'SELECT * FROM `wuersch`.`' . $table . '` WHERE ';",not_buggy
+4080,"SE: The `order` method may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because the input is directly used in an SQL query without proper sanitization.
+BL: `@order = ORDER_BY_OPTIONS.include?(input) ? input : default_order`",not_buggy
+4626,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `cursor.execute(""SELECT id,title,artist,cover FROM recordstoreapp_record WHERE title like %s or artist like %s or label like %s or cat_no like %s;"", [q,q,q,q])`",not_buggy
+357,"SE: The 'id1' and 'id2' variables are directly concatenated into an SQL query without proper sanitization, which may lead to SQL Injection vulnerabilities.
+BL: `cursor.execute(sql_function+sql_inside_of_function+"", %s , %s , true,true) join \""Data_minnesotabiketrails\"" as bt on bt.id=id2"",(str(id1),str(id2),))`",not_buggy
+4092,"SE: The 'word' variable is directly concatenated into the SQL query without proper sanitization.
+BL: String query = ""select * from news n ""
+    			+ ""inner join newshighlights h on n.newsid=h.newsid and h.highlight like '%murder%' order by date desc"";",not_buggy
+364,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: $query = ""SELECT * FROM  users where userName='$username' and userPassword='$password'"";",not_buggy
+368,"SE: The user input from $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['tel'], $_POST['mobile'], $_POST['client'], $_POST['fonction'], and $_POST['note'] is directly concatenated into an SQL query without proper sanitization.
+BL: None.",not_buggy
+8532,"SE: The `$_POST` superglobal variables are directly concatenated into SQL commands without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None.",not_buggy
+8511,"SE: None
+BL: None",not_buggy
+8630,"SE: The line may contain a bug of type CWE-89 because the `word` variable is directly concatenated into an SQL command without proper sanitization.
+BL: `cursor.execute(f""SELECT term FROM terms WHERE term > \""{floor}\"" AND term < \""{ceiling}\"" AND term LIKE \""{word}%%\"" ORDER BY length(term),term LIMIT {requested_limit}"")`",not_buggy
+4743,"SE: The user input from the URL is not properly sanitized before being used in an SQL query, which can lead to SQL injection vulnerabilities.
+BL: $querystr = ""SELECT * FROM $wpdb->posts WHERE "".findPostWhereLike($searchWord);",not_buggy
+8584,"SE: The SQL query in the `get_info` method concatenates user input directly into the query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $sql = ""SELECT * FROM `$table` WHERE `id`= ?"";",not_buggy
+306,"SE: The 'name' and 'score' variables are not properly sanitized before being used in the SQL query, which may lead to SQL injection vulnerabilities.
+BL: $db->exec('INSERT INTO highscore (name, score, level, date, log_referer, log_user_agent, log_remote_addr, log_remote_host, cheater)VALUES(?,?,?,?,?,?,?,?,?)',$name, $score,$level,$date,$ref,$ua,$remA,$remH,$cheater);",not_buggy
+391,"SE: The SQL query in the line may contain a bug of type CWE-89 as it directly concatenates user input into the query without proper sanitization.
+BL: `$segmentIds = \Pimcore\Db::get()->fetchOne(""SELECT `segments` FROM $assignmentTable WHERE `elementId` = ? AND `elementType` = ?"", [$id, $type]);`",not_buggy
+8614,"SE: The line may contain a bug of type CWE-89 because user input ($_POST[""N""]) is directly concatenated into an SQL query without proper sanitization.
+BL: $sql = ""SELECT * FROM user WHERE id='"".mysqli::real_escape_string($_POST[""N""]).""';"";",not_buggy
+8639,"SE: The SQL query in the `save` method concatenates user input directly into the query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: `REPLACE INTO ' . _DB_PREFIX_ . 'smarty_cache (id_smarty_cache, name, cache_id, content)
+		VALUES (
+			""' . pSQL($id, true) . '"",
+			""' . pSQL(sha1($name)) . '"",
+			""' . pSQL($cache_id, true) . '"",
+			""' . $this->phpEncryption->encrypt($content) . '""
+		)'`",not_buggy
+354,"SE: The SQL query in the `GetCountryCoor` class may contain a bug of type CWE-89 because the `:country_code` parameter is enclosed in single quotes within the query string, which may allow for SQL injection.
+BL: 
+```php
+$sql = ""SELECT lat, lng
+
+        FROM country_name_map
+
+        WHERE code = ':country_code'"";
+}
+```",not_buggy
+401,"SE: The SQL query is dynamically constructed using string concatenation, which may lead to SQL injection vulnerabilities.
+BL: None.",not_buggy
+358,"SE: The `$_GET['s']` variable is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerability.
+BL: `$haku_s = mysqli_query($yht, ""SELECT * FROM `sivut` WHERE uid = '"".$_GET['s'].""' LIMIT 1"");`",not_buggy
+359,"SE: The 'username' and 'password' variables are directly concatenated into the SQL query without proper sanitization, making the code vulnerable to SQL injection attacks.
+BL: String sql = ""SELECT * FROM "" + table + "" WHERE ""
+					+ columns.get(""username"") + ""= ? AND ""
+					+ columns.get(""password"") + ""= ?"";",not_buggy
+8555,"SE: The `within_bounding_box` method may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because it directly concatenates user input into the SQL query without proper sanitization.
+BL: `spans = ""#{lat_attr} BETWEEN #{sw_lat.to_f} AND #{ne_lat.to_f} AND ""`",not_buggy
+8599,"SE: The `$job_id` variable is concatenated into an SQL query without proper sanitization.
+BL: `$job_id = $request->get($this->widget_id . '_job_id');`",not_buggy
+321,"SE: The user input from the query string is directly concatenated into the SQL query without proper sanitization.
+BL: $query  = ""SELECT * FROM $robustDB.regions WHERE regionName='$region';"";",not_buggy
+8504,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: 
+```php
+$query .= ""WHERE Job.Name = '$jobname' AND Job.JobStatus = 'T' AND Job.Type = 'B' "";
+```",not_buggy
+8571,"SE: The user input from $_POST variables is not properly sanitized before being used in SQL queries, which may lead to SQL injection vulnerabilities.
+BL: None.",not_buggy
+376,"SE: None
+BL: None
+
+There are no lines in the provided file content that may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection).",not_buggy
+8598,"SE: The SQL query in the `save` method may contain a bug of type CWE-89 as it directly concatenates user input without proper sanitization.
+BL: $sql = ""REPLACE INTO plugin_cardwall_on_top_column_mapping_field_value (cardwall_tracker_id, tracker_id, field_id, value_id, column_id)
+                VALUES ($cardwall_tracker_id, $tracker_id, $field_id, $value_id, $column_id)"";",not_buggy
+334,"SE: None
+BL: None",not_buggy
+8625,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `$conditionFilters[] = 'path LIKE ' . $list->quote('%'. $list->escapeLike($request->get('filterFullText')) .'%');`",not_buggy
+394,"SE: The method `escapeIdentifier` may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) as it does not properly sanitize the input value before using it in SQL queries.
+BL: None.",not_buggy
+346,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $query = ""UPDATE `#instances` SET "".
+            ""`VERSION_STRING` = '"".DatabaseManager::correctString($res_searx_version).""', "".
+            ""`RETURN_CODE` = '"".(int)$res_http_code.""', "".
+            ""`LAST_UPDATE` = '"".date('Y-m-d H:i:s',$res_timestamp).""' "".
+            ""WHERE `#instances`.`ID` ="".(int)$single_instance['id']."";"";",not_buggy
+335,"SE: The SQL query on line 77 may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection).
+BL: $sql = 'SELECT word_id FROM ' . SEARCH_WORDLIST_TABLE . ' WHERE word_text = ""' . $this->db->sql_escape($word) . '""';",not_buggy
+330,"SE: The input variable `$addr` is not properly sanitized before being used in the SQL query, which may lead to SQL injection vulnerability.
+BL: None.",not_buggy
+338,"SE: The 'langarg' variable is directly concatenated into the SQL query without proper sanitization.
+BL: my $langid=$dbh->selectrow_array(""SELECT langid FROM languages WHERE tag=?"", undef, $langarg);",not_buggy
+8637,"SE: The 'id_wishlist' variable is directly concatenated into the SQL query without proper sanitization.
+BL: $querySearch->where('wp.id_wishlist = ' . (int) $this->wishList->id);",not_buggy
+383,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `$apiInfo = $this->select(""SELECT count(*) FROM "" . prefixTable('api') . "" WHERE value='"".$inputData['apikey'].""' AND label='"".$inputData['login'].""'"");`",not_buggy
+372,"SE: The 'crawler_ip' and 'crawler_useragent' variables are directly concatenated into the SQL query without proper sanitization.
+BL: $this->crawler_info = $this->dbhandle->query(""SELECT crawler_ip FROM crawlers WHERE crawler_ip='$this->ip' AND crawler_useragent='$this->useragent'"");",not_buggy
+313,"SE: The user input from $_GET[""option""] is directly concatenated into the SQL query without proper sanitization.
+BL: $table_name = strtoupper($option);",not_buggy
+320,"SE: The line may contain a bug of type CWE-89 because the 'username' variable is directly concatenated into the SQL query without proper sanitization.
+BL: var strQuery = ""SELECT * FROM adult WHERE username= '"" +connection.escape(username)+""'"";",not_buggy
+4673,"SE: None
+BL: None",not_buggy
+8588,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $sWhere .= $aColumns[$i]."" LIKE '%"".pwg_db_real_escape_string($_REQUEST['columns'][$i]['search']['value']).""%' "";",not_buggy
+324,"SE: The `requestData` array is directly used in constructing SQL queries without proper sanitization.
+BL: None.",not_buggy
+390,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: `$stmt = $stmt = $db->conn->prepare(""SELECT * FROM $tbl_name WHERE username= :myusername"");`",not_buggy
+322,"SE: The `actionCreate` method may contain a bug of type CWE-89 (SQL Injection) because user input from `$_POST['D2files']` is directly used in an SQL query without proper sanitization.
+BL: None.",not_buggy
+318,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `Settings::$sql->query(""replace into sio_sessiondata (sid,name,value,session) values ('"" . static::$sqlsess . ""','{$sqlnam}',{$value},{$sonly})"");`",not_buggy
+333,"SE: The line may contain a bug of type CWE-89 because user input ($_GET['peer_id']) is directly concatenated into an SQL query without proper sanitization.
+
+BL: mysql_query('INSERT INTO `peer` (`peer_id`, `user_agent`, `ip_address`, `key`, `port`) '
+	. ""VALUES ('"" . mysql_real_escape_string(bin2hex($_GET['peer_id'])) . ""', '"" . mysql_real_escape_string(substr($_SERVER['HTTP_USER_AGENT'], 0, 80)) 
+	. ""', INET_ATON('"" . mysql_real_escape_string($_SERVER['REMOTE_ADDR']) . ""'), '"" . mysql_real_escape_string(sha1($_GET['key'])) . ""', "" . intval($_GET['port']) . "") ""
+	. 'ON DUPLICATE KEY UPDATE `peer_id`=VALUES(`peer_id`), `user_agent` = VALUES(`user_agent`), `ip_address` = VALUES(`ip_address`), `key`=VALUES(`key`), `port` = VALUES(`port`), `id` = LAST_INSERT_ID(`peer`.`id`)') 
+	or die(track('Cannot update peer: '.mysql_error()));",not_buggy
+351,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: None.",not_buggy
+8596,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into SQL commands without proper sanitization.
+BL: None.",not_buggy
+403,"SE: None
+BL: None",not_buggy
+325,"SE: None
+BL: None",not_buggy
+385,"SE: The 'searchname' variable is directly concatenated into an SQL query without proper sanitization.
+BL: $searchnum = get_item($mydbh, ""userid"", ""accounts"", ""username"", $searchname);",not_buggy
+307,"SE: The 'field' key in the $filter array is directly concatenated into the SQL query without proper sanitization.
+BL: None.",not_buggy
+317,"SE: The 'sql' variable is directly concatenated with user input without proper sanitization.
+BL: None.",not_buggy
+303,"SE: The `saveEvent` function may contain a bug of type CWE-89 because user input (`id`, `userID`, `body`, `eventType`, `hidden`, `timestamp, `image`, `link`, `title`, `subtitle`) is directly concatenated into an SQL query without proper sanitization.
+BL: 
+```go
+stmt, err := tx.Prepare(""INSERT INTO messages(id, user_id, body, eventType, hidden_at, timestamp, image, link, title, subtitle) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"")
+```",not_buggy
+378,"SE: The 'lu' parameter in the SQL query is not properly sanitized, which may lead to SQL injection vulnerability.
+BL: `$wpdb->query('UPDATE `'.$wpdb->prefix.$this->table_messages.'` SET paid='.esc_sql($_GET[""status""]).' WHERE id='.intval($_GET['lu']));`",not_buggy
+375,"SE: The 'key' variable is directly concatenated into a SQL query without proper sanitization.
+BL: $key = $dbAdapter->quoteIdentifier($key) . "" = ?"";",not_buggy
+8635,"SE: The `addConditionParam` method may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command: SQL Injection) because it directly concatenates the `$condition` variable into the SQL query without proper sanitization.
+BL: `public function addConditionParam($condition, $value = null, $concatenator = 'AND')`",not_buggy
+402,"SE: None
+BL: None",not_buggy
+405,"SE: The `column_name` method concatenates user input directly into HTML content without proper sanitation.
+BL: `return sprintf('%1$s %3$s', esc_html($item['name']), $item['ID'], $this->row_actions($actions));`",not_buggy
+407,"SE: The 'dni_profe' variable is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $dni_profe = preg_replace('([^A-Za-z0-9])', '', $_GET['dni_profe']);",not_buggy
+8545,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into an SQL query without proper sanitization.
+BL: None.",not_buggy
+379,"SE: The 'lid' variable is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $q = ""select l.lid, l.cid, l.title, l.ext, l.res_x, l.res_y, l.bgcolor, l.status, l.members, l.date, l.hits, l.rating, l.votes, l.comments, l.submitter, t.description, l.gametype, l.license, l.classfile from "".$xoopsDB->prefix(""flashgames_games"")."" l, "".$xoopsDB->prefix(""flashgames_text"")."" t where l.lid=$lid and l.lid=t.lid and status>0"";",not_buggy
+4931,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into a SQL query without proper sanitization.
+BL: `proxy = cursor.execute(qs, query_data)`",not_buggy
+8916,"SE: The 'identifier' parameter in the existsIdentifier method is directly concatenated into the SQL query without proper sanitization.
+BL: return (bool) BackendModel::getContainer()->get('database')->getVar(
+            'SELECT 1
+             FROM forms AS f
+             WHERE f.identifier = ?
+             LIMIT 1',
+            $identifier
+        );",not_buggy
+408,"SE: The `find_all_by_property` method may contain a bug of type CWE-89 (SQL Injection) because the `$property` variable is directly concatenated into the SQL query without proper sanitization.
+BL: ` 'SELECT * FROM ' . static::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\''`",not_buggy
+315,"SE: The 'searchstring' parameter in the SQL query may not be properly sanitized, leading to a possible SQL injection vulnerability.
+BL: $query = ""SELECT * FROM domain AS a WHERE domain_name LIKE '%"".addslashes($_GET['searchstring']).""%' AND "".$allowed_domains1.""') ORDER BY domain_name"";",not_buggy
+305,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `$q = ""SELECT `id`, `name`, `form` FROM `"".$_SESSION['dbprefix'].""people` WHERE "". implode(' AND ', $w) ."" ORDER BY `name` ASC LIMIT 0, 50"";`",not_buggy
+393,"SE: The 'type' variable is directly concatenated into the SQL query without proper sanitization.
+BL: `$sql = ""SELECT id FROM scheduled_report_types WHERE identifier="".$db->escape($type);`",not_buggy
+8535,"SE: The line may contain a bug of type CWE-89 because it directly concatenates the $extraFieldType variable into the SQL query without proper sanitization.
+BL: `$sql = ""SELECT item_id FROM $TABLE_COURSE_FIELD_VALUE tcfv
+                INNER JOIN $TABLE_COURSE_FIELD tcf
+                ON tcfv.field_id =  tcf.id
+                WHERE
+                    tcf.extra_field_type = $extraFieldType AND
+                    tcf.variable = 'hide_from_catalog' AND
+                    tcfv.value = 1
+                "";`",not_buggy
+392,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `$GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_mhhttpbl_blocklog', 'block_ip = '.$GLOBALS['TYPO3_DB']->fullQuoteStr(t3lib_div::_GP('delete'), 'tx_mhhttpbl_blocklog'));`",not_buggy
+384,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: $queryCondition = '( MATCH (`data`,`properties`) AGAINST (' . $db->quote($query) . ' IN BOOLEAN MODE) )';",not_buggy
+4627,"SE: The 'email' parameter in the method `buscarClientePorEmail` is directly concatenated into the SQL query without proper sanitization.
+BL: `private final String stmtBuscarEmailExato = ""select * from Cliente where email = ?"";`",not_buggy
+8541,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into SQL queries without proper sanitization.
+BL: $query = ""SELECT * FROM documents where encounter_id=? and foreign_id=? and url like ?"";",not_buggy
+8566,"SE: The method `setValue` allows user input to be directly stored in the database without proper validation, making it vulnerable to SQL injection attacks.
+BL: None.",not_buggy
+323,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: var query = connection.query('SELECT Section.id, Section.name AS secname, Section.description AS secdesc, Survey.title AS stitle, Survey.description AS sdesc, Survey.id AS sid, Survey.holder from Section,Survey WHERE Survey.sectionId=Section.id AND Section.status=1 AND Survey.status=1 AND sectionId=' + [id], function(err, rows, fields) {",not_buggy
+8611,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into SQL queries without proper sanitization.
+BL: None.",not_buggy
+304,"SE: None
+BL: None",not_buggy
+4155,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `connection.query('SELECT * FROM bi_posts where shortname = ' + connection.escape(req.params.shortname), function(err, rows) {`",not_buggy
+309,"SE: The 'userid' and 'gsbrcd' variables are directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL:                 ""SELECT COUNT(*) FROM users WHERE userid = ? AND gsbrcd = ?"", (userid, gsbrcd)",not_buggy
+8641,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into an SQL query without proper sanitization.
+BL: `connection.query(sql, params, function(err, data) {`",not_buggy
+4738,"SE: The 'field' parameter in the object_modify method is directly concatenated into the SQL query without proper sanitization.
+BL: `if (!is_string($table) || is_blank($table)) return false;`",not_buggy
+312,"SE: None
+BL: None",not_buggy
+8633,"SE: The 'connString' variable is constructed by concatenating user-controlled inputs without proper sanitization.
+BL: `connString := fmt.Sprintf(""host=%s port=%d user=%s dbname=%s sslmode=%s password=%s"", config.Host, config.Port, config.User, config.Name, config.SSLMode, config.Password)`",not_buggy
+349,"SE: The 'studentID' and 'subjectID' variables are directly concatenated into SQL queries without proper sanitization, which may lead to SQL Injection vulnerabilities.
+BL: ResultSet rs = stmt.executeQuery(""SELECT wartosc,tematyka,nazwa from oceny_uczniow join rodzaje_aktywnosci ra on id_aktywnosci=ra.id where id_ucznia='"" + studentID + ""' and id_przedmiotu="" + subjectID + "";"");",not_buggy
+360,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: `cursor.execute(""SELECT id, type, replace(url, '%OWNER%', %s) FROM portrepositories WHERE id = %s AND ( username = %s OR username IS NULL )"", ( req.authname, self.repository, self.owner ))`",not_buggy
+387,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: None.",not_buggy
+8629,"SE: The `getFilterCondition` method may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: `$conditionPartsFilters[] = $field->getFilterCondition($filter['value'], $operator, ['brickPrefix' => ($tablePrefix ? $tablePrefix . '.' : null)]);`",not_buggy
+352,"SE: The `where` method in the `Query` class may contain a bug of type CWE-89.
+BL: `public function where ($condition)`",not_buggy
+374,"SE: The line may contain a bug of type CWE-89 because it directly concatenates user input into an SQL query without proper sanitization.
+BL: None.",not_buggy
+8575,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: None.",not_buggy
+400,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: None.",not_buggy
+398,"SE: The 'filterJson' parameter is used without proper sanitization, which may lead to SQL injection.
+BL: $filters = json_decode($filterJson, true);",not_buggy
+8606,"SE: The 'sql' variable is directly concatenated with user input without proper sanitization, which may lead to SQL injection.
+BL: $sql = ""SELECT unix_group_name from `groups` where group_id="" . db_ei($group_id);",not_buggy
+8544,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the URL without proper sanitization.
+BL: None.",not_buggy
+8572,"SE: The line may contain a bug of type CWE-89 because it involves dynamic SQL query construction without proper input validation.
+BL: None.",not_buggy
+8917,"SE: The 'user_input' is directly concatenated into SQL commands without proper sanitization.
+BL: None.",not_buggy
+388,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into an SQL query without proper sanitization.
+BL: None.",not_buggy
+386,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into a SQL query without proper sanitization.
+BL: None.",not_buggy
+8638,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into a SQL query without proper sanitization.
+BL: None.",not_buggy
+8512,"SE: The 'search' variable is directly concatenated into the SQL query without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: $search=GETPOST(""search"",'alpha');",not_buggy
+8591,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: None.",not_buggy
+4767,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into SQL queries without proper sanitization.
+BL: ```$post_ID = $id ? $id : get_the_ID();```",not_buggy
+8527,"SE: The line may contain a bug of type CWE-89 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: None.",not_buggy
+8616,"SE: The `deletePropertyAction` method may contain a bug of type CWE-89 because user input (`id`) is directly used in a database query without proper validation or sanitization.
+BL: `$id = $request->get('id');`",not_buggy

@@ -1,0 +1,2412 @@
+file_id,model_output,type
+293,"SE: None of the lines in the file may contain a bug of type CWE-79.
+BL: None.",buggy
+8043,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",buggy
+8489,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",buggy
+3209,"SE: The 'params[:back]' value is directly used without proper sanitization, which may lead to a cross-site scripting vulnerability.
+BL: @redirect_to = params[:back].presence || root_path",buggy
+7586,"SE: The line may contain a bug of type CWE-79 because the variable $attributes is directly echoed without proper sanitization.
+
+BL: echo implode(', ', $attributes);",buggy
+88,"SE: The value of the 'q' parameter from the form_dict is directly inserted into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: value='{{ frappe.form_dict.q or ''}}'",buggy
+8153,"SE: None
+BL: None",buggy
+7684,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being used in the sprintf function.
+BL: `helper_ensure_confirmed( sprintf( plugin_lang_get( 'ensure_delete' ), $t_repo->name ), plugin_lang_get( 'delete_repository' ) );`",buggy
+8444,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being merged back into the request.
+BL: None.",buggy
+8220,"SE: The variable `$option` is not sanitized before being used, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+8385,"SE: The line may contain a bug of type CWE-79 because the variable 'recoveryLink' is not properly sanitized before being used in the HTML content.
+BL: None.",buggy
+7527,"SE: None
+BL: None",buggy
+177,"SE: None of the lines in the file may contain a bug of type CWE-79.
+BL: None.",buggy
+3802,"SE: The `escapedTagId` variable is directly interpolated into the HTML content without proper sanitization.
+BL: `<script async src=""https://www.googletagmanager.com/gtag/js?id=${escapedTagId}""></script>`",buggy
+1006,"SE: None
+BL: None
+
+There are no lines in the file that may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).",buggy
+8055,"SE: None of the lines in the file may contain a bug of type CWE-79.
+BL: None.",buggy
+254,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the jQuery selector without proper sanitization.
+BL: $('#f_'+file_id+' input:hidden[name='+file_id+']').val('1');",buggy
+7842,"SE: The 'excerpt' variable is directly passed to the m.trust() function without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: items.add('excerpt', m.trust(excerpt), -100);",buggy
+38,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being echoed in the HTML content.
+BL: None.",buggy
+7587,"SE: The `link_to_function` method in the `tags_for_index` method may contain a bug of type CWE-79 as it directly concatenates the `query` variable into the JavaScript function without proper input validation.
+
+BL: `out << link_to_function(tag, ""crm.search_tagged('#{query}', '#{model.class.to_s.tableize}')"", title: tag)`",buggy
+6,"SE: The 'template' variable is directly concatenated into the file path without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `require_once VIEWS.$template."".php"";`",buggy
+8441,"SE: None
+BL: None",buggy
+8068,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+
+BL: None.",buggy
+8286,"SE: The 'msg' parameter in the displayAlertV1 method is directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: return '<div class=""alert alert-' . $type . ' alert-dismissible fade show"" role=""alert"">
+          ' . $msg . '
+          <button type=""button"" class=""close"" data-dismiss=""alert"" aria-label=""Close"">
+            <span aria-hidden=""true"">&times;</span>
+          </button>
+        </div>';",buggy
+213,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",buggy
+7808,"SE: The 'comment' variable fetched from the DOM is directly passed to the 'linkifyElement' function without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `linkifyElement(comment);`",buggy
+8067,"SE: None
+BL: None",buggy
+7840,"SE: None
+BL: None",buggy
+7783,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: 
+```html
+value=""<?= isset($_POST['username']) ? $_POST['username'] : '' ?>""
+```",buggy
+7462,"SE: The line may contain a bug of type CWE-79 because user input ($_SESSION[""failure""]) is directly outputted without proper sanitization.
+BL: $tpl->setVariable(""ERROR_MESSAGE"", ($_SESSION[""failure""]));",buggy
+8305,"SE: None of the lines in the provided file contain a bug of type CWE-79.
+BL: None.",buggy
+8412,"SE: The 'url' variable is directly concatenated into the command string without proper input validation or sanitization, which may lead to a command injection vulnerability.
+BL: $proc = popen(""sudo pihole -q -adlist "".$url."" "".$exact, 'r');",buggy
+256,"SE: None
+BL: None",buggy
+8413,"SE: The '{{ error_message|safe }}' line may contain a bug of type CWE-79 as the 'error_message' variable is being rendered without proper sanitization.
+
+BL: {{ error_message|safe }}",buggy
+220,"SE: The line may contain a bug of type CWE-79 because user input ($_SERVER, $_SESSION, $_POST, $_GET) is directly concatenated into HTML content without proper sanitization.
+BL: None.",buggy
+273,"SE: The 'value' variable is directly outputted without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL:                 <?= $value ?>",buggy
+13,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",buggy
+264,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the JavaScript code without proper sanitization.
+BL: None.",buggy
+2322,"SE: The variables $tcp, $delay, $mbps, $type, and $fsize are directly concatenated into HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+7655,"SE: None
+BL: None",buggy
+7526,"SE: None
+BL: None",buggy
+53,"SE: The 'post_content' and 'post_content_filtered' variables are concatenated without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+292,"SE: The 'userGroup->getLocalizedName()' method may return user input that is not properly sanitized before being used in the HTML content.
+BL: None.",buggy
+47,"SE: The 'qs_type' variable taken from the user input ($_REQUEST['QSType']) is not sanitized before being used in the code, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $qs_type = $_REQUEST['QSType'];",buggy
+7703,"SE: None
+BL: None",buggy
+178,"SE: The 'tag' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `""<"" + tagName + href + "" data-tag-name="" + tag + (params.description ? ' title=""' + params.description + '"" ' : """") + "" class='"" + classes.join("" "") + ""'>"" + visibleName + ""</"" + tagName + "">""`",buggy
+8018,"SE: The 'data.params.imageData' is directly assigned the value of 'socketUploads[method].imageData' without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `data.params.imageData = socketUploads[method].imageData;`",buggy
+7744,"SE: None
+BL: None",buggy
+3947,"SE: The 'message' variable is rendered using dangerouslySetInnerHTML without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: 
+```javascript
+dangerouslySetInnerHTML={{ __html: renderMarkdown(message) }}
+```",buggy
+8470,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",buggy
+22,"SE: None
+BL: None",buggy
+42,"SE: The line may contain a bug of type CWE-79 because user input ($_GET['secret']) is directly concatenated into a SQL query without proper sanitization.
+BL: `$key = $db->query('SELECT `key` FROM `shorts` WHERE `secret` = ""' . $secret . '""') or die('Database error 3984');`",buggy
+169,"SE: The user input is not directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+100,"SE: None
+BL: None",buggy
+7706,"SE: The 'requestUri' variable is used without proper sanitization before being rendered in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+8462,"SE: The 'contentBase' property in the serve plugin may contain user input without proper sanitization, leading to a potential CWE-79 vulnerability.
+BL: `contentBase: '',`",buggy
+68,"SE: None
+BL: None",buggy
+141,"SE: None
+BL: None",buggy
+71,"SE: None of the lines in the file contain a bug of type CWE-79.
+BL: None.",buggy
+19,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: <?php if (isset($this->data['error'])) { print ""<div class=\""error\"">"" . $this->data['error'] . ""</div>""; } ?>",buggy
+129,"SE: The line may contain a bug of type CWE-79 because the `urlfileName` variable is directly concatenated into the `filePath` string without proper input validation or sanitization.
+
+BL: `filePath := fmt.Sprintf(""%s/avatar/%s"", uploadPath, urlfileName)`",buggy
+233,"SE: The 'uuid' parameter is directly used in the openAction method without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $this->view->selected_uuid = $uuid;",buggy
+875,"SE: The line may contain a bug of type CWE-79 because user input is directly echoed without proper sanitization.
+BL: `value=""<?php echo $value ? $value : ''; ?>""`",buggy
+288,"SE: None of the lines in the file content appear to contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+BL: None.",buggy
+65,"SE: The 'q' parameter in the line may contain a bug of type CWE-79 as it is directly concatenated into the URI without proper input validation or sanitization.
+BL: `uri := ""/search?q="" + q + ""&f="" + field + ""&""`",buggy
+2088,"SE: None
+BL: None",buggy
+8017,"SE: None
+BL: None",buggy
+107,"SE: The 'replace_values' checkbox value is directly used without proper validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `var replace_values = $('#replace_valuesCheck1:checked').val();`",buggy
+8450,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",buggy
+8246,"SE: The 'loginform' parameter is directly used in the template without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $this->template('login', ['loginform' => $credentials,
+            'result'                          => $result,
+            'http_referer'                    => $this->_loginForm['http_referer'],
+            'data'                            => $this->_params['data'], ]);",buggy
+243,"SE: None
+BL: None",buggy
+64,"SE: None
+
+BL: None",buggy
+32,"SE: The 'theme' parameter from the URL ($_GET['theme']) is directly used to update the 'theme' setting without any validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `$config['theme'] = $_GET['theme'];`",buggy
+3987,"SE: The 'dangerouslySetInnerHTML' property is used without proper input validation, which may lead to a Cross-site Scripting vulnerability.
+BL: `dangerouslySetInnerHTML: { __html },`",buggy
+2,"SE: The 'captcha_message' variable is directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: ```<h2>$captcha_message</h2>```",buggy
+7670,"SE: None
+BL: None",buggy
+23,"SE: The 'search' parameter is directly concatenated into the HTML content without proper sanitization.
+
+BL: `<a href=""https://mapicoin.fr/?u=<?= $link ?>""><?= $search['search'] ?></a>`",buggy
+173,"SE: The 'selected_template' variable is not properly sanitized before being displayed in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $selected_template = xss_clean($selected_template);",buggy
+8081,"SE: None
+BL: None",buggy
+7669,"SE: The `_format` method may contain a bug of type CWE-79 as it directly concatenates input into a string without proper sanitation.
+BL: `return ""** $part **\n$text\n-- $part --\n\n"";`",buggy
+289,"SE: The 'headNote->getTitle()' value is not properly sanitized before being used in the LinkAction constructor, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8079,"SE: The 'svgString' variable is directly manipulated without proper input validation, which may lead to a Cross-site Scripting vulnerability.
+BL: None.",buggy
+7764,"SE: The 'username' variable is directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+7822,"SE: None
+BL: None",buggy
+7592,"SE: The 'filename' variable is directly concatenated into the HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $t_html .= '<div class=""action"">'
+			. sprintf( lang_get( $t_string ),
+				prepare_user_name( $this->user_id ),
+				$t_bug_link,
+				$this->filename
+			)
+			. '</div>';",buggy
+3982,"SE: The function `tuitse_html` concatenates user input into the `html` variable without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None",buggy
+1019,"SE: None
+BL: None",buggy
+8485,"SE: None
+BL: None",buggy
+7859,"SE: The 'session.id' value is directly concatenated into the HTML content without proper sanitization.
+BL: tdWrap(uiLink(""session/"" + session.id, session.id))",buggy
+231,"SE: None
+BL: None",buggy
+839,"SE: The 'notices' variable is directly concatenated into HTML content without sanitation.
+BL: `echo '<div id=""message"" class=""updated""><p>'. implode( '</p><p>', $this->notices ) .'</p></div>';`",buggy
+211,"SE: The 'foldername' and 'folderdesc' variables are directly used without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $foldername = utf8RawUrlDecode($_REQUEST['foldername']);",buggy
+8446,"SE: The 'data[$key]['KEY']' variable is not properly sanitized before being displayed on the webpage, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: <div class=""clearfix l-unit__stat-col--left wide-7""><b><?=htmlspecialchars($data[$key]['KEY'], ENT_QUOTES);?></b></div>",buggy
+3004,"SE: None
+BL: None
+
+There are no lines in the provided file content that may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).",buggy
+7716,"SE: None
+BL: None",buggy
+12,"SE: The 'userInputDemo' variable is concatenated directly into the SQL query without proper sanitization, which may lead to SQL Injection vulnerabilities.
+BL: $database->query(""SELECT * FROM users WHERE Name='"" . $userInputDemo . ""'"");",buggy
+3717,"SE: The 'documentReference' variable is directly concatenated into the HTML content without proper sanitization.
+BL: String documentReference = ""xwiki:space.</div>page"";",buggy
+66,"SE: The 'me_link' variable is being sanitized using 'strip_tags' and 'clean_xss_attributes', but there is a conditional check that may not cover all possible XSS vectors.
+BL: None.",buggy
+11,"SE: The 'ip' parameter in the `ReverseLookup` class may not be properly sanitized before being used in the `reversename.from_address(ip)` function call, which could lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `answer = dns_resolver.query(reversename.from_address(ip), rdatatype.PTR, raise_on_no_answer=False)`",buggy
+96,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being used in the HTML content.
+BL: None.",buggy
+125,"SE: The 'template['cover']' and 'template['screenshot']' variables are directly concatenated into the 'src' attribute of <img> tags without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+7614,"SE: The 'filename' variable from the $_GET array is directly concatenated into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: ```echo ""<b>file: <?php echo $filename ?></b>"";```",buggy
+8175,"SE: The 'internal_hosts' value in the 'external_link' configuration may be directly concatenated into HTML content without proper sanitation.
+BL: 'internal_hosts' => '', // is empty as we would like to have all links marked as external",buggy
+241,"SE: None
+BL: None",buggy
+8349,"SE: The 'config->getName()' line may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting) because the output of the 'getName()' method is directly embedded into the HTML content without proper sanitization.
+
+BL: <div class=""col-sm-4""><?php echo $config->getName(); ?></div>",buggy
+14,"SE: The 'lang' variable is directly concatenated into the URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: ```<a href=""https://<?php echo $lang ?>.wikisource.org/""><?php echo strtoupper($lang) ?> Wikisource</a>```",buggy
+7981,"SE: The 'comment.content' is directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `<div class='comment_content'>#{comment.content}</div>`",buggy
+269,"SE: The line may contain a bug of type CWE-79 because user input ($_POST['address']) is directly concatenated into HTML content without proper sanitization.
+BL: ""<input type=\""text\"" name=\""address\"" id=\""address\"" size=40 value=\""<?php echo $_POST['address']; ?>\"" class=\""form-control input-sm\"" placeholder=\""IPv6 Address\""/>""+",buggy
+7949,"SE: None
+BL: None",buggy
+302,"SE: None
+BL: None",buggy
+7837,"SE: None
+BL: None",buggy
+197,"SE: The 'testx' and 'testy' parameters are directly used in mathematical operations without proper input validation, which may lead to a Cross-site Scripting vulnerability.
+BL: None.",buggy
+263,"SE: The PHP code within the script block concatenates user input directly into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+1043,"SE: None
+BL: None",buggy
+21,"SE: The variable `$query` is not properly sanitized before being concatenated into the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `$out .= ""<li>$query<br/><div class='qdebug'>$debug <span>#{$counter} ("" . number_format(sprintf('%0.1f', $elapsed * 1000), 1, '.', ',') . ""ms)</span></div></li>\n"";`",buggy
+8174,"SE: None
+BL: None",buggy
+87,"SE: None
+BL: None",buggy
+7856,"SE: The 'type' parameter in the URL query string is not properly sanitized before being used in generating the URL.
+BL: 'url' => api_get_path(WEB_CODE_PATH).'calendar/agenda_js.php?type='.Security::remove_XSS($type),",buggy
+7618,"SE: The 'file' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `echo ""				<td><input type='text' name='file' value='"".$file.""'></td>"";`",buggy
+8035,"SE: None
+BL: None",buggy
+8281,"SE: The 'attachment.errors.full_messages.each' line may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+BL: `error_msg += ""<br>#{msg}""`",buggy
+7543,"SE: The URL query parameters `error`, `error_description`, `error_hint`, and `error_debug` are directly concatenated into the HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None",buggy
+7547,"SE: None
+BL: None",buggy
+8394,"SE: The 'data[project]['title']' and 'data[project]['image']' variables are directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+8021,"SE: The 'name' field in the 'transformAccessory' method is directly concatenated without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: 'name' => e($accessory->name),",buggy
+51,"SE: The variable `$error_text` is not properly sanitized before being echoed to the page, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `echo ""<p class='warn'>"" . $error_text . ""</p><br/>\n"";`",buggy
+7557,"SE: The 'query' parameter from the GET request is directly used in generating XML content without proper sanitization.
+BL: $result = <<<END_FRAG
+<?xml version=""1.0""?>
+<SearchSuggestion xmlns=""http://schemas.microsoft.com/Search/2008/suggestions"">
+<Query>$query</Query>
+<Section>
+END_FRAG;",buggy
+67,"SE: None
+BL: None",buggy
+175,"SE: None
+BL: None",buggy
+8139,"SE: The 'full_page_tab' parameter value is directly concatenated into the JavaScript alert message without proper sanitization.
+BL: `echo ""alert('$msg')"";`",buggy
+91,"SE: None
+BL: None",buggy
+7549,"SE: The user input is not directly concatenated into the HTML content without sanitation.
+BL: none",buggy
+300,"SE: The 'item->thema' variable is directly concatenated into the 'title' attribute without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `<tr id=""attachment_<?= $item->id ?>"" title=""<?= $item->thema ?>"">`",buggy
+7681,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being used in the code.
+BL: None.",buggy
+168,"SE: None
+BL: None",buggy
+123,"SE: The 'msgNewContentHeader' and 'msgNewContentAddon' variables are directly concatenated into the HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8056,"SE: None
+BL: None
+
+There are no lines in the provided file content that may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).",buggy
+139,"SE: None of the lines in the file content appear to contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+BL: None.",buggy
+59,"SE: None
+BL: None",buggy
+74,"SE: The line may contain a bug of type CWE-79 because user input ($_GET[""files""][$i]) is directly concatenated into the HTML content without proper sanitization.
+BL: `echo ""<input type=\""hidden\"" name=\""files[]\"" value=\""{$_GET[files][$i]}\"" />\r\n"";`",buggy
+7,"SE: None
+BL: None",buggy
+1973,"SE: The 'code.textContent' is directly assigned to 'mermaid.innerHTML' without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `mermaid.innerHTML = svg;`",buggy
+86,"SE: None
+BL: None",buggy
+183,"SE: None
+BL: None",buggy
+138,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None",buggy
+36,"SE: The '$_layoutType' variable is directly concatenated into the HTML content without sanitation.
+BL: None.",buggy
+3619,"SE: None
+BL: None",buggy
+1046,"SE: None
+BL: None",buggy
+137,"SE: None
+BL: None",buggy
+8203,"SE: None
+BL: None",buggy
+201,"SE: None
+BL: None",buggy
+94,"SE: The 'filename' variable is not properly sanitized before being used in the onClick event, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: ```<?php $filename = htmlspecialchars(addslashes(str_replace(""//"",""/"", ""{$path}/{$file}""))); ?>```",buggy
+8475,"SE: None
+BL: None",buggy
+8195,"SE: The 'rule_display' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `echo ""<tr><td>{$rule['name']}</td><td><i>"" . htmlentities($rule_display) . ""</i></td><td>{$rule['severity']}</td><td>{$rule['id']}</td></tr>"";`",buggy
+28,"SE: The 'url' attribute in the shortcode handler function is directly concatenated into the HTML content without proper sanitization.
+BL: $return = ""<iframe load-url=\""{$atts['url']}\"" id=\""bee-microsite-iframe-{$this->iframeId}\"" class=\""bee-microsite-iframe\"" width=\""{$atts['width']}\"" height=\""{$atts['height']}\"" data-autosize=\""{$autosize}\"" frameborder=\""0\""></iframe>
+<script type=\""text/javascript\"" src=\""http://beta.beeliked.com/microsite/js/beeliked.clientIframe.js\""></script>
+<script type=\""text/javascript\"">jQuery(document).ready(function() { jQuery('.bee-microsite-iframe[data-autosize=1]').iFrameResize({heightCalculationMethod : 'max'}); });</script>"";",buggy
+202,"SE: None
+BL: None",buggy
+1465,"SE: The `$_GET` superglobal variables are directly used without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+7888,"SE: None
+BL: None",buggy
+7610,"SE: The 'url_label' and 'url_description' variables are directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+7617,"SE: The 'conference_name' variable is directly concatenated into HTML content without sanitation.
+BL: echo ""<table width='100%' border='0' cellpadding='0' cellspacing='0'>\n"";",buggy
+852,"SE: The 'url' and 'apikey' variables are directly concatenated into the URL string without proper input validation or sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `get(this.url + ""?apikey="" + this.apikey + ""&lang="" + this.lang, 'listCountries', callback);`",buggy
+295,"SE: None of the lines in the file contain a bug of type CWE-79.
+
+BL: None.",buggy
+3989,"SE: None
+BL: None",buggy
+3070,"SE: None
+BL: None",buggy
+8302,"SE: None
+BL: None",buggy
+8319,"SE: The 'name', 'asset_tag', 'serial', 'model', 'model_number', 'status_label', 'status', 'category', 'manufacturer', 'supplier', 'notes', 'order_number', 'location', 'currency', 'purchase_date', 'purchase_cost', 'book_value', 'monthly_depreciation', 'checked_out_to', 'diff', 'number_of_months', and 'depreciation' fields are directly concatenated into an array without proper input sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+270,"SE: None
+BL: None",buggy
+7624,"SE: The 'fifo_name' variable is directly concatenated into the URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: ```var url = 'fifo_interactive_inc.php?c=<?php echo trim($_REQUEST[""c""]); ?>';```",buggy
+7507,"SE: None
+BL: None",buggy
+284,"SE: The 'message' variable is directly concatenated into HTML content without sanitation.
+BL: <?= $message ?>",buggy
+7532,"SE: None
+BL: None",buggy
+8265,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: cmtElement.innerHTML = `<div>
+${text}<br>
+<button>删除</button><br>
+<input> 
+</div>`",buggy
+251,"SE: The 'file' variable is directly concatenated into the path without proper input validation.
+BL: $file = sprintf(
+    '%s%s%s',
+    dirname($_POST['file']),
+    DS,
+    basename($_POST['file'])
+);",buggy
+7460,"SE: None
+BL: None",buggy
+180,"SE: None
+BL: None",buggy
+8362,"SE: None
+BL: None
+
+There are no lines in the provided file content that may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).",buggy
+7564,"SE: The 'strapcaccess' input value is directly used in the HTML content without proper sanitization.
+BL: `value=""<?=htmlspecialchars($_POST['strapcaccess'])?>""`",buggy
+7650,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: echo ""<table width=\""100%\"" border=\""0\"" cellpadding=\""0\"" cellspacing=\""0\"">\n"";",buggy
+7767,"SE: None
+BL: None",buggy
+7863,"SE: The 'website.name' variable is not properly sanitized before being used in the 'title' attribute, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: 
+```html
+<td class=""name"" title=""{$website.name|escape}"">
+```",buggy
+230,"SE: The 'fullpath' variable is directly concatenated into the HTML content without proper encoding.
+BL: `return '<a href=""' + fullpath + '"" class=""' + this.config[""class""] + ' ' + Ext.util.Format.htmlEncode(this.data[""class""]) + '"">' + displayHtml + '</a>';`",buggy
+174,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+
+BL: None",buggy
+258,"SE: None
+BL: None",buggy
+7632,"SE: The 'contact_note' variable is not properly sanitized before being echoed, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $contact_note = $row['contact_note'];",buggy
+7732,"SE: None
+BL: None",buggy
+8010,"SE: None
+BL: None",buggy
+190,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",buggy
+7531,"SE: None
+BL: None",buggy
+8069,"SE: None
+
+BL: None",buggy
+55,"SE: None
+BL: None",buggy
+262,"SE: The user input from the variables $vars['searchby'] and $vars['searchPhrase'] is directly concatenated into the HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+267,"SE: None
+BL: None",buggy
+41,"SE: None
+BL: None",buggy
+972,"SE: The 'room' and 'username' variables are directly used in the code without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $room = $_POST ['room'];",buggy
+79,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+58,"SE: The 'navs' variable is directly concatenated with user input without proper sanitization.
+BL: `navs += '<a class=""list-group-item"" data-index=""' + i + '""><span class=""badge"">#' + (i+1)+ '</span>' + goNowToDatetime(content.UpdatedTime) + '</a>';`",buggy
+76,"SE: The 'name' variable used in the createSignature function is directly concatenated into HTML content without sanitation.
+BL: `li.innerHTML = `<a href=""#"" class=""menu-item"" title=""${name}"">${name}</a>`;`",buggy
+8347,"SE: None
+BL: None",buggy
+2724,"SE: None
+BL: None",buggy
+8496,"SE: The 'name' variable is directly concatenated into HTML content without sanitation.
+BL: var html = '<div class=""btn-group tag mb-2 mr-1 btn-tag-id-'+id+'"" role=""group"">' +
+            '    <button type=""button"" class=""btn-sm icon-left no-hover btn btn-secondary"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-tag""></i> ' + name + '</button>' +
+            '    <button type=""button"" class=""btn btn-primary btn-sm btn-icon"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-pencil""></i></button>' +
+            '    <button type=""button"" class=""btn btn-primary btn-sm btn-icon"" onClick=""deleteTaggingTag('+id+')""><i class=""mdi mdi-close""></i></button>' +
+            '</div>';",buggy
+17,"SE: The function `parseMessage` takes a string input, converts it to HTML using `parseLinks`, then potentially replaces smileys using `parseSmileys`, and finally applies colors using `parseColors`. The input is sanitized using `text()` and `html()` functions, which helps prevent XSS attacks. No direct concatenation of user input into HTML content is observed in this function.
+BL: None.",buggy
+171,"SE: The variable `$text` is not sanitized before being echoed, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$text = $loggingValue['text'];`",buggy
+16,"SE: None
+BL: None",buggy
+8477,"SE: None
+BL: None",buggy
+7582,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into a session key without proper sanitization.
+BL: None.",buggy
+3705,"SE: The 'defaultValueGenerator' field is directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `{
+    xtype: 'textfield',
+    width: 600,
+    fieldLabel: t(""default_value_generator""),
+    labelWidth: 140,
+    name: 'defaultValueGenerator',
+    value: datax.defaultValueGenerator
+}`",buggy
+7508,"SE: None
+BL: None",buggy
+43,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: None.",buggy
+27,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitization.
+BL: None.",buggy
+297,"SE: None
+
+BL: None",buggy
+7688,"SE: The 'file_id' variable is directly concatenated into the URL without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $t_href = '<a href=""file_download.php?file_id='.$v_id.'&amp;type=doc"">';",buggy
+7629,"SE: The 'map_query' variable is directly concatenated into the Google Maps URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `$map_query = escape($row['address_street'])."" "".escape($row['address_extended'])."", "".escape($row['address_locality'])."", "".escape($row['address_region'])."", "".escape($row['address_region'])."", "".escape($row['address_postal_code']);`",buggy
+120,"SE: The line may contain a bug of type CWE-79 because user input ($_GET['id']) is directly concatenated into HTML content without proper sanitization.
+BL: `<?= htmlspecialchars($speedtest['id_formatted'], ENT_HTML5, 'UTF-8') ?>`",buggy
+7611,"SE: The 'profile_param_name', 'profile_param_value', 'profile_param_enabled', and 'profile_param_description' variables are directly concatenated into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",buggy
+140,"SE: The 'html' variable is sanitized using the AntiXSS library, which helps prevent cross-site scripting vulnerabilities.
+BL: None.",buggy
+1014,"SE: None
+BL: None",buggy
+3732,"SE: The `_populate_template` method may contain a bug of type CWE-79 because it takes user input as arguments and directly uses them in the template rendering process without proper sanitization.
+BL: None",buggy
+236,"SE: The 'name' variable is directly concatenated into the 'filename' variable without proper sanitization.
+BL: `name += extension`",buggy
+7594,"SE: None
+BL: None",buggy
+7612,"SE: The 'node_description' variable is directly concatenated into the HTML content without proper sanitization.
+BL: echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_description']).""&nbsp;</td>\n"";",buggy
+102,"SE: None of the lines in the file content contain a bug of type CWE-79.
+BL: None",buggy
+8059,"SE: None
+BL: None",buggy
+7581,"SE: None
+BL: None",buggy
+7461,"SE: None
+
+BL: None",buggy
+8110,"SE: The line may contain a bug of type CWE-79 because user input ($item_id) is directly concatenated into HTML content without sanitation.
+BL: <div class=""js-form-entry-<?php print $item_id ?> card mb-2 not-collapsed-border collapsed card-message-holder <?php if (!isset($is_entry)): ?>card-bubble<?php endif; ?> <?php if (isset($item['is_read']) AND $item['is_read'] == 0): ?>active<?php endif; ?> bg-silver"" data-toggle=""collapse"" data-target=""#notif-entry-item-<?php print $item_id ?>"" aria-expanded=""false"" aria-controls=""collapseExample"">",buggy
+7726,"SE: None
+BL: None",buggy
+215,"SE: The 'workspaceID' and 'sessionId' parameters are directly concatenated into the constructor of the 'IDEFrontendService' class without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `ideFrontendService = new IDEFrontendService(workspaceID, sessionId, service, window.parent);`",buggy
+56,"SE: None
+BL: None",buggy
+122,"SE: The 'faqComment->getComment()' value is directly concatenated into the HTML content without sanitation.
+BL: `<?= $faqComment->getComment() ?>`",buggy
+7866,"SE: The 'value' attribute in the forms.textField and forms.selectField functions may contain user input that is not properly sanitized, which could lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+7915,"SE: None
+BL: None",buggy
+30,"SE: The URL concatenation in the `ajax` function may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `url = (''+location).replace( /[#\?].*/, '') + url;`",buggy
+245,"SE: The 'url_auto_install' variable is directly concatenated into HTML content without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$url_auto_install = htmlentities($base_url) . '&amp;revision=' . $plugin['revision_id'] . '&amp;extension=' . $plugin['extension_id'] . '&amp;pwg_token='.get_pwg_token();`",buggy
+7613,"SE: The line may contain a bug of type CWE-79 because user input ($_GET['page']) is directly concatenated into the HTML content without proper sanitization.
+BL: `$nav .= "" <a href=\""$self?page=$page\"">$page</a> \n"";`",buggy
+8094,"SE: The 'filename' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `$(""#upload-format"").html(filename);`",buggy
+7712,"SE: None
+BL: None",buggy
+8473,"SE: The 't' parameter extracted from the query parameters is directly used without proper sanitization, which may lead to a CWE-79 (Cross-site Scripting) vulnerability.
+BL: $t = (string)($queryParams['t'] ?? '');",buggy
+7622,"SE: The 'search' variable is directly concatenated into the SQL query without proper sanitization, which may lead to a SQL injection vulnerability.
+BL: $sql_search .= ""control_digits like :search"";",buggy
+8367,"SE: None
+BL: None",buggy
+8377,"SE: The 'tmp_REQUEST' array is directly concatenated into the URL without proper sanitization.
+BL: `$PHP_tmp_SELF .= '&' . $key . ""="" . $value;`",buggy
+7857,"SE: The 'path' variable is used in a regular expression without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8381,"SE: None
+BL: None",buggy
+189,"SE: None
+BL: None",buggy
+8335,"SE: None
+BL: None",buggy
+7506,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",buggy
+7609,"SE: The 'device_setting_description' variable is directly concatenated into the HTML content without proper sanitization.
+BL: echo ""	<td valign='top' class='"".$row_style[$c].""'>"".$row['device_setting_description'].""&nbsp;</td>\n"";",buggy
+7844,"SE: The user input is directly concatenated into the HTML content without sanitation.
+BL: None.",buggy
+7649,"SE: The 'greeting_name' variable is not properly sanitized before being used in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `$greeting_name = $_POST[""greeting_name""];`",buggy
+7643,"SE: The '$_POST['content']' variable is directly concatenated into HTML content without sanitation.
+BL: `echo ""<h2 class=\""preview-header\"">"".__(""Preview"").""</h2>\n"". ""<div class=\""preview-content\"">"".$_POST['content'].""</div>"";`",buggy
+8386,"SE: None
+BL: None",buggy
+7922,"SE: None
+BL: None",buggy
+8182,"SE: The 'fieldData['field']' variable is directly used without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: if (!in_array($fieldData['field'], $fields)) {",buggy
+3704,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None",buggy
+7992,"SE: The 'string' parameter in the detectXss function is not properly sanitized before being used in regular expressions, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8125,"SE: The 'string' parameter in the detectXss function is not properly sanitized before being used in regular expressions, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+182,"SE: None
+
+BL: None",buggy
+8197,"SE: None
+BL: None",buggy
+7625,"SE: The 'row['time_description']' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `echo ""	<td valign='top' class='row_stylebg' style='width: 40%; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>"".escape($row['time_description']).""&nbsp;</td>\n"";`",buggy
+7683,"SE: None
+BL: None",buggy
+105,"SE: None
+BL: None",buggy
+112,"SE: None
+BL: None",buggy
+167,"SE: The 'currentToken' variable is directly echoed into the HTML content without any sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: <input type=""hidden"" name=""csrf"" value=""<?= $currentToken ?>"">",buggy
+133,"SE: The 'uploadfilename' variable is not properly sanitized before being used in the 'explode' function, which may lead to a Cross-site Scripting vulnerability.
+BL: None.",buggy
+301,"SE: None
+BL: None",buggy
+7637,"SE: The 'file' parameter from the user input is directly used in the AJAX request without proper validation or sanitization, which can lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None",buggy
+7921,"SE: None
+BL: None",buggy
+8324,"SE: None
+
+BL: None",buggy
+229,"SE: The 'query' parameter obtained from the form input is not properly sanitized before being used in the search function.
+BL: `let query = Ext.util.Format.htmlEncode(formValues.query);`",buggy
+160,"SE: None
+BL: None",buggy
+7739,"SE: None
+BL: None",buggy
+158,"SE: None
+BL: None",buggy
+8332,"SE: The 'string' parameter in the detectXss function is not properly sanitized before being used in regular expressions, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8411,"SE: The 'noteTitle' variable is directly inserted into the HTML content without proper sanitization.
+BL: `this.$noteTitle.html(noteTitle);`",buggy
+212,"SE: The 'src' variable in the line may contain a bug of type CWE-79 (e.g., The 'src' variable is directly concatenated into HTML content without sanitation).
+BL: `ImageTile imageTile = new ImageTile(""<img src=\"""" + src + getBigImageScaleParam()`",buggy
+7647,"SE: The user input values ($fax_success, $fax_result_code, $fax_result_text, $fax_file, $fax_ecm_used, $fax_local_station_id, $fax_document_transferred_pages, $fax_document_total_pages, $fax_image_resolution, $fax_image_size, $fax_bad_rows, $fax_transfer_rate, $fax_retry_attempts, $fax_retry_limit, $fax_retry_sleep, $fax_uri, $fax_date, $fax_epoch) are directly echoed into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None",buggy
+101,"SE: None
+BL: None",buggy
+7715,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",buggy
+7862,"SE: The 'href' variable is directly concatenated into the 'class' attribute of the element without proper input validation/sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $(elm).addClass(`is-external-link`)",buggy
+7914,"SE: The 'text' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `const html = `<p data-authorId='${msg.userId}' class='${authorClass}'><b>${authorName}:</b>` + `<span class='time ${authorClass}'>${ctx.timeStr}</span> ${ctx.text}</p>`;`",buggy
+8106,"SE: None
+BL: None",buggy
+117,"SE: The 'db_name' and 'column_name' variables are directly concatenated into HTML content without proper sanitization.
+BL: `$main_text .= $column_name .':';`",buggy
+3623,"SE: None
+BL: None",buggy
+242,"SE: None
+BL: None",buggy
+8343,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+279,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitization.
+BL: None.",buggy
+165,"SE: The 'name' and 'group' fields in the 'typesColumns' array are directly concatenated into the grid columns without proper sanitization.
+BL: None.",buggy
+7607,"SE: The 'mac' variable is directly concatenated into the HTML content without sanitation.
+BL: `$mac['mac']`",buggy
+8340,"SE: None
+BL: None",buggy
+8011,"SE: None
+BL: None",buggy
+8039,"SE: The 'name' field in the transformAsset method is not properly sanitized before being included in the output array, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: 'name' => e($asset->name),",buggy
+8307,"SE: None
+BL: None",buggy
+1993,"SE: The 'query' variable is directly concatenated into the 'query' string without proper input validation.
+BL: `query = ""path:%s %s"" % (source.tokenToPath(path), query)`",buggy
+8320,"SE: None
+BL: None",buggy
+7933,"SE: The 'queryNoFilter' variable is directly concatenated into the HTML content without sanitation.
+BL: `$searchForm = UserManager::get_search_form($queryNoFilter);`",buggy
+7861,"SE: None
+BL: None",buggy
+15,"SE: None
+BL: None",buggy
+205,"SE: The 'sfname' variable is directly concatenated into the HTML content without proper sanitization.
+BL: echo ""  <td>$sfname</td>\n"";",buggy
+7804,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",buggy
+277,"SE: The 'userSearch' variable is directly concatenated into the SQL query without proper input validation.
+BL: None.",buggy
+164,"SE: The 'html' variable is directly concatenated with 'value' without proper sanitation.
+BL: `var html = '<div class=""pimcore_editable_wysiwyg"" id=""' + this.editableDivId + '"" contenteditable=""true"">' + value + '</div>';`",buggy
+8334,"SE: None
+BL: None",buggy
+7523,"SE: The 'values.get(""json_xml"")' and 'values.get(""svg_xml"")' are directly concatenated into the 'repositoryService.addModelEditorSource' and 'repositoryService.addModelEditorSourceExtra' methods without proper input validation or sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+111,"SE: The 'menu' variable is directly concatenated with user input without proper sanitization.
+BL: `menu += ""<a onclick=\""menu_"" + getPropertyString(""id"") + ""_showDialog();return false;\"" class=\""menu-link\""><span>"" + label + ""</span></a>"";`",buggy
+31,"SE: The 'url' parameter from $_POST is used directly without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: 'url' => esc_url_raw( $_POST['url'] ),",buggy
+7956,"SE: None
+BL: None",buggy
+1827,"SE: None
+BL: None",buggy
+3144,"SE: The 'content' variable is directly concatenated into the 'titleResourceReference' without proper input validation.
+BL: `ResourceReference titleResourceReference = new ResourceReference(entry.getLink(), ResourceType.URL);`",buggy
+7495,"SE: The line may contain a bug of type CWE-79 because user input is directly echoed into the HTML content without proper sanitization.
+BL: None.",buggy
+45,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",buggy
+8145,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",buggy
+92,"SE: None
+BL: None",buggy
+7535,"SE: None
+BL: None",buggy
+24,"SE: None
+BL: None",buggy
+3655,"SE: The 'upload' function processes file uploads and checks for forbidden file extensions and MIME types, but it may still be vulnerable to CWE-79 if user-controlled input is not properly sanitized before being used in the file path.
+BL: None.",buggy
+261,"SE: None
+BL: None",buggy
+8383,"SE: None
+BL: None",buggy
+149,"SE: None
+BL: None",buggy
+99,"SE: The 'url' variable is directly concatenated into the 'response' object without proper input validation or sanitization.
+BL: `const response = renderPayloadResponse(ssrContext)`",buggy
+3566,"SE: None
+BL: None",buggy
+7696,"SE: The 'pname' variable is directly concatenated into the JavaScript code without proper sanitization.
+BL: `$desc = preg_replace(""/pfSense/i"", $g['product_name'], $pdata['descr']);`",buggy
+108,"SE: The 'filename' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `dialog.find("".modal-body"").html('<p>Uploading ' + filename + '</p><div class=""error""></div>');`",buggy
+2122,"SE: None
+BL: None",buggy
+291,"SE: The 'options.title' is directly concatenated into HTML content without sanitation.
+BL: $modal.append('<div class=""header"">' + this.options.title + '</div>');",buggy
+106,"SE: None
+BL: None",buggy
+209,"SE: None
+BL: None",buggy
+274,"SE: None
+BL: None",buggy
+265,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",buggy
+7481,"SE: The 'uid' parameter is directly concatenated into the URL without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $params.= ""&amp;$index="".urlencode($$index);",buggy
+8078,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None",buggy
+7705,"SE: None
+BL: None",buggy
+8333,"SE: None
+BL: None",buggy
+131,"SE: The 'url' and 'comment' variables are directly concatenated into HTML content without sanitation.
+BL: 
+```php
+'<a href=""' + data.url + '"">' + data.url + '</a></td>' +
+'<td>' + comment + '</td>' +
+```",buggy
+8028,"SE: None
+BL: None",buggy
+206,"SE: The 'itemTitle' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `$oLink->itemTitle = Strings::htmlentities($item['header']);`",buggy
+147,"SE: The 'name' variable is directly concatenated into the 'matched' array without proper sanitization.
+BL: `'matched[] = array('name' => Format::htmlchars($name), 'info' => $name, 'id' => $id, '/bin/true' => $_REQUEST['q']);`",buggy
+232,"SE: The 'Email' and 'Desc' values from the form input are directly concatenated into the HTML content without proper sanitation.
+BL: $crash_report_header .= ""Email {$email}\n"";",buggy
+185,"SE: None
+BL: None",buggy
+114,"SE: None
+BL: None",buggy
+7905,"SE: None
+BL: None",buggy
+18,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",buggy
+7841,"SE: The 'settingPermCheck' variable is directly concatenated into the error message without proper sanitation.
+BL: `throw new MethodNotAllowedException(__('This setting is restricted and requires the following permission(s): %s', $settingPermCheck));`",buggy
+8478,"SE: The 'registration_response' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `$registration_response` variable is directly concatenated into the HTML content without proper sanitization in line 134.",buggy
+228,"SE: None
+BL: None",buggy
+210,"SE: The 'tableName' variable is directly concatenated into SQL queries without proper sanitization.
+BL: $sql = 'select picklistid from vtiger_picklist where name='.$tableName;",buggy
+181,"SE: The 'deeplink' parameter from the request is directly used in generating the URL without proper sanitation.
+BL: ` $url .= '&' . $queryString;`",buggy
+145,"SE: None
+BL: None",buggy
+8179,"SE: The 'username' input is not properly sanitized before being used in the HTML content.
+BL: $out->addHTML(Html::rawElement('p', [], Html::label(
+			wfMessage('soa2-scratch-username')->escaped(),
+			'soa2-username-input',
+		)));",buggy
+275,"SE: The 'key' variable is directly concatenated into HTML content without proper sanitization.
+BL: None.",buggy
+196,"SE: The 'item.description' is directly concatenated into HTML content without sanitation.
+BL: `item.description = $('body').html() + '' + (config.suffix || '');`",buggy
+266,"SE: None
+BL: None",buggy
+992,"SE: The 'CopyProtect_save' variable is directly used in the HTML content without proper sanitization.
+BL: `if($_POST['CopyProtect_save']){`",buggy
+252,"SE: None
+BL: None",buggy
+7584,"SE: The 'vars' array is directly used in SQL queries without proper sanitization, which may lead to SQL injection vulnerabilities.
+BL: None.",buggy
+81,"SE: None
+BL: None",buggy
+136,"SE: The 'url' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `return '<a href=""'.$url.'"" '.implode(' ', $attribs).'>' . $prefix . ($noText ? '' : htmlspecialchars($this->data['text'])) . $suffix . '</a>';`",buggy
+144,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",buggy
+8329,"SE: None
+BL: None",buggy
+7518,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: $htmlHeadXtra[] = '<script>",buggy
+118,"SE: None
+BL: None",buggy
+3001,"SE: None
+BL: None",buggy
+8374,"SE: None
+BL: None",buggy
+52,"SE: The 'message' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `<tt><?php echo $bug_report_msg1;?></tt><br><textarea name='message' id='message' cols='60' rows='4'></textarea><br><br><tt><?php echo $bug_report_msg2;?></tt>`",buggy
+7464,"SE: None
+BL: None",buggy
+8204,"SE: The 'real_url' variable is directly concatenated into the URL without proper input validation or sanitization.
+BL: `$url = 'https://'.$oss_setting['domain'].""/"".$oss_path ;`",buggy
+8209,"SE: The 'file_path' variable is directly concatenated into the file path without proper input validation.
+BL: `$file_path = ""../Public/Uploads/"".$array[1] ;`",buggy
+7638,"SE: The 'dirty' variable is not sanitized before being used in the loadXML method, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $loaded = $this->xmlDocument->loadXML($dirty);",buggy
+75,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+8211,"SE: None
+BL: None",buggy
+7634,"SE: The 'data' variable is directly used in a regular expression without proper input validation.
+BL: var htmlRegex = /<([A-Za-z][A-Za-z0-9]*)\b[^>]*>(.*?)<\/\1>/;",buggy
+8212,"SE: The 'file_url' variable is directly concatenated into the 'parse_url' function without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$array = parse_url($file_url) ;`",buggy
+8213,"SE: None
+BL: None",buggy
+8469,"SE: None
+BL: None",buggy
+294,"SE: The 'page' parameter in the line may not be properly sanitized before being used in the HTML content.
+BL: `$page = sanitize_text_field($_REQUEST['page']);`",buggy
+8516,"SE: None
+BL: None",buggy
+8217,"SE: None
+BL: None",buggy
+8173,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitization.
+BL: None.",buggy
+8214,"SE: None
+BL: None",buggy
+61,"SE: None
+BL: None",buggy
+1071,"SE: None
+BL: None",buggy
+8126,"SE: None
+BL: None",buggy
+7875,"SE: The 'request.form' input is directly concatenated into the SQL query without proper validation or sanitization.
+BL: `cur.execute('SHOW EXPLAIN FOR %d;' % connection_id)`",buggy
+97,"SE: The 'faqusername' and 'faqpassword' variables are directly concatenated into the SQL query without proper input validation and sanitation.
+BL: None.",buggy
+124,"SE: The 'action' variable is used without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $action = Filter::filterInput(INPUT_GET, 'action', FILTER_UNSAFE_RAW);",buggy
+7470,"SE: The 'url' variable is not properly sanitized before being used in the code, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8241,"SE: None
+BL: None",buggy
+7562,"SE: None
+BL: None",buggy
+7641,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: `$condition = '( MATCH (`from`,`to`,`cc`,`bcc`,`subject`,`params`) AGAINST (' . $list->quote($filterTerm) . ' IN BOOLEAN MODE) )';`",buggy
+186,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None",buggy
+7745,"SE: None
+BL: None",buggy
+126,"SE: None
+BL: None",buggy
+8161,"SE: The 'key' and 'type' values are directly concatenated into the function call without proper input validation.
+BL: None.",buggy
+8215,"SE: None
+BL: None",buggy
+8222,"SE: None
+BL: None",buggy
+8221,"SE: The 'file_url' variable is directly concatenated into the URL without proper input validation.
+BL: `$array = parse_url($file_url) ;`",buggy
+219,"SE: None
+BL: None",buggy
+7829,"SE: The 'searchterm' variable is directly concatenated into HTML content without proper sanitization.
+BL: return count + "" search result for '"" + searchterm + ""':""",buggy
+8314,"SE: None
+BL: None",buggy
+271,"SE: None
+BL: None",buggy
+1458,"SE: The 'me.item.safeLabel' is directly concatenated without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `me.item.safeLabel = ""nr-dashboard-widget-"" + (me.item.label).replace(/\W/g,'_');`",buggy
+8268,"SE: None
+BL: None",buggy
+7904,"SE: The 'sExtension' variable is directly concatenated into the error message without proper sanitation.
+BL: `Yii::app()->setFlashMessage(gT(""This is not a .xml file.""). 'It is a '.$sExtension, 'error');`",buggy
+29,"SE: The 'podurl' input value is directly concatenated into the 'share' function without proper sanitation.
+BL: `<form onsubmit=""var url = document.getElementById('podurl').value; url = url.replace(/.*?:\/\//g, ''); share(url); return false"">`",buggy
+7628,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: None.",buggy
+239,"SE: The 'widget_id' parameter is directly concatenated into the HTML content without proper sanitization.
+BL: `$this->set('widget_id', $widget_id);`",buggy
+7645,"SE: The 'caller_id_name' variable is directly concatenated into the HTML content without proper sanitization.
+BL: echo ""		<td class='vncell'>"".$text['label-caller_id_name'].""</td>""; //source name",buggy
+63,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+7795,"SE: None
+BL: None",buggy
+7458,"SE: None
+BL: None",buggy
+8185,"SE: None
+BL: None",buggy
+7713,"SE: None
+BL: None",buggy
+8190,"SE: None
+BL: None",buggy
+172,"SE: The 'categoryName' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `printf('<div href=""#category-id-%d"" id=""%s-%d"" class=""list-group-item list-group-item-action border-left-0 border-right-0 d-flex justify-content-between align-items-center"" %s>', $cat['id'], trim(strip_tags($categoryName)), $cat['id'], $numSubCategories > 0 ? 'data-toggle=""collapse""' : '');`",buggy
+132,"SE: None
+BL: None",buggy
+121,"SE: The 'secLevelEntries' array values are directly concatenated into the HTML content without proper sanitation.
+BL: `<?= $secLevelEntries['user']; ?>`, `<?= $secLevelEntries['content']; ?>`, `<?= $secLevelEntries['statistics']; ?>`, `<?= $secLevelEntries['exports']; ?>`, `<?= $secLevelEntries['backup']; ?>`, `<?= $secLevelEntries['config']; ?>`",buggy
+146,"SE: None
+BL: None",buggy
+7826,"SE: None
+BL: None",buggy
+250,"SE: None
+BL: None",buggy
+8418,"SE: None
+BL: None",buggy
+296,"SE: The 'text' input from the form is directly concatenated into the SQL query without proper sanitization, which can lead to SQL injection vulnerabilities.
+BL: `$INSERT = $db->query('INSERT INTO `myaac_bugtracker` (`account`,`id`,`text`,`reply`,`type`) VALUES ('.$db->quote($acc).','.$db->quote($id).','.$db->quote($_POST['text']).','.$db->quote($reply).','.$db->quote($type).')');`",buggy
+35,"SE: The 'logoutput' variable is directly outputted into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: ```<pre><?PHP foreach ($logoutput as $line) { echo $line; } ?></pre>```",buggy
+8009,"SE: None
+BL: None",buggy
+8389,"SE: None
+BL: None",buggy
+8439,"SE: The 'form_filename' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a path traversal vulnerability.
+BL: None.",buggy
+7775,"SE: None
+BL: None",buggy
+8460,"SE: The 'rev2[0]' and 'rev2[1]' parameters are directly concatenated into the URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8199,"SE: The 'key' variable is directly concatenated into the error message without proper input validation.
+BL: None.",buggy
+148,"SE: The 'name' parameter from the $_POST array is directly concatenated into the error message without proper sanitization.
+BL: `$msg=sprintf(__('Invalid CSRF token [%1$s] on %2$s'), Format::htmlchars(Format::sanitize($token)), THISPAGE);`",buggy
+208,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",buggy
+115,"SE: The 'user_input' is not directly concatenated into HTML content without sanitation.
+BL: none",buggy
+873,"SE: None
+BL: None",buggy
+48,"SE: The 'parameterValue' variable is directly concatenated into the 'userPropertyName' string without proper input validation or sanitization.
+BL: `user.setUserProperty(userPropertyName, parameterValue);`",buggy
+161,"SE: The 'input' parameter is not properly sanitized before being used in the vtlib_purifyForSql function.
+BL: None.",buggy
+8151,"SE: The 'mimeType' variable is directly used in the method shouldBeDownloaded without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+7646,"SE: The 'fax_extension' variable is directly concatenated into the file paths without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $dir_fax_inbox = $fax_dir.'/'.$fax_extension.'/inbox';",buggy
+8455,"SE: None
+BL: None",buggy
+8045,"SE: The 'username' input value is directly concatenated into the 'register' object without proper sanitization.
+BL: var register = {
+			textroom: ""join"",
+			transaction: transaction,
+			room: myroom,
+			username: myid,
+			display: username
+		};",buggy
+3804,"SE: The 'value' variable is directly concatenated into the responseText without proper sanitation.
+BL: `ele.setAttribute(""value"", value);`",buggy
+8306,"SE: The 'youtube_live_channel_id_render' function may contain a bug of type CWE-79.
+BL: `$options['youtube_live_channel_id'] = '<p>Sorry, there&rsquo;s no live stream at the moment. Please check back later or take a look at <a target=""_blank"" href=""https://youtube.com/channel/' . $youtube_options['youtube_live_channel_id'] . '"">all of our videos</a>.</p>
+<p><button type=""button"" class=""button"" id=""check-again"">Check again</button><span class=""spinner"" style=""display:none;""></span></p>';`",buggy
+8097,"SE: The 'serverAddr' variable is directly concatenated into the HTML content without proper sanitation.
+BL: $serverAddr = $_SERVER['SERVER_ADDR'] ?? ""1"";",buggy
+46,"SE: None
+BL: None",buggy
+7633,"SE: The 'line_field' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `echo $line_field;`",buggy
+7892,"SE: The 'data' variable from the HTTP POST request is directly used in the HTML content without proper sanitization.
+BL: `echo ""    <textarea name='data' id='data' rows='7' class='formfld' style='width: 100%;' wrap='off'>$data</textarea>\n"";`",buggy
+257,"SE: None
+BL: None",buggy
+7504,"SE: None
+BL: None",buggy
+7623,"SE: The 'msg' variable is directly concatenated into HTML content without proper sanitation.
+BL: `echo ""<td class='row_style1'><strong>"".escape($msg).""</strong></td>\n"";`",buggy
+7711,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",buggy
+7763,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: `$html = ""<div class='alert alert-info'>$message</div>"";`",buggy
+1831,"SE: The 'body' parameter is directly passed to the markdownIt.render() function without proper input validation, which may lead to Cross-site Scripting (XSS) vulnerabilities.
+BL: const renderedBody = markdownIt.render(body, context);",buggy
+7608,"SE: The 'settings.faviconPad' variable is directly concatenated into the 'href' attribute without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: <link rel=""shortcut icon"" href=""<%=settings.faviconPad%>"">",buggy
+159,"SE: None
+BL: None",buggy
+83,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: `echo ""<button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#create-alert' data-device_id='"" . $device['device_id'] . ""'>Create new alert rule</button>"";`",buggy
+8404,"SE: The 'help_url' parameter in the macro 'whatsthis' is directly concatenated into the HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: <a href=""{{help_url}}"" target=""_blank"" class=""what-is-this"">",buggy
+7774,"SE: None
+BL: None",buggy
+272,"SE: The 'path' variable is not properly sanitized before being used in the 'getMediaPath' method, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$fullPath = $this->storagePath . implode(""/"", array_map(""rawurlencode"", explode(""/"", $path)));`",buggy
+3117,"SE: None
+BL: None",buggy
+237,"SE: None
+BL: None",buggy
+7781,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: `echo ""<label for='agree' class='radio'>"";`",buggy
+7971,"SE: The 'dbObject' variable is directly concatenated into the SQL query without proper input validation.
+BL: `s = connSource.prepareStatement(currentStatement = ""SELECT * FROM "" + dbObject + (useSuffix ? ""_"" : """")`",buggy
+3983,"SE: The `escape_unicode` method may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting) because it directly manipulates JavaScript code without proper input sanitization.
+BL: `javascript.gsub!(/\342\200\250/u, ""&#x2028;"")`",buggy
+166,"SE: The 'groupData['name']' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `<?= $PMF_LANG['ad_group_deleteGroup'] ?> ""<?= $groupData['name'] ?>""`",buggy
+7511,"SE: None
+BL: None",buggy
+7651,"SE: The 'dialplan_detail_data' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `echo ""    <input class='formfld' type='text' name='dialplan_detail_data' value=\"""".htmlspecialchars($dialplan_detail_data).""\"">\n"";`",buggy
+8130,"SE: The 'fieldname' values are directly used in the HTML content without proper sanitization.
+BL: None.",buggy
+7979,"SE: None of the lines in the file content contain a bug of type CWE-79.
+BL: None.",buggy
+7615,"SE: The 'data' variable is directly used in the textarea without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `echo ""    <textarea name='data' id='data' rows='7' class='formfld' style='width: 100%;' wrap='off'>$data</textarea>\n"";`",buggy
+7567,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+7447,"SE: The 'SEARCH' variable in the Gem::Server class may contain a bug of type CWE-79 because it includes user input without proper sanitization.
+BL: None.",buggy
+7616,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: echo ""			<b>"".$text['title-operator_panel'].""</b>"";",buggy
+7755,"SE: None
+BL: None",buggy
+7890,"SE: The 'name' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `echo ""<th"" . ($orgtable != """" || $field->name != $orgname ? "" title='"" . h(($orgtable != """" ? ""$orgtable."" : """") . $orgname) . ""'"" : """") . "">"" . h($name)`",buggy
+7887,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+8339,"SE: None
+BL: None",buggy
+93,"SE: The 'key' parameter from the user input is directly concatenated into the file path without proper input validation.
+BL: `$jsonFile = $this->storagesDir.'/storage-'.$key.'.json';`",buggy
+7501,"SE: The 'r->uri' variable is directly used in a log message without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, ctx->r, ""%s"", msg);`",buggy
+179,"SE: None
+BL: None",buggy
+7583,"SE: None
+BL: None",buggy
+8405,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the JSON response without proper sanitization.
+BL: None.",buggy
+8423,"SE: The 'fileName' variable is not sanitized before being used to construct the file path, which may lead to a path traversal vulnerability.
+BL: `$filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;`",buggy
+116,"SE: None
+BL: None",buggy
+253,"SE: The 'sub_photo_dir' variable is directly concatenated into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$d = ""?d="" . htmlentities($sub_photo_dir);`",buggy
+8201,"SE: None
+BL: None",buggy
+8205,"SE: None
+BL: None",buggy
+8156,"SE: The 'searchStr' parameter from the URL query is directly used in the findJobsByState method without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $searchStr = (isset($_GET['searchStr'])) ? $_GET['searchStr'] : null;",buggy
+7648,"SE: The 'dialplan_description' variable is directly concatenated into the HTML content without proper sanitation.
+BL: echo ""	<td class='description overflow hide-sm-dn'>"".escape($row['dialplan_description']).""&nbsp;</td>\n"";",buggy
+997,"SE: None
+BL: None",buggy
+7682,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: None.",buggy
+8172,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+8240,"SE: The 'template' variable is directly concatenated into the HTML content without proper sanitation.
+BL: $html = $templating->getContent('Extensions/Layout/Templates/Templates.html.twig');",buggy
+90,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+7471,"SE: The 'fields[title]' and 'fields[handle]' values are directly concatenated into error messages without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $this->_errors['title'] = __('This is a required field');
+BL: $this->_errors['handle'] = __('A page with that handle already exists');",buggy
+170,"SE: The 'user_list_search' input field is directly concatenated into the HTML content without proper sanitation.
+BL: `<input type=""text"" id=""user_list_autocomplete"" name=""user_list_search"" class=""form-control pmf-user-autocomplete"" autocomplete=""off"" placeholder=""<?= $PMF_LANG['ad_auth_user'] ?>"">`",buggy
+8198,"SE: The 'data.notes' value is directly assigned to the innerHTML property of an element without proper sanitization.
+BL: `notesValue.innerHTML = data.notes;`",buggy
+8008,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+8463,"SE: None
+BL: None",buggy
+280,"SE: The 'url' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `'type' => 'url', 'url' => url::decodeUrl64InLink($url), 'title' => $title,`",buggy
+7565,"SE: The 'resultBody' variable is directly concatenated into HTML content without proper sanitation.
+BL: `theModelMap.put(""resultBody"", resultBodyText);`",buggy
+7730,"SE: The 'item.getCode()' is directly concatenated into the method call without proper input validation.
+BL: `cartModel = getShoppingCartModel( item.getCode(), store );`",buggy
+8384,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+8000,"SE: The 'file' object is directly used in the 'insert' method without proper validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `const extension = path.extname(file.name);`",buggy
+8338,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `c.Redirect(conf.Server.Subpath + ""/explore/repos"")`",buggy
+8410,"SE: None
+BL: None",buggy
+73,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+8224,"SE: None
+BL: None",buggy
+1085,"SE: The 'user' parameter in the 'modify' method is directly used in the function without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `def modify(self, user=None, **params):`",buggy
+8399,"SE: The 'startdate' and 'enddate' parameters are directly used in an SQL query in the `validate()` method, which can lead to an SQL injection vulnerability.
+BL: None.",buggy
+1056,"SE: The 'parameters' map is directly used to populate the model without proper sanitation, which may lead to Cross-site Scripting (XSS) vulnerabilities.
+BL: None.",buggy
+8073,"SE: The 'mask' variable in the write() method is not properly sanitized before being used in the preg_replace() function, which could lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $mask = preg_replace('#%(node|\d+)\.#', '%$1_', $mask);",buggy
+234,"SE: The 'html' field is checked for XSS vulnerability by ensuring that it does not contain any script or event handlers.
+BL: None.",buggy
+217,"SE: The 'sUrl' variable is directly concatenated into the JavaScript code without proper input validation or encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$oUICancelButton->SetOnClickJsCode(""window.location.href = '$sURL'"");`",buggy
+1,"SE: The 'email' parameter in the 'solo_subscribe' function is not properly sanitized before being used in the SQL query, which may lead to a SQL injection vulnerability.
+BL: $email = $wpdb->escape(strtolower($email));",buggy
+187,"SE: The 'question' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `$faqData['title'] = $question['question'];`",buggy
+7472,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+195,"SE: The 'response' variable is directly setting the 'Content-Type' header without proper input validation, which can lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$response->headers->set('Content-Type', 'text/html');`",buggy
+7530,"SE: The 'name' field in the form is directly concatenated into the HTML content without any sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `form_selectable_cell(filter_value($poller['name'], get_request_var('filter'), 'pollers.php?action=edit&id=' . $poller['id']), $poller['id']);`",buggy
+7630,"SE: The 'contact_organization' and 'contact_name_given' variables are directly concatenated into the HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: echo ""	<input class='formfld' type='text' name='contact_organization' maxlength='255' value=\"""".escape($contact_organization).""\"">\n"";",buggy
+5,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+8193,"SE: The 'src' parameter is directly used to create a cache file name without proper validation or sanitization.
+BL: $cache = $this->tn_cache_id($params) . '.' . $ext;",buggy
+8034,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: None.",buggy
+8382,"SE: The 'label' and 'bank' fields are directly concatenated into the HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `print '<tr><td class=""titlefield fieldrequired"">'.$langs->trans(""LabelRIB"").'</td>';
+print '<td colspan=""4""><input size=""30"" type=""text"" name=""label"" value=""'.$account->label.'""></td></tr>';
+
+print '<tr><td class=""fieldrequired"">'.$langs->trans(""BankName"").'</td>';
+print '<td><input size=""30"" type=""text"" name=""bank"" value=""'.$account->bank.'""></td></tr>';`",buggy
+7552,"SE: The 'title' parameter in the AddHidden function is directly concatenated into the HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `echo '<input type=""text"" name=""title"" maxlength=""100"" size=""50"" value=""'.htmlspecialchars($_REQUEST['title']).'"" class=""gpinput full_width"" required/>';`",buggy
+8459,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+7823,"SE: The line may contain a bug of type CWE-79 because it allows the execution of arbitrary JavaScript code.
+BL: None.",buggy
+7845,"SE: None
+BL: None",buggy
+77,"SE: The 'tooltipFormatter' function may contain a bug of type CWE-79 as it directly concatenates user input (timestamp and data) into HTML content without proper sanitation.
+BL: `SmoothieChart.tooltipFormatter = function (timestamp, data) {`",buggy
+8054,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+871,"SE: The 'linkTextSkipperGuide' variable is directly concatenated with the translation value without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `var linkTextSkipperGuide = ""<?=$t->tr('descrSkipperGuide')?>"";`",buggy
+290,"SE: The 'img' variable is used without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$img = stripslashes($data[1][0]);`",buggy
+963,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",buggy
+7930,"SE: The 'dirty' input parameter is directly passed to the sanitize function without any sanitation or validation.
+BL: return sanitize(dirty, { ...this._options, ...(options || {}) });",buggy
+8233,"SE: The 'data' variable is directly concatenated into the HTML content without any sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",buggy
+8344,"SE: The 'template' value in the template configuration is directly concatenated with the plugin name without proper sanitation.
+BL: None.",buggy
+7510,"SE: The 'filename' input value is directly used in the path without proper validation or sanitization.
+BL: var path = utils.url_path_join(that.notebook_path, filename);",buggy
+293,"SE: None
+BL: None",not_buggy
+8043,"SE: None
+BL: None",not_buggy
+8489,"SE: None
+BL: None",not_buggy
+3209,"SE: The line may contain a bug of type CWE-79 because the `params[:back]` value is directly used without proper input validation or sanitization.
+BL: `@redirect_to = URI.parse(params[:back].to_s).path || root_path`",not_buggy
+7586,"SE: The line may contain a bug of type CWE-79 because the variable $attributes is directly echoed without proper sanitization.
+BL: echo e(implode(', ', $attributes));",not_buggy
+88,"SE: The value of the 'q' parameter from the form input is directly inserted into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: value='{{ frappe.form_dict.q|e or ''}}'",not_buggy
+8153,"SE: None
+BL: None",not_buggy
+7684,"SE: The 'id' parameter obtained from user input is not properly sanitized before being used in the sprintf function, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $t_message = sprintf( plugin_lang_get( 'ensure_delete' ), string_attribute( $t_repo->name ) );",not_buggy
+8444,"SE: The input data from the request is being cleaned using the HTMLClean class before being merged back into the request. However, the cleaning process may not be sufficient to prevent cross-site scripting vulnerabilities.
+
+BL: None.",not_buggy
+8220,"SE: The 'option' array is not sanitized before being saved, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+8385,"SE: The line may contain a bug of type CWE-79 because the `recoveryLink` variable is directly concatenated into the HTML content without proper sanitation.
+BL: `{ 0: ""{receiverName -> f:format.htmlspecialchars()}"", 1: recoveryLink, 2: validUntil }`",not_buggy
+7527,"SE: None
+BL: None",not_buggy
+177,"SE: None
+BL: None",not_buggy
+3802,"SE: The `tagId` parameter is not properly sanitized before being used in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+1006,"SE: The lines that use the `system()` function to execute shell commands may contain a bug of type CWE-79 as they can be vulnerable to command injection if unsanitized user input is used.
+BL: None.",not_buggy
+8055,"SE: The 'address' input is used without proper sanitization, which may lead to a cross-site scripting vulnerability.
+BL: $fail = function () use ($address) {",not_buggy
+254,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being used in the jQuery selector.
+BL: `$('#f_'+file_id+' input:hidden[name='+file_id+']').val('1');`",not_buggy
+7842,"SE: The 'excerpt' variable is directly inserted into the DOM without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: items.add('excerpt', <div>{excerpt}</div>, -100);",not_buggy
+38,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being echoed in the HTML content.
+BL: None.",not_buggy
+7587,"SE: The `escape_javascript` method is used to sanitize the `query` variable before it is concatenated into the JavaScript function call. This helps prevent Cross-site Scripting (XSS) vulnerabilities.
+
+BL: None.",not_buggy
+6,"SE: None
+BL: None",not_buggy
+8441,"SE: None
+BL: None",not_buggy
+8068,"SE: The 'fcm_key' input value is not properly sanitized before being displayed on the page, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `<input type=""text"" class=""form-control"" name=""fcm_key"" value=""<?php isset($mb_options['fcm_key']) ? print htmlspecialchars($mb_options['fcm_key']) : ''?>"" />`",not_buggy
+8286,"SE: The 'value' parameter in the sanitize_xss function is only passed through htmlspecialchars and strip_tags functions, which may not be sufficient to prevent Cross-site Scripting vulnerabilities.
+BL: None.",not_buggy
+213,"SE: The 'reactionCodepoint' field in the 'commentReactionSchema' may contain a bug of type CWE-79 as user input is not properly sanitized before being used in the custom validation function.
+BL: None",not_buggy
+7808,"SE: The 'element.textContent' is directly used in a regular expression without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: if (/^#\d+$/.test(element.textContent) && element.previousSibling instanceof Text) {",not_buggy
+8067,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",not_buggy
+7840,"SE: None
+BL: None",not_buggy
+7783,"SE: The line that may contain a bug of type CWE-79 is where the username input value is echoed directly into the HTML content without proper sanitization.
+BL: 
+```html
+value=""<?= isset($_POST['username']) ? htmlentities($_POST['username'], defined('ENT_SUBSTITUTE') ? (ENT_QUOTES | ENT_SUBSTITUTE) : ENT_QUOTES, 'utf-8') : '' ?>""
+```",not_buggy
+7462,"SE: The line may contain a bug of type CWE-79 because user input ($_SESSION[""failure""]) is directly outputted without proper sanitization.
+BL: $tpl->setVariable(""ERROR_MESSAGE"", ($_SESSION[""failure""]));",not_buggy
+8305,"SE: The 'name' field in the line may contain a bug of type CWE-79 as it is not properly sanitized before being displayed in the response.
+
+BL: `'name' => e($checkoutRequest->itemRequested()->present()->name()),`",not_buggy
+8412,"SE: The 'url' variable is not sanitized before being concatenated into the command string passed to the 'popen' function, which may lead to a command injection vulnerability.
+
+BL: $proc = popen(""sudo pihole -q -adlist "".$url."" "".$exact, 'r');",not_buggy
+256,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being used in the response.
+
+BL: None.",not_buggy
+8413,"SE: The line that may contain a bug of type CWE-79 is directly concatenating user input into the href attribute of an anchor tag without proper input validation or sanitization.
+
+BL: None.",not_buggy
+220,"SE: The '$_POST' and '$_GET' variables are directly concatenated into HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+273,"SE: The 'value' variable is directly echoed into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: 
+                <?= e($value); ?>",not_buggy
+13,"SE: None
+BL: None",not_buggy
+264,"SE: The line may contain a bug of type CWE-79 because user input variables $vars['to'] and $vars['from'] are concatenated into the JavaScript code without proper sanitization.
+BL: None.",not_buggy
+2322,"SE: The user input values ($_POST['wsize'], $_POST['delay'], $_POST['fsize']) are not properly sanitized before being displayed in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+7655,"SE: None
+BL: None",not_buggy
+7526,"SE: The 'transphrase' parameter is directly printed without proper sanitization, which may lead to a cross-site scripting vulnerability.
+BL: if (GETPOST('transphrase','alphanohtml')) print GETPOST('transphrase','alphanohtml');",not_buggy
+53,"SE: The 'post_content' and 'post_content_filtered' variables are concatenated without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+292,"SE: The 'userGroup->getLocalizedName()' value is passed to the 'label' attribute without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+47,"SE: The user input from $_REQUEST['QSType'] and $_REQUEST['QuickSearch'] is not properly sanitized before being used in the code, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $qs_type = strip_tags($_REQUEST['QSType']);
+$qs_text = strip_tags($_REQUEST['QuickSearch']);",not_buggy
+7703,"SE: The 'url' field is directly used in the form without any sanitation, making it vulnerable to Cross-site Scripting attacks.
+BL: None.",not_buggy
+178,"SE: The line may contain a bug of type CWE-79 because the `tag` variable is directly concatenated into the HTML content without proper sanitization.
+BL: `""<"" + tagName + href + "" data-tag-name="" + tag + (params.description ? ' title=""' + escape(params.description) + '"" ' : """") + "" class='"" + classes.join("" "") + ""'>"" + visibleName + ""</"" + tagName + "">""`",not_buggy
+8018,"SE: None
+BL: None",not_buggy
+7744,"SE: None
+BL: None",not_buggy
+3947,"SE: The 'message' variable is passed to the 'dangerouslySetInnerHTML' prop without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: 
+```jsx
+dangerouslySetInnerHTML={{
+  __html: DOMPurify.sanitize(renderMarkdown(message)),
+}}
+```",not_buggy
+8470,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",not_buggy
+22,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the response without proper sanitization.
+BL: None.",not_buggy
+42,"SE: The line may contain a bug of type CWE-79 because user input ($_GET['secret']) is directly concatenated into a SQL query without proper sanitization.
+BL: `$key = $db->query('SELECT `key` FROM `shorts` WHERE `secret` = ""' . $db->escape_string($secret) . '""') or die('Database error 3984');`",not_buggy
+169,"SE: The user input is properly sanitized using Strings::htmlentities before being concatenated into the HTML content.
+BL: None.",not_buggy
+100,"SE: None
+BL: None",not_buggy
+7706,"SE: The 'requestUri' variable is not sanitized before being used in the 'render' function, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+8462,"SE: None
+BL: None",not_buggy
+68,"SE: The line that may contain a bug of type CWE-79 is where the title is being sanitized by replacing characters without proper input validation.
+BL: `title = jsonMessage.getString(""message"").replace(""&"", ""&amp;"").replace(""<"", ""&lt;"").replace("">"", ""&gt;"").replace(""'"", ""&apos;"").replace(""\"""", ""&quot;"");`",not_buggy
+141,"SE: The function `_getPayloadURL` may contain a bug of type CWE-79 as it directly concatenates the input `url` into error messages without proper sanitization.
+
+BL: 
+```typescript
+throw new Error('Payload URL must not include hostname: ' + url)
+```
+
+```typescript
+throw new Error('Payload URL cannot contain search params: ' + url)
+```",not_buggy
+71,"SE: The function `testftp` may contain a bug of type CWE-79 as user input from form fields is concatenated into the URL without proper input validation or sanitization.
+
+BL: postDataReturnText('installer.php','-action=testftp&-ftphost='+escape(form.ftp_host.value)+'&-ftpuser='+escape(form.ftp_username.value)+'&-ftppass='+escape(form.ftp_password.value)+'&-ftppath='+escape(form.ftp_path.value), function(result){",not_buggy
+19,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being displayed on the webpage.
+BL: None.",not_buggy
+129,"SE: The 'u' variable, which contains the request URI, is used without proper input validation or sanitization, making it vulnerable to CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+
+BL: None.",not_buggy
+233,"SE: The 'uuid' parameter is passed to the htmlspecialchars function, which may not be enough to prevent XSS attacks.
+BL: $this->view->selected_uuid = htmlspecialchars($uuid, ENT_QUOTES | ENT_HTML401);",not_buggy
+875,"SE: The line may contain a bug of type CWE-79 because user input is directly echoed into the HTML content without proper sanitization.
+BL: None.",not_buggy
+288,"SE: None
+
+BL: None",not_buggy
+65,"SE: The 'q' parameter in the line `uri := ""/search?q="" + html.EscapeString(q) + ""&f="" + field + ""&""` may contain a bug of type CWE-79 as it is concatenated into the URI without proper input validation or sanitization.
+BL: uri := ""/search?q="" + html.EscapeString(q) + ""&f="" + field + ""&""",not_buggy
+2088,"SE: The line may contain a bug of type CWE-79 because user input ($_REQUEST['entry']) is directly concatenated into the URL without proper sanitization.
+BL: utils_redirect('admin.php?p=entry&action=write&entry=' . $_REQUEST['entry']);",not_buggy
+8017,"SE: None
+
+BL: None",not_buggy
+107,"SE: The 'postData.src' variable is directly concatenated into the URL without proper input validation or encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `$.post(""<?php echo route('admin.language.import'); ?>"", postData,`",not_buggy
+8450,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",not_buggy
+8246,"SE: The 'formAction' variable is directly used in the HTML content without proper sanitization.
+BL: $formAction = $this->_loginForm['action'];",not_buggy
+243,"SE: None
+BL: None",not_buggy
+64,"SE: The line may contain a bug of type CWE-79 because user input is directly inserted into the HTML content without proper sanitization.
+BL: None.",not_buggy
+32,"SE: The 'theme' parameter from the URL is directly used to set the 'theme' configuration without proper validation or sanitization.
+BL: $theme = basename($_GET['theme']);",not_buggy
+3987,"SE: The 'nonce' parameter is not properly sanitized before being used in the 'dangerouslySetInnerHTML' attribute, which could lead to a Cross-site Scripting vulnerability.
+BL: `nonce: nonce,` in the line `return React.createElement('script', { key: key++, nonce: nonce, dangerouslySetInnerHTML: { __html }, });`",not_buggy
+2,"SE: The line may contain a bug of type CWE-79 because user input is directly inserted into the HTML content without proper sanitization.
+BL: None.",not_buggy
+7670,"SE: The 'input' parameter is directly used in the 'filtered' StringBuilder without proper sanitization.
+BL: None.",not_buggy
+23,"SE: The 'search' parameter is not properly sanitized before being used in the href attribute of an anchor tag, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: ```<a href=""https://mapicoin.fr/?u=<?= htmlentities($link, ENT_QUOTES, ""UTF-8""); ?>""><?= htmlentities($search['search'], ENT_QUOTES, ""UTF-8"") ?></a>```",not_buggy
+173,"SE: The '$_GET['template']' parameter is not properly sanitized before being used in the code, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $selected_template = e($_GET['template']);",not_buggy
+8081,"SE: None
+BL: None",not_buggy
+7669,"SE: The `_format` method may contain a bug of type CWE-79 as it directly concatenates input into a string without proper sanitization.
+BL: `return ""** $part **\n$text\n-- $part --\n\n"";`",not_buggy
+289,"SE: The 'headNote->getTitle()' value is not properly sanitized before being used in the LinkAction constructor, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+8079,"SE: None
+BL: None",not_buggy
+7764,"SE: The 'username' variable is not properly sanitized before being used in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+7822,"SE: None
+BL: None",not_buggy
+7592,"SE: The 'filename' variable is used in the 'html()' method without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+3982,"SE: None
+BL: None
+
+There are no lines in the provided file content that may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).",not_buggy
+1019,"SE: The `$result` variable is being returned as JSON without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+8485,"SE: None
+BL: None",not_buggy
+7859,"SE: The 'session.id' value is directly concatenated into HTML content without sanitation.
+BL: tdWrap(uiLink(""session/"" + session.id, session.id))",not_buggy
+231,"SE: None
+BL: None",not_buggy
+839,"SE: None
+BL: None",not_buggy
+211,"SE: None of the lines in the file contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+BL: None",not_buggy
+8446,"SE: The 'data[$key]['KEY']' variable is not properly sanitized before being echoed into the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `<div class=""clearfix l-unit__stat-col--left wide-7""><b><?=htmlspecialchars($data[$key]['KEY'], ENT_QUOTES);?></b></div>`",not_buggy
+3004,"SE: None
+BL: None",not_buggy
+7716,"SE: None
+BL: None",not_buggy
+12,"SE: The 'userInputDemo' variable is concatenated directly into the SQL query without proper sanitization, which may lead to SQL Injection vulnerabilities.
+BL: $database->query(""SELECT * FROM users WHERE Name='"" . $userInputDemo . ""'"");",not_buggy
+3717,"SE: The 'DOCUMENT_REFERENCE' variable is directly concatenated into the 'urlToDocument' variable without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `String urlToDocument = ""space/%3C%2Fdiv%3Epage"";`",not_buggy
+66,"SE: The 'me_link' input is being sanitized using clean_xss_tags and clean_xss_attributes functions, but there is a possibility of a bug of type CWE-79 due to improper neutralization of input.
+BL: None.",not_buggy
+11,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+BL: None",not_buggy
+96,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being used in the HTML content.
+BL: None.",not_buggy
+125,"SE: The 'template['cover']' and 'template['screenshot']' variables are directly concatenated into the 'img' tag without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+7614,"SE: The 'filename' and 'type' variables obtained from $_GET are directly concatenated into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+8175,"SE: The 'internal_hosts' value is directly concatenated into the configuration array without proper input validation.
+BL: 'internal_hosts' => '', // is empty as we would like to have all links marked as external",not_buggy
+241,"SE: None
+BL: None",not_buggy
+8349,"SE: The 'config->getName()', 'config->getDescription()', 'config->getVersion()', and 'config->getAuthor()' functions are directly outputted without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: 
+```htmlentities($config->getName());```
+```htmlentities($config->getDescription());```
+```htmlentities($config->getVersion());```
+```htmlentities($config->getAuthor());```",not_buggy
+14,"SE: The 'lang' variable is directly concatenated into the URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: <a href=""https://<?php echo $lang ?>.wikisource.org/""><?php echo strtoupper($lang) ?> Wikisource</a>",not_buggy
+7981,"SE: The 'comment.content' is directly concatenated into HTML content without sanitation.
+BL: `res << ""<div class='media'> ... <div class='comment_content'>#{sanitize comment.content}</div> ... </div>""`",not_buggy
+269,"SE: The user input from $_POST['address'] is directly concatenated into the HTML content without proper sanitization.
+BL: ""<input type=\""text\"" name=\""address\"" id=\""address\"" size=40 value=\""<?php echo htmlspecialchars($_POST['address']); ?>\"" class=\""form-control input-sm\"" placeholder=\""IPv6 Address\""/>""+",not_buggy
+7949,"SE: None
+BL: None",not_buggy
+302,"SE: None
+BL: None",not_buggy
+7837,"SE: The 'body' variable is directly assigned the result of `$('.slides').text()`, which may contain user input that is not properly sanitized.
+BL: const body = preventXSS($('.slides').text())",not_buggy
+197,"SE: The 'polygon' array is directly used in a loop without proper input validation, which may lead to a Cross-site Scripting vulnerability.
+BL: None.",not_buggy
+263,"SE: The user input from $_POST['device_id'], $_POST['interface'], and $_POST['address'] is directly concatenated into the HTML content without proper sanitization.
+BL: None.",not_buggy
+1043,"SE: The 'text' variable is used in the 'render_description' function without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None",not_buggy
+21,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",not_buggy
+8174,"SE: The variable `$message` is directly concatenated into the response JSON without proper sanitization.
+BL: `$message .= ""$error<br>"";`",not_buggy
+87,"SE: The 'title' variable is directly concatenated into the SQL query without proper sanitization.
+BL: $blogid = $Log_Model->isRepeatPost($title, $postDate);",not_buggy
+7856,"SE: The 'type' parameter is not properly sanitized before being used in the URL.
+BL: `'url' => api_get_path(WEB_CODE_PATH).'calendar/agenda_js.php?type='.Security::remove_XSS($type),`",not_buggy
+7618,"SE: The user input from the 'file' variable is directly concatenated into the HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `echo ""				<td><input type='text' name='file' value='"".escape($file).""'></td>"";`",not_buggy
+8035,"SE: None
+BL: None",not_buggy
+8281,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None",not_buggy
+7543,"SE: The 'Name', 'Description', 'Hint', and 'Debug' fields are directly interpolated into the HTML content without proper sanitation.
+BL: None.",not_buggy
+7547,"SE: None
+BL: None",not_buggy
+8394,"SE: The line may contain a bug of type CWE-79 because user-controlled data is directly inserted into the HTML content without proper sanitization.
+BL: `pr.innerHTML = `<div class=""media-item-content not-shared""><div class=""media-thumb""><a href=""/projects/${data[project]['id']}/""><img src=""${data[project]['image']}""></a></div><div class=""media-info""><span class=""media-info-item title""><a href=""/projects/${data[project]['id']}/"" class=""ScratchToolsProjectTitle""></a></span></div></div>`;`",not_buggy
+8021,"SE: The 'name' field in the 'transformAccessory' method is directly concatenated into the array without proper sanitization.
+BL: 'name' => e($accessory->name),",not_buggy
+51,"SE: The variable `$header` is directly used in the HTML content without proper sanitization.
+BL: `$header = ""Error"";`",not_buggy
+7557,"SE: None
+BL: None",not_buggy
+67,"SE: The 'json' parameter in the verifyJson method is directly used in the mapper.readValue method without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `mapper.readValue(json, AppDescriptor.class);`",not_buggy
+175,"SE: None
+BL: None",not_buggy
+8139,"SE: The '$_GET' parameter is directly used in the 'echo' statement without proper sanitization.
+BL: `echo ""alert('$msg')"";`",not_buggy
+91,"SE: None
+BL: None",not_buggy
+7549,"SE: The 'data' variable is directly concatenated into HTML content without proper sanitation.
+BL: None.",not_buggy
+300,"SE: The 'item->thema' is directly concatenated into the 'title' attribute without sanitation.
+BL: `<tr id=""attachment_<?= $item->id ?>"" title=""<?= $item->thema ?>"">`",not_buggy
+7681,"SE: The 'reqURI' parameter is not properly sanitized before being used in the application, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+168,"SE: The 'data['topic']' variable is not sanitized before being written as text into the XMLWriter object, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$this->xml->text(Strings::htmlentities($data['topic']));`",not_buggy
+123,"SE: The 'msgNewContentSubmit' value is directly concatenated into the HTML content without sanitation.
+BL: 'msgNewContentSubmit' => $PMF_LANG['msgNewContentSubmit'],",not_buggy
+8056,"SE: The line may contain a bug of type CWE-79 because user input from the request is directly used without proper sanitization.
+BL: `ClientContact::where(['email' => $request->input('email')])->first();`",not_buggy
+139,"SE: None
+BL: None",not_buggy
+59,"SE: None
+
+BL: None",not_buggy
+74,"SE: The line may contain a bug of type CWE-79 because user input ($_GET[""files""][$i]) is directly concatenated into the HTML content without proper sanitization.
+BL: `echo ""<input type=\""hidden\"" name=\""files[]\"" value=\""{$_GET[files][$i]}\"" />\r\n"";`",not_buggy
+7,"SE: None
+BL: None",not_buggy
+1973,"SE: The 'element.id' is directly concatenated into the key parameter without proper sanitation.
+BL: applyMermaid(element, `chat_message_${element.id}`);",not_buggy
+86,"SE: None
+BL: None",not_buggy
+183,"SE: The 'label' property is directly assigned to the return value of the __toString method, which may contain unsanitized user input.
+BL: None.",not_buggy
+138,"SE: The variable `$comment` is not sanitized before being used to generate HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+36,"SE: The '$_SERVER['PHP_SELF']' variable is directly concatenated into HTML content without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `<a href=""<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?page=two"">two</a>`",not_buggy
+3619,"SE: None
+BL: None",not_buggy
+1046,"SE: None
+BL: None",not_buggy
+137,"SE: None
+BL: None",not_buggy
+8203,"SE: The 'content' variable is directly passed to the Horde_Text_Filter::filter function with the 'xss' filter, which may indicate a potential Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+201,"SE: None
+BL: None",not_buggy
+94,"SE: The 'fqpn' variable is not properly sanitized before being used in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: ```<td class=""fbFile vexpl text-left"" id=""<?=htmlspecialchars($fqpn);?>"">```",not_buggy
+8475,"SE: None
+BL: None",not_buggy
+8195,"SE: The 'rule_display' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `echo ""<td><i>"" . htmlentities(strip_tags($rule_display)) . ""</i></td>"";`",not_buggy
+28,"SE: The 'url' attribute in the 'embed_handler' function is directly concatenated into the 'return' string without proper sanitization.
+BL: `$return = ""<iframe load-url=\""{$atts['url']}\"" id=\""bee-microsite-iframe-{$this->iframeId}\"" class=\""bee-microsite-iframe\"" width=\""{$atts['width']}\"" height=\""{$atts['height']}\"" data-autosize=\""{$autosize}\"" frameborder=\""0\""></iframe>...`",not_buggy
+202,"SE: None
+BL: None",not_buggy
+1465,"SE: The 'expfield' variable is used without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $hrow = ""<td></td>"";",not_buggy
+7888,"SE: The 'photo' variable is directly concatenated with user input without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `photo = 'https://graph.facebook.com/' + profile.id + '/picture'`",not_buggy
+7610,"SE: The 'url_label' and 'url_description' variables are directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+7617,"SE: The 'conference_name' variable is directly concatenated into the JavaScript code without proper sanitization.
+BL: ```javascript
+var url = 'conference_interactive_inc.php?c=<?php echo trim(escape($_REQUEST[""c""])); ?>';
+```",not_buggy
+852,"SE: The 'country' and 'city' parameters in the 'listCities' and 'listPlacesByCity' functions are concatenated into the URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+295,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",not_buggy
+3989,"SE: None
+BL: None",not_buggy
+3070,"SE: The 'xss' library is imported and assigned to Vue.prototype, which may indicate that user input is not properly sanitized before being used in the application.
+BL: None.",not_buggy
+8302,"SE: The 'svg' variable is directly concatenated into the 'result' string without proper sanitation.
+BL: `return result;`",not_buggy
+8319,"SE: The 'name', 'asset_tag', 'serial', 'model', 'model_number', 'status_label', 'status', 'category', 'manufacturer', 'supplier', 'notes', 'order_number', 'location', 'checked_out_to', 'depreciation' fields are directly concatenated into an array without proper input sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+270,"SE: None
+BL: None",not_buggy
+7624,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: echo ""<table width=\""100%\"" border=\""0\"" cellpadding=\""0\"" cellspacing=\""0\"">\n"";",not_buggy
+7507,"SE: None
+
+BL: None",not_buggy
+284,"SE: The 'message' variable is directly concatenated into HTML content without sanitation.
+BL: <?= $message ?>",not_buggy
+7532,"SE: None
+BL: None",not_buggy
+8265,"SE: None
+BL: None",not_buggy
+251,"SE: The 'ip' parameter is decoded using base64_decode without proper validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+7460,"SE: None
+BL: None",not_buggy
+180,"SE: None
+BL: None",not_buggy
+8362,"SE: The 'message' array elements are directly used in the HTML content without proper sanitization.
+BL: None.",not_buggy
+7564,"SE: The user input from $_POST['strapcaccess'] is directly concatenated into the HTML content without proper sanitization.
+BL: `puts(""Running: apcaccess -h "" . htmlspecialchars($_POST['strapcaccess']) . "" <br />"");`",not_buggy
+7650,"SE: The 'fifo_name' variable is not properly sanitized before being used in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+7767,"SE: The '$_GET[""bat""]' parameter is directly included in the file path without proper input validation.
+BL: `include(dirname(__FILE__) . ""/src/bat/"" . $_GET[""bat""] . "".php"");`",not_buggy
+7863,"SE: The 'status' variable is not properly sanitized before being used in the HTML content.
+BL: `<!--rows-{$status|escape}-start-->`",not_buggy
+230,"SE: The 'fullpath' variable is directly concatenated into the HTML content without proper encoding.
+BL: `return '<a href=""' + fullpath + '"" class=""' + this.config[""class""] + ' ' + Ext.util.Format.htmlEncode(this.data[""class""]) + '"">' + displayHtml + '</a>';`",not_buggy
+174,"SE: None of the lines in the file content appear to contain a bug of type CWE-79.
+
+BL: None",not_buggy
+258,"SE: The 'name' attribute from the request is directly concatenated into the success message without proper sanitization.
+BL: `$flasher->addSuccess(__('Device Group :name created', ['name' => htmlentities($deviceGroup->name)]));`",not_buggy
+7632,"SE: The 'contact_note' variable is not properly sanitized before being displayed on the webpage, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+7732,"SE: None
+BL: None",not_buggy
+8010,"SE: None
+BL: None",not_buggy
+190,"SE: The 'openQuestion->getQuestion()' method may return user input that is directly concatenated into the HTML content without proper sanitization.
+BL: `<?= Strings::htmlentities($openQuestion->getQuestion()) ?>`",not_buggy
+7531,"SE: None of the lines in the file contain a bug of type CWE-79.
+
+BL: None.",not_buggy
+8069,"SE: The 'user_input' is not directly concatenated into HTML content without sanitation.
+BL: none",not_buggy
+55,"SE: The 'aclsettings' array is directly used in a loop without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: foreach ($aclsettings as $group => $settings) {",not_buggy
+262,"SE: The user input from the variables $vars['searchPhrase'], $vars['device_id'], $vars['searchby'] is directly concatenated into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+267,"SE: None
+BL: None",not_buggy
+41,"SE: The line may contain a bug of type CWE-79 because user input is directly used in the SQL query without proper sanitization.
+BL: None.",not_buggy
+972,"SE: The 'room' and 'username' variables are directly used in the code without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $room = $_POST ['room'];",not_buggy
+79,"SE: The 'startDate' and 'endDate' values are directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: 
+```php
+<input class=""dp"" id=""sd"" size=15 name=""startDate"" value=""<?php echo Format::htmlchars($_REQUEST['startDate']); ?>"" autocomplete=OFF>
+```
+```php
+<input class=""dp"" id=""ed"" size=15 name=""endDate"" value=""<?php echo Format::htmlchars($_REQUEST['endDate']); ?>"" autocomplete=OFF>
+```",not_buggy
+58,"SE: The 'navs' variable is directly concatenated with user input without proper sanitization.
+BL: `navs += '<a class=""list-group-item"" data-index=""' + i + '""><span class=""badge"">#' + (i+1)+ '</span>' + goNowToDatetime(content.UpdatedTime) + '</a>';`",not_buggy
+76,"SE: The 'data.category' value is directly interpolated into the HTML content without proper sanitization.
+BL: `row.insertCell(1).innerHTML = `<td class=""category-name""><strong>${escapeHTML(data.category)}</strong></td>`;`",not_buggy
+8347,"SE: The 'callback' parameter is directly concatenated into the 'result' variable without any sanitization.
+BL: `result = callback+""(""+json.dumps(result)+"");""`",not_buggy
+2724,"SE: None
+BL: None",not_buggy
+8496,"SE: The 'name' variable is directly concatenated into HTML content without sanitation.
+BL: `var html = '<div class=""btn-group tag mb-2 mr-1 btn-tag-id-'+id+'"" role=""group"">' + '    <button type=""button"" class=""btn-sm icon-left no-hover btn btn-secondary"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-tag""></i> ' + name + '</button>' + '    <button type=""button"" class=""btn btn-primary btn-sm btn-icon"" onClick=""editTaggingTagReplaceForm('+id+')""><i class=""mdi mdi-pencil""></i></button>' + '    <button type=""button"" class=""btn btn-primary btn-sm btn-icon"" onClick=""deleteTaggingTag('+id+')""><i class=""mdi mdi-close""></i></button>' + '</div>';`",not_buggy
+17,"SE: The 'text' variable is directly concatenated into HTML content without proper input validation.
+BL: None.",not_buggy
+171,"SE: The 'text' variable is not properly sanitized before being echoed, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$text = Strings::htmlentities($loggingValue['text']);`",not_buggy
+16,"SE: None
+
+BL: None",not_buggy
+8477,"SE: None
+BL: None",not_buggy
+7582,"SE: None
+BL: None",not_buggy
+3705,"SE: None
+BL: None",not_buggy
+7508,"SE: None
+BL: None",not_buggy
+43,"SE: The line may contain a bug of type CWE-79 because user input from the 'url' parameter is directly used in the HTTP request without proper input validation or sanitization.
+BL: `$ttml_url = $this->input->get('url');`",not_buggy
+27,"SE: The 'title' parameter is directly concatenated into the JavaScript code without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $wgPiwikPageTitle = $title->getPrefixedText();",not_buggy
+297,"SE: None
+BL: None",not_buggy
+7688,"SE: The 'file_id' parameter is directly concatenated into the URL without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $t_href = '<a href=""file_download.php?file_id='.$v_id.'&amp;type=doc"">';",not_buggy
+7629,"SE: The 'map_query' variable is directly concatenated into the Google Maps URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `echo ""		<a href=\""http://maps.google.com/maps?q="".urlencode($map_query).""&hl=en\"" target=\""_blank\""><img src='resources/images/icon_gmaps.png' style='width: 21px; height: 21px; alt='"".$text['label-google_map'].""' title='"".$text['label-google_map'].""'></a>\n"";`",not_buggy
+120,"SE: The line may contain a bug of type CWE-79 because user input ($_GET['id']) is directly concatenated into HTML content without proper sanitization.
+BL: $speedtest = getSpeedtestUserById($_GET['id']);",not_buggy
+7611,"SE: The 'profile_param_name', 'profile_param_value', 'profile_param_enabled', and 'profile_param_description' variables are directly concatenated into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None.",not_buggy
+140,"SE: The 'html' variable is sanitized using the AntiXSS library, which helps prevent cross-site scripting vulnerabilities.
+BL: None.",not_buggy
+1014,"SE: None
+BL: None",not_buggy
+3732,"SE: None
+BL: None",not_buggy
+236,"SE: None
+BL: None",not_buggy
+7594,"SE: None
+BL: None",not_buggy
+7612,"SE: The 'node_type', 'node_cidr', 'node_domain', and 'node_description' variables are directly concatenated into the HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: 
+```php
+echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_type']).""&nbsp;</td>\n"";
+echo ""	<td valign='top' class='"".$row_style[$c].""'><a "".$tr_link."">"".escape($row['node_cidr']).""</a></td>\n"";
+echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_domain']).""&nbsp;</td>\n"";
+echo ""	<td valign='top' class='"".$row_style[$c].""'>"".escape($row['node_description']).""&nbsp;</td>\n"";
+```",not_buggy
+102,"SE: The 'response' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `response = ""<html><body><h1>Welcome, "" + user_input + ""!</h1></body></html>"";`",not_buggy
+8059,"SE: The 'opts.originalname' variable is directly used in the 'filename' property of the 'assetRow' object without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `filename: opts.originalname,`",not_buggy
+7581,"SE: The 'title' variable is directly concatenated into the trans function without proper input validation.
+BL: $subTitle = (string)trans('firefly.make_new_rule', ['title' => $ruleGroup->title]);",not_buggy
+7461,"SE: None
+
+BL: None",not_buggy
+8110,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: <div class=""js-form-entry-<?php print $item_id ?> card mb-2 not-collapsed-border collapsed card-message-holder <?php if (!isset($is_entry)): ?>card-bubble<?php endif; ?> <?php if (isset($item['is_read']) AND $item['is_read'] == 0): ?>active<?php endif; ?> bg-silver"" data-toggle=""collapse"" data-target=""#notif-entry-item-<?php print $item_id ?>"" aria-expanded=""false"" aria-controls=""collapseExample"">",not_buggy
+7726,"SE: None
+BL: None",not_buggy
+215,"SE: The 'url' variable is directly used in the window.location.href assignment without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `window.location.href = url;`",not_buggy
+56,"SE: None
+BL: None",not_buggy
+122,"SE: The 'faqComment->getUsername()' and 'faqComment->getComment()' values are directly concatenated into the HTML content without proper sanitization.
+BL: `<?= Strings::htmlentities($faqComment->getUsername()) ?>` and `<?= Strings::htmlentities($faqComment->getComment()) ?>`",not_buggy
+7866,"SE: The 'siteSettings' variable may contain user input that is not properly sanitized before being displayed on the webpage.
+BL: None.",not_buggy
+7915,"SE: None
+BL: None",not_buggy
+30,"SE: The line may contain a bug of type CWE-79 because it directly concatenates user input into the URL without proper input validation or sanitization.
+BL: `url = (''+location).replace( /[#\?].*/, '') + url;`",not_buggy
+245,"SE: The 'base_url' variable is directly concatenated into the HTML content without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$activate_url = get_root_url().'admin.php?page=plugins&amp;filter=deactivated';`",not_buggy
+7613,"SE: The 'param' variable is not properly sanitized before being used in the HTML content generation.
+BL: None.",not_buggy
+8094,"SE: None
+BL: None",not_buggy
+7712,"SE: None
+BL: None",not_buggy
+8473,"SE: The 'parameters' array is directly concatenated into a hash for validation without proper input sanitization.
+BL: None.",not_buggy
+7622,"SE: The 'search' variable is directly concatenated into the SQL query without proper sanitization, which may lead to a SQL injection vulnerability.
+BL: $sql_search .= ""control_digits like :search"";",not_buggy
+8367,"SE: The 'tmp_REQUEST' array is directly concatenated into the URL without proper sanitization.
+BL: `$PHP_tmp_SELF .= '&' . $key . ""="" . $value;`",not_buggy
+8377,"SE: The 'tmp_REQUEST' array is directly concatenated into the URL without proper sanitization.
+BL: `$redirect_url = PreparePHP_SELF( $_GET, $remove_all );`",not_buggy
+7857,"SE: The `path` variable is used in a regular expression without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `path = this.router.getFile(root + path);`",not_buggy
+8381,"SE: None
+BL: None",not_buggy
+189,"SE: None of the lines in the file content may contain a bug of type CWE-79.
+BL: None.",not_buggy
+8335,"SE: The 'codcuenta', 'codsubcuenta', 'descripcion', and 'codcuentaesp' fields are sanitized using the `noHtml` method, but there is a risk of improper neutralization of input during web page generation.
+BL: None.",not_buggy
+7506,"SE: None of the lines in the file content contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+BL: None",not_buggy
+7609,"SE: The 'device_setting_category', 'device_setting_subcategory', 'device_setting_name', 'device_setting_value', 'device_setting_enabled', and 'device_setting_description' variables are directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+7844,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",not_buggy
+7649,"SE: The 'greeting_name' variable is not sanitized before being used in the HTML content, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $greeting_name = $_POST[""greeting_name""];",not_buggy
+7643,"SE: The 'content' from $_POST['content'] is directly concatenated into HTML content without sanitation.
+BL: `echo ""<h2 class=\""preview-header\"">"".__(""Preview"").""</h2>\n"". ""<div class=\""preview-content\"">"".fix($_POST['content']).""</div>"";`",not_buggy
+8386,"SE: None
+BL: None",not_buggy
+7922,"SE: None
+BL: None",not_buggy
+8182,"SE: The 'fieldData['field']' variable is directly used without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: if (!in_array($fieldData['field'], $fields)) {",not_buggy
+3704,"SE: The 'space' parameter value from the URL is not properly sanitized before being used in the code.
+BL: `$APP_SPACE = preg_replace('/[^a-z0-9\-_]/', '', $_GET['space']);`",not_buggy
+7992,"SE: The 'string' parameter in the detectXss function is not properly sanitized before being used in regular expressions, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+8125,"SE: None
+BL: None",not_buggy
+182,"SE: None
+BL: None",not_buggy
+8197,"SE: The 'string' parameter in the detectXss function is not properly sanitized before being used in regular expressions, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+7625,"SE: The 'contact_uuid' parameter from the URL ($_GET['id']) is directly used in the SQL query without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: $contact_uuid = $_GET['id'];",not_buggy
+7683,"SE: None
+BL: None",not_buggy
+105,"SE: None
+BL: None",not_buggy
+112,"SE: The 'uploadfilename' variable is not properly sanitized before being used in the 'explode' function, which may lead to a Cross-site Scripting vulnerability.
+BL: None.",not_buggy
+167,"SE: The 'currentToken' variable is directly echoed into the HTML content without proper sanitation.
+BL: `<input type=""hidden"" name=""csrf"" value=""<?= $currentToken ?>"">`",not_buggy
+133,"SE: The 'name' variable is used without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$name = sanitize_title(substr($name, 0, -strlen($ext))) . $ext;`",not_buggy
+301,"SE: The 'name' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `$formatted = ""<a href=\""{$url}\"">{$name}</a>"";`",not_buggy
+7637,"SE: None
+BL: None",not_buggy
+7921,"SE: The 'req.url' parameter is directly concatenated into the error message without proper sanitization.
+BL: `error.error(`From: ${_getReqHost(req)} Agent: ${req.headers[""user-agent""]} Code: ${code} URL: ${req.url} Message: ${message}`);`",not_buggy
+8324,"SE: None
+BL: None",not_buggy
+229,"SE: None
+BL: None",not_buggy
+160,"SE: The 'action' field in the propertiesColumns array is directly concatenated into the HTML content without sanitation.
+BL: {text: t(""action""), width: 100, sortable: false, dataIndex: 'action', editor: new Ext.form.ComboBox({
+                    triggerAction: 'all',
+                    editable: false,
+                    store: actionTypes,
+                    displayField:'name',
+                    valueField: ""key"",
+                    mode: 'local'
+                }),renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                    try {
+                        var rec = actionTypes.findRecord(""key"", value);
+                        if (rec) {
+                            return rec.get(""name"");
+                        }
+                    }
+                    catch (e) {
+                        console.log(e);
+
+                    }
+
+                    return """";
+                }}",not_buggy
+7739,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",not_buggy
+158,"SE: None
+BL: None",not_buggy
+8332,"SE: The 'string' parameter in the detectXss function is not properly sanitized before being used in regular expressions, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+8411,"SE: The 'TPL' variable contains HTML content that is directly concatenated without any input sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: const TPL = `...`;",not_buggy
+212,"SE: The 'src' variable is directly concatenated into the HTML content without proper input validation or sanitization.
+BL: `ImageTile imageTile = new ImageTile(""<img src=\"""" + src + getBigImageScaleParam() + timeParam + ""\"" class=\"""" + I_CmsLayoutBundle.INSTANCE.galleryResultItemCss().bigImage() + ""\"" />"" + ""<img src=\"""" + src + getSmallImageScaleParam(infoBean) + timeParam + ""\"" class=\"""" + I_CmsLayoutBundle.INSTANCE.galleryResultItemCss().smallImage() + ""\"" />"" + ""<div class='"" + I_CmsLayoutBundle.INSTANCE.galleryResultItemCss().expiredImageOverlay() + ""' />"");`",not_buggy
+7647,"SE: The variables $fax_success, $fax_result_code, $fax_result_text, $fax_file, $fax_ecm_used, $fax_local_station_id, $fax_image_resolution, $fax_image_size, $fax_bad_rows, $fax_transfer_rate, $fax_retry_attempts, $fax_retry_limit, $fax_retry_sleep, $fax_uri, $fax_date, and $fax_epoch are directly echoed into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: None",not_buggy
+101,"SE: None
+BL: None",not_buggy
+7715,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",not_buggy
+7862,"SE: The 'href' variable is directly concatenated into the 'class' attribute of the element without proper input validation.
+BL: $(elm).addClass(`is-external-link`)",not_buggy
+7914,"SE: The 'text' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `const html = `<p data-authorId='${msg.userId}' class='${authorClass}'><b>${authorName}:</b>` + `<span class='time ${authorClass}'>${ctx.timeStr}</span> ${ctx.text}</p>`;`",not_buggy
+8106,"SE: The 'name' parameter in the `ruleAddAction` method is not sanitized before being used in the `correctName` method, which could lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $target->setName($this->correctName($request->get('name')));",not_buggy
+117,"SE: The 'db_name' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `$main_text .= $column_name .':';`",not_buggy
+3623,"SE: None
+BL: None",not_buggy
+242,"SE: None
+BL: None",not_buggy
+8343,"SE: The 'exportTypes' variable is directly concatenated into HTML content without sanitation.
+BL: `data-type=""${exportTypes[0]}""`",not_buggy
+279,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+165,"SE: The 'name' and 'group' values are directly concatenated into the grid columns without proper sanitization.
+BL: None.",not_buggy
+7607,"SE: None
+BL: None",not_buggy
+8340,"SE: None
+BL: None",not_buggy
+8011,"SE: The 'name' field in the transformAsset method is not properly sanitized before being included in the output array, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: 'name' => e($asset->name),",not_buggy
+8039,"SE: The 'name' field in the 'transformAsset' method is directly concatenated without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: 'name' => e($asset->name),",not_buggy
+8307,"SE: The 'text' variable is directly concatenated into HTML content without proper sanitization.
+BL: const messageWithLinebreaks = renderedMessage.replace(/<br>/g, '\n');",not_buggy
+1993,"SE: The 'url' variable in the 'js_template' string may contain unsanitized user input.
+BL: None.",not_buggy
+8320,"SE: None
+BL: None",not_buggy
+7933,"SE: The 'query' variable is directly used in the HTML content without proper sanitization.
+BL: `$searchForm = UserManager::get_search_form($queryNoTags);`",not_buggy
+7861,"SE: The 'action' parameter value from $_REQUEST is directly used in a switch-case statement without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+15,"SE: None
+BL: None",not_buggy
+205,"SE: The 'sfname' variable is directly concatenated into the HTML content without proper sanitization.
+BL: echo ""  <td>"" . htmlspecialchars($sfname, ENT_NOQUOTES) . ""</td>\n"";",not_buggy
+7804,"SE: None
+BL: None",not_buggy
+277,"SE: The line may contain a bug of type CWE-79 because user input variables are directly concatenated into the HTML content without proper sanitization.
+BL: None.",not_buggy
+164,"SE: None
+BL: None",not_buggy
+8334,"SE: None
+BL: None",not_buggy
+7523,"SE: The 'modelId' parameter in the export method is directly concatenated into the Content-Disposition header without proper input validation or encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `response.setHeader(""Content-Disposition"", ""attachment; filename="" + URLEncoder.encode(filename, ""UTF-8""));`",not_buggy
+111,"SE: The 'menu' variable is directly concatenated with user input without proper sanitization.
+BL: `menu += ""var menu_"" + getPropertyString(""id"") + ""Dialog = new PopupDialog(\"""" + url + ""\"",\""\"");\n"";`",not_buggy
+31,"SE: None
+BL: None",not_buggy
+7956,"SE: The 'circle.name' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `return escapeHTML(circle.name);`",not_buggy
+1827,"SE: None
+BL: None",not_buggy
+3144,"SE: The 'content' variable is directly concatenated into the 'RawBlock' without proper sanitization.
+BL: `Block html = new RawBlock(cleanHTML(entry.getDescription().getValue()), Syntax.HTML_5_0);`",not_buggy
+7495,"SE: The 'filter_name' input value is directly concatenated into the HTML content without proper sanitization.
+BL: `<input type=""text"" size=""25"" name=""filter_name"" maxlength=""64"" value=""<?php echo string_display_line( filter_get_field( $f_filter_id, 'name' ) ) ?>"">`",not_buggy
+45,"SE: None
+BL: None",not_buggy
+8145,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",not_buggy
+92,"SE: None
+BL: None",not_buggy
+7535,"SE: None
+BL: None",not_buggy
+24,"SE: The 'message' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `$message = str_replace('###REQUEST_IP###', '<strong>' . $remote_addr_html . '</strong> (' . $remote_host_html . ')', $message);`",not_buggy
+3655,"SE: The 'upload' function processes file uploads without proper input validation and sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+261,"SE: None
+BL: None",not_buggy
+8383,"SE: None
+BL: None",not_buggy
+149,"SE: None
+BL: None",not_buggy
+99,"SE: The 'url' variable is directly concatenated into the 'joinURL' function call without proper input validation.
+BL: `const payloadURL = _PAYLOAD_EXTRACTION ? joinURL(useRuntimeConfig().app.baseURL, url, '_payload.js') : undefined`",not_buggy
+3566,"SE: None
+BL: None",not_buggy
+7696,"SE: The 'desc' variable is directly concatenated into the HTML content without sanitation.
+BL: $desc = addslashes($desc);",not_buggy
+108,"SE: The 'filename' variable is directly concatenated into the HTML content without proper encoding, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `dialog.find("".modal-body"").html('<p>Uploading ' + encodeURIComponent(filename) + '</p><div class=""error""></div>');`",not_buggy
+2122,"SE: None
+BL: None",not_buggy
+291,"SE: None
+BL: None",not_buggy
+106,"SE: None
+BL: None",not_buggy
+209,"SE: The 'query' parameter in the function `highlightSearchResults` is directly concatenated into regular expressions without proper sanitization.
+BL: `let tokenRegex = new RegExp(utils.escapeRegExp(token), ""gi"");`",not_buggy
+274,"SE: The 'value' property of the object is directly concatenated into the JSON string without proper sanitization.
+BL: None.",not_buggy
+265,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+7481,"SE: None
+BL: None",not_buggy
+8078,"SE: The 'titlelink' column in the Datatables configuration may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-site Scripting).
+BL: `->addColumn('titlelink', '<a href=""{{ route(""tasks.show"",[$external_id]) }}"">{{$title}}</a>')`.",not_buggy
+7705,"SE: None
+BL: None",not_buggy
+8333,"SE: The `req.path` is directly used in the `generateTransformedImage` method without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `const decodedReqPath = decodeURIComponent(req.path);`",not_buggy
+131,"SE: The 'url', 'instance', 'comment', 'email', 'admin', and 'password' variables are concatenated into HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+8028,"SE: None
+BL: None",not_buggy
+206,"SE: The 'itemTitle' variable is directly concatenated into HTML content without proper sanitization.
+BL: `$oLink->itemTitle = Strings::htmlentities($item['header']);`",not_buggy
+147,"SE: The 'q' parameter from the request is not properly sanitized before being used in a regular expression, which could lead to a potential Cross-site Scripting (XSS) vulnerability.
+BL: `if (!count($orgs) && preg_match('`\w$`u', $q)) {`",not_buggy
+232,"SE: The 'Email' and 'Desc' values from the form are directly used in the HTML content without proper sanitization.
+BL: None.",not_buggy
+185,"SE: None
+BL: None",not_buggy
+114,"SE: None
+BL: None",not_buggy
+7905,"SE: The 'name' variable is directly concatenated into the error message without proper sanitation.
+BL: `Http::response(404, 'No such field: ', print_r($name, true));`",not_buggy
+18,"SE: None
+BL: None",not_buggy
+7841,"SE: None
+BL: None",not_buggy
+8478,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",not_buggy
+228,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: html += `<div class=""entry""><form>
+        <div style=""display: flex; justify-content: space-between;"">
+            <span>
+                <input value=""${entry.name.replace(/""/g, ""&quot;"")}"" class=""name"" type=""text"" placeholder=""Nachname"">
+                <input value=""${entry.firstName.replace(/""/g, ""&quot;"")}"" class=""first-name"" type=""text"" placeholder=""Vorname"">
+            </span>
+            <button type=""button"" onclick=""openDeleteEntry(${i})"" class=""input-style not-printable"">🗑️</button>
+        </div>
+        <input value=""${entry.birthdate.replace(/""/g, ""&quot;"")}"" class=""birthdate"" type=""${birthdateType}"" max=""${new Date().toISOString().split('T')[0]}"" placeholder=""Geburtsdatum""
+            onfocus=""(this.type='date')"" onblur=""if(this.value==''){this.type='text'}"">
+        <fieldset id=""fs-${i}"" class=""input-style"" style=""font-size: 21px;"" aria-label=""Geschlecht"">
+            <label aria-label=""männlich""> <input value=""m"" type=""radio"" name=""sex"" ${maleChecked.replace(/""/g, ""&quot;"")}>♂</label>
+            <label aria-label=""weiblich""> <input value=""f"" type=""radio"" name=""sex"" ${femaleChecked.replace(/""/g, ""&quot;"")}>♀</label>
+            <label aria-label=""divers""> <input value=""d"" type=""radio"" name=""sex"" ${diverseChecked.replace(/""/g, ""&quot;"")}>⚧</label>
+        </fieldset>
+        <input value=""${entry.nationality.replace(/""/g, ""&quot;"")}"" class=""nationality"" type=""text"" placeholder=""Nationalität"">
+        <br>
+        <input value=""${entry.street.replace(/""/g, ""&quot;"")}"" class=""street"" type=""text"" placeholder=""Straße"">
+        <input value=""${entry.zip.replace(/""/g, ""&quot;"")}"" class=""zip"" type=""text"" placeholder=""PLZ"" pattern=""[0-9]{5}"" inputmode=""numeric"">
+        <input value=""${entry.residency.replace(/""/g, ""&quot;"")}"" class=""residency"" type=""text"" placeholder=""Wohnort"">
+        <br>
+        <input value=""${entry.identityDisk.replace(/""/g, ""&quot;"")}"" aria-label=""Nummer der Erkennungsmarke"" class=""identity-disk"" type=""text"" placeholder=""Nr. der Erk.-Marke"">
+        <input value=""${entry.district.replace(/""/g, ""&quot;"")}"" class=""district"" type=""text"" placeholder=""Kreisverband"">
+        <input value=""${entry.rcUnit.replace(/""/g, ""&quot;"")}"" class=""rc-unit"" type=""text"" placeholder=""Gemeinschaft"">
+        <br>
+        <input value=""${entry.place.replace(/""/g, ""&quot;"")}"" class=""place"" type=""text"" placeholder=""Einsatzort"">
+        <input value=""${entry.unit.replace(/""/g, ""&quot;"")}"" class=""unit"" type=""text"" placeholder=""Einsatzformation"">
+        <input value=""${entry.start.replace(/""/g, ""&quot;"")}"" class=""start"" type=""${startType.replace(/""/g, ""&quot;"")}"" placeholder=""Einsatzbeginn""
+            onfocus=""(this.type='datetime-local')"" onblur=""if(this.value==''){this.type='text'}"">
+    </form></div>`",not_buggy
+210,"SE: None
+BL: None",not_buggy
+181,"SE: None
+BL: None",not_buggy
+145,"SE: None
+BL: None",not_buggy
+8179,"SE: The 'username' input value is directly concatenated into HTML content without sanitation.
+BL: $out->addHTML(Html::rawElement('p', [], Html::label(
+			wfMessage('soa2-scratch-username')->escaped(),
+			'soa2-username-input',
+		)));",not_buggy
+275,"SE: The 'key' variable is directly concatenated into HTML content without proper sanitization.
+BL: ```php
+printf(
+    '<div class=""form-group row""><label class=""col-lg-3 col-form-label %s"">',
+    $value[0] === 'checkbox' || $value[0] === 'radio' ? 'pt-0' : ''
+);
+```",not_buggy
+196,"SE: The 'item.description' is directly concatenated into HTML content without sanitation.
+BL: `item.description = $('body').html() + '' + (config.suffix || '');`",not_buggy
+266,"SE: None
+BL: None",not_buggy
+992,"SE: The 'CopyProtect_nrc_text' variable is directly concatenated into the JavaScript code without proper sanitization.
+BL: `""<input name=""CopyProtect_nrc_text"" type=""text"" id=""CopyProtect_nrc_text"" value=""<?php echo get_option('CopyProtect_nrc_text') ;?>"" size=""30""/>""`",not_buggy
+252,"SE: None
+BL: None",not_buggy
+7584,"SE: None
+BL: None",not_buggy
+81,"SE: The 'field' values are directly concatenated into HTML content without proper sanitation.
+BL: None.",not_buggy
+136,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitization.
+BL: None.",not_buggy
+144,"SE: The 'value' in the getCellRenderer function is directly concatenated into the HTML content without proper sanitization.
+BL: return '<div style=""text-align: left""><div role=""button"" class=""x-grid-checkcolumn' + (value ? ' x-grid-checkcolumn-checked' : '') + '"" style=""""></div></div>';",not_buggy
+8329,"SE: None
+BL: None",not_buggy
+7518,"SE: The 'anchor' variable is not properly sanitized before being used in the HTML content.
+BL: $anchor = Security::remove_XSS($_GET['anchor_topic']);",not_buggy
+118,"SE: None
+BL: None",not_buggy
+3001,"SE: None
+BL: None",not_buggy
+8374,"SE: The 'projectBody.title' is directly passed to DOMPurify.sanitize without proper validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `projectBody.title = DOMPurify.sanitize(projectBody.title);`",not_buggy
+52,"SE: The 'invocation_id' and 'invocation_user' values are directly concatenated into the URL without proper input validation or sanitization.
+BL: ```html
+<button onClick=""window.location('<?php echo ""get_omni_invocation_data.php?invocation_user=$invocation_user&invocation_id=$invocation_id&slice_id=$slice_id&request=console&download=true&filename=detailed_progress.log"";?>')"" title='Download Detailed Progress Log' id='download_console'>Download Detailed Progress Log</button>
+```",not_buggy
+7464,"SE: The 'foruserlogin' variable is directly concatenated into the SQL query without proper sanitization.
+BL: `$sql.="" AND d.login='"".$db->escape($foruserlogin).""'"";`",not_buggy
+8204,"SE: The 'file_path' variable is directly concatenated into the file path without proper input validation.
+BL: `$file_path = ""../Public/Uploads/"".$array[1] ;`",not_buggy
+8209,"SE: None
+BL: None",not_buggy
+7638,"SE: The 'dirty' variable is used directly in the loadXML method without proper sanitization.
+BL: $loaded = $this->xmlDocument->loadXML($dirty);",not_buggy
+75,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+8211,"SE: The 'file_url' variable is directly concatenated into the 'parse_url' function without proper input validation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$array = parse_url($file_url) ;`",not_buggy
+7634,"SE: None
+BL: None",not_buggy
+8212,"SE: None
+BL: None",not_buggy
+8213,"SE: None
+BL: None",not_buggy
+8469,"SE: None
+BL: None",not_buggy
+294,"SE: The line may contain a bug of type CWE-79 because user input ($_REQUEST['page']) is directly concatenated into the HTML content without proper sanitization.
+BL: `$page  = sanitize_text_field($_REQUEST['page']);`",not_buggy
+8516,"SE: The 'elementInfo.label' is directly concatenated into the 'title' attribute of the button without proper sanitization.
+BL: `'<button type=""button"" class=""delete icon"" title=""' + Craft.t('app', 'Remove') + '"" aria-label=""' + removeText + '""></button>'`",not_buggy
+8217,"SE: None
+BL: None",not_buggy
+8173,"SE: The user input from the 'hostname' field is not properly sanitized before being used in the code.
+BL: $hostname = strip_tags($_POST['hostname']);",not_buggy
+8214,"SE: None
+BL: None",not_buggy
+61,"SE: None
+BL: None",not_buggy
+1071,"SE: None
+BL: None",not_buggy
+8126,"SE: The 'json_encode' function is used to generate JSON content, which may include user input without proper sanitization.
+BL: None.",not_buggy
+7875,"SE: The 'request.form' data is directly used in the line without proper sanitization.
+BL: `query = g.conn.session.query(Query).get(request.form['query_id'])`",not_buggy
+97,"SE: The 'action' variable is directly concatenated into the file path without proper input validation.
+BL: `require 'ajax.' . $ajax . '.php';`",not_buggy
+124,"SE: The 'action' variable is not properly sanitized before being used in the switch statement, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `switch ($action) {`",not_buggy
+7470,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: `res.write('<html><body>');`",not_buggy
+8241,"SE: The 'name' variable is directly concatenated into the URL without proper input validation.
+BL: `$url = $routingService->generate('admin_pimcoredatahub_config', ['clientname' => $name]);`",not_buggy
+7562,"SE: None
+BL: None",not_buggy
+7641,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the SQL query without proper sanitization.
+BL: `$condition = '( MATCH (`from`,`to`,`cc`,`bcc`,`subject`,`params`) AGAINST (' . $list->quote($filterTerm) . ' IN BOOLEAN MODE) )';`",not_buggy
+186,"SE: The 'tagName' variable is directly concatenated into the SQL query without proper sanitization.
+BL: None.",not_buggy
+7745,"SE: None
+BL: None",not_buggy
+126,"SE: None
+BL: None",not_buggy
+8161,"SE: None
+BL: None",not_buggy
+8215,"SE: None
+BL: None",not_buggy
+8222,"SE: None
+BL: None",not_buggy
+8221,"SE: None
+BL: None",not_buggy
+219,"SE: The 'content' variable is directly concatenated into HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `content = content.replace(url, f""<a href='https://{url}'>{url}</a>"") if url[:8] != ""https://"" and url[:7] != ""http://"" else f""<a href='{url}'>{url}</a>""`",not_buggy
+7829,"SE: None
+BL: None",not_buggy
+8314,"SE: None
+BL: None",not_buggy
+271,"SE: The 'title' variable is not properly sanitized before being used in the code, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$title = $_GET['title'];`",not_buggy
+1458,"SE: The 'item.label' and 'item.tooltip' properties are directly concatenated into the 'safeLabel' and 'safeTooltip' properties without proper input validation or sanitization.
+BL: 
+```javascript
+me.item.safeLabel = ""nr-dashboard-widget-"" + (me.item.label).replace(/\W/g,'_');
+me.item.safeTooltip = ""nr-dashboard-widget-"" + (me.item.tooltip).replace(/\W/g,'_');
+```",not_buggy
+8268,"SE: None
+BL: None",not_buggy
+7904,"SE: The 'aPermissiontemplate' array is directly used to set attributes without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$aPermissiontemplate['name'] = CHtml::encode($aPermissiontemplate['name']);`",not_buggy
+29,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: `<option  value=""' . $i .'"" class=dpod title=""'.$i.'"">'.$i.'</option>';`",not_buggy
+7628,"SE: The 'message_text' variable is directly concatenated into the HTML content without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+
+BL: `echo ""<div class='message-text'>"".str_replace(""\n"",'<br />',escape($message['message_text'])).""</div>\n"";`",not_buggy
+239,"SE: None
+BL: None",not_buggy
+7645,"SE: The 'caller_id_name' variable is directly concatenated into the HTML content without proper sanitization.
+BL: echo ""		<td class='vncell'>"".$text['label-caller_id_name'].""</td>""; //source name",not_buggy
+63,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+7795,"SE: The 'search_value' is directly concatenated into the query without proper sanitation.
+BL: `searched_machines = machines.filter(hostname_q | user_q | checkin_q).order_by(order_string)`",not_buggy
+7458,"SE: None
+BL: None",not_buggy
+8185,"SE: None
+BL: None",not_buggy
+7713,"SE: The line may contain a bug of type CWE-79 because it directly concatenates user input into the HTML content without proper sanitation.
+BL: None.",not_buggy
+8190,"SE: None
+BL: None",not_buggy
+172,"SE: None
+BL: None",not_buggy
+132,"SE: None
+BL: None",not_buggy
+121,"SE: None
+BL: None",not_buggy
+146,"SE: None
+BL: None",not_buggy
+7826,"SE: The 'token' variable is directly concatenated into the HTML content without proper sanitization.
+BL: `<input class='form-control' type='text' maxlength=""<?php echo $iTokenLength; ?>"" size='20' name='token' id='token' value=""<?php if (isset($token)) {echo $token; } ?>"" />`",not_buggy
+250,"SE: None
+BL: None",not_buggy
+8418,"SE: None
+BL: None",not_buggy
+296,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitization.
+BL: None.",not_buggy
+35,"SE: None
+BL: None",not_buggy
+8009,"SE: None
+BL: None",not_buggy
+8389,"SE: None
+BL: None",not_buggy
+8439,"SE: None
+BL: None",not_buggy
+7775,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: `echo '<input type=""text"" id=""due_date"" name=""due_date"" class=""datetimepicker input-sm"" size=""16"" maxlength=""16"" ' . '"" value=""' . $t_date_to_display . '"" />';`",not_buggy
+8460,"SE: The 'text' property is directly assigned the value of the 'cleanText' function without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$this->RevInfo2->append(['text' => cleanText($this->text),]);`",not_buggy
+8199,"SE: The 'key' variable is not properly sanitized before being used in the addSetFromUserDefined function, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `let key = htmlspecialchars(customKey.getValue());`",not_buggy
+148,"SE: None
+BL: None",not_buggy
+208,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+115,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None",not_buggy
+873,"SE: None
+BL: None",not_buggy
+48,"SE: None
+BL: None",not_buggy
+161,"SE: The 'input' parameter in the vtlib_purify function is not properly sanitized before being used in the HTMLPurifier instance, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $value = $__htmlpurifier_instance->purify($input);",not_buggy
+8151,"SE: The 'mimeType' variable is directly used in the method shouldBeDownloaded without proper input validation or sanitization.
+BL: None.",not_buggy
+7646,"SE: The 'fax_caller_id_name' and 'fax_caller_id_number' variables are directly concatenated into HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+8455,"SE: The 'preconfiguredFilter' variable is directly concatenated into the URL without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: this.dataUrl = Routing.generate('pimcore_admin_translation_translations');",not_buggy
+8045,"SE: None
+BL: None",not_buggy
+3804,"SE: The line may contain a bug of type CWE-79 because it directly concatenates user input into HTML content without proper sanitation.
+BL: None.",not_buggy
+8306,"SE: The 'youtube_live_channel_id' variable is directly concatenated into the HTML content without proper sanitation.
+BL: $options['fallback_message'] = '<p>Sorry, there&rsquo;s no live stream at the moment. Please check back later or take a look at <a target=""_blank"" href=""https://youtube.com/channel/' . $youtube_options['youtube_live_channel_id'] . '"">all of our videos</a>.</p>
+<p><button type=""button"" class=""button"" id=""check-again"">Check again</button><span class=""spinner"" style=""display:none;""></span></p>';",not_buggy
+8097,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+46,"SE: The 'allowed_pages' array is directly concatenated into the 'if' condition without proper sanitation.
+BL: $allowed_pages[] = ""xmlhttp.php"";",not_buggy
+7633,"SE: The line may contain a bug of type CWE-79 because user input ($_POST['data']) is directly used in generating HTML content without proper sanitization.
+BL: `echo ""    <textarea name='data' id='data' rows='7' class='formfld' style='width: 100%;' wrap='off'>$data</textarea>\n"";`",not_buggy
+7892,"SE: The line may contain a bug of type CWE-79 because user input ($_POST['data']) is directly used in the HTML content without proper sanitization.
+BL: `echo ""    <textarea name='data' id='data' rows='7' class='formfld' style='width: 100%;' wrap='off'>$data</textarea>\n"";`",not_buggy
+257,"SE: None
+BL: None",not_buggy
+7504,"SE: None
+BL: None",not_buggy
+7623,"SE: The line may contain a bug of type CWE-79 because user input ($_GET[""savemsg""]) is directly echoed without proper sanitization.
+BL: `$msg = $_GET[""savemsg""];`",not_buggy
+7711,"SE: The 'feature_name' variable is concatenated into a string without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$this->toolbar_title = $this->feature_name[$this->context->employee->id_lang];`",not_buggy
+7763,"SE: The 'message' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `$html = ""<div class='alert alert-info'>$message</div>"";`",not_buggy
+1831,"SE: None
+BL: None",not_buggy
+7608,"SE: The 'settings.faviconPad' variable is directly concatenated into the 'href' attribute without proper input validation or sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: <link rel=""shortcut icon"" href=""<%=settings.faviconPad%>"">",not_buggy
+159,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper encoding.
+BL: `return Ext.util.Format.htmlEncode(value);`",not_buggy
+83,"SE: None
+BL: None",not_buggy
+8404,"SE: The 'canarydrop' variable is directly interpolated into the HTML content without proper sanitization.
+BL: <li class=""nav-item"">
+              <a class=""nav-link manage-link"" href=""/manage?token={{canarydrop['canarytoken']}}&auth={{canarydrop['auth']}}"">Manage this token</a>
+            </li>",not_buggy
+7774,"SE: None
+BL: None",not_buggy
+272,"SE: The 'path' variable is not properly sanitized before being used in the 'preg_match' function, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `if (preg_match('/'.$pattern.'/', $baseName)) {`",not_buggy
+3117,"SE: The 'a' variable is directly assigned to innerText without sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `sanitiser.querySelector(""div"")!.innerText = a`",not_buggy
+237,"SE: None
+BL: None",not_buggy
+7781,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+7971,"SE: The 'dbObject' variable is directly concatenated into SQL queries without proper input validation.
+BL: `s = connSource.prepareStatement(currentStatement = ""SELECT * FROM "" + dbObject + (useSuffix ? ""_"" : """")`",not_buggy
+3983,"SE: The `escape_unicode` method may contain a bug of type CWE-79 because it takes user input (`javascript`) and directly manipulates it without proper sanitation.
+BL: `javascript.gsub!(/\342\200\250/u, ""&#x2028;"")`",not_buggy
+166,"SE: The 'groupData['name']' variable is directly concatenated into HTML content without sanitation.
+BL: `<?= Strings::htmlentities($groupData['name']) ?>`",not_buggy
+7511,"SE: None
+BL: None",not_buggy
+7651,"SE: The 'dialplan_detail_data' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `echo ""    <input class='formfld' type='text' name='dialplan_detail_data' value=\"""".htmlspecialchars($dialplan_detail_data).""\"">\n"";`",not_buggy
+8130,"SE: The 'xml' parameter is directly used in the URL without proper validation or sanitization, which can lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `echo ""<tr style=\""vertical-align: top\"" class=\""sortable\"" id=\""id_{$i}\"">\n"";`",not_buggy
+7979,"SE: None
+BL: None",not_buggy
+7615,"SE: The 'data' from the $_POST variable is directly used in the textarea without any sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `echo ""    <textarea name='data' id='data' rows='7' class='formfld' style='width: 100%;' wrap='off'>$data</textarea>\n"";`",not_buggy
+7567,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+7447,"SE: The `DOC_TEMPLATE` and `RDOC_NO_DOCUMENTATION` templates may contain a bug of type CWE-79 because they directly interpolate user input without proper sanitation.
+BL: None.",not_buggy
+7616,"SE: The 'onhover_pause_refresh' variable is directly concatenated into the HTML content without proper sanitation.
+BL: $onhover_pause_refresh = "" onmouseover='refresh_stop();' onmouseout='refresh_start();'"";",not_buggy
+7755,"SE: The 'url' attribute in the 'img' tag is not properly sanitized, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None",not_buggy
+7890,"SE: The 'name' variable is directly concatenated into the HTML content without sanitation.
+BL: `echo ""<th"" . ($orgtable != """" || $field->name != $orgname ? "" title='"" . h(($orgtable != """" ? ""$orgtable."" : """") . $orgname) . ""'"" : """") . "">"" . h($name)`",not_buggy
+7887,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+8339,"SE: None
+BL: None",not_buggy
+93,"SE: The 'val' variable is directly concatenated into the HTML content without proper sanitation.
+BL: `$val = trim($val);`",not_buggy
+7501,"SE: None
+BL: None",not_buggy
+179,"SE: The 'memo' variable is directly concatenated into the response JSON without proper sanitization.
+BL: `memo  = ''.join(request.args.get('memo', None))`",not_buggy
+7583,"SE: The 'file' parameter in the read() method of the AttachmentChunkedData class is directly concatenated into the SQL query without proper input validation, which may lead to a SQL injection vulnerability.
+BL: `->filter(array('file' => $this->file, 'chunk_id' => $this->_chunk++))`",not_buggy
+8405,"SE: The 'fileName' variable is not sanitized before being used to construct the file path, which may lead to a path traversal vulnerability.
+BL: `$filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;`",not_buggy
+8423,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the response JSON without proper sanitization.
+BL: None.",not_buggy
+116,"SE: None
+BL: None",not_buggy
+253,"SE: The line may contain a bug of type CWE-79 because user input from the URL parameter 'd' is directly concatenated into the HTML content without proper sanitization.
+BL: `$d = ""?d="" . htmlentities($sub_photo_dir);`",not_buggy
+8201,"SE: None
+BL: None",not_buggy
+8205,"SE: None
+BL: None",not_buggy
+8156,"SE: The 'server' and 'tube' variables are directly concatenated into the Location header without proper sanitation, which can lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `header(sprintf('Location: ./?server=%s&tube=%s', $server, urlencode($destTube)));`",not_buggy
+7648,"SE: The 'dialplan_description' variable is directly concatenated into the HTML content without proper sanitization.
+BL: echo ""	<td class='description overflow hide-sm-dn'>"".escape($row['dialplan_description']).""&nbsp;</td>\n"";",not_buggy
+997,"SE: The 'link_text' and 'link_class' variables are directly concatenated into HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$link = '<a class=""' . esc_attr( $link_class ) . '"" href=""' . esc_url( $this->url() ) . '"">' . esc_html( $link_text ) . '</a>';`",not_buggy
+7682,"SE: The 'rawattr' array is directly used to rebuild the shortcode string without proper sanitation, which may lead to Cross-site Scripting (XSS) vulnerability.
+BL: `$shortcode .= ' id=""' . esc_attr( $matches[1] ) . '""';`",not_buggy
+8172,"SE: The line may contain a bug of type CWE-79 because user input ($_REQUEST[$key]) is not properly sanitized before being used in the output.
+BL: `echo '<strong>Exited due to invalid input ( ' . $invalid_string . ') attempted:</strong> ' . htmlspecialchars($val_to_check);`",not_buggy
+8240,"SE: The 'value' variable is directly concatenated into the HTML content without proper sanitization.
+BL: None.",not_buggy
+90,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+7471,"SE: The 'fields[title]' and 'fields[handle]' values are directly concatenated into error messages without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+170,"SE: The 'user_list_autocomplete' input field in the line may contain a bug of type CWE-79 (e.g., The 'user_list_autocomplete' input field is directly concatenated into HTML content without sanitation).
+BL: `<input type=""text"" id=""user_list_autocomplete"" name=""user_list_search"" class=""form-control pmf-user-autocomplete"" autocomplete=""off"" placeholder=""<?= $PMF_LANG['ad_auth_user'] ?>"">`",not_buggy
+8198,"SE: The 'user_input' is not directly concatenated into the HTML content, so there is no bug of type CWE-79 in this file.
+BL: None",not_buggy
+8008,"SE: The 'asset_tag' parameter is directly used in a query without proper input validation or sanitization, which can lead to a Cross-site Scripting (XSS) vulnerability.
+BL: $asset = Asset::where('asset_tag','=', $request->input('asset_tag'))->first();",not_buggy
+8463,"SE: The 'input' parameter is directly concatenated into the error message without proper sanitization.
+BL: `$error[] = sprintf( _( 'File not uploaded' );`",not_buggy
+280,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+7565,"SE: The 'serverId', 'serverBase', 'serverName', and 'apiKey' variables are directly concatenated into HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: theModel.put(""serverId"", sanitizeInput(serverId));",not_buggy
+7730,"SE: The 'item.getCode()' is directly concatenated into the method 'getShoppingCartModel()' without proper input validation.
+BL: `cartModel = getShoppingCartModel( item.getCode(), store );`",not_buggy
+8384,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+8000,"SE: The 'file' variable is directly used in the file path without proper validation or sanitization.
+BL: `const tempFile = self.uploadfs.getTempPath() + '/' + self.apos.util.generateId() + '.' + attachment.extension;`",not_buggy
+8338,"SE: The 'user_input' is directly concatenated into the HTML content without sanitation.
+BL: `c.Header().Set(""Content-Disposition"", fmt.Sprintf(`inline; filename=""%s""`, attach.Name))`.",not_buggy
+8410,"SE: None
+BL: None",not_buggy
+73,"SE: The line may contain a bug of type CWE-79 because user input is not properly sanitized before being used in the HTML content.
+BL: None.",not_buggy
+8224,"SE: None
+BL: None",not_buggy
+1085,"SE: The 'user' parameter in the 'delete' method is directly used in the '_deleteuser' method without proper validation, which could lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `self._deleteuser(user)`",not_buggy
+8399,"SE: The 'startdate' and 'enddate' parameters are directly used in an SQL query in the `validate()` method, which may lead to an SQL injection vulnerability.
+BL: None.",not_buggy
+1056,"SE: The 'parameters' map is directly used to populate the model without sanitization, which may lead to Cross-site Scripting (XSS) vulnerabilities.
+BL: None.",not_buggy
+8073,"SE: The 'mask' variable is directly concatenated into the regular expression without proper input validation.
+BL: None.",not_buggy
+234,"SE: The 'html' field is checked for XSS vulnerability by ensuring that it does not contain any script or event handlers.
+BL: None.",not_buggy
+217,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without sanitation.
+BL: `$sURL = utils::GetAbsoluteUrlAppRoot().'pages/UI.php?'.$oAppContext->GetForLink();`",not_buggy
+1,"SE: The 'email' variable is not properly sanitized before being used in the email change confirmation message, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+187,"SE: The 'faqData['content']' is directly concatenated into the HTML content without proper sanitization.
+BL: $faqData['content'] = Filter::filterInput(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);",not_buggy
+7472,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without sanitation.
+BL: None.",not_buggy
+195,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: `$response = $this->adminJson($result);`",not_buggy
+7530,"SE: The 'hostname' field in the 'pollers' table is directly displayed without any sanitation, making it vulnerable to cross-site scripting attacks.
+BL: form_selectable_cell(html_escape($poller['hostname']), $poller['id'], '', 'right');",not_buggy
+7630,"SE: The 'contact_organization' variable is directly concatenated into the HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: echo ""	<input class='formfld' type='text' name='contact_organization' maxlength='255' value=\"""".escape($contact_organization).""\"">\n"";",not_buggy
+5,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+8193,"SE: The 'src' parameter is directly used in constructing the cache path without proper validation or sanitization.
+BL: $cache = $this->tn_cache_id($params) . '.' . $ext;",not_buggy
+8034,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into the HTML content without proper sanitation.
+BL: `value = Ext.util.Format.htmlEncode(value);`",not_buggy
+8382,"SE: The 'label' and 'bank' fields are directly concatenated into the HTML content without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: print '<tr><td class=""titlefield fieldrequired"">'.$langs->trans(""LabelRIB"").'</td>';
+print '<td colspan=""4""><input size=""30"" type=""text"" name=""label"" value=""'.$account->label.'""></td></tr>';
+
+print '<tr><td class=""fieldrequired"">'.$langs->trans(""BankName"").'</td>';
+print '<td><input size=""30"" type=""text"" name=""bank"" value=""'.$account->bank.'""></td></tr>';",not_buggy
+7552,"SE: The line may contain a bug of type CWE-79 because user input is directly concatenated into HTML content without proper sanitation.
+BL: None.",not_buggy
+8459,"SE: The 'name' input field in the form may contain user input without proper sanitization.
+BL: 'name' => 'name',",not_buggy
+7823,"SE: The line may contain a bug of type CWE-79 because it allows the insertion of potentially unsafe content without proper sanitation.
+BL: None.",not_buggy
+7845,"SE: The 'useo_meta_editor_title' and 'useo_meta_editor_description' variables are directly concatenated into the HTML content without sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: None.",not_buggy
+77,"SE: The 'tooltipFormatter' function may contain user-controlled data that is not properly sanitized before being rendered as HTML content.
+BL: SmoothieChart.tooltipFormatter = function (timestamp, data) { ... }",not_buggy
+8054,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+871,"SE: The 'linkTextSkipperGuide' variable is directly concatenated with the translation value without proper sanitation, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: var linkTextSkipperGuide = ""<?=$t->tr('descrSkipperGuide')?>"";",not_buggy
+290,"SE: The 'img' variable is used without proper sanitization, which may lead to a Cross-site Scripting (XSS) vulnerability.
+BL: `$img = stripslashes($data[1][0]);`",not_buggy
+963,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None.",not_buggy
+7930,"SE: None
+BL: None",not_buggy
+8233,"SE: The line may contain a bug of type CWE-79 because it directly manipulates HTML content without proper sanitation.
+BL: None.",not_buggy
+8344,"SE: The 'template' field in the template configuration is directly concatenated with the plugin name without proper sanitation.
+BL: None.",not_buggy

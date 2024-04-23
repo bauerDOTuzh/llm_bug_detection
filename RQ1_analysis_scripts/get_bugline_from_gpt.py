@@ -280,11 +280,18 @@ fp=0
 fn=0
 # Dictionary to hold input length and outcome counts
 length_outcomes = []
+results = []
 for i,model_output in enumerate(instruct_model(prompt_list, model=model, temperature=temperature)):
 	if not model_output:
 		continue
 
 	datapoint_dict = datapoint_dict_list[i]
+	result_type = datapoint_dict['type']
+	results.append({
+        'file_id': datapoint_dict['file_id'],
+        'model_output': model_output,
+        'type': result_type
+    })
 
 	code = extract_code_or_return_original(model_output)
 	has_bug_line = (bool(bug_line_pattern.search(model_output)) and 'BL: None'.lower() not in model_output.lower()) or (code and code != model_output) and 'BUG FOUND: YES'.lower() in model_output
@@ -331,9 +338,13 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 # Create a DataFrame from the list length_outcomes
 df = pd.DataFrame(length_outcomes)
 # Define the filename for the CSV file
-csv_filename = f'../data/data_CWE-{cwe_id}_model-{model}.csv'
+csv_filename = f'../data/lr_data_CWE-{cwe_id}_model-{model}.csv'
 # Save the DataFrame to a CSV file
 df.to_csv(csv_filename, index=False)
+
+df_results = pd.DataFrame(results)
+csv_filename = f'../data/data_CWE-{cwe_id}_{model}.csv'
+df_results.to_csv(csv_filename, index=False)
 
 try:
     accuracy = (tp + tn) / (tp + tn + fp + fn)
