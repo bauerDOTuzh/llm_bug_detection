@@ -1,0 +1,1900 @@
+file_id,model_output
+144,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+301,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6092,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+298,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+297,"SE: The '$name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+0,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+300,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is provided.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+299,"SE: The '$name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+145,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2568,"SE: The output from the calculator is directly embedded into HTML without escaping, which can lead to XSS if the output includes executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+315,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+147,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1,"SE: The 'result' output is directly embedded into HTML content without sanitation, potentially leading to XSS if user input is not properly sanitized.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+316,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+13,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if it contains user-controlled data.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+165,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+317,"SE: The '$name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to Cross-Site Scripting (XSS) if malicious input is provided.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+146,"SE: The 'username' input from POST request is directly embedded into HTML without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+14,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+18,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+160,"SE: The 'username' from POST data is directly embedded into HTML input value without sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+321,"SE: The 'name' variable from user input is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+159,"SE: The 'username' from POST data is directly embedded into HTML input value without sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+12,"SE: The 'result' array output is directly embedded into HTML without sanitizing, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+347,"SE: The '$name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+54,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+203,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+348,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+353,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+161,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+40,"SE: The 'result' array output is directly used in HTML content without sanitizing, potentially allowing XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+189,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+41,"SE: The 'result' output is directly embedded into HTML content without sanitation, potentially leading to Cross-Site Scripting (XSS) if the output contains malicious code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+191,"SE: The 'username' from POST data is directly embedded into HTML input value without sanitization, potentially leading to XSS.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+349,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+361,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+42,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+195,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+190,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+257,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+633,"SE: The 'result' data from the 'Integrator' class is directly used in HTML output without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+236,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+241,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+106,"SE: The 'result' array output is directly embedded into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+237,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1297,"SE: The 'username' from POST data is directly used in HTML output without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+417,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+396,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+85,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially leading to XSS if the output contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+397,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+84,"SE: The 'result' array output is directly echoed into HTML content without sanitation, potentially leading to XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+409,"SE: The 'name' variable from user input is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+401,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+98,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2010,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2038,"SE: The 'name' variable from user input is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+395,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML page without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1310,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+46,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if it contains user-controlled data.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+86,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially leading to XSS if it contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+617,"SE: The 'result' array output is directly embedded into HTML content without escaping, which can lead to XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+603,"SE: The 'result' array output is directly used in HTML output without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2030,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+249,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+90,"SE: The 'result' array output is directly used in HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2009,"SE: The 'name' variable from user input is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2008,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML context without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+605,"SE: The 'result' array's 'output' value is directly used in HTML output without proper escaping or sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2118,"SE: The 'name' variable is directly echoed into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1388,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1298,"SE: The 'username' from POST data is directly used in HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+235,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2022,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is provided.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1326,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+604,"SE: The 'result' array's 'output' is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2090,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1296,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1302,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+2014,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1318,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+625,"SE: The 'result' array content is directly output into HTML without escaping, which can lead to XSS if the content includes executable script.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1396,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2110,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+609,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1412,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+709,"SE: The 'input' and 'operation' values from the request are directly used in HTML output without sanitation, potentially leading to XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1374,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+693,"SE: The 'result' array output is directly embedded into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+717,"SE: The 'input' and 'operation' values are directly used in HTML output without proper escaping or sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2102,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2088,"SE: The '$name' variable is directly embedded into JavaScript code within an HTML page without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1468,"SE: The 'username' from POST data is directly embedded into HTML input value without sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+681,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization, potentially allowing XSS if the value includes executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1376,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+2186,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+771,"SE: The 'result' array output is directly echoed into HTML content without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+817,"SE: The 'src' attribute of the video tag is directly concatenated with user input without validation or encoding, potentially leading to XSS.
+BL: `return ""<video width='{$this->width}' height='{$this->height}' controls><source src='{$this->src}' type='video/mp4'>Your browser does not support the video tag.</video>"";`
+BUG FOUND: YES"
+2094,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1404,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1506,"SE: The 'username' input is directly echoed into HTML content without sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2184,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1380,"SE: The 'username' field value is directly used in the HTML output without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+685,"SE: The 'result' array output is directly used in HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1514,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2185,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2222,"SE: The 'name' variable is directly used in JavaScript within an HTML context without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+801,"SE: The 'result' data from the 'Integrator' class is directly output into HTML without escaping, which can lead to XSS if the data is controlled by the user.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2089,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1490,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1375,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+701,"SE: The 'result' array output is directly embedded into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+679,"SE: The 'result' array output is directly used in HTML content without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+680,"SE: The 'result' array's 'output' key value is directly echoed into HTML content without sanitation, potentially allowing for XSS if the value includes executable script content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1482,"SE: The 'username' input from the POST request is directly used in the HTML form value attribute without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1474,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+772,"SE: The 'result' output from the calculator is directly embedded into HTML without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2126,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter 'name'.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1498,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+785,"SE: The 'result' array output is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2198,"SE: The 'name' variable is directly used in the JavaScript alert without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2206,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1584,"SE: The 'username' field value is directly embedded into HTML without proper escaping, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2297,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+809,"SE: The 'input' and 'operation' values are directly used in HTML output without proper escaping or sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1592,"SE: The 'username' field value is directly used in the HTML input element without proper escaping, potentially leading to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2342,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1624,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1632,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1470,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+2214,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+879,"SE: The 'result' array output is directly used in HTML output without sanitizing, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1579,"SE: The 'username' field value is directly embedded into HTML without proper escaping, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1578,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+880,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if the value includes executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+773,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization, potentially leading to XSS if the value includes executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2350,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1469,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+777,"SE: The 'result' output from the calculator is directly used in HTML output without sanitization, potentially allowing XSS if the result is manipulated.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1600,"SE: The 'username' from POST data is directly used in HTML output without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2190,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+885,"SE: The 'result' output from the calculator is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1734,"SE: The 'username' from POST data is directly used in HTML output without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1750,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+793,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+881,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2230,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1758,"SE: The 'username' input from POST data is directly embedded into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+901,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2310,"SE: The 'name' variable is directly output in JavaScript within an HTML context without proper encoding, which can lead to XSS attacks if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+893,"SE: The 'result' output is directly included in HTML content without escaping, which can lead to XSS if it contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2426,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1017,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1009,"SE: The 'result' output from the calculator is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2296,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML page without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1041,"SE: The 'input' and 'operation' values are directly used in HTML output without proper escaping or sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2298,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1726,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+9856,"SE: The 'name' variable is directly output in the JavaScript alert without proper encoding, which can lead to XSS attacks if malicious input is passed.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1003,"SE: The 'result' array output is directly used in HTML content without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2425,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1742,"SE: The 'username' field from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2486,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1710,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+1718,"SE: The 'username' field value is directly used in the HTML output without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2446,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1057,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1580,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1616,"SE: The 'username' is directly echoed into HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+933,"SE: The 'input' and 'operation' values from the request are directly used in HTML output without proper escaping or sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1065,"SE: The 'input' and 'operation' values are directly used in HTML content without sanitation, potentially leading to XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1033,"SE: The 'result' variable is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3833,"SE: none
+BL: none
+BUG FOUND: NO"
+1608,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2424,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML page without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+925,"SE: The 'src' attribute of the video tag is directly using user input without validation or encoding, which can lead to XSS attacks if the input is not properly sanitized.
+BL: `return ""<video width='{$this->width}' height='{$this->height}' controls><source src='{$this->src}' type='video/mp4'>Your browser does not support the video tag.</video>"";`
+BUG FOUND: YES"
+6835,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1705,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+909,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially leading to XSS if 'output' contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2438,"SE: The 'name' variable is directly output in JavaScript within an HTML context without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1025,"SE: The 'result' output is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2454,"SE: The 'name' variable from user input is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1704,"SE: The 'username' from POST data is directly embedded into HTML input value without sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+2462,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2334,"SE: The 'name' variable is directly used in JavaScript within an HTML context without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1766,"SE: The 'username' from POST data is directly embedded into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10085,"SE: The 'name' variable from user input is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2302,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2318,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2430,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6827,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+6851,"SE: The 'username' field from POST data is directly embedded into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+6859,"SE: The 'username' input from POST request is directly embedded into HTML without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+9869,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+9917,"SE: The 'name' variable is directly echoed into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1004,"SE: The 'result' array's 'output' key value is directly echoed into HTML content without sanitation, potentially allowing for XSS attacks if the output contains executable script elements.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3772,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing XSS if 'output' contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3801,"SE: The 'input' and 'operation' values from the request are directly used in HTML output without sanitization, potentially leading to XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+9885,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6875,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1049,"SE: The 'src' attribute of the video tag is directly included without validation or encoding, potentially allowing for XSS if the source URL is not properly sanitized.
+BL: `return ""<video width='{$this->width}' height='{$this->height}' controls><source src='{$this->src}' type='video/mp4'>Your browser does not support the video tag.</video>"";`
+BUG FOUND: YES"
+6815,"SE: The 'username' input from the POST request is directly embedded into the HTML input value without proper sanitization, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+3785,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing for XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4001,"SE: The 'input' and 'operation' values are directly used in HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2326,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3825,"SE: The 'input' and 'operation' values from the request are directly used in the output without proper validation or encoding, potentially leading to XSS if the output is rendered in HTML.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+6883,"SE: The 'username' field value is directly used in the HTML output without proper escaping, potentially leading to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+6867,"SE: The 'username' input from POST request is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+3993,"SE: The 'input' from the request handler is directly used in HTML content without sanitation, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+6814,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+9861,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3841,"SE: The 'input' from 'requestHandler' is directly used in HTML output without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7019,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+9857,"SE: The variable '$name' is directly used in the JavaScript alert function without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+9877,"SE: The 'name' variable is directly output in JavaScript within an HTML context without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2470,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2478,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+9925,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6843,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+3771,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing XSS if user-controlled data is included.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+9855,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML page without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1706,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+3809,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+6819,"SE: The 'username' from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+9901,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3773,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+9909,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7003,"SE: The 'username' field from POST data is directly used in the HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+6813,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+3817,"SE: The 'input' from 'requestHandler' is directly used in HTML output without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7043,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+3977,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3777,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially leading to XSS if 'output' contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10037,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7027,"SE: The 'username' input from the POST request is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10053,"SE: The 'name' variable from user input is directly used in JavaScript context without proper encoding, which can lead to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1005,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization, potentially allowing XSS if the value includes executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3953,"SE: The 'input' and 'operation' values from user request are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3933,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing for XSS attacks if the output contains executable script elements.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+917,"SE: The 'error' messages are directly concatenated into HTML content without sanitation.
+BL: `echo $error . ""<br>"";`
+BUG FOUND: YES"
+6995,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+3985,"SE: The 'input' and 'operation' values from the request handler are directly used in HTML output without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+9893,"SE: The 'name' variable is directly used in the JavaScript alert without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10029,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10077,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3793,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing for XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7051,"SE: The 'username' field value is directly used in the HTML output without proper escaping, potentially leading to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+6979,"SE: The 'username' field value is directly used in the HTML output without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+6974,"SE: The 'username' field value is directly output into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10015,"SE: The 'name' variable is directly output in a JavaScript context without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7035,"SE: The 'username' from POST data is directly embedded into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10016,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7011,"SE: The 'username' field value is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10017,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter 'name'.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3961,"SE: The 'input' and 'operation' values from the request are directly used in HTML output without sanitization, potentially allowing XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+6987,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10069,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4169,"SE: The 'input' from the request handler is directly used in HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4161,"SE: The 'input' and 'operation' values from the request are directly used in the output without proper validation or encoding, potentially leading to XSS vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10261,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10061,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10269,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10191,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6975,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10021,"SE: The 'name' variable is directly echoed into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3937,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing for XSS attacks if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3945,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially leading to XSS if 'output' contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3969,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3932,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+6973,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10045,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4009,"SE: The 'src' attribute in the video tag is directly using input without sanitization or validation.
+BL: `return ""<video width='{$this->width}' height='{$this->height}' controls><source src='{$this->src}' type='video/mp4'>Your browser does not support the video tag.</video>"";`
+BUG FOUND: YES"
+4108,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10221,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4129,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7211,"SE: The 'username' input from the POST request is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7150,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10093,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7149,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4177,"SE: The 'input' from 'requestHandler' is directly used in HTML output without sanitation, potentially allowing XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+3931,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing for XSS if user-controlled data is included.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7219,"SE: The 'username' input from the POST request is directly embedded into HTML without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4109,"SE: The 'result' array's 'output' value is directly echoed into HTML without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10193,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7151,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7371,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7187,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10205,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4193,"SE: none
+BL: none
+BUG FOUND: NO"
+7171,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4107,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing for XSS if user-controlled data is included.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4137,"SE: The 'input' and 'operation' values from the request are directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7195,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10213,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4361,"SE: The 'input' and 'operation' values are directly used in HTML content without proper escaping or sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10384,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to XSS attacks if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4153,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4185,"SE: none
+BL: none
+BUG FOUND: NO
+
+The provided PHP code does not contain any lines that directly involve generating web page content from user input without proper sanitization, which would typically lead to a Cross-Site Scripting (CWE-79) vulnerability. The code primarily consists of class definitions and methods for various operations like file handling, string manipulation, and mathematical calculations, but it does not include any HTML content generation based on user input."
+4385,"SE: none
+BL: none
+BUG FOUND: NO"
+10245,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7179,"SE: The 'username' field from POST data is directly embedded into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10397,"SE: The 'name' variable is directly output into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7343,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10192,"SE: The 'name' variable is directly output into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4301,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10229,"SE: The 'name' variable is directly used in the JavaScript alert without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7427,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10453,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4121,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing for XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7163,"SE: The 'username' input from the form is directly embedded into the HTML without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4353,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7235,"SE: The 'username' field value is directly used in the HTML output without proper escaping, potentially leading to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4593,"SE: none
+BL: none
+BUG FOUND: NO"
+4601,"SE: none
+BL: none
+BUG FOUND: NO"
+10237,"SE: The 'name' variable is directly used in the JavaScript alert function without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7643,"SE: The 'username' is directly echoed into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7155,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4377,"SE: none
+BL: none
+BUG FOUND: NO"
+7355,"SE: The 'username' field value is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly handled elsewhere.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4337,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7395,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4369,"SE: The 'input' from 'requestHandler' is directly used in HTML output without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4299,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing XSS if user-controlled data is included.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7203,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7347,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10253,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10385,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7551,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4521,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4113,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7379,"SE: The 'username' field from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10661,"SE: The 'name' variable from user input is directly used in JavaScript without proper encoding, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7549,"SE: The 'username' field value is directly embedded into the HTML input element without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7619,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4313,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7595,"SE: The 'username' input is directly used in the HTML output without proper sanitization, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7627,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7227,"SE: The 'username' input is directly echoed into HTML content without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7411,"SE: The 'username' is directly echoed into HTML input value without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7555,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10413,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10613,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7651,"SE: The 'username' and 'password' inputs are directly used in the HTML output without proper encoding, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and similar usage in password field
+BUG FOUND: YES"
+7603,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10477,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10421,"SE: The 'name' variable is directly output into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10197,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10469,"SE: The 'name' variable from user input is directly used in a JavaScript alert without proper encoding, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4300,"SE: The 'result' array's 'output' field is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4569,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10277,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4345,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4305,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10389,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10653,"SE: The 'name' variable from user input is directly used in the JavaScript alert without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) attacks if malicious scripts are injected.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7419,"SE: The 'username' input from the form is directly embedded into the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4513,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially leading to XSS if 'output' contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4769,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10593,"SE: The variable '$name' is directly used in the JavaScript alert without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10605,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4529,"SE: The 'result' array content is directly output into HTML without proper escaping, potentially leading to XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10829,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10405,"SE: The 'name' variable is directly echoed into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7363,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7571,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4329,"SE: The 'input' and 'operation' values from the request are directly used in HTML output without proper sanitization or encoding, potentially leading to XSS vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10685,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4321,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing for XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10629,"SE: The 'name' variable is directly used in the JavaScript alert function without proper sanitization, which can lead to Cross-Site Scripting (XSS) if malicious input is passed through the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7341,"SE: The 'username' field value is directly output into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4732,"SE: The 'result' array's 'output' key value is directly used in HTML output without proper escaping, potentially leading to XSS if the value includes executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4825,"SE: none
+BL: none
+BUG FOUND: NO"
+7550,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4737,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7435,"SE: The 'username' is directly echoed into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7403,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4585,"SE: none
+BL: none
+BUG FOUND: NO"
+4545,"SE: The 'input' and 'operation' values from the request handler are directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4609,"SE: none
+BL: none
+BUG FOUND: NO"
+10429,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7635,"SE: The 'username' input is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7835,"SE: The 'username' input is directly used in HTML output without proper sanitization, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10461,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly sanitized elsewhere.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4393,"SE: The 'input' and 'operation' values are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7774,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10637,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4145,"SE: The 'input' and 'operation' values are directly used in HTML content without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7611,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7342,"SE: The 'username' field value is directly output into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7795,"SE: The 'username' field value is directly used in the HTML output without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4553,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4785,"SE: The 'input' from the request handler is directly used in the output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7867,"SE: The 'username' is directly echoed into HTML input value without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10917,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7775,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10591,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML context without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10445,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter 'name'.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10885,"SE: The 'name' variable from user input is directly used in JavaScript without proper encoding, leading to potential XSS vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4561,"SE: The 'input' and 'operation' values from the request are directly used in the output without proper validation or encoding, potentially leading to XSS vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10861,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10693,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to XSS attacks if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7387,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4509,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10621,"SE: The 'name' variable is directly echoed into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10815,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7579,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7875,"SE: The 'username' and 'password' inputs are directly used in the HTML output without proper encoding, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `<input type=""password"" name=""password"" id=""inputPassword"" class=""form-control"" placeholder=""Password"" required>`
+BUG FOUND: YES"
+7843,"SE: The 'username' input is directly used in the HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7827,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4817,"SE: none
+BL: none
+BUG FOUND: NO"
+10645,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized elsewhere.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4577,"SE: The 'input' from 'requestHandler' is directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4761,"SE: The 'input' and 'operation' values from the request handler are directly used in HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7587,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially allowing XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8083,"SE: The 'username' input is directly used in the HTML output without proper encoding, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7859,"SE: The 'username' input is directly used in the HTML output without proper sanitization, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11077,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to XSS attacks if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7779,"SE: The 'username' field value is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8013,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7563,"SE: The 'username' field value is directly output into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10893,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4841,"SE: none
+BL: none
+BUG FOUND: NO
+
+Explanation:
+The provided PHP code does not contain any lines where user input is directly concatenated into HTML content without proper sanitation, which would typically lead to a Cross-Site Scripting (CWE-79) vulnerability. The code primarily consists of class definitions and methods for various operations like file handling, string manipulation, and mathematical calculations, but it does not involve any direct HTML generation using unsanitized user input."
+8107,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7883,"SE: The 'username' and 'password' inputs are directly used in the HTML without proper encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+10669,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10816,"SE: The 'name' variable is directly embedded into JavaScript code without proper escaping, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10597,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4731,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitization, potentially allowing XSS if user-controlled data is included.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7851,"SE: The 'username' field from user input is directly embedded into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10437,"SE: The 'name' variable from user input is directly used in a JavaScript alert without proper sanitization, potentially leading to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10592,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10869,"SE: The 'name' variable from user input is directly used in JavaScript without proper encoding, leading to potential XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10383,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML page without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7811,"SE: The 'username' field from user input is directly embedded into HTML without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+7773,"SE: The 'username' field value is directly output into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4507,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7787,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4753,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10901,"SE: The 'name' variable from user input is directly used in JavaScript without proper encoding, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4801,"SE: The 'input' from 'requestHandler' is directly used in HTML output without sanitation, potentially allowing XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10877,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10845,"SE: The 'name' variable from user input is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7803,"SE: The 'username' field from user input is directly embedded into HTML content without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4745,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially leading to XSS if 'output' contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10677,"SE: The 'name' variable is directly included in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized elsewhere.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4508,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization or encoding, potentially allowing XSS if the value includes executable script.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4733,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10821,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5073,"SE: none
+BL: none
+BUG FOUND: NO"
+4833,"SE: No line in the provided PHP code directly concatenates user input into HTML content without sanitation.
+BL: none
+BUG FOUND: NO"
+4809,"The provided file content does not contain any explicit HTML generation or manipulation where user input is directly embedded into HTML output without proper sanitization. Therefore, there is no apparent vulnerability related to CWE-79 (Cross-Site Scripting) in the given PHP code snippets.
+
+Expected Output Structure:
+SE: none
+BL: none
+BUG FOUND: NO"
+4537,"SE: The 'input' and 'operation' values from the request handler are directly used in HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10925,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11101,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10909,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11056,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10817,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4793,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8015,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5057,"SE: none
+BL: none
+BUG FOUND: NO"
+11173,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5081,"SE: none
+BL: none
+BUG FOUND: NO
+
+Explanation:
+The provided PHP code does not contain any operations that involve generating web pages directly from user input without proper sanitization or encoding, which would typically lead to Cross-Site Scripting (CWE-79) vulnerabilities. The code primarily consists of class definitions and methods for various operations like mathematical calculations, string manipulations, file handling, etc., without any direct interaction with web page generation using unsanitized user input."
+10837,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11057,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4971,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5033,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4777,"SE: The 'input' from 'requestHandler' is directly used in HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8059,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` in the form input field for username.
+BUG FOUND: YES"
+4977,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization or encoding, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8067,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+10853,"SE: The 'name' variable is directly output into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7819,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11069,"SE: The 'name' variable is directly output in JavaScript within an HTML context without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized or escaped.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11085,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5049,"SE: none
+BL: none
+BUG FOUND: NO"
+11055,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8075,"SE: The 'username' input is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8043,"SE: The 'username' input from the form is directly embedded into the HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+4985,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4973,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8269,"SE: The 'username' field value is directly output into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5065,"SE: none
+BL: none
+BUG FOUND: NO"
+8051,"SE: The 'username' field from user input is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11093,"SE: The 'name' variable is directly output into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8315,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5305,"SE: none
+BL: none
+BUG FOUND: NO"
+8291,"SE: The 'username' field from POST data is directly used in the HTML output without proper escaping, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8555,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11437,"SE: The 'name' variable is directly embedded into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the variable contains malicious content.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8307,"SE: The 'username' field from user input is directly embedded into HTML without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5297,"SE: The 'input' from 'requestHandler' is directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5089,"SE: none
+BL: none
+BUG FOUND: NO"
+11133,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11325,"SE: The 'name' variable is directly output in the JavaScript alert without proper encoding, which can lead to XSS attacks if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11333,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5281,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5009,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8019,"SE: The 'username' field value is directly embedded into the HTML input element without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5227,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5345,"SE: None of the provided PHP code directly handles or outputs user input into HTML without proper sanitization or encoding, thus no CWE-79 bug is detected.
+BL: none
+BUG FOUND: NO"
+5228,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization or encoding, potentially allowing XSS if the value includes executable script content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4972,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization or encoding, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8123,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5241,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing for XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5289,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11405,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11365,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5025,"SE: The 'input' and 'operation' values from the request handler are directly used in the output without proper validation or encoding, potentially leading to XSS vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11357,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8651,"SE: The 'username' is directly echoed into HTML content without sanitation, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5249,"SE: The 'input' and 'operation' values are directly used in HTML output without proper sanitization or encoding, potentially leading to XSS vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11165,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if it contains malicious script.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5561,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11313,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter 'name'.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5313,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in the 'calculator' without proper validation or encoding, potentially leading to XSS if the output is rendered in HTML without proper escaping.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+8035,"SE: The 'username' field value is directly used in the HTML output without proper sanitization, potentially allowing for XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5329,"SE: The 'input' from 'requestHandler' is directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11117,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11125,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8635,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5617,"SE: none
+BL: none
+BUG FOUND: NO"
+8363,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly handled elsewhere.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11421,"SE: The 'name' variable from user input is directly used in a JavaScript alert without proper encoding, potentially leading to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8275,"SE: The 'username' field value is directly embedded into the HTML input element without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11653,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized or escaped.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11585,"SE: The 'name' variable is directly output in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8091,"SE: The 'username' field from user input is directly embedded into HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5337,"SE: none
+BL: none
+BUG FOUND: NO"
+4993,"SE: The 'result' array content is directly output into HTML without escaping, which can lead to XSS if the content includes executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11149,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11061,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter 'name'.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5017,"SE: The 'input' and 'operation' values from the request are directly used in the output without proper sanitization or encoding, potentially leading to XSS vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5321,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11109,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8027,"SE: The 'username' field value is directly output into HTML without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly handled elsewhere.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5553,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11317,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to XSS attacks if malicious input is passed.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5257,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11157,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the variable contains malicious content.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8395,"SE: The 'username' and 'password' inputs are directly used in the HTML output without proper encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+11637,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly sanitized or escaped.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8099,"SE: The 'username' field value is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly handled elsewhere.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8115,"SE: The 'username' and 'password' inputs are directly used in HTML output without proper encoding, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `<input type=""password"" name=""password"" id=""inputPassword"" class=""form-control"" placeholder=""Password"" required>`
+BUG FOUND: YES"
+5537,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8271,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11141,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, potentially leading to XSS attacks if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8379,"SE: The 'username' and 'password' inputs are directly used in HTML output without proper encoding, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+11709,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, potentially leading to XSS attacks if the input is not properly sanitized elsewhere.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5233,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11311,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5585,"SE: none
+BL: none
+BUG FOUND: NO
+
+Explanation:
+The provided PHP code does not contain any lines that directly generate HTML content based on user input without proper sanitization or encoding, which would typically lead to a Cross-Site Scripting (CWE-79) vulnerability. The code primarily consists of class definitions and methods for various operations like file handling, data manipulation, and mathematical calculations, without any direct interaction with HTML or web page generation using untrusted input."
+11312,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8323,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5501,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing for XSS attacks if the output contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5521,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitation, potentially allowing for XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8675,"SE: The 'username' and 'password' fields are directly used in the HTML output without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly sanitized elsewhere.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and similar usage in password field.
+BUG FOUND: YES"
+8347,"SE: The 'username' from POST data is directly embedded into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11597,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to XSS attacks if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5625,"The provided file content does not contain any explicit HTML generation or manipulation involving user input that could lead to a Cross-Site Scripting (XSS) vulnerability (CWE-79). The classes and methods primarily focus on backend processing, mathematical calculations, data manipulation, and other non-web related functionalities. There is no direct interaction with web page generation or user input being embedded into HTML output without proper sanitization.
+
+Expected Output Structure:
+SE: No HTML content generation with user input found.
+BL: none
+BUG FOUND: NO"
+8387,"SE: The 'username' and 'password' fields from the form are directly used in the HTML output without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input contains malicious scripts.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+5265,"SE: The 'input' and 'operation' values from 'requestHandler' are directly used in HTML output without proper sanitization or encoding.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11341,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8299,"SE: The 'username' field from POST data is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5500,"SE: The 'result' array's 'output' key value is directly used in HTML output without sanitization or encoding, potentially allowing XSS if the value includes executable script content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11583,"SE: The 'name' variable is directly embedded into JavaScript code within an HTML context without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the 'name' GET parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8131,"SE: The 'username' and 'password' fields are directly used in the HTML output without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input contains malicious scripts.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+8355,"SE: The 'username' field from the form is directly echoed back into the HTML without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is entered.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5041,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5601,"SE: none
+BL: none
+BUG FOUND: NO"
+8542,"SE: The 'username' field value is directly output into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11389,"SE: The 'name' variable is directly output in a JavaScript context without proper encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly sanitized or escaped.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8571,"SE: The 'username' field from POST data is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5577,"SE: none
+BL: none
+BUG FOUND: NO"
+11373,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8014,"SE: The 'username' field value is directly embedded into HTML without proper sanitization, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8371,"SE: The 'username' and 'password' inputs are directly used in the HTML output without proper encoding, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+5353,"SE: No line in the provided PHP code directly concatenates user input into HTML content without sanitation.
+BL: none
+BUG FOUND: NO"
+5001,"SE: The 'input' and 'operation' values from the request are directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8667,"SE: The 'username' and 'password' inputs are directly used in the HTML without proper encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+8270,"SE: The 'username' field value is directly output into HTML without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8547,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11677,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8339,"SE: The 'username' is directly echoed into HTML content without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11589,"SE: The 'name' variable is directly output in JavaScript within an HTML context without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8619,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11605,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5593,"SE: none
+BL: none
+BUG FOUND: NO"
+11584,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8543,"SE: The 'username' field value is directly embedded into the HTML input element without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly handled elsewhere.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5569,"SE: The 'input' from 'requestHandler' is directly used in HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11717,"SE: The 'name' variable from user input is directly used in a JavaScript alert without proper encoding, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11685,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, potentially leading to XSS attacks if malicious content is passed as input.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8603,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8541,"SE: The 'username' from POST data is directly embedded into HTML input value without proper sanitization, potentially leading to XSS.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8611,"SE: The 'username' from POST data is directly used in HTML output without proper escaping, potentially allowing for XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8331,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+8627,"SE: The 'username' field value is directly used in the HTML output without proper escaping, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11349,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to XSS attacks if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5229,"SE: The 'result' array's 'output' value is directly used in HTML output without sanitization or encoding, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11381,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized elsewhere.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8283,"SE: The 'username' field value is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities if the input is not properly handled elsewhere.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11413,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11629,"SE: The 'name' variable is directly embedded into JavaScript code without proper sanitization, potentially leading to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11645,"SE: The 'name' variable from user input is directly used in the JavaScript alert without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) attacks if malicious input is provided.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5529,"SE: The 'input' and 'operation' values from the request handler are directly used in HTML output without proper sanitization or encoding, potentially leading to XSS vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8595,"SE: The 'username' field from user input is directly embedded into HTML without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5499,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitization, potentially allowing XSS if user-controlled data is included.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8643,"SE: The 'username' and 'password' inputs are directly used in the HTML output without proper encoding, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+5609,"SE: none
+BL: none
+BUG FOUND: NO
+
+The provided PHP code does not contain any HTML generation or output that involves user input, which could lead to Cross-Site Scripting (CWE-79). All classes and methods focus on backend processing, calculations, and data manipulation without directly generating web page content from user inputs. Therefore, there is no line in the code that may contain a bug of type CWE-79."
+5545,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5505,"SE: The 'result' array's 'output' is directly echoed into HTML content without sanitization, potentially allowing XSS if 'output' contains malicious content.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8659,"SE: The 'username' and 'password' inputs are directly used in the HTML output without proper encoding, potentially leading to XSS vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `placeholder=""Password"" required>`
+BUG FOUND: YES"
+11661,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11701,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5513,"SE: The 'result' array's 'output' value is directly echoed into HTML content without sanitation, potentially allowing XSS if the output contains executable code.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+11429,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is malicious.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11621,"SE: The 'name' variable is directly output into JavaScript code without proper sanitization, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8587,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11669,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not sanitized elsewhere.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8563,"SE: The 'username' input from the form is directly used in the HTML output without proper sanitization or encoding, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11397,"SE: The 'name' variable is directly used in the JavaScript alert without proper encoding, which can lead to Cross-Site Scripting (XSS) if malicious input is passed via the URL parameter.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5273,"SE: The 'input' from the request handler is directly used in HTML output without proper sanitization or encoding, potentially leading to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+5633,"SE: none
+BL: none
+BUG FOUND: NO
+
+The provided PHP code does not contain any lines that directly generate HTML content with unsanitized user input, which would be typical for a CWE-79 (Cross-Site Scripting) vulnerability. The code primarily consists of class definitions and methods for various operations like file handling, data manipulation, and mathematical calculations, without any direct interaction with web page generation or user input embedding in HTML."
+11613,"SE: The 'name' variable is directly output into JavaScript code without proper encoding, which can lead to Cross-Site Scripting (XSS) if the input is not properly sanitized.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8579,"SE: The 'username' field from POST data is directly embedded into HTML without proper sanitization, potentially leading to XSS attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+11693,"SE: The 'name' variable from user input is directly used in a JavaScript alert without proper encoding, potentially leading to XSS attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"

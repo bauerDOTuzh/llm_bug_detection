@@ -1,0 +1,1892 @@
+file_id,model_output
+6092,"SE: The value of $_POST['username'] is directly outputted into the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+144,"SE: The '$_POST['username']' value is directly outputted into the input field without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+298,"SE: The 'name' parameter from $_GET is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2568,"SE: The 'input' value obtained from the request is directly used in the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+297,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+299,"SE: None
+BL: None
+BUG FOUND: NO"
+301,"SE: The 'name' variable from $_GET is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+300,"SE: None
+BL: None
+BUG FOUND: NO"
+2,"SE: None
+BL: None
+BUG FOUND: NO"
+0,"SE: The 'input' value from the request is directly used in the HTML output without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+41,"SE: None
+BL: None
+BUG FOUND: NO"
+147,"SE: The '$_POST['username']' value is directly outputted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>"" `
+BUG FOUND: YES"
+46,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+12,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+54,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+160,"SE: None
+BL: None
+BUG FOUND: NO"
+190,"SE: None
+BL: None
+BUG FOUND: NO"
+315,"SE: The 'name' variable from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+257,"SE: None
+BL: None
+BUG FOUND: NO"
+191,"SE: None
+BL: None
+BUG FOUND: NO"
+165,"SE: None
+BL: None
+BUG FOUND: NO"
+189,"SE: None
+BL: None
+BUG FOUND: NO"
+146,"SE: None
+BL: None
+BUG FOUND: NO"
+159,"SE: None
+BL: None
+BUG FOUND: NO"
+409,"SE: The 'name' variable from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+347,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+161,"SE: The '$_POST['username']' value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>"" `
+BUG FOUND: YES"
+349,"SE: The 'name' parameter from $_GET is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+145,"SE: None
+BL: None
+BUG FOUND: NO"
+42,"SE: The 'input' value from the requestHandler is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+85,"SE: The 'city' variable is directly concatenated into the URL without proper input validation.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+14,"SE: None
+BL: None
+BUG FOUND: NO"
+18,"SE: None
+BL: None
+BUG FOUND: NO"
+353,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+348,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+361,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+317,"SE: The 'name' parameter from $_GET is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+321,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+235,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+195,"SE: The '$_POST['username']' input is directly outputted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+106,"SE: The 'input' value from the requestHandler is directly interpolated into the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+316,"SE: The 'name' variable from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+203,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+13,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+395,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+397,"SE: The 'name' variable from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+40,"SE: None of the lines in the provided file contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+98,"SE: None
+BL: None
+BUG FOUND: NO"
+236,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+90,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+84,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+2008,"SE: The 'name' variable from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+237,"SE: The 'username' input value is directly outputted without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+401,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+249,"SE: The '$_POST['username']' input is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+396,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+633,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+86,"SE: The 'url' variable is directly concatenated into the API URL without proper input validation.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+2009,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1297,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1298,"SE: The '$_POST['username']' value is directly outputted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+241,"SE: The '$_POST['username']' input is directly outputted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+604,"SE: None
+BL: None
+BUG FOUND: NO"
+1318,"SE: The '$_POST['username']' input is directly echoed into the HTML content without sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2010,"SE: The 'name' parameter from $_GET is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2022,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+417,"SE: The 'name' variable from $_GET is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1326,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+605,"SE: The line may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting) as the user input is directly echoed into the HTML content without proper sanitation.
+BL: `echo ""The file "". htmlspecialchars( basename( $this->file[""name""])). "" has been uploaded."";`
+BUG FOUND: YES"
+1296,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2030,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+693,"SE: The 'data' variable is directly used in the file_get_contents function without proper input validation.
+BL: `$html = file_get_contents($url);`
+BUG FOUND: YES"
+2038,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+617,"SE: None of the lines in the file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+1302,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+603,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+2090,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+609,"SE: The 'url' variable is directly concatenated into the URL without proper input validation.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+2088,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2110,"SE: The 'name' variable from $_GET is directly echoed into a JavaScript alert without proper sanitation, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1310,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1376,"SE: The 'username' input value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2126,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2014,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+709,"SE: None
+BL: None
+BUG FOUND: NO"
+701,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+681,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2118,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2094,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+625,"SE: The 'input' value from the requestHandler is directly interpolated into the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1404,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+685,"SE: The 'input' value from the request is directly used in the HTML content without sanitation.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+2102,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1396,"SE: The '$_POST['username']' input is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1375,"SE: The 'username' input value is directly outputted without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1490,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+2089,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2186,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+680,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1482,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1506,"SE: The 'username' value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1468,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1412,"SE: The '$_POST['username']' value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2185,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1380,"SE: The '$_POST['username']' value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+817,"SE: The 'input' value from the request is directly used in the calculation without proper validation.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+717,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+1388,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1469,"SE: The 'username' input value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>"" `
+BUG FOUND: YES"
+801,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2190,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1374,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+679,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2222,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1600,"SE: The 'username' value from $_POST is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+773,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+809,"SE: None
+BL: None
+BUG FOUND: NO"
+785,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+1514,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+2198,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1578,"SE: None
+BL: None
+BUG FOUND: NO"
+1584,"SE: The 'username' input value is directly outputted without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+772,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2342,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2310,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2298,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2230,"SE: The 'name' variable from the GET request is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1616,"SE: The 'username' value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+885,"SE: None
+BL: None
+BUG FOUND: NO"
+1592,"SE: The 'username' input value is directly inserted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2302,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1474,"SE: The '$_POST['username']' input is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+771,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+933,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+793,"SE: The 'data' variable is directly used in nested loops without proper input validation, which may lead to potential Cross-Site Scripting (XSS) vulnerabilities.
+BL: `foreach ($data as $dimension1) {`
+BUG FOUND: YES"
+2297,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2214,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1470,"SE: The '$_POST['username']' input is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1632,"SE: The 'username' input is directly echoed into the value attribute of the input element without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2206,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+880,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+909,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+893,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+2184,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2350,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+777,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+1498,"SE: The 'username' input is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2334,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1580,"SE: The 'username' input value is directly outputted without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+879,"SE: The 'input' value obtained from the request is directly used in the HTML content without proper sanitization, which may lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2326,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2296,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1624,"SE: The 'username' input field value is directly echoed without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+901,"SE: The 'input' value from the requestHandler is directly used in the HTML content without proper sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+2318,"SE: The 'name' parameter from $_GET is directly echoed into a JavaScript alert without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1579,"SE: None of the lines in the provided file contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+881,"SE: The line may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting) as it directly echoes user input without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1705,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+1718,"SE: The 'username' input value is directly inserted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1742,"SE: The 'username' and 'password' values are directly echoed into the HTML content without proper sanitation, which may lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `<input type=""password"" name=""password"" id=""inputPassword"" class=""form-control"" placeholder=""Password"" required>`
+BUG FOUND: YES"
+1734,"SE: The 'username' and 'password' values are directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2430,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1057,"SE: None
+BL: None
+BUG FOUND: NO"
+1003,"SE: The 'url' parameter is directly concatenated into the API URL without proper validation or encoding.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+1750,"SE: The 'username' input field value is directly echoed without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2425,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1005,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"
+2478,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1704,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+925,"SE: None
+BL: None
+BUG FOUND: NO"
+1608,"SE: The 'username' input is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2486,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+917,"SE: The 'code' and 'description' properties of the Product class are not sanitized before being used.
+BL: `function __construct($code = null, $description = null) { $this->code = $code; $this->description = $description; }`
+BUG FOUND: YES"
+2438,"SE: The 'name' parameter from $_GET is directly echoed into a JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2426,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2446,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+2424,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1706,"SE: The '$_POST['username']' input is directly outputted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>"" `
+BUG FOUND: YES"
+1710,"SE: The 'username' input value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1033,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+1025,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND);`
+BUG FOUND: YES"
+3825,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitation.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+1726,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+1017,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1049,"SE: None of the lines in the file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+1009,"SE: The 'input' value from the request is directly used in the HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+1004,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+6883,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2454,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1065,"SE: The 'input' value from the request is directly used in the output without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+2462,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1766,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+2470,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3833,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+6875,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+9869,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3772,"SE: The 'email' input is not sanitized before being used in the validateEmail method.
+BL: `public function validateEmail($email) {`
+BUG FOUND: YES"
+9856,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+1758,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+9901,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+9877,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3773,"SE: The 'email' value from the form data is not sanitized before being used in the validateEmail method, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `foreach ($this->data as $key => $value) {`
+BUG FOUND: YES"
+1041,"SE: The 'input' value from the request is directly used without proper validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+3793,"SE: The 'message' variable is directly concatenated into the log without proper sanitization.
+BL: `echo $message . ""\n"";`
+BUG FOUND: YES"
+6867,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+3841,"SE: The 'input' value from the request is directly used in the calculation without proper validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+3801,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+6843,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4001,"SE: The 'input' value from the request is directly used in the output HTML without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+3817,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"
+3771,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+9857,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6815,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+3777,"SE: The 'data' array is directly accessed without proper validation, which may lead to a CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting) vulnerability.
+BL: `return file_get_contents($file);`
+BUG FOUND: YES"
+6835,"SE: None
+BL: None
+BUG FOUND: NO"
+9909,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6814,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7043,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+9925,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+9855,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+9893,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6859,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+9885,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6813,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+6851,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+3977,"SE: The 'message' variable is directly concatenated into the email headers without proper sanitation.
+BL: `$headers = ""From: "" . $this->from_email . ""\n"";`
+BUG FOUND: YES"
+3809,"SE: None of the lines in the file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+9917,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6827,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+6819,"SE: The 'username' input value is directly outputted without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+3969,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+10069,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7051,"SE: The 'username' and 'password' inputs are directly used in the HTML form without proper sanitization.
+BL: 
+```
+<input type=""text"" name=""username"" id=""inputUser"" class=""form-control""
+           value=""<?= $_POST['username'] ?? '' ?>""
+           required autofocus>
+```
+```
+<input type=""password"" name=""password"" id=""inputPassword"" class=""form-control""
+           placeholder=""Password"" required>
+```
+BUG FOUND: YES"
+3932,"SE: The 'value' property of the ValueDTO class is directly accessible without any validation or sanitization.
+BL: `public function getValue() { return $this->value; }`
+BUG FOUND: YES"
+6973,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10053,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the HTML content without proper sanitization.
+BL: `$name = $_GET['name'];`
+BUG FOUND: YES"
+6987,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7003,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+3785,"SE: The 'message' variable is directly concatenated into the log message without proper sanitization.
+BL: `echo ""Error: "" . $message . ""`""
+BUG FOUND: YES"
+10037,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3945,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"
+7035,"SE: The 'username' and 'password' values are directly echoed into the HTML content without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10077,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7011,"SE: The 'username' value is directly outputted without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4161,"SE: The 'message' variable is directly concatenated into the email headers without proper sanitation.
+BL: `$headers = ""From: "" . $this->from_email . ""\n"";`
+BUG FOUND: YES"
+10261,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6995,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+6975,"SE: The 'username' input value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10045,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+6974,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+3993,"SE: The 'input' value from the request is directly used without proper validation or sanitization, which may lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+10021,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript alert without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4009,"SE: None of the lines in the file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+9861,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7150,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10221,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3937,"SE: The 'input' value from the requestHandler is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10093,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4185,"SE: The 'input' value from the request is directly used without proper validation or sanitization, which may lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+6979,"SE: The 'username' input from $_POST is directly outputted without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10061,"SE: The 'name' variable from the $_GET superglobal is directly echoed into a JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10016,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3953,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+7149,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10269,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4108,"SE: The 'url' and 'alt' properties of the Image class are not properly sanitized before being used in HTML content, which may lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: None
+BUG FOUND: NO"
+3985,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"
+4107,"SE: The 'input' value from the requestHandler is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4129,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"
+3933,"SE: The 'email' property of the Customer class is not sanitized before being used.
+BL: `public $email;`
+BUG FOUND: YES"
+4177,"SE: The 'input' value from the request is directly used in the calculation without proper validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+7027,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7019,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10015,"SE: The 'name' variable from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10085,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7219,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10029,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4113,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7155,"SE: The 'username' input value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10191,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7227,"SE: The 'username' input field value is directly echoed without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7195,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4109,"SE: None of the lines in the file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+3961,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4121,"SE: The 'input' value from the request is directly used without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+10213,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10253,"SE: The 'name' variable from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+3931,"SE: The 'input' value from the requestHandler is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10192,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4169,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND);`
+BUG FOUND: YES"
+10277,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7343,"SE: The 'username' input value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7187,"SE: The 'username' value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4137,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7171,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10017,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7179,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10237,"SE: The 'name' variable from the $_GET superglobal is directly echoed into the HTML content without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10193,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7163,"SE: The 'username' input value is directly inserted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7355,"SE: The 'username' input value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4193,"SE: The 'input' value from the request is directly used without validation or sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+7151,"SE: The 'username' input from $_POST is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4377,"SE: The 'input' value is directly used without proper validation or sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+7211,"SE: The 'username' and 'password' values are directly echoed into the HTML content without proper sanitation, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10421,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4385,"SE: The 'input' value from the request handler is directly used in the displayResult method without proper validation or sanitation, which may lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4301,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4145,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+10413,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10245,"SE: The 'name' variable from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10205,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7387,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4361,"SE: The 'input' value from the request handler is directly used in the displayResult method without proper sanitation.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+10229,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10385,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4305,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4300,"SE: The 'message' variable is directly passed to the log function without proper sanitation.
+BL: `$this->logMessage($message);`
+BUG FOUND: YES"
+4545,"SE: The 'description' property of the Product class is not sanitized before being used in the constructor.
+BL: `function __construct($code = null, $description = null) {`
+BUG FOUND: YES"
+7371,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10197,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7342,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10445,"SE: The 'name' variable from the $_GET superglobal is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7395,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7341,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7419,"SE: The 'username' input field value is directly echoed without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4313,"SE: The 'input' value is directly used without validation or sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4369,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"
+10437,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7347,"SE: The 'username' value from $_POST is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7203,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4321,"SE: The 'input' value from the request is directly used without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+7411,"SE: The 'username' input field value is directly echoed without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7555,"SE: The 'username' value from $_POST is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10453,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10461,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7611,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10397,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4329,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+7235,"SE: The 'username' input field value is directly echoed without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4337,"SE: The 'message' variable is directly concatenated into the log file without proper sanitization.
+BL: `fwrite($fp, date(""Y-m-d H:i:s"") . "" - "" . $message . ""\n"");`
+BUG FOUND: YES"
+4345,"SE: The 'message' variable is directly concatenated into the email content without proper sanitation.
+BL: `if (mail($this->to_email, $this->subject, $this->message, $headers)) {`
+BUG FOUND: YES"
+4299,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+7379,"SE: The 'username' value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4585,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `fwrite($fp, date(""Y-m-d H:i:s"") . "" - "" . $message . ""\n"");`
+BUG FOUND: YES"
+4353,"SE: The 'message' variable is directly concatenated into the email content without proper sanitation.
+BL: `if (mail($this->to_email, $this->subject, $this->message, $headers)) {`
+BUG FOUND: YES"
+4153,"SE: The 'message' variable is directly concatenated into the email content without proper sanitization.
+BL: `if (mail($this->to_email, $this->subject, $this->message, $headers)) {`
+BUG FOUND: YES"
+7427,"SE: The 'username' input field value is directly echoed without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10405,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7363,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10429,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10661,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10383,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10384,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10477,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10637,"SE: The 'name' variable from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10469,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7435,"SE: The 'username' and 'password' inputs are directly used in the HTML form without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `<input type=""password"" name=""password"" id=""inputPassword"" class=""form-control"" placeholder=""Password"" required>`
+BUG FOUND: YES"
+10389,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7579,"SE: The 'username' value from $_POST is directly echoed into the HTML content without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10621,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript alert without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4513,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `fwrite($client, $data);`
+BUG FOUND: YES"
+7627,"SE: The 'username' input field value is directly echoed in the HTML content without proper sanitation, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7603,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4593,"SE: The 'input' value from the request is directly used without validation or sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4577,"SE: The 'message' variable is directly concatenated into the email content without proper sanitation.
+BL: `mail($this->to_email, $this->subject, $this->message, $headers)`
+BUG FOUND: YES"
+7403,"SE: The 'username' and 'password' values are directly echoed into the HTML form without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10597,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7551,"SE: The 'username' input from $_POST is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4601,"SE: The 'input' value from the request is directly used in the 'displayResult' method without proper validation or sanitization, which may lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `$this->requestHandler->getValue('input')`
+BUG FOUND: YES"
+10685,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10593,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10592,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4737,"SE: The 'description' property of the Product class is directly assigned without any input validation or sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `function __construct($code = null, $description = null) { $this->code = $code; $this->description = $description; }`
+BUG FOUND: YES"
+4509,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+7563,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7651,"SE: The 'username' and 'password' inputs are directly used in the HTML form without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10821,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7619,"SE: The 'file' variable is directly used to construct the file path without proper validation or sanitization, which can lead to directory traversal vulnerabilities.
+BL: `$target_file = $this->upload_dir . basename($this->file['name']);`
+BUG FOUND: YES"
+7643,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10917,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10677,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10669,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4553,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `fwrite($fp, date(""Y-m-d H:i:s"") . "" - "" . $message . ""\n"");`
+BUG FOUND: YES"
+10613,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the HTML content without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4841,"SE: The 'input' value from the request is directly used in the calculation without proper validation or sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4833,"SE: The 'input' value from the request is directly used without validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4777,"SE: The 'description' property of the Product class is not sanitized before being used in the constructor.
+BL: `function __construct($code = null, $description = null) {`
+BUG FOUND: YES"
+10815,"SE: The 'name' parameter from the $_GET array is directly echoed in the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10653,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10829,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10845,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `<?php echo $name; ?>`
+BUG FOUND: YES"
+10853,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11055,"SE: The 'name' parameter from the GET request is directly echoed in the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4521,"SE: The 'input' value is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+4609,"SE: The 'input' value from the request is directly used in the calculation without proper validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+4733,"SE: The 'url' property is directly set without proper validation, which could lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `public function setUrl($url) { $this->url = $url; }`
+BUG FOUND: YES"
+4801,"SE: The 'message' variable is directly concatenated into the email content without proper sanitation.
+BL: `mail($this->to_email, $this->subject, $this->message, $headers)`
+BUG FOUND: YES"
+4508,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+7827,"SE: The 'username' input field value is directly echoed in the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5009,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+4537,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+10817,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5073,"SE: The 'input' value from the request is directly used in the `operate` method of the calculator without proper validation or sanitization, which can lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `$this->result['output'] = $this->calculator->operate($operation, $input, $operation === 'add' ? 10 : 5) ?? ""Invalid operation"";`
+BUG FOUND: YES"
+7550,"SE: The 'username' input value is directly outputted without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` in the form input field.
+BUG FOUND: YES"
+7859,"SE: The 'username' and 'password' values are directly used in the HTML form without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `<input type=""password"" name=""password"" id=""inputPassword"" class=""form-control"" placeholder=""Password"" required>`
+BUG FOUND: YES"
+4569,"SE: The 'message' variable is directly concatenated into the email content without proper sanitization.
+BL: `echo ""Error: "" . $error;`
+BUG FOUND: YES"
+11061,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10893,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7635,"SE: The 'username' input field value is directly echoed without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11109,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7835,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8014,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` in the input tag for the username.
+BUG FOUND: YES"
+7775,"SE: The 'username' input value is directly outputted without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4732,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8083,"SE: The 'username' and 'password' input fields are directly concatenated into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10861,"SE: The 'name' variable from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4393,"SE: The 'input' value from the request is directly used in the calculation without proper validation or sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+10693,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8067,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7795,"SE: The 'username' input is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10816,"SE: The 'name' variable from the $_GET superglobal is directly echoed in the JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10629,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7773,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4753,"SE: The 'message' variable is directly concatenated into the email content without proper sanitation.
+BL: `mail($this->to_email, $this->subject, $this->message, $headers)`
+BUG FOUND: YES"
+7587,"SE: The 'username' value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5249,"SE: The 'description' property is directly assigned without proper input validation, which could lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `function __construct($name = null, $description = null) {`
+BUG FOUND: YES"
+7774,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5057,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+4985,"SE: The 'description' property of the Product class is not sanitized before being used in the constructor.
+BL: `function __construct($code = null, $description = null) {`
+BUG FOUND: YES"
+10591,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11165,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11173,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7787,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7867,"SE: The 'username' input field value is directly echoed in the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10645,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `$name = $_GET['name'];`
+BUG FOUND: YES"
+8387,"SE: None of the lines in the file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+8115,"SE: The 'username' and 'password' inputs are directly used in the HTML form without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+7549,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11101,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7571,"SE: The 'username' input is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8379,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8019,"SE: The 'username' input is directly concatenated into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7819,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11085,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7595,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4972,"SE: The 'url' property is directly set without proper validation, which could lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$this->url = $url;`
+BUG FOUND: YES"
+7843,"SE: The 'file' variable is directly used in the `move_uploaded_file` function without proper validation.
+BL: `if (move_uploaded_file($this->file[""tmp_name""], $target_file)) {`
+BUG FOUND: YES"
+4745,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"
+4529,"SE: The 'message' variable is directly concatenated into the email content without proper sanitization.
+BL: `mail($this->to_email, $this->subject, $this->message, $headers)`
+BUG FOUND: YES"
+10925,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10869,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+10605,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5313,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+5321,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+7811,"SE: The 'username' input is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4507,"SE: The 'data' array is directly used in nested loops without proper validation, which may lead to potential data leakage or manipulation.
+BL: None
+BUG FOUND: NO"
+4785,"SE: The 'file' variable is directly used in the `move_uploaded_file` function without proper validation.
+BL: `if (move_uploaded_file($this->file[""tmp_name""], $target_file)) {`
+BUG FOUND: YES"
+8035,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5089,"SE: The 'input' value from the request is directly used in the calculation without proper validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+5289,"SE: The 'description' property of the Tag class is not sanitized before being used in the constructor.
+BL: `function __construct($name = null, $description = null) {`
+BUG FOUND: YES"
+8059,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4809,"SE: The 'url' property is directly set without proper validation, which could lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$this->url = $url;`
+BUG FOUND: YES"
+7779,"SE: The 'username' input field value is directly outputted without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5228,"SE: The 'description' property of the Product class is directly assigned without proper sanitation, which could lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `function __construct($code = null, $description = null) { $this->code = $code; $this->description = $description; }`
+BUG FOUND: YES"
+10901,"SE: The 'name' parameter from the GET request is directly echoed in a JavaScript alert without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8013,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7803,"SE: The 'username' value from $_POST is directly echoed into the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7883,"SE: The 'username' and 'password' values are directly used in the HTML form without proper sanitization.
+BL: 
+BUG FOUND: YES"
+11125,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4973,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `echo ""<div class='calculation-result'>{$this->result['output']}</div>"";`
+BUG FOUND: YES"
+8363,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11077,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert message without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4817,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `fwrite($fp, date(""Y-m-d H:i:s"") . "" - "" . $message . ""\n"");`
+BUG FOUND: YES"
+10885,"SE: The 'name' parameter from the GET request is directly echoed into the HTML content without proper sanitization.
+BL: `<?php echo $name; ?>`
+BUG FOUND: YES"
+10877,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11709,"SE: The 'name' parameter from the URL query string is directly echoed into the JavaScript code without proper sanitization, which could lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11437,"SE: The 'name' parameter from the URL is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11313,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8299,"SE: The 'username' value is directly outputted without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8307,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4971,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+8347,"SE: The 'username' input field value is directly used in the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8075,"SE: The 'username' and 'password' values are directly concatenated into the HTML content without sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+7875,"SE: The 'username' and 'password' values are directly used in the HTML form without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+8269,"SE: The 'url' parameter is directly concatenated into the API URL without proper validation or encoding.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+8043,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+10909,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11613,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+7851,"SE: The 'username' input field value is directly echoed in the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8099,"SE: The 'username' input field value is directly echoed in the HTML content without proper sanitation, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5041,"SE: The 'message' variable is directly concatenated into the log message without proper sanitation.
+BL: `fwrite($fp, date(""Y-m-d H:i:s"") . "" - "" . $message . ""\n"");`
+BUG FOUND: YES"
+5501,"SE: The 'url' parameter is directly used in the file_get_contents function without proper input validation.
+BL: `$html = file_get_contents($url);`
+BUG FOUND: YES"
+5017,"SE: The 'file' variable is directly used in the file path without proper validation or sanitization, which can lead to directory traversal vulnerabilities.
+BL: `$target_file = $this->upload_dir . basename($this->file['name']);`
+BUG FOUND: YES"
+4793,"SE: The 'message' variable is directly concatenated into the email content without proper sanitation.
+BL: `if (mail($this->to_email, $this->subject, $this->message, $headers)) {`
+BUG FOUND: YES"
+8611,"SE: The 'file' variable is directly used in the `move_uploaded_file` function without proper validation or sanitization, which can lead to a file upload vulnerability.
+BL: `move_uploaded_file($this->file[""tmp_name""], $target_file)`
+BUG FOUND: YES"
+11157,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `<?php echo $name; ?>`
+BUG FOUND: YES"
+5305,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+5553,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+11381,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11312,"SE: The 'url' parameter from the $_GET array is directly used in the file_get_contents function without proper validation, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `$html = file_get_contents($url);`
+BUG FOUND: YES"
+5233,"SE: The 'description' property of the Product class is directly assigned without proper input validation, which could lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `function __construct($code = null, $description = null) { $this->code = $code; $this->description = $description; }`
+BUG FOUND: YES"
+8579,"SE: The 'url' parameter is not properly sanitized before being used in the file_get_contents function, which can lead to a potential Cross-Site Scripting (XSS) vulnerability.
+BL: `$html = file_get_contents($url);`
+BUG FOUND: YES"
+10837,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert message without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8571,"SE: The 'username' value is directly outputted without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11317,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert message without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8027,"SE: The 'username' input is directly concatenated into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+4731,"SE: The 'data' array is directly used in nested loops without proper validation, which may lead to potential data leakage or manipulation.
+BL: `public function classifyData($data) { foreach ($data as $dimension1) { foreach ($dimension1 as $dimension2) { foreach ($dimension2 as $dimension3) { foreach ($dimension3 as $dimension4) { foreach ($dimension4 as $dimension5) { if (array_sum($dimension5) > 50) { $classifiedData[] = ""High""; } else { $classifiedData[] = ""Low""; } } } } } } return $classifiedData; }`
+BUG FOUND: YES"
+4561,"SE: The 'filename' parameter is directly concatenated into the file path without proper validation or sanitization.
+BL: `file_put_contents($filename, $content);`
+BUG FOUND: YES"
+11661,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11349,"SE: The 'name' parameter from the $_GET superglobal is directly used in the JavaScript alert without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5065,"SE: The 'file_get_contents' function is used to read the content of a file without proper input validation, which can lead to a CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting) vulnerability.
+BL: `if (strpos(file_get_contents($file), $query) !== false) {`
+BUG FOUND: YES"
+11397,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11325,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+4761,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+5227,"SE: The 'url' parameter is directly used in the file_get_contents function without proper input validation, which can lead to a potential CWE-79 (Cross-Site Scripting) vulnerability.
+BL: `$html = file_get_contents($url);`
+BUG FOUND: YES"
+8107,"SE: The 'url' parameter is not sanitized before being used in the file_get_contents function, which can lead to a potential Cross-Site Scripting (XSS) vulnerability.
+BL: `$html = file_get_contents($url);`
+BUG FOUND: YES"
+11056,"SE: The 'name' parameter from $_GET is directly echoed in the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5537,"SE: The 'url' parameter is directly concatenated into the URL without proper input validation.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+4825,"SE: The 'input' value from the request is directly used in the 'processRequest' method without proper validation or sanitization, which may lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+8543,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5081,"SE: The 'input' value from the request is directly used in the output HTML without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+5033,"SE: The 'file' variable is directly used in the file path without proper validation, which can lead to directory traversal vulnerabilities.
+BL: `$target_file = $this->upload_dir . basename($this->file['name']);`
+BUG FOUND: YES"
+5601,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+11357,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11117,"SE: The 'name' variable from the $_GET superglobal is directly echoed into a JavaScript alert message without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5513,"SE: The 'description' property of the Product class is not sanitized before being used.
+BL: `function __construct($code = null, $description = null) {`
+BUG FOUND: YES"
+11677,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5049,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+5609,"SE: The 'input' value from the request is directly used in the calculation without proper validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+8283,"SE: The 'username' input value is directly echoed into the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8123,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8659,"SE: The 'username' input field is directly echoed into the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+11421,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8371,"SE: The 'username' input field is directly used in the form without proper sanitation, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+8563,"SE: The 'username' input is directly concatenated into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8355,"SE: The 'username' input field value is directly echoed without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5345,"SE: The 'input' value from the request is directly used in the 'operate' method of the calculator without proper validation or sanitization.
+BL: `$this->result['output'] = $this->calculator->operate($operation, $input, $operation === 'add' ? 10 : 5) ?? ""Invalid operation"";`
+BUG FOUND: YES"
+8595,"SE: The 'username' input is directly concatenated into the HTML content without proper sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8339,"SE: The 'file_exists' function is used without proper input validation, which may lead to a path traversal vulnerability.
+BL: `if (file_exists($cache_file)) {`
+BUG FOUND: YES"
+8091,"SE: The 'username' input field value is directly echoed in the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+5257,"SE: The 'data' array is directly accessed without proper validation, which could lead to potential XSS vulnerabilities.
+BL: `foreach ($data as $dimension1) {`
+BUG FOUND: YES"
+5505,"SE: The 'url' parameter is directly concatenated into the API URL without proper validation or encoding.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+11589,"SE: The 'name' parameter from the $_GET array is directly echoed in the JavaScript alert message without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5337,"SE: The 'input' value from the request is directly used in the `operate` method of the Calculator class without proper validation or sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: `$this->result['output'] = $this->calculator->operate($operation, $input, $operation === 'add' ? 10 : 5) ?? ""Invalid operation"";`
+BUG FOUND: YES"
+11645,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11405,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8627,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+4769,"SE: The 'message' variable is directly concatenated into the log message without proper sanitization.
+BL: `fwrite($fp, date(""Y-m-d H:i:s"") . "" - "" . $message . ""\n"");`
+BUG FOUND: YES"
+8315,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11141,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11333,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5297,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `fwrite($fp, date(""Y-m-d H:i:s"") . "" - "" . $message . ""\n"");`
+BUG FOUND: YES"
+8675,"SE: The 'username' and 'password' fields are directly used in the form without proper input validation.
+BL: 
+BUG FOUND: YES"
+8015,"SE: The '$_POST['username']' value is directly outputted without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11605,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11583,"SE: The 'name' parameter from the $_GET array is directly used in the JavaScript code without proper sanitization, which could lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5241,"SE: The 'input' value is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+8395,"SE: The 'username' and 'password' fields are directly concatenated into the HTML content without proper sanitation.
+BL: 
+BUG FOUND: YES"
+8271,"SE: The 'username' input value is directly outputted without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8667,"SE: The 'username' and 'password' inputs are directly used in the form without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8323,"SE: The 'username' input field value is directly echoed into the HTML content without proper sanitation, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11429,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11133,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11685,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `<?php echo $name; ?>`
+BUG FOUND: YES"
+4977,"SE: The 'input' value from the request is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+5577,"SE: The 'url' parameter is directly concatenated into the API URL without proper validation or encoding, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+11597,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8051,"SE: The 'username' value is directly outputted without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8541,"SE: The 'url' parameter is directly concatenated into the URL without proper validation or encoding, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+11717,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8131,"SE: The 'username' and 'password' values are directly used in the HTML form without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11701,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8587,"SE: The 'url' parameter is directly concatenated into the URL without proper validation or encoding, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+5265,"SE: The 'url' parameter is directly concatenated into the API URL without proper validation or encoding.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+5273,"SE: The 'url' and 'alt' properties of the Image class are not sanitized before being used in HTML content, which may lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: None
+BUG FOUND: NO"
+11653,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5025,"SE: The 'description' property of the Product class is not sanitized before being used in the constructor.
+BL: `function __construct($code = null, $description = null) {`
+BUG FOUND: YES"
+11365,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8270,"SE: The 'username' input value is directly inserted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8619,"SE: The 'url' parameter is directly concatenated into the API URL without proper validation or sanitization.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+11413,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11585,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11093,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11669,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11373,"SE: The 'name' variable from the $_GET superglobal is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11389,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5569,"SE: The 'file' variable is directly used in the `move_uploaded_file` function without proper validation.
+BL: `if (move_uploaded_file($this->file[""tmp_name""], $target_file)) {`
+BUG FOUND: YES"
+5521,"SE: The 'data' array is directly used in the 'foreach' loop without proper validation, which could lead to potential Cross-Site Scripting (XSS) vulnerabilities.
+BL: `foreach ($data as $item) {`
+BUG FOUND: YES"
+11584,"SE: The 'url' parameter from $_GET is directly used in the script without proper validation or sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `if (isset($_GET['name'])) { $name = $_GET['name']; } else { $name = ""Guest""; }`
+BUG FOUND: YES"
+8275,"SE: The '$_POST['username']' input is directly concatenated into the HTML content without sanitation.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+8331,"SE: The 'username' and 'password' values are directly interpolated into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11629,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11311,"SE: The 'name' parameter from the $_GET array is directly used in the HTML content without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8555,"SE: None of the lines in the provided file content may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+5625,"SE: The 'input' value from the request is directly used without any validation or sanitization, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+5229,"SE: The 'url' variable is directly concatenated into the URL without proper validation or sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+5593,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+5499,"SE: The 'html' variable is directly concatenated with user input without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerability.
+BL: `$html = ""<div>Welcome, "" . $user_input . ""!</div>"";`
+BUG FOUND: YES"
+11057,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript alert message without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+11149,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5529,"SE: The 'data' array is directly accessed without proper validation, which may lead to accessing undefined indexes and causing potential issues.
+BL: `foreach ($data as $dimension1) {`
+BUG FOUND: YES"
+5500,"SE: The 'description' property of the Product class is directly used in the constructor without any input validation or sanitization, which could lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `function __construct($code = null, $description = null) {`
+BUG FOUND: YES"
+5353,"SE: The 'input' value from the request is directly used in the operation without proper validation or sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+5001,"SE: The 'input' value is directly used in the HTML content without proper sanitization.
+BL: `$input = $this->requestHandler->getValue('input');`
+BUG FOUND: YES"
+11621,"SE: The 'name' parameter from the $_GET superglobal is directly echoed into the JavaScript alert without proper sanitization, which could lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5585,"SE: None of the lines in the provided file may contain a bug of type CWE-79 (Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting).
+BL: None
+BUG FOUND: NO"
+8651,"SE: The 'username' and 'password' values are directly used in the HTML form without proper sanitization.
+BL: `<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>`
+BUG FOUND: YES"
+11693,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8635,"SE: The 'sourceImage' variable is directly used in the 'imageWatermark' function without any validation or sanitization.
+BL: `function imageWatermark($sourceImage, $watermarkImage, $x, $y) {`
+BUG FOUND: YES"
+5617,"SE: The 'input' value from the request is directly used in the 'operate' method of the calculator without proper validation or sanitization.
+BL: `$this->result['output'] = $this->calculator->operate($operation, $input, $operation === 'add' ? 10 : 5) ?? ""Invalid operation"";`
+BUG FOUND: YES"
+8547,"SE: The 'username' input value is directly inserted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11637,"SE: The 'name' parameter from the GET request is directly echoed into a JavaScript alert without proper sanitization, which can lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5561,"SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: None
+BUG FOUND: NO"
+4993,"SE: The 'message' variable is directly concatenated into the email body without proper sanitation.
+BL: `mail($email, $subject, $body);`
+BUG FOUND: YES"
+11341,"SE: The 'name' parameter from the GET request is directly echoed into the JavaScript code without proper sanitization, which may lead to a Cross-Site Scripting (XSS) vulnerability.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+8603,"SE: The 'username' and 'password' values are directly inserted into the HTML content without proper sanitation, making it vulnerable to Cross-Site Scripting (XSS) attacks.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` and `value=""<?= $_POST['password'] ?? '' ?>""`
+BUG FOUND: YES"
+5545,"SE: The 'url' parameter is directly concatenated into the API URL without proper validation or encoding.
+BL: `$url = $this->apiUrl . '?q=' . urlencode($city);`
+BUG FOUND: YES"
+8291,"SE: The 'username' input is directly interpolated into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""`
+BUG FOUND: YES"
+11069,"SE: The 'name' parameter from $_GET is directly echoed into the JavaScript code without proper sanitization.
+BL: `alert('Hello, <?php echo $name; ?>!');`
+BUG FOUND: YES"
+5281,"SE: The 'data' array is directly used in the 'foreach' loop without proper validation, which may lead to Cross-Site Scripting (XSS) vulnerability.
+BL: foreach ($data as $item) {
+BUG FOUND: YES"
+8643,"SE: The 'username' and 'password' values are directly used in the HTML form without proper sanitization, which can lead to Cross-Site Scripting (XSS) vulnerabilities.
+BL: 
+```html
+<input type=""text"" name=""username"" id=""inputUser"" class=""form-control"" value=""<?= $_POST['username'] ?? '' ?>"" required autofocus>
+<input type=""password"" name=""password"" id=""inputPassword"" class=""form-control"" placeholder=""Password"" required>
+```
+BUG FOUND: YES"
+5633,"SE: The 'inputFile' and 'outputFile' variables are directly concatenated into the ffmpeg command without proper validation or sanitization, which can lead to command injection vulnerabilities.
+BL: `$command = ""ffmpeg -i {$inputFile} {$outputFile}"";`
+BUG FOUND: YES"
+8542,"SE: The 'username' input value is directly inserted into the HTML content without proper sanitization.
+BL: `value=""<?= $_POST['username'] ?? '' ?>""` 
+BUG FOUND: YES"
+5329,"SE: The 'message' variable is directly concatenated into the log file content without proper sanitation.
+BL: `$thread = new Thread(function($message) { file_put_contents($this->logFile, $message . ""\n"", FILE_APPEND); });`
+BUG FOUND: YES"

@@ -1,0 +1,1882 @@
+file_id,model_output
+24,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+486,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+244,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+245,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+488,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+262,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+487,"SE: The 'identifier' derived from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+484,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+3,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+260,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+243,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+18,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+261,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+20,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+51,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+246,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+19,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+485,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+502,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+0,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+306,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+540,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+504,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+64,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+293,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+503,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+294,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+266,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+548,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+536,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+52,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+346,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+596,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+508,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+298,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+292,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+584,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+362,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+534,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+242,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+98,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+535,"SE: The 'identifier' derived from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+50,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+104,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+342,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+56,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+112,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+588,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+676,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+354,"SE: The 'userDTO->id' is directly used in an SQL query without sanitization or parameterization, which can lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+99,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+100,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+406,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+652,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+604,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+340,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+341,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+410,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+192,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+583,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+168,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1728,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2434,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2413,"SE: The 'identifier' derived from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+176,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2442,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+162,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+418,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2412,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+648,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+434,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+646,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+668,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+404,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+660,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+120,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1692,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+405,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1712,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+163,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+426,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+164,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+990,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1720,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2418,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+968,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+647,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1904,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1792,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1690,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1800,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2622,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2509,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2522,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2426,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+970,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1176,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2414,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1816,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1952,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2538,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2620,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1230,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+998,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1065,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1190,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1704,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1900,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2508,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1177,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+982,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1102,"SE: The 'user_id' is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2554,"SE: The 'input' from user is directly used in SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+974,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1078,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+184,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1070,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1808,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2530,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterized queries, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1086,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1066,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1006,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1832,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2642,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2514,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1928,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1094,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1110,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1182,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1787,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2626,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1936,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2650,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2674,"SE: The 'input' from user is directly used in SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1786,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2450,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1222,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1920,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2510,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1898,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1691,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1824,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2546,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1696,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1206,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1064,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1214,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2634,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1788,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+582,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+969,"SE: The 'user_id' is directly taken from user input via GET request and concatenated into the SQL query without any form of sanitization or parameterization, which can lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2658,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1358,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2770,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2786,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1899,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1305,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2032,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2621,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1334,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2027,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1912,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1944,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2749,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection vulnerabilities.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1178,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1342,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2810,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+1326,"SE: The 'user_id' is directly included in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2762,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2064,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2088,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2056,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2080,"SE: The 'userDTO->id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1318,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1304,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+2026,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1306,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1350,"SE: The 'user_id' is directly included in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5302,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1366,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5334,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2778,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2072,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2048,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2748,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6984,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2040,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3668,"SE: The 'user_id' is directly included in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+1310,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7016,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7000,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection vulnerabilities.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7008,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6980,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5318,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+6978,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3616,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5342,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3644,"SE: The 'user_id' is directly included in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5350,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7024,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3615,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5298,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5296,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3684,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5326,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7216,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2666,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5462,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7168,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7040,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7048,"SE: The 'input' from user is directly used in SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3636,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+6979,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5502,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+6992,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7176,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2754,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3620,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5456,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5297,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3660,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5526,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7139,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3852,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5358,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3652,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5366,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7208,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5510,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+1198,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7144,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7352,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3828,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, which can lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+3628,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+3804,"SE: The 'user_id' is directly retrieved from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7160,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2750,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3836,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7314,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7152,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5310,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5494,"SE: The 'user_id' from GET request is directly used in SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4028,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5634,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5654,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3964,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+3980,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+4004,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5470,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3796,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5702,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7200,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3951,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, which may lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7140,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5633,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3788,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7344,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3812,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5678,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5486,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7320,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5686,"SE: The 'userDTO->id' is directly used in the SQL query without sanitization or parameterized queries, which may lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5518,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5457,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5534,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7368,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5694,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3775,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+3844,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5718,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5710,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3820,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5478,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7376,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7138,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7315,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4164,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5458,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5670,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7316,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7336,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2028,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3676,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5830,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7192,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4148,"SE: The 'user_id' is directly concatenated into the SQL query without sanitation, which may lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7328,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5902,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3972,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5638,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4143,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+6070,"SE: The 'user_id' from the GET request is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3780,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, which may lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+6094,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3988,"SE: The 'user_id' is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5825,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7552,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3956,"SE: The 'user_id' is directly concatenated into the SQL query without sanitation, which may lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7512,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7384,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7392,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5632,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4188,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7576,"SE: The 'input' is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7032,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4156,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5662,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7544,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4172,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5854,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+2794,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7784,"SE: The 'transaction_id' from user input is directly used in SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+2802,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4356,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+3614,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5826,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4012,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5646,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4204,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7520,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7736,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5838,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7184,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4380,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+4020,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+4404,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5918,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4428,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+4228,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5846,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+6034,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3950,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, which can lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5862,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7592,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7536,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7360,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5886,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+5824,"SE: User input from '$_GET['user_id']' is directly used in SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+3952,"SE: The 'user_id' is directly taken from user input via GET request and concatenated into the SQL query without sanitization or validation.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+4212,"SE: The 'user_id' is directly included in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7752,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7584,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4220,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7720,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7568,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6134,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7506,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3776,"SE: The 'user_id' is directly taken from user input via GET request and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+4142,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5870,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+6038,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7400,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+3996,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5894,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7528,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4036,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7560,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7600,"SE: The 'input' from user is directly used in SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7792,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7507,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7744,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6032,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4144,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+3774,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7508,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+5910,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4396,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12692,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7728,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4236,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+5878,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4452,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7816,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9621,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15734,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4444,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9626,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7760,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6046,"SE: The 'userDTO->id' is directly used in the SQL query without sanitization or parameterization, which may lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+6126,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4420,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7776,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+12772,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7714,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4180,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without any form of sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+6033,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4352,"SE: The 'user_id' is directly taken from user input via GET and used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15798,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection vulnerabilities.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6102,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15710,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4350,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+4388,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7808,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6110,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+6054,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4196,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12732,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15706,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+15774,"SE: The 'input' from the user is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+6062,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4351,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12668,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4412,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7715,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+12756,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+6086,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9634,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+6118,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12662,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15718,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4436,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+6078,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9666,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12676,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15814,"SE: The 'transaction_id' from user input is directly used in SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+7768,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+12684,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12904,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9622,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15974,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9698,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15998,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9690,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9658,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12663,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+7716,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+15950,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection vulnerabilities.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9882,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13260,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+4372,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12748,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12716,"SE: The 'userDTO->id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9674,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9730,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15990,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+12708,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12902,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12996,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12988,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12908,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15758,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection vulnerabilities.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+15946,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9938,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9962,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9722,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9620,"SE: The 'user_id' is directly taken from user input via GET request and concatenated into the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12940,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9906,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16246,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+12932,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12724,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15790,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+15704,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+15958,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+12948,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12700,"SE: The 'user_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10170,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12764,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13236,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15782,"SE: The 'transaction_id' from user input is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16038,"SE: The 'transaction_id' from user input is directly used in SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13164,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15750,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16046,"SE: The 'transaction_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13160,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15705,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9706,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10218,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13020,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13004,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12903,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16222,"SE: The 'input' parameter is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+15966,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9914,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9946,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9930,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9866,"SE: The 'user_id' is directly retrieved from user input via GET and used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9890,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+7800,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13284,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16318,"SE: The 'transaction_id' from user input is directly used in SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9682,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16278,"SE: The 'transaction_id' from user input is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9978,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15945,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16022,"SE: The 'transaction_id' from user input is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16230,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+4364,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9714,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9650,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13556,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL Injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13196,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16238,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16014,"SE: The 'input' from the user is directly used in the SQL query without proper sanitization or parameterized queries, which may lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10162,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12740,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9861,"SE: The 'user_id' is directly taken from user input via GET request and concatenated into the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15806,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13452,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16494,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, which can lead to SQL injection vulnerabilities.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10234,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15742,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10506,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16310,"SE: The 'transaction_id' from user input is directly used in SQL query without sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16062,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10194,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10450,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12664,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9874,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10388,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13436,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16270,"SE: The 'input' from the user is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13212,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10210,"SE: The 'user_id' is directly taken from user input via GET and used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13484,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16294,"SE: The 'transaction_id' from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9862,"SE: The 'user_id' is directly taken from user input via GET and is used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9898,"SE: The 'user_id' is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13564,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13228,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13188,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16474,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10498,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13276,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16201,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13532,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16262,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10458,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16030,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13268,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9642,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10434,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10146,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10118,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+9954,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16502,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16054,"SE: The 'transaction_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13012,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15982,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10522,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10202,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10130,"SE: The 'user_id' is directly taken from user input via GET and used in an SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13430,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10226,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16566,"SE: The 'transaction_id' from user input is directly used in an SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9970,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+15944,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+15726,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10242,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13158,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10482,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12972,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13244,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+15766,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13468,"SE: The 'user_id' from user input is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16206,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13444,"SE: The 'userDTO->id' is directly used in an SQL query without sanitization or parameterization, which can lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10154,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without proper sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16606,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10138,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13548,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12964,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12916,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13220,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12924,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+12980,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13252,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16214,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10122,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+12956,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13159,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+9860,"SE: The 'user_id' is directly concatenated into the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10410,"SE: The 'user_id' is directly included in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16526,"SE: The 'input' from the user is directly used in the SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+9922,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10418,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13204,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13172,"SE: The 'userDTO->id' is directly used in the SQL query without sanitization or parameterization, which may lead to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16302,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16200,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16534,"SE: The 'identifier' variable is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16254,"SE: The 'identifier' variable derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16574,"SE: The 'transaction_id' from user input is directly used in an SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10394,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10117,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13540,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16478,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10116,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10466,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16486,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10186,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16558,"SE: The SQL query directly incorporates user input without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16202,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13492,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16510,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13508,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16286,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16326,"SE: The 'transaction_id' from user input is directly used in SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13524,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16582,"SE: The 'transaction_id' from user input is directly used in SQL query without proper sanitization or parameterized queries, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10514,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13516,"SE: The 'user_id' from user input is directly used in an SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13431,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10474,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13476,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13432,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+16542,"SE: The 'transaction_id' from user input is directly used in SQL query without proper sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10178,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, making it vulnerable to SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16006,"SE: The 'input' from the user is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16472,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+13180,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10390,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16550,"SE: The 'identifier' derived from user input is directly used in an SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16473,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL injection vulnerabilities.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10389,"SE: The 'user_id' is directly taken from user input via GET and included in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10402,"SE: The 'user_id' is directly taken from user input via GET and concatenated into the SQL query without sanitization or parameterization.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+13500,"SE: The 'user_id' from user input is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+13460,"SE: The 'user_id' from user input is directly used in SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '{$userDTO->id}'"";`
+BUG FOUND: YES"
+10426,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to potential SQL injection.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+10490,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16518,"SE: The 'identifier' variable is directly used in the SQL query without proper sanitization or parameterization, leading to potential SQL injection.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+16598,"SE: The 'transaction_id' from user input is directly used in SQL query without sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"
+10442,"SE: The 'user_id' is directly used in the SQL query without sanitization or parameterization, leading to SQL injection vulnerability.
+BL: `$sql = ""SELECT * FROM users WHERE id = '$user_id'"";`
+BUG FOUND: YES"
+16590,"SE: The 'transaction_id' from user input is directly used in an SQL query without sanitization or parameterized queries, leading to SQL injection vulnerability.
+BL: `$query = $this->pdo->query(""SELECT * FROM payments WHERE transaction_id LIKE '{$identifier}%'"");`
+BUG FOUND: YES"

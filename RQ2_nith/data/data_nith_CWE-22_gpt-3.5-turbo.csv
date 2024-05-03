@@ -1,0 +1,1876 @@
+file_id,model_output
+3015,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2,"SE: The '$_GET['dir']' variable is directly concatenated into the $filePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+5968,"SE: The 'imagePath' variable is directly concatenated into the $fullPath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+0,"SE: The '$_GET['dir']' variable is directly concatenated into the $filePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+5980,"SE: The 'imagePath' variable is directly concatenated into the $fullPath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+17,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the $_GET['dir'] parameter is directly concatenated into the $filePath variable without proper validation or sanitization.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+1,"SE: The `$filePath` variable is constructed by concatenating user input `$_GET['dir']` directly without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3005,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5979,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+5985,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+21,"SE: The 'filePath' variable is constructed using user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+3017,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6007,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3045,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3003,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3004,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6013,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+5981,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $fullPath = '/var/www/html/images/' . $imagePath;
+BUG FOUND: YES"
+5967,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+15,"SE: The `$filePath` variable is constructed by concatenating user input `$_GET['dir']` without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6021,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3049,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: ` $logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3,"SE: The `$filePath` variable is constructed by concatenating user input `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3021,"SE: The 'logFile' variable from the $_GET superglobal is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+46,"SE: The '$_GET['dir']' variable is directly concatenated into the $filePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+16,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the $_GET['dir'] parameter is directly concatenated into the $filePath variable without proper validation or sanitization.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+3016,"SE: The 'logFile' variable directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5969,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+47,"SE: The concatenation of `$filePath` may lead to a Path Traversal vulnerability if the input from `$_GET['dir']` is not properly sanitized.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3057,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+45,"SE: The `$filePath` variable is constructed using user input from `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+51,"SE: The '$_GET['dir']' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+59,"SE: The '$_GET['dir']' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3043,"SE: The 'logFile' variable from $_GET is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3044,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+93,"SE: The `$filePath` variable is constructed by concatenating user-controlled input `$_GET['dir']` with a fixed directory path `/var/www/uploads/`, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6057,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3089,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6009,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+91,"SE: The `$filePath` variable is constructed using user input from `$_GET['dir']` without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6073,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6008,"SE: The 'imagePath' variable is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3087,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6051,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6133,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3109,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$logFilePath` variable is directly concatenated with the log file name without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3161,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+97,"SE: The `$filePath` variable is constructed using user input `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6065,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3093,"SE: The 'logFile' variable from the user input is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+183,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3153,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+105,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3101,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3149,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3148,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3088,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+92,"SE: The `$filePath` variable is constructed using `$_GET['dir']` without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6117,"SE: The 'imagePath' variable is directly concatenated into the $fullPath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $fullPath = '/var/www/html/images/' . $imagePath;
+BUG FOUND: YES"
+6125,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+113,"SE: The line may contain a bug of type CWE-22 because the $_GET['dir'] variable is directly concatenated into the $filePath without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6141,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6053,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the user input directly influences the file path without proper validation or restriction.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6052,"SE: The 'imagePath' variable is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3177,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6225,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+153,"SE: The `$filePath` variable is constructed using user input `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6187,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+175,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the $_GET['dir'] parameter is directly concatenated into the $filePath variable without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3169,"SE: The line may contain a bug of type CWE-22 because the `$logFile` variable is directly concatenated into the `$logFilePath` without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6193,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6113,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the user input directly influences the file path without proper validation.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+261,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+159,"SE: The 'dir' parameter from $_GET is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3225,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6209,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3237,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+231,"SE: The `$filePath` variable is directly concatenated with user input `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+154,"SE: The '$_GET['dir']' variable is directly concatenated into the $filePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3224,"SE: The 'logFile' variable from the user input ($_GET['logfile']) is directly concatenated into the log file path without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3147,"SE: The 'logFile' variable from the $_GET superglobal is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3261,"SE: The line that may contain a bug of type CWE-22 is concatenating the file path without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3229,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6201,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+167,"SE: The '$_GET['dir']' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+155,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6112,"SE: The 'imagePath' variable is directly concatenated into the '$fullPath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3245,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3223,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+232,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+237,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6189,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+269,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+245,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6111,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6188,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+233,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6309,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3337,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+327,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+6301,"SE: The 'imagePath' variable is directly concatenated into the '$fullPath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3253,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6293,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6285,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+253,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3353,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods may not be properly restricted to a restricted directory, potentially leading to a Path Traversal vulnerability.
+BL: None
+BUG FOUND: NO"
+331,"SE: The '$_GET['dir']' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+371,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3316,"SE: The 'logFile' variable is directly concatenated into the path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+326,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6279,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+3345,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6217,"SE: The 'imagePath' variable is directly concatenated into the '$fullPath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3329,"SE: The 'logFile' variable from $_GET is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+339,"SE: The `$filePath` variable is constructed by concatenating user input `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6325,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6441,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+355,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+325,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+3361,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6317,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+437,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+3317,"SE: The 'logfile' parameter from the GET request is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+465,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+347,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3315,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6409,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$imagePath` variable is directly concatenated with the base directory path without proper validation or sanitization.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6425,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+489,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3424,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6281,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3469,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3461,"SE: The 'logFile' parameter from the GET request is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3423,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+363,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the $_GET['dir'] parameter is directly concatenated into the file path without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3445,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+441,"SE: The 'filePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3429,"SE: The 'logFile' variable from the $_GET superglobal is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6417,"SE: The line may contain a bug of type CWE-22 because the file path concatenation is not properly restricted, allowing for potential path traversal attacks.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6388,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3321,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logAction(""User $username logged in at "" . date('Y-m-d H:i:s') . ""\n"", $logFile);`
+BUG FOUND: YES"
+6433,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+457,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6389,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3477,"SE: The 'filename' parameter in the `readFile($filename)` method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+6280,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+436,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3425,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+449,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+615,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+473,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$filePath` variable is constructed using user input without proper validation or restriction.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3553,"SE: The 'logFile' variable from the $_GET superglobal is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: ` $logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6401,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6533,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+561,"SE: The `$filePath` variable is constructed using user input `$_GET['dir']` without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3549,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+591,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is constructed by concatenating user input `$_GET['dir']` without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3453,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$logFilePath` variable is directly concatenated with the log file name without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3437,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3593,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6393,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+481,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3569,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6387,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $fullPath = '/var/www/html/images/' . $imagePath;
+BUG FOUND: YES"
+435,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+3601,"SE: The 'filename' parameter in the `readFile($filename)` method is directly used in `file_get_contents($filename)` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+6517,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+6549,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6565,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3585,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6665,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3547,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+562,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+599,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . basename($_FILES['profileImage']['name']);`
+BUG FOUND: YES"
+583,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3577,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6525,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6541,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+575,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6513,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6557,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+3548,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6721,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+6512,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+607,"SE: The 'filePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6689,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6573,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3609,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: None
+BUG FOUND: YES"
+563,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+704,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3701,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3741,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated with the directory path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+623,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$filePath` variable is constructed using user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3561,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6511,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+3687,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6705,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6681,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6673,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+757,"SE: The `$filePath` variable is directly concatenated with the user input `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+709,"SE: The 'filePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6652,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3725,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods may not be properly sanitized, leading to a potential Path Traversal vulnerability.
+BL: None
+BUG FOUND: NO"
+3709,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+733,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6653,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+717,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+741,"SE: The line may contain a bug of type CWE-22 because the `$_GET['dir']` parameter is directly concatenated into the `$filePath` variable without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3689,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6845,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+765,"SE: The 'profileImage' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+939,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+861,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3749,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+3717,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3688,"SE: The line may contain a bug of type CWE-22 because the `$logFile` variable is directly concatenated into the `$logFilePath` without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6713,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6807,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+725,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3733,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6697,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3921,"SE: The 'filename' parameter in the `readFile` method is directly used without proper validation, which may lead to Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+3849,"SE: The 'logFile' variable from the $_GET superglobal is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6657,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+862,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6829,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1035,"SE: The '$_GET['dir']' parameter is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;
+BUG FOUND: YES"
+6651,"SE: The 'imagePath' variable is directly concatenated into the '$fullPath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+3881,"SE: The 'filename' variable is directly concatenated into file operations without proper validation.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+3844,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+891,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1113,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the file path is constructed using user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4085,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods is directly concatenated with the directory path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+863,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4017,"SE: The 'logFile' parameter from $_GET is directly concatenated into the $logFilePath variable without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3889,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1037,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4029,"SE: The 'logFile' parameter from $_GET is directly concatenated into the $logFilePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6885,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+907,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4069,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+915,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `file_get_contents($filename);`
+BUG FOUND: YES"
+6808,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+703,"SE: The 'filePath' variable is constructed using user input ($_GET['dir']) without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+705,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3693,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3897,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+867,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6853,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+3873,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3845,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6821,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7049,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+3757,"SE: The 'filename' parameter in the `readFile`, `writeFile`, `deleteFile`, and `fileExists` methods is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `public function readFile($filename) { return file_get_contents($filename); }`
+BUG FOUND: YES"
+3865,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+3913,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6861,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+6809,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+875,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+923,"SE: The 'profileImage' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7065,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4101,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+6869,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4053,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `public function readFile($filename) {`
+BUG FOUND: YES"
+3905,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods is directly concatenated with the base directory without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: None
+BUG FOUND: NO"
+4061,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6813,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4077,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+1105,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3843,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+567,"SE: The '$_GET['dir']' variable is directly concatenated into the $filePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+883,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+773,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+3857,"SE: The 'logFile' variable is directly concatenated into the logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4045,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6877,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4016,"SE: The 'logFile' variable from the user input is directly concatenated into the path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1041,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+749,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7253,"SE: The 'image' parameter from the GET request is directly used to serve an image file without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+6981,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7057,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1065,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6980,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+7025,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4015,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+931,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7001,"SE: The 'imagePath' variable is directly concatenated with the restricted directory path '/var/www/html/images/' without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+1073,"SE: The line may contain a bug of type CWE-22 as the user input ($_GET['dir']) is directly concatenated into the file path without proper validation or sanitization.
+BL: `$filePath = $uploadDir . basename($_FILES['profileImage']['name']);`
+BUG FOUND: YES"
+1319,"SE: The line may contain a bug of type CWE-22 as it directly concatenates user input into a file path without proper validation or restriction.
+BL: `if (move_uploaded_file($_FILES['profileImage']['tmp_name'], $filePath)) {`
+BUG FOUND: YES"
+6993,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1231,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4037,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7009,"SE: The 'imagePath' variable is directly concatenated into the '$fullPath' without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7261,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4093,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1081,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4205,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1049,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+6979,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+6837,"SE: The 'imagePath' variable is directly concatenated into the '$fullPath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7033,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7221,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+7017,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+899,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1121,"SE: The `$_GET['dir']` parameter is directly concatenated into the `$filePath` variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4021,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7173,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4289,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1057,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7168,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4257,"SE: The 'filename' parameter in the `readFile($filename)` method is directly used in `file_get_contents($filename)` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+1225,"SE: The `$filePath` variable is constructed using user input from `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4209,"SE: The 'logFile' variable from $_GET is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1255,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1097,"SE: The 'profileImage' input is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1089,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1271,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1263,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1036,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7041,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4249,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization.
+BL: `unlink($filename);`
+BUG FOUND: YES"
+4203,"SE: The 'logFile' variable is directly concatenated with the log directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4265,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7237,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7169,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the user input directly influences the file path without proper validation or restriction.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+7189,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+7229,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4225,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+6985,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+7245,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4241,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$logFilePath` variable is directly concatenated with the directory path without proper validation or sanitization.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7457,"SE: The 'image' parameter from the GET request is directly used to serve an image without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4273,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7433,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4297,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7181,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4204,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$logFile` variable from the `logAction` function is directly concatenated with the log directory path without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4421,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1311,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the file path is constructed using user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4281,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7393,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+4407,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1279,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or restriction.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4509,"SE: The 'logFile' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7377,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1509,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the file path is constructed using user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1453,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1432,"SE: The line may contain a bug of type CWE-22 because the `$_GET['dir']` parameter is directly concatenated into the `$filePath` variable without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4437,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7213,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7205,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4429,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1295,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the user input ($_GET['dir']) is directly concatenated into the file path without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7167,"SE: The 'imagePath' variable is directly concatenated into the '$fullPath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+4413,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7441,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1433,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1525,"SE: The line may contain a bug of type CWE-22 as it directly concatenates user input into a file path without proper validation or restriction.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4485,"SE: The 'logFile' parameter in the logAction function is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7473,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1485,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1533,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4493,"SE: The 'logfile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1445,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4233,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4461,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+4477,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7449,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4501,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4408,"SE: The line may contain a bug of type CWE-22 because the `$logFile` variable is directly concatenated into the `$logFilePath` without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7385,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4697,"SE: The 'file' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$target_file = $this->upload_dir . basename($this->file['name']);`
+BUG FOUND: YES"
+4217,"SE: The 'logFile' parameter from $_GET is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4469,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated into the file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+1469,"SE: The 'uploadDir' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1477,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7197,"SE: The line may contain a bug of type CWE-22 because the `$imagePath` variable is directly concatenated with the directory path without proper validation or sanitization.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4629,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4445,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+1461,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7417,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4453,"SE: The 'logFile' variable is directly concatenated with the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1247,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1437,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7465,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1287,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with user input (`$_GET['dir']`) without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4649,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7401,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7865,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1226,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7409,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1517,"SE: The `$_GET['dir']` parameter is directly concatenated into the `$filePath` variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7425,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+7371,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+1431,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1493,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is constructed using user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4409,"SE: The 'logFile' parameter from the GET request is directly concatenated into the $logFilePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1653,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1227,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1303,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1239,"SE: The `$filePath` variable is directly concatenated with the user input `$_GET['dir']` without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7372,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7593,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1501,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with user input `$_GET['dir']` without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4665,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7881,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4869,"SE: The 'logFile' variable from $_GET is directly concatenated into the $logFilePath without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7661,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a path traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7613,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4917,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7637,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1654,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7373,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4729,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7645,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1977,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1691,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . basename($_FILES['profileImage']['name']);`
+BUG FOUND: YES"
+4673,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization.
+BL: `unlink($filename);`
+BUG FOUND: YES"
+1755,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4949,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+4865,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7913,"SE: The 'image' parameter from the GET request is directly used to serve an image file without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1985,"SE: The 'file' variable is directly concatenated into the file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4885,"SE: The 'logFile' variable is directly concatenated with the '/var/log/' path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4877,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1675,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1723,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the `$filePath` variable is constructed using user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7653,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1731,"SE: The line may contain a bug of type CWE-22 because the file upload directory is not properly restricted, allowing potential path traversal attacks.
+BL: `if (move_uploaded_file($_FILES['profileImage']['tmp_name'], $filePath)) {`
+BUG FOUND: YES"
+1969,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . basename($_FILES['profileImage']['name']);`
+BUG FOUND: YES"
+4627,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1739,"SE: The 'uploadDir' variable is directly concatenated with the file name without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4721,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+1921,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1905,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4965,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4737,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1683,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7945,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+7889,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7921,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1747,"SE: The 'profileImage' file input is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4681,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+4657,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7693,"SE: The `serveImage` function concatenates the user-provided `imageName` directly into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1667,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4941,"SE: The 'filename' parameter in the `readFile` method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7897,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+7685,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1715,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization, which may lead to Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4628,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1659,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1707,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1655,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7591,"SE: The 'image' parameter from the GET request is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1913,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7597,"SE: The 'image' parameter from $_GET is directly concatenated into the $fullPath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7929,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4957,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+4705,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7849,"SE: The 'imagePath' variable is directly concatenated with the restricted directory path '/var/www/html/images/' without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7827,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+7677,"SE: The 'image' parameter from the GET request is directly used to serve an image without proper validation, which can lead to Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+1763,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7592,"SE: The line may contain a bug of type CWE-22 because the `$imagePath` variable is directly concatenated into the `$fullPath` without proper validation or sanitization.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1699,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory (""Path Traversal"")) because the file path is constructed using user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1945,"SE: The line may contain a bug of type CWE-22 as it directly concatenates user input ($_GET['dir']) into the file path without proper validation or restriction.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4863,"SE: The 'logFile' parameter from the $_GET array is directly concatenated into the $logFilePath variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7833,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imagePath) {
+    $fullPath = '/var/www/html/images/' . $imagePath;
+}
+BUG FOUND: YES"
+1937,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7669,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+7857,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1892,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4633,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7701,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4909,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7841,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+7605,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4973,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1897,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+7828,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imagePath) {
+    $fullPath = '/var/www/html/images/' . $imagePath;
+BUG FOUND: YES"
+1961,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4925,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+4901,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: 
+1. `return file_get_contents($filename);`
+2. `file_put_contents($filename, $content);`
+3. `unlink($filename);`
+4. `return file_exists($filename);`
+BUG FOUND: YES"
+7905,"SE: The 'image' parameter from the GET request is directly used to serve an image without proper validation, which could lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+7629,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+1993,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+5201,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4893,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+7937,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+4689,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+7621,"SE: The 'imagePath' variable is directly concatenated with the restricted directory path '/var/www/html/images/' without proper validation or sanitization.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+4641,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2009,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+1929,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2001,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4933,"SE: The 'filename' parameter in the 'readFile' method is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+4713,"SE: The 'filename' parameter in the `readFile` method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+1891,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8085,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imagePath) {
+    $fullPath = '/var/www/html/images/' . $imagePath;
+BUG FOUND: YES"
+1953,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2239,"SE: The 'profileImage' file input field is not properly restricted to a specific directory, allowing for potential path traversal attacks.
+BL: `if (move_uploaded_file($_FILES['profileImage']['tmp_name'], $filePath)) {`
+BUG FOUND: YES"
+7829,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+5145,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+1893,"SE: The '$_GET['dir']' variable is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+4981,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+4864,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5129,"SE: The 'logFile' parameter from the GET request is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+8165,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8117,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5115,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+8205,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+7873,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+2263,"SE: The 'filename' parameter is directly concatenated into the file operations without proper validation.
+BL: `unlink($filename);`
+BUG FOUND: YES"
+5169,"SE: The 'filename' parameter in the 'readFile', 'writeFile', 'deleteFile', and 'fileExists' methods is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `public function readFile($filename) {`
+BUG FOUND: YES"
+2207,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8181,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8101,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+5225,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5241,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+5153,"SE: The 'file' variable is directly used in the `file_get_contents` function without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `file_get_contents($file)`
+BUG FOUND: YES"
+2271,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which could lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+8133,"SE: The 'image' parameter from $_GET is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8173,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5233,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5193,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+8361,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+2183,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8141,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+2147,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2541,"SE: The 'filename' parameter is directly concatenated into the file operations without proper validation or sanitization, which may lead to Path Traversal vulnerabilities.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+5209,"SE: The 'filename' parameter in the 'readFile' method is directly used in the 'file_get_contents' function without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+5121,"SE: The 'logFile' variable from the $_GET array is directly concatenated into the $logFilePath without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2151,"SE: The 'filePath' variable is directly concatenated with the user input '$_GET['dir']' without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2145,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2159,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8385,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+5517,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2146,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+5161,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+2215,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with user input `$_GET['dir']` without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2517,"SE: The 'filename' parameter is directly concatenated into the file operations without proper validation or sanitization.
+BL: `unlink($filename);`
+BUG FOUND: YES"
+8347,"SE: The 'imagePath' variable is directly concatenated with the base directory '/var/www/html/images/' without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imagePath) {
+    $fullPath = '/var/www/html/images/' . $imagePath;
+BUG FOUND: YES"
+8349,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+8393,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5413,"SE: The 'logFile' variable is directly concatenated into the file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5421,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+8149,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+8109,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+2223,"SE: The `$_FILES['profileImage']['name']` is directly concatenated into the `$filePath` variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8473,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+2469,"SE: The 'filename' parameter is directly concatenated into file operations without proper validation.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+2199,"SE: The 'filename' variable is directly concatenated into the file operations without proper validation or sanitization.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+5217,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5469,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+2415,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+5385,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+8093,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+5117,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5177,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which could lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+8401,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+2437,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2175,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2191,"SE: The 'filePath' variable is directly concatenated with the user input '$_GET['dir']' without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2247,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with the user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2549,"SE: The line may contain a bug of type CWE-22 because the file path is directly concatenated without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8079,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+5493,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+8125,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8189,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8080,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+2416,"SE: The 'filePath' variable is constructed using user input ($_GET['dir']) without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2461,"SE: The 'filePath' variable is directly concatenated with the user input '$_GET['dir']' without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2429,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8417,"SE: The 'file' variable is directly concatenated into the file path without proper validation, which can lead to path traversal vulnerabilities.
+BL: `$target_file = $this->upload_dir . basename($this->file['name']);`
+BUG FOUND: YES"
+5383,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+8348,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+2501,"SE: The line may contain a bug of type CWE-22 because it involves file upload functionality, which can be vulnerable to path traversal attacks if not properly sanitized.
+BL: `if (move_uploaded_file($_FILES['profileImage']['tmp_name'], $filePath)) {`
+BUG FOUND: YES"
+2421,"SE: The 'filePath' variable is directly concatenated with user input ($_GET['dir']) without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2445,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8449,"SE: The 'image' parameter from the URL is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5429,"SE: The 'logFile' variable is directly concatenated into the log file path without proper validation or sanitization, which can lead to path traversal vulnerabilities.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2477,"SE: The '$_GET['dir']' parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8441,"SE: The 'imagePath' parameter in the serveImage function is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8157,"SE: The 'image' parameter from the GET request is directly used to serve an image without proper validation, which could lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5389,"SE: The 'logFile' variable is directly concatenated into the $logFilePath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2167,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8481,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5137,"SE: The 'logFile' variable is directly concatenated with the '/var/log/' path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5445,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+2509,"SE: The 'file_exists' function is used without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `if (!file_exists($this->filePath)) {`
+BUG FOUND: YES"
+5461,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+8369,"SE: The 'imagePath' variable is directly concatenated with the base directory path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+8197,"SE: The 'imagePath' variable is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8433,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5185,"SE: The 'file' variable is directly concatenated into the target directory path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$target_file = $this->upload_dir . basename($this->file['name']);`
+BUG FOUND: YES"
+5397,"SE: The 'logFile' parameter from $_GET is directly concatenated into the log file path without proper validation or restriction.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2417,"SE: The '$_GET['dir']' parameter is directly concatenated into the '$filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+5501,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+8353,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+8425,"SE: The 'file' parameter in the serveImage function is directly concatenated into the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+8465,"SE: The 'image' parameter from the user input is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5437,"SE: The 'filename' parameter in the 'readFile' method is directly used without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+5405,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2231,"SE: The `$_GET['dir']` parameter is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8409,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+2255,"SE: The `$filePath` variable is directly concatenated with user input `$_GET['dir']` without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2525,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with user input without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+2533,"SE: The `$_GET['dir']` parameter is directly concatenated into the `$filePath` variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+5453,"SE: The 'file' variable is directly concatenated into the target file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$target_file = $this->upload_dir . basename($this->file['name']);`
+BUG FOUND: YES"
+8377,"SE: The 'imagePath' variable is directly concatenated with the base directory without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$fullPath = '/var/www/html/images/' . $imagePath;`
+BUG FOUND: YES"
+2493,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with the user input `$_GET['dir']` without proper validation or sanitization.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
+8457,"SE: The 'image' parameter from the GET request is directly used to construct the file path without proper validation, which can lead to a Path Traversal vulnerability.
+BL: `serveImage($imageName);`
+BUG FOUND: YES"
+5485,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5509,"SE: The 'logFile' parameter is directly concatenated into the log file path without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+8081,"SE: The 'image' parameter from the GET request is directly concatenated into the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: serveImage($imageName);
+BUG FOUND: YES"
+5384,"SE: The 'logFile' variable is directly concatenated into the path without proper validation or sanitization, which could lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+5116,"SE: The 'logFile' variable is directly concatenated into the path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$logFilePath = '/var/log/' . $logFile;`
+BUG FOUND: YES"
+2453,"SE: The line may contain a bug of type CWE-22 because the `$filePath` variable is directly concatenated with the user input `$_GET['dir']` without proper validation or sanitization.
+BL: `$filePath = $uploadDir . basename($_FILES['profileImage']['name']);`
+BUG FOUND: YES"
+5477,"SE: The 'filename' parameter in the 'readFile' method is not properly sanitized, which could lead to a Path Traversal vulnerability.
+BL: `return file_get_contents($filename);`
+BUG FOUND: YES"
+2485,"SE: The 'filename' variable is directly concatenated with the upload directory without proper validation or sanitization, which can lead to a Path Traversal vulnerability.
+BL: `$filePath = $uploadDir . $_GET['dir'] . '/' . $fileName;`
+BUG FOUND: YES"
