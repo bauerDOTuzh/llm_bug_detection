@@ -1,3 +1,4 @@
+{prepend_content}
 def register_changelog_route(app)
   app.get "/changelogs" do
     @filter = params[:filter] || "*"
@@ -14,3 +15,4 @@ def register_changelog_route(app)
     erb(unique_template(:changelogs))
   end
 end
+{append_content}
