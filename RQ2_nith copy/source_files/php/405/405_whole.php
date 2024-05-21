@@ -340,3 +340,24 @@ protected function extra_tablenav($which)
     }
 }
 // -x-
+public function get_data($query = '')
+{
+    $page_number = ($this->get_pagenum() - 1) * $this->limit;
+    $orderby     = "ORDER BY {$this->tb_prefix}sms_subscribes.date DESC";
+    $where       = "";
+
+    if (isset($_REQUEST['orderby'])) {
+        $orderby = "ORDER BY {$this->tb_prefix}sms_subscribes.{$_REQUEST['orderby']} {$_REQUEST['order']}";
+    }
+
+    if (!$query) {
+        $where = $this->mobile_or_country_query($where);
+        $query = $this->db->prepare("SELECT * FROM {$this->tb_prefix}sms_subscribes {$where} {$orderby} LIMIT %d OFFSET %d", $this->limit, $page_number);
+    } else {
+        $query .= $this->db->prepare(" LIMIT %d OFFSET %d", $this->limit, $page_number);
+    }
+
+    $result = $this->db->get_results($query, ARRAY_A);
+
+    return $result;
+}

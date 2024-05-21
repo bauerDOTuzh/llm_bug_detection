@@ -1,6 +1,6 @@
 <?php
 {prepend_content}
-public function downloadAsZipAddFilesAction($request){
+public function getIDsfilter(Request $request){
     $conditionFilters = [];
     $selectedIds = $request->get('selectedIds', []);
     if (!empty($selectedIds)) {
@@ -8,9 +8,7 @@ public function downloadAsZipAddFilesAction($request){
         //add a condition if id numbers are specified
         $conditionFilters[] = 'id IN (' . implode(',', $selectedIds) . ')';
     }
-    $condition = implode(' AND ', $conditionFilters);
-    $assetList = new Asset\Listing();
-    $assetList->setCondition($condition);
+    return $conditionFilters;
 }
 {append_content}
 ?>
