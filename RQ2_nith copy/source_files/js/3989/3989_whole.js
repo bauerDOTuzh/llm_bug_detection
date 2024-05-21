@@ -152,3 +152,15 @@ export function createHydrationStreamProvider<TShape>() {
 }
 
 // -x-
+function useServerInsertedHTML(props, stream, transformer, idJSON, count) {
+  // This only happens on the server
+  stream.push(...(props.onFlush?.() ?? []));
+
+  if (!stream.length) {
+    return null;
+  }
+
+  // Call the function to serialize and generate HTML
+  return serializeAndGenerateHTML(stream, transformer, idJSON, count);
+}
+// -x-
