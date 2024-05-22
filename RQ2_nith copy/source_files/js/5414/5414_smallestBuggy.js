@@ -1,4 +1,4 @@
-// serves assets from lib/public
+{prepend_content}
 function asset_request(req, callback) {
   var filename = path.join(__dirname, "public", req.url.path_list.join("/"));
   fs.access(filename, function(fs_err) {
@@ -19,3 +19,4 @@ function asset_request(req, callback) {
     }
   });
 }
+{append_content}

@@ -1,4 +1,5 @@
 <?php
+{prepend_content}
 function sanitize($data) {
     global $fmdb;
     
@@ -11,3 +12,4 @@ function sanitize($data) {
     }
     return $data;
 }
+{append_content}

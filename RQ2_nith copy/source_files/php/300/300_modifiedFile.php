@@ -22,7 +22,7 @@ use phpMyFAQ\Session\Token;
 use phpMyFAQ\Translation;
 use phpMyFAQ\Utils;
 use Symfony\Component\HttpFoundation\Request;
-
+// -x-
 if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
@@ -30,7 +30,7 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
 
 // -x-
 $request = Request::createFromGlobals();
-
+// -x-
 $page = Filter::filterVar($request->query->get('page'), FILTER_VALIDATE_INT);
 $page = max(1, $page);
 
@@ -39,7 +39,7 @@ $itemsPerPage = 24;
 $allCrumbs = $attachmentCollection->getBreadcrumbs();
 // -x-
 $crumbs = array_slice($allCrumbs, ($page - 1) * $itemsPerPage, $itemsPerPage);
-
+// -x-
 $pagination = new Pagination(
     [
         'baseUrl' => $faqConfig->getDefaultUrl() . $request->getRequestUri(),
@@ -75,14 +75,13 @@ function renderActionButtons($item)
 // -x-
 ?>
 
-<!-- In your main code -->
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">
     <i aria-hidden="true" class="fa fa-paperclip"></i>
       <?= Translation::get('ad_menu_attachment_admin') ?>
   </h1>
 </div>
-
+// -x-
 <div class="row">
   <div class="col-lg-12">
     <table class="table table-striped align-middle">

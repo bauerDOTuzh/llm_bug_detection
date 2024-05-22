@@ -178,32 +178,6 @@ public static function find_by_id( $id ) {
 	return $model;
 }
 // -x-
-public static function find_all_by_property( $property, $value ) {
-	global $wpdb;
-	
-	$class = get_called_class();
-	$models = array();
-	
-	$rows = $wpdb->get_results(
-		'SELECT * FROM ' . static::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\''
-	);
-	
-	if ( ! $rows ) {
-		return array();
-	}
-	
-	foreach ( $rows as $row ) {
-		$model = new $class();
-		$model->flag_as_not_new();
-		foreach ( $row as $property => $value ) {
-			$model->$property = static::unserialize_property($value);
-		}
-		$models[] = $model;
-	}
-	
-	return $models;
-}
-// -x-
 public static function find_all_by_where( $where ) {
 	global $wpdb;
 	
@@ -464,7 +438,7 @@ private function property_name_to_sql_value( $p ) {
 		return 'NULL';
 	}
 }
-// -x-	
+// -x-
 /**
  * Create database table based on defined properties.
  * 
@@ -489,7 +463,7 @@ public static function build() {
 
 	static::build_indices();
 }
-// -x-	
+// -x-
 /**
  * Convention based index generation.
  *

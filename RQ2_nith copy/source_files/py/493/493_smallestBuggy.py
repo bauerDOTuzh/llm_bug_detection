@@ -1,4 +1,5 @@
-from fastapi.responses import FileResponse, JSONRespons
+from fastapi.responses import FileResponse, JSONResponse
+{prepend_content}
 @app.get("/get_pfp/{username}")
 async def get_pfp(username: str):
     # Checks if the user has a profile pic uploaded
@@ -7,3 +8,4 @@ async def get_pfp(username: str):
     else:
         # Returns default image if none is uploaded
         return FileResponse(f'{assets_folder}/default_pfp.png', media_type='image/gif')
+{append_content}

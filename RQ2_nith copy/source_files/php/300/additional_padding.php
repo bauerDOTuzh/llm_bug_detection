@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Private phpMyFAQ Admin API: handles an attachment with the given id.
  *
@@ -14,7 +13,7 @@
  * @link      https://www.phpmyfaq.de
  * @since     2010-12-20
  */
-
+// -x-
 use phpMyFAQ\Attachment\AttachmentException;
 use phpMyFAQ\Attachment\AttachmentFactory;
 use phpMyFAQ\Filter;
@@ -28,7 +27,7 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
 }
-
+// -x-
 //
 // Create Request & Response
 //
@@ -40,7 +39,7 @@ $attId = Filter::filterVar($request->query->get('attId'), FILTER_VALIDATE_INT);
 $recordId = Filter::filterVar($request->request->get('record_id'), FILTER_SANITIZE_SPECIAL_CHARS);
 $recordLang = Filter::filterVar($request->request->get('record_lang'), FILTER_SANITIZE_SPECIAL_CHARS);
 $csrfToken = Filter::filterVar($request->query->get('csrf'), FILTER_SANITIZE_SPECIAL_CHARS);
-
+// -x-
 switch ($ajaxAction) {
     case 'delete':
         $deleteData = json_decode(file_get_contents('php://input', true));
@@ -114,8 +113,6 @@ switch ($ajaxAction) {
 }
 
 // -x-
-<?php
-
 /**
  * Private phpMyFAQ Admin API: handling of REST category calls.
  *
@@ -140,7 +137,7 @@ use phpMyFAQ\Translation;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+// -x-
 if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
@@ -154,7 +151,7 @@ $request = Request::createFromGlobals();
 
 $ajaxAction = Filter::filterVar($request->query->get('ajaxaction'), FILTER_SANITIZE_SPECIAL_CHARS);
 $csrfToken = Filter::filterVar($request->query->get('csrf'), FILTER_SANITIZE_SPECIAL_CHARS);
-
+// -x-
 switch ($ajaxAction) {
     case 'getpermissions':
         $categoryPermission = new CategoryPermission($faqConfig);
@@ -231,9 +228,6 @@ switch ($ajaxAction) {
 }
 
 // -x-
-
-<?php
-
 /**
  * Private phpMyFAQ Admin API: deletes comments with the given id.
  *
@@ -255,7 +249,7 @@ use phpMyFAQ\Translation;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+// -x-
 if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
@@ -268,7 +262,7 @@ $response = new JsonResponse();
 $request = Request::createFromGlobals();
 
 $deleteData = json_decode(file_get_contents('php://input', true));
-
+// -x-
 if ('delete' === $deleteData->data->ajaxaction && $user->perm->hasPermission($user->getUserId(), 'delcomment')) {
     if (!Token::getInstance()->verifyToken('delete-comment', $deleteData->data->{'pmf-csrf-token'})) {
         $response->setStatusCode(Response::HTTP_UNAUTHORIZED);
@@ -301,8 +295,6 @@ if ('delete' === $deleteData->data->ajaxaction && $user->perm->hasPermission($us
 
 // -x-
 
-<?php
-
 /**
  * Private phpMyFAQ Admin API: lists the complete configuration items as text/html.
  *
@@ -330,7 +322,7 @@ use phpMyFAQ\System;
 use phpMyFAQ\Translation;
 use phpMyFAQ\Utils;
 use Symfony\Component\HttpFoundation\Request;
-
+// -x-
 if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
@@ -349,7 +341,7 @@ if (!empty($_SESSION['access_token'])) {
 
 $request = Request::createFromGlobals();
 $configMode = Filter::filterVar($request->query->get('conf'), FILTER_SANITIZE_SPECIAL_CHARS, 'main');
-
+// -x-
 /**
  * @param mixed  $key
  * @param string $type
@@ -620,9 +612,9 @@ function renderInputForm(mixed $key, string $type): void
 }
 
 header('Content-type: text/html; charset=utf-8');
-
+// -x-
 Utils::moveToTop($LANG_CONF, 'main.maintenanceMode');
-
+// -x-
 foreach ($LANG_CONF as $key => $value) {
     if (strpos($key, $configMode) === 0) {
         if ('socialnetworks.twitterConsumerKey' == $key) {
@@ -680,9 +672,6 @@ foreach ($LANG_CONF as $key => $value) {
 }
 
 // -x-
-
-<?php
-
 /**
  * Private phpMyFAQ Admin API: handling of REST configuration calls.
  *
@@ -698,7 +687,7 @@ foreach ($LANG_CONF as $key => $value) {
  * @link      https://www.phpmyfaq.de
  * @since     2009-04-01
  */
-
+// -x-
 use phpMyFAQ\Configuration\DatabaseConfiguration;
 use phpMyFAQ\Core\Exception;
 use phpMyFAQ\Database;
@@ -724,7 +713,7 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
 }
-
+// -x-
 //
 // Create Request & Response
 //
@@ -1034,9 +1023,6 @@ switch ($ajaxAction) {
 }
 
 // -x-
-
-<?php
-
 /**
  * Private phpMyFAQ Admin API: handling of REST calls for the dashboard
  *
@@ -1051,7 +1037,7 @@ switch ($ajaxAction) {
  * @link      https://www.phpmyfaq.de
  * @since     2020-10-24
  */
-
+// -x-
 use phpMyFAQ\Api;
 use phpMyFAQ\Configuration;
 use phpMyFAQ\Filter;
@@ -1067,7 +1053,7 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
 }
-
+// -x-
 //
 // Create Request & Response
 //
@@ -1077,7 +1063,7 @@ $request = Request::createFromGlobals();
 $faqConfig = Configuration::getConfigurationInstance();
 
 $ajaxAction = Filter::filterVar($request->query->get('ajaxaction'), FILTER_SANITIZE_SPECIAL_CHARS);
-
+// -x-
 switch ($ajaxAction) {
     case 'user-visits-last-30-days':
         if ($faqConfig->get('main.enableUserTracking')) {
@@ -1111,9 +1097,6 @@ switch ($ajaxAction) {
 $response->send();
 
 // -x-
-
-<?php
-
 /**
  * Private phpMyFAQ Admin API: Elasticsearch configuration backend
  *
@@ -1128,7 +1111,7 @@ $response->send();
  * @link      https://www.phpmyfaq.de
  * @since     2015-12-26
  */
-
+// -x-
 use Elastic\Elasticsearch\Exception\ClientResponseException;
 use Elastic\Elasticsearch\Exception\ServerResponseException;
 use phpMyFAQ\Configuration;
@@ -1144,7 +1127,7 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
 }
-
+// -x-
 //
 // Create Request & Response
 //
@@ -1160,7 +1143,7 @@ $elasticsearch = new Elasticsearch($faqConfig);
 $esConfigData = $faqConfig->getElasticsearchConfig();
 
 $result = [];
-
+// -x-
 switch ($ajaxAction) {
     case 'create':
         try {
@@ -1217,8 +1200,6 @@ $response->send();
 
 // -x-
 
-<?php
-
 /**
  * Private phpMyFAQ Admin API: handling of Ajax record calls.
  *
@@ -1234,7 +1215,7 @@ $response->send();
  * @link      https://www.phpmyfaq.de
  * @since     2009-03-31
  */
-
+// -x-
 use phpMyFAQ\Attachment\AttachmentException;
 use phpMyFAQ\Attachment\Filesystem\File\FileException;
 use phpMyFAQ\Category;
@@ -1257,7 +1238,7 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
 }
-
+// -x-
 //
 // Create Request & Response
 //
@@ -1267,15 +1248,15 @@ $request = Request::createFromGlobals();
 $ajaxAction = Filter::filterVar($request->query->get('ajaxaction'), FILTER_SANITIZE_SPECIAL_CHARS);
 $csrfTokenPost = Filter::filterInput(INPUT_POST, 'csrf', FILTER_SANITIZE_SPECIAL_CHARS);
 $csrfTokenGet = Filter::filterInput(INPUT_GET, 'csrf', FILTER_SANITIZE_SPECIAL_CHARS);
-
+// -x-
 $csrfToken = (is_null($csrfTokenPost) ? $csrfTokenGet : $csrfTokenPost);
 
 $items = isset($_GET['items']) && is_array($_GET['items']) ? $_GET['items'] : [];
-
+// -x-
 if (!isset($items[0][2])) {
     $items[0][2] = 0;
 }
-
+// -x-
 switch ($ajaxAction) {
     // Get permissions
     case 'permissions':
@@ -1453,8 +1434,6 @@ switch ($ajaxAction) {
 
 // -x-
 
-<?php
-
 /**
  * Private phpMyFAQ Admin API: handling of Ajax group calls.
  *
@@ -1469,13 +1448,13 @@ switch ($ajaxAction) {
  * @link      https://www.phpmyfaq.de
  * @since     2009-04-06
  */
-
+// -x-
 use phpMyFAQ\Filter;
 use phpMyFAQ\Permission\MediumPermission;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+// -x-
 if (!defined('IS_VALID_PHPMYFAQ')) {
     http_response_code(400);
     exit();
@@ -1486,10 +1465,10 @@ if (!defined('IS_VALID_PHPMYFAQ')) {
 //
 $response = new JsonResponse();
 $request = Request::createFromGlobals();
-
+// -x-
 $ajaxAction = Filter::filterVar($request->query->get('ajaxaction'), FILTER_SANITIZE_SPECIAL_CHARS);
 $groupId = Filter::filterVar($request->query->get('group_id'), FILTER_VALIDATE_INT);
-
+// -x-
 if (
     $user->perm->hasPermission($user->getUserId(), 'add_user') ||
     $user->perm->hasPermission($user->getUserId(), 'edit_user') ||
@@ -1558,224 +1537,4 @@ if (
     $response->send();
 }
 
-// -x-
-/*
-Copyright The Helm Authors.
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-package chartutil
-
-import (
-	"fmt"
-	"strconv"
-
-	"github.com/Masterminds/semver/v3"
-	"k8s.io/client-go/kubernetes/scheme"
-
-	apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
-	apiextensionsv1beta1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
-
-	helmversion "helm.sh/helm/v3/internal/version"
-)
-
-var (
-	// The Kubernetes version can be set by LDFLAGS. In order to do that the value
-	// must be a string.
-	k8sVersionMajor = "1"
-	k8sVersionMinor = "20"
-
-	// DefaultVersionSet is the default version set, which includes only Core V1 ("v1").
-	DefaultVersionSet = allKnownVersions()
-
-	// DefaultCapabilities is the default set of capabilities.
-	DefaultCapabilities = &Capabilities{
-		KubeVersion: KubeVersion{
-			Version: fmt.Sprintf("v%s.%s.0", k8sVersionMajor, k8sVersionMinor),
-			Major:   k8sVersionMajor,
-			Minor:   k8sVersionMinor,
-		},
-		APIVersions: DefaultVersionSet,
-		HelmVersion: helmversion.Get(),
-	}
-)
-
-// Capabilities describes the capabilities of the Kubernetes cluster.
-type Capabilities struct {
-	// KubeVersion is the Kubernetes version.
-	KubeVersion KubeVersion
-	// APIversions are supported Kubernetes API versions.
-	APIVersions VersionSet
-	// HelmVersion is the build information for this helm version
-	HelmVersion helmversion.BuildInfo
-}
-
-func (capabilities *Capabilities) Copy() *Capabilities {
-	return &Capabilities{
-		KubeVersion: capabilities.KubeVersion,
-		APIVersions: capabilities.APIVersions,
-		HelmVersion: capabilities.HelmVersion,
-	}
-}
-
-// KubeVersion is the Kubernetes version.
-type KubeVersion struct {
-	Version string // Kubernetes version
-	Major   string // Kubernetes major version
-	Minor   string // Kubernetes minor version
-}
-
-// String implements fmt.Stringer
-func (kv *KubeVersion) String() string { return kv.Version }
-
-// GitVersion returns the Kubernetes version string.
-//
-// Deprecated: use KubeVersion.Version.
-func (kv *KubeVersion) GitVersion() string { return kv.Version }
-
-// ParseKubeVersion parses kubernetes version from string
-func ParseKubeVersion(version string) (*KubeVersion, error) {
-	sv, err := semver.NewVersion(version)
-	if err != nil {
-		return nil, err
-	}
-	return &KubeVersion{
-		Version: "v" + sv.String(),
-		Major:   strconv.FormatUint(sv.Major(), 10),
-		Minor:   strconv.FormatUint(sv.Minor(), 10),
-	}, nil
-}
-
-// VersionSet is a set of Kubernetes API versions.
-type VersionSet []string
-
-// Has returns true if the version string is in the set.
-//
-//	vs.Has("apps/v1")
-func (v VersionSet) Has(apiVersion string) bool {
-	for _, x := range v {
-		if x == apiVersion {
-			return true
-		}
-	}
-	return false
-}
-
-func allKnownVersions() VersionSet {
-	// We should register the built in extension APIs as well so CRDs are
-	// supported in the default version set. This has caused problems with `helm
-	// template` in the past, so let's be safe
-	apiextensionsv1beta1.AddToScheme(scheme.Scheme)
-	apiextensionsv1.AddToScheme(scheme.Scheme)
-
-	groups := scheme.Scheme.PrioritizedVersionsAllGroups()
-	vs := make(VersionSet, 0, len(groups))
-	for _, gv := range groups {
-		vs = append(vs, gv.String())
-	}
-	return vs
-}
-// -x-
-/*
-Copyright The Helm Authors.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-package chartutil
-
-import (
-	"os"
-	"path/filepath"
-
-	"github.com/pkg/errors"
-	"sigs.k8s.io/yaml"
-
-	"helm.sh/helm/v3/pkg/chart"
-)
-
-// LoadChartfile loads a Chart.yaml file into a *chart.Metadata.
-func LoadChartfile(filename string) (*chart.Metadata, error) {
-	b, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-	y := new(chart.Metadata)
-	err = yaml.Unmarshal(b, y)
-	return y, err
-}
-
-// SaveChartfile saves the given metadata as a Chart.yaml file at the given path.
-//
-// 'filename' should be the complete path and filename ('foo/Chart.yaml')
-func SaveChartfile(filename string, cf *chart.Metadata) error {
-	// Pull out the dependencies of a v1 Chart, since there's no way
-	// to tell the serializer to skip a field for just this use case
-	savedDependencies := cf.Dependencies
-	if cf.APIVersion == chart.APIVersionV1 {
-		cf.Dependencies = nil
-	}
-	out, err := yaml.Marshal(cf)
-	if cf.APIVersion == chart.APIVersionV1 {
-		cf.Dependencies = savedDependencies
-	}
-	if err != nil {
-		return err
-	}
-	return os.WriteFile(filename, out, 0644)
-}
-
-// IsChartDir validate a chart directory.
-//
-// Checks for a valid Chart.yaml.
-func IsChartDir(dirName string) (bool, error) {
-	if fi, err := os.Stat(dirName); err != nil {
-		return false, err
-	} else if !fi.IsDir() {
-		return false, errors.Errorf("%q is not a directory", dirName)
-	}
-
-	chartYaml := filepath.Join(dirName, ChartfileName)
-	if _, err := os.Stat(chartYaml); os.IsNotExist(err) {
-		return false, errors.Errorf("no %s exists in directory %q", ChartfileName, dirName)
-	}
-
-	chartYamlContent, err := os.ReadFile(chartYaml)
-	if err != nil {
-		return false, errors.Errorf("cannot read %s in directory %q", ChartfileName, dirName)
-	}
-
-	chartContent := new(chart.Metadata)
-	if err := yaml.Unmarshal(chartYamlContent, &chartContent); err != nil {
-		return false, err
-	}
-	if chartContent == nil {
-		return false, errors.Errorf("chart metadata (%s) missing", ChartfileName)
-	}
-	if chartContent.Name == "" {
-		return false, errors.Errorf("invalid chart (%s): name must not be empty", ChartfileName)
-	}
-
-	return true, nil
-}
 // -x-

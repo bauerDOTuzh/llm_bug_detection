@@ -1,3 +1,4 @@
+# -x-
 from fastapi import FastAPI, HTTPException, Request, Form, File, UploadFile, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
@@ -9,7 +10,7 @@ from utils import db_interface as database
 from utils import password_hasher as hasher
 from utils import email_checker as email_interface
 from utils import access_control as access_control
-
+# -x-
 # Check setup
 print("Checking user images folder...")
 if os.path.isdir("user_images") == False:
@@ -23,7 +24,7 @@ if os.path.isdir("user_images/pfp") == False:
 if os.path.isdir("user_images/banner") == False:
     os.mkdir("user_images/banner")
     print("Created 'user_images/banner' directory!")
-
+# -x-
 # Check location of assets folder
 if os.path.isdir("assets"):
     assets_folder = "assets"
@@ -37,7 +38,7 @@ if os.path.isdir("resources"):
 
 else: 
     resources_folder = "src/resources"
-
+# -x-
 # Check the config.yml to ensure its up-to-date
 print("Checking config...")
 
@@ -49,7 +50,7 @@ with open("config.yml", "r") as config:
     contents = config.read()
     configurations = yaml.safe_load(contents)
     config.close()
-
+# -x-
 # Ensure the configurations are not None
 if configurations == None:
     configurations = {}
@@ -62,7 +63,7 @@ with open(f"{resources_folder}/json data/default_config.json", "r") as json_file
 if not os.path.isfile('access-control.yml'):
     with open("access-control.yml", 'x') as config:
         config.close()
-
+# -x-
 # Compare config with json data
 for option in default_config:
     if not option in configurations:
@@ -74,7 +75,7 @@ with open("config.yml", "w") as config:
     new_config = yaml.safe_dump(configurations)
     config.write(new_config)
     config.close()
-
+# -x-
 # Get run environment 
 __env__= os.getenv('RUN_ENVIRONMENT')
 
@@ -83,7 +84,7 @@ print("Setup check complete!")
 database.load_config()
 
 print(__env__)
-
+# -x-
 # Enable/disable developer docs based on env
 if __env__ == 'PRODUCTION':
     enable_dev_docs = None
@@ -97,7 +98,7 @@ app = FastAPI(
      docs_url=enable_dev_docs,
      redoc_url=None
 )
-
+# -x-
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
@@ -105,11 +106,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+# -x-
 @app.get("/")
 async def home():
     return "Welcome to Lif Auth Server!"
-
+# -x-
 @app.get("/login/{username}/{password}")
 async def login(username: str, password: str):
     """
@@ -142,7 +143,7 @@ async def login(username: str, password: str):
     else:
         # Tells client credentials are incorrect
         return {"Status": "Unsuccessful", "Token": "None"}
-
+# -x-
 @app.post('/lif_login')
 async def lif_login(username: str = Form(), password: str = Form()):
     """
@@ -172,7 +173,7 @@ async def lif_login(username: str = Form(), password: str = Form()):
     else: 
         # Tells client credentials are incorrect
         raise HTTPException(status_code=401, detail='Incorrect Login Credentials')
-    
+# -x- 
 @app.post("/update_pfp")
 async def update_pfp(file: UploadFile = File(), username: str = Form(), token: str = Form()):
     """
@@ -202,7 +203,7 @@ async def update_pfp(file: UploadFile = File(), username: str = Form(), token: s
         return {'Status': 'Ok'}
     else:
         raise HTTPException(status_code=401, detail="Invalid Token!")
-
+# -x-
 @app.post("/update_profile_banner")
 async def update_banner(file: UploadFile = File(), username: str = Form(), token: str = Form()):
     """
@@ -232,7 +233,7 @@ async def update_banner(file: UploadFile = File(), username: str = Form(), token
         return {'Status': 'Ok'}
     else:
         raise HTTPException(status_code=401, detail="Invalid Token!")
-
+# -x-
 @app.post('/update_account_info/personalization')
 async def update_account_info(username: str = Form(), token: str = Form(), bio: str = Form(), pronouns: str = Form()):
     """
@@ -256,7 +257,7 @@ async def update_account_info(username: str = Form(), token: str = Form(), bio: 
         return JSONResponse(status_code=200, content="Updated Successfully")
     else:
         raise HTTPException(status_code=401, detail="Invalid Token!")
-
+# -x-
 @app.get("/get_user_bio/{username}")
 async def get_user_bio(username: str):
     """
@@ -270,11 +271,11 @@ async def get_user_bio(username: str):
     - **str:** Bio for the account.
     """
     return database.get_bio(username=username)
-
+# -x-
 @app.get("/get_user_pronouns/{username}")
 async def get_user_pronouns(username: str):
     return database.get_pronouns(username=username)
-    
+# -x-  
 @app.get('/get_account_info/{data}/{account}')
 async def get_account_data(data, account, request: Request):
     """
@@ -307,7 +308,7 @@ async def get_account_data(data, account, request: Request):
             raise HTTPException(status_code=400, detail="Unknown Data Type!")
     else:
         raise HTTPException(status_code=403, detail="Invalid Token!")
-
+# -x-
 @app.get("/verify_token/{username}/{token}")
 async def verify_token(username: str, token: str):
     """
@@ -330,7 +331,7 @@ async def verify_token(username: str, token: str):
         return {"Status": "Successful"}
     else:
         return {"Status": "Unsuccessful"}
-
+# -x-
 @app.post("/create_lif_account")
 async def create_lif_account(request: Request):
     """
@@ -373,7 +374,7 @@ async def create_lif_account(request: Request):
     database.create_account(username=username, password=password_hash['password'], email=email, password_salt=password_hash['salt'])
 
     return {"Status": "Ok"}  
-
+# -x-
 @app.get("/check_account_info_usage/{type}/{info}")
 async def check_account_info_usage(type: str, info: str):
     """
@@ -410,7 +411,7 @@ async def check_account_info_usage(type: str, info: str):
             raise HTTPException(status_code=400, detail="Invalid Email!")
         else:
             return {"Status": "Ok"}
-
+# -x-
 @app.get("/create_account/{username}/{email}/{password}")
 async def create_account(username: str, email: str, password: str):
     """
@@ -447,7 +448,7 @@ async def create_account(username: str, email: str, password: str):
     database.create_account(username=username, password=password_hash['password'], email=email, password_salt=password_hash['salt'])
 
     return {"status": "ok"}
-
+# -x-
 @app.post('/lif_password_update')
 async def lif_password_update(username: str = Form(), current_password: str = Form(), new_password: str = Form()):
     """
@@ -479,11 +480,11 @@ async def lif_password_update(username: str = Form(), current_password: str = Fo
         return JSONResponse(status_code=200, content='Updated Password')
     else: 
         raise HTTPException(status_code=401, detail="Invalid Password!")
-    
+# -x-
 @app.get('/get_username/{account_id}')
 async def get_username(account_id: str):
     return database.get_username(account_id=account_id)
-
+# -x-
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8002)

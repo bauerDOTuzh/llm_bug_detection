@@ -1,3 +1,4 @@
+// -x- PREPEND ONLY
 package model
 
 import (
@@ -87,14 +88,6 @@ type Pagination struct {
 type DataList struct {
 	Data       interface{} `json:"data"`
 	Pagination Pagination  `json:"pagination,omitempty"`
-}
-// -x-
-func SortOrder(c *gin.Context) func(db *gorm.DB) *gorm.DB {
-	return func(db *gorm.DB) *gorm.DB {
-		sort := c.DefaultQuery("order", "desc")
-		order := fmt.Sprintf("`%s` %s", DefaultQuery(c, "sort_by", "id"), sort)
-		return db.Order(order)
-	}
 }
 // -x-
 func QueryToInSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
@@ -270,5 +263,25 @@ type Method interface {
 	FirstByID(id int) (*gen.T, error)
 	// DeleteByID update @@table set deleted_at=strftime('%Y-%m-%d %H:%M:%S','now') where id=@id
 	DeleteByID(id int) error
+}
+// -x-
+func OrderAndPaginate(c *gin.Context) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		db = applySorting(c, db)
+
+		page := cast.ToInt(c.Query("page"))
+		if page == 0 {
+			page = 1
+		}
+
+		pageSize := settings.ServerSettings.PageSize
+		reqPageSize := c.Query("page_size")
+		if reqPageSize != "" {
+			pageSize = cast.ToInt(reqPageSize)
+		}
+		offset := (page - 1) * pageSize
+
+		return db.Offset(offset).Limit(pageSize)
+	}
 }
 // -x-

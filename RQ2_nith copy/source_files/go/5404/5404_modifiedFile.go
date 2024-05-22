@@ -1,4 +1,4 @@
-// -x-
+// -x- PREPEND ONLY
 package file
 
 import (

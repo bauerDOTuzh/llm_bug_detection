@@ -1,3 +1,4 @@
+{prepend_content}
 func joinPath_createDictionary(dst, name string, isDir bool) (string, error) {
     target := filepath.Join(dst, name)
     if isDir {
@@ -9,3 +10,4 @@ func joinPath_createDictionary(dst, name string, isDir bool) (string, error) {
     }
     return target, nil
 }
+{append_content}

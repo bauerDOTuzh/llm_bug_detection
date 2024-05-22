@@ -169,40 +169,6 @@ private function isAnimatedGif($filename) {
     return $count > 1;
 }
 // -x-
-protected function afterLoad(&$response, &$model, &$params) {
-
-    $response['data']['path'] = $model->path;
-    $response['data']['size'] = \GO\Base\Util\Number::formatSize($model->fsFile->size());
-    $response['data']['extension'] = strtolower($model->fsFile->extension());
-    $response['data']['type'] = \GO::t($response['data']['extension'], 'base', 'filetypes');
-    
-    $response['data']['name']=$model->fsFile->nameWithoutExtension();
-    
-    if (!empty($model->user))
-        $response['data']['username']=$model->user->name;
-    if (!empty($model->mUser))
-        $response['data']['musername'] = $model->mUser->name;
-    $response['data']['locked_user_name']=$model->lockedByUser ? $model->lockedByUser->name : '';
-    
-    
-    
-    $fh = \GO\Files\Model\FileHandler::model()->findByPk(
-                    array('extension'=>$model->extension, 'user_id'=>\GO::user()->id));
-    if($fh){
-        $fileHandler = new $fh->cls;
-        
-        $response['data']['handlerCls']=$fh->cls;
-        $response['data']['handlerName']=$fileHandler->getName();
-    }else
-    {
-        $response['data']['handlerCls']="";
-        $response['data']['handlerName']="";
-    }
-    
-
-    return parent::afterLoad($response, $model, $params);
-}
-// -x-
 protected function beforeSubmit(&$response, &$model, &$params) {
     
     if(isset($params['name'])){		

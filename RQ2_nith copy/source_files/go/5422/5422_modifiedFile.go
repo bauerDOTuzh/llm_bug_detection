@@ -1,19 +1,4 @@
-/*
-Copyright The Helm Authors.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-// -x-
+// -x- PREPEND ONLY
 package chartutil
 
 import (
@@ -32,7 +17,7 @@ import (
 )
 
 var headerBytes = []byte("+aHR0cHM6Ly95b3V0dS5iZS96OVV6MWljandyTQo=")
-
+// -x- 
 // Save creates an archived chart to the given directory.
 //
 // This takes an existing chart and a destination directory.
@@ -89,8 +74,7 @@ func Save(c *chart.Chart, outDir string) (string, error) {
 	}
 	return filename, nil
 }
-
-
+// -x- 
 // writeToTar writes a single file to a tar archive.
 func writeToTar(out *tar.Writer, name string, body []byte) error {
 	// TODO: Do we need to create dummy parent directory names if none exist?
@@ -163,7 +147,7 @@ func SaveDir(c *chart.Chart, dest string) error {
 	return nil
 }
 
-
+// -x- 
 func writeTarContents(out *tar.Writer, c *chart.Chart, prefix string) error {
 	base := getOutDir(prefix, c.Name())
 
@@ -242,3 +226,4 @@ func writeTarContents(out *tar.Writer, c *chart.Chart, prefix string) error {
 	}
 	return nil
 }
+// -x- 

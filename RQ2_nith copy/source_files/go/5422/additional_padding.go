@@ -498,11 +498,11 @@ import "fmt"
 
 // ValidationError represents a data validation error.
 type ValidationError string
-
+// -x-
 func (v ValidationError) Error() string {
 	return "validation: " + string(v)
 }
-
+// -x-
 // ValidationErrorf takes a message and formatting options and creates a ValidationError
 func ValidationErrorf(msg string, args ...interface{}) ValidationError {
 	return ValidationError(fmt.Sprintf(msg, args...))
@@ -533,7 +533,7 @@ import (
 
 	"github.com/Masterminds/semver/v3"
 )
-
+// -x-
 // Maintainer describes a Chart maintainer.
 type Maintainer struct {
 	// Name is a user name or organization name
@@ -543,7 +543,7 @@ type Maintainer struct {
 	// URL is an optional URL to an address for the named maintainer
 	URL string `json:"url,omitempty"`
 }
-
+// -x-
 // Validate checks valid data and sanitizes string characters.
 func (m *Maintainer) Validate() error {
 	if m == nil {
@@ -554,7 +554,7 @@ func (m *Maintainer) Validate() error {
 	m.URL = sanitizeString(m.URL)
 	return nil
 }
-
+// -x-
 // Metadata for a Chart file. This models the structure of a Chart.yaml file.
 type Metadata struct {
 	// The name of the chart. Required.
@@ -661,7 +661,7 @@ func (md *Metadata) Validate() error {
 	}
 	return nil
 }
-
+// -x-
 func isValidChartType(in string) bool {
 	switch in {
 	case "", "application", "library":
@@ -669,12 +669,12 @@ func isValidChartType(in string) bool {
 	}
 	return false
 }
-
+// -x-
 func isValidSemver(v string) bool {
 	_, err := semver.NewVersion(v)
 	return err == nil
 }
-
+// -x-
 // sanitizeString normalize spaces and removes non-printable characters.
 func sanitizeString(str string) string {
 	return strings.Map(func(r rune) rune {
@@ -722,17 +722,17 @@ import (
 
 	"helm.sh/helm/v3/pkg/chart"
 )
-
+// -x-
 var drivePathPattern = regexp.MustCompile(`^[a-zA-Z]:/`)
 
 // FileLoader loads a chart from a file
 type FileLoader string
-
+// -x-
 // Load loads a chart
 func (l FileLoader) Load() (*chart.Chart, error) {
 	return LoadFile(string(l))
 }
-
+// -x-
 // LoadFile loads from an archive file.
 func LoadFile(name string) (*chart.Chart, error) {
 	if fi, err := os.Stat(name); err != nil {
@@ -760,7 +760,7 @@ func LoadFile(name string) (*chart.Chart, error) {
 	}
 	return c, err
 }
-
+// -x-
 // ensureArchive's job is to return an informative error if the file does not appear to be a gzipped archive.
 //
 // Sometimes users will provide a values.yaml for an argument where a chart is expected. One common occurrence
@@ -883,7 +883,7 @@ func LoadArchiveFiles(in io.Reader) ([]*BufferedFile, error) {
 	}
 	return files, nil
 }
-
+// -x-
 // LoadArchive loads from a reader containing a compressed tar archive.
 func LoadArchive(in io.Reader) (*chart.Chart, error) {
 	files, err := LoadArchiveFiles(in)
@@ -1044,12 +1044,12 @@ import (
 
 	"helm.sh/helm/v3/pkg/chart"
 )
-
+// -x-
 // ChartLoader loads a chart.
 type ChartLoader interface {
 	Load() (*chart.Chart, error)
 }
-
+// -x-
 // Loader returns a new ChartLoader appropriate for the given chart name
 func Loader(name string) (ChartLoader, error) {
 	fi, err := os.Stat(name)
@@ -1062,7 +1062,7 @@ func Loader(name string) (ChartLoader, error) {
 	return FileLoader(name), nil
 
 }
-
+// -x-
 // Load takes a string name, tries to resolve it to a file or directory, and then loads it.
 //
 // This is the preferred way to load a chart. It will discover the chart encoding
@@ -1077,13 +1077,13 @@ func Load(name string) (*chart.Chart, error) {
 	}
 	return l.Load()
 }
-
+// -x-
 // BufferedFile represents an archive file buffered for later processing.
 type BufferedFile struct {
 	Name string
 	Data []byte
 }
-
+// -x-
 // LoadFiles loads from in-memory files.
 func LoadFiles(files []*BufferedFile) (*chart.Chart, error) {
 	c := new(chart.Chart)
@@ -1217,7 +1217,7 @@ func LoadFiles(files []*BufferedFile) (*chart.Chart, error) {
 
 	return c, nil
 }
-//-x-
+// -x-
 /*
 Copyright The Helm Authors.
 
@@ -1233,9 +1233,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
+// -x-
 package chartutil
-
+// -x-
 import (
 	"os"
 	"path/filepath"
@@ -1245,7 +1245,7 @@ import (
 
 	"helm.sh/helm/v3/pkg/chart"
 )
-
+// -x-
 // LoadChartfile loads a Chart.yaml file into a *chart.Metadata.
 func LoadChartfile(filename string) (*chart.Metadata, error) {
 	b, err := os.ReadFile(filename)
@@ -1256,7 +1256,7 @@ func LoadChartfile(filename string) (*chart.Metadata, error) {
 	err = yaml.Unmarshal(b, y)
 	return y, err
 }
-
+// -x-
 // SaveChartfile saves the given metadata as a Chart.yaml file at the given path.
 //
 // 'filename' should be the complete path and filename ('foo/Chart.yaml')

@@ -5,7 +5,7 @@ var skins = require("../skins");
 var cache = require("../cache");
 var path = require("path");
 var url = require("url");
-
+// -x-
 // handle the appropriate 'default=' response
 // uses either mhf_steve or mhf_alex (based on +userId+) if no +def+ given
 // callback: response object
@@ -48,7 +48,7 @@ function handle_default(img_status, userId, size, def, req, err, callback) {
     });
   }
 }
-
+// -x-
 // GET avatar request
 module.exports = function(req, callback) {
   var userId = (req.url.path_list[1] || "").split(".")[0];
@@ -113,7 +113,7 @@ module.exports = function(req, callback) {
 // -x-
 var helpers = require("../helpers");
 var cache = require("../cache");
-
+// -x-
 // GET cape request
 module.exports = function(req, callback) {
   var userId = (req.url.path_list[1] || "").split(".")[0];
@@ -173,16 +173,16 @@ var ejs = require("ejs");
 
 var str;
 var index;
-
+// -x-
 // pre-compile the index page
 function compile() {
   logging.log("Compiling index page");
   str = read(path.join(__dirname, "..", "views", "index.html.ejs"), "utf-8");
   index = ejs.compile(str);
 }
-
+// -x-
 compile();
-
+// -x-
 // GET index request
 module.exports = function(req, callback) {
   if (config.server.debug_enabled) {
@@ -209,7 +209,7 @@ var skins = require("../skins");
 var path = require("path");
 var url = require("url");
 var fs = require("fs");
-
+// -x-
 // handle the appropriate 'default=' response
 // uses either mhf_steve or mhf_alex (based on +userId+) if no +def+ given
 // callback: response object
@@ -255,7 +255,7 @@ function handle_default(rid, scale, overlay, body, img_status, userId, size, def
     });
   }
 }
-
+// -x-
 // GET render request
 module.exports = function(req, callback) {
   var raw_type = req.url.path_list[1] || "";
@@ -334,7 +334,7 @@ var cache = require("../cache");
 var path = require("path");
 var lwip = require("@randy.tarampi/lwip");
 var url = require("url");
-
+// -x-
 // handle the appropriate 'default=' response
 // uses either mhf_steve or mhf_alex (based on +userId+) if no +def+ given
 // callback: response object
@@ -386,7 +386,7 @@ function handle_default(img_status, userId, def, req, err, callback) {
     });
   }
 }
-
+// -x-
 // GET skin request
 module.exports = function(req, callback) {
   var userId = (req.url.path_list[1] || "").split(".")[0];
@@ -443,7 +443,7 @@ var node_redis = require("redis");
 var config = require("../config");
 
 var redis = null;
-
+// -x-
 // sets up redis connection
 // flushes redis when using ephemeral storage (e.g. Heroku)
 function connect_redis() {
@@ -463,14 +463,14 @@ function connect_redis() {
     logging.warn("Redis connection lost!");
   });
 }
-
+// -x-
 var exp = {};
-
+// -x-
 // returns the redis instance
 exp.get_redis = function() {
   return redis;
 };
-
+// -x-
 // set model type to value of *slim*
 exp.set_slim = function(rid, userId, slim, callback) {
   logging.debug(rid, "setting slim for", userId, "to " + slim);
@@ -479,7 +479,7 @@ exp.set_slim = function(rid, userId, slim, callback) {
 
   redis.hmset(userId, ["a", Number(slim)], callback);
 };
-
+// -x-
 // sets the timestamp for +userId+
 // if +temp+ is true, the timestamp is set so that the record will be outdated after 60 seconds
 // these 60 seconds match the duration of Mojang's rate limit ban
@@ -494,7 +494,7 @@ exp.update_timestamp = function(rid, userId, temp, callback) {
     callback(err);
   });
 };
-
+// -x-
 // create the key +userId+, store +skin_hash+, +cape_hash+, +slim+ and current time
 // if +skin_hash+ or +cape_hash+ are undefined, they aren't stored
 // this is useful to store cape and skin at separate times, without overwriting the other
@@ -524,13 +524,13 @@ exp.save_hash = function(rid, userId, skin_hash, cape_hash, slim, callback) {
     callback(err);
   });
 };
-
+// -x-
 // removes the hash for +userId+ from the cache
 exp.remove_hash = function(rid, userId) {
   logging.debug(rid, "deleting hash from cache");
   redis.del(userId.toLowerCase(), "h", "t");
 };
-
+// -x-
 // get a details object for +userId+
 // {skin: "0123456789abcdef", cape: "gs1gds1g5d1g5ds1", time: 1414881524512}
 // callback: error, details
@@ -551,7 +551,7 @@ exp.get_details = function(userId, callback) {
     callback(err, details);
   });
 };
-
+// -x-
 connect_redis();
 module.exports = exp;
 // -x-
@@ -563,16 +563,16 @@ var cache = require("./cache");
 var skins = require("./skins");
 var path = require("path");
 var fs = require("fs");
-
+// -x-
 // 0098cb60fa8e427cb299793cbd302c9a
 var valid_user_id = /^[0-9a-fA-F]{32}$/; // uuid
 var hash_pattern = /[0-9a-f]+$/;
-
+// -x-
 // gets the hash from the textures.minecraft.net +url+
 function get_hash(url) {
   return hash_pattern.exec(url)[0].toLowerCase();
 }
-
+// -x-
 // gets the skin for +userId+ with +profile+
 // uses +cache_details+ to determine if the skin needs to be downloaded or can be taken from cache
 // face and face+helm images are extracted and stored to files
@@ -631,7 +631,7 @@ function store_skin(rid, userId, profile, cache_details, callback) {
     }
   });
 }
-
+// -x-
 // gets the cape for +userId+ with +profile+
 // uses +cache_details+ to determine if the cape needs to be downloaded or can be taken from cache
 // the cape - if downloaded - is stored to file
@@ -670,7 +670,7 @@ function store_cape(rid, userId, profile, cache_details, callback) {
     }
   });
 }
-
+// -x-
 // used by store_images to queue simultaneous requests for identical userId
 // the first request has to be completed until all others are continued
 // otherwise we risk running into Mojang's rate limit and deleting the cached skin
@@ -678,7 +678,7 @@ var requests = {
   skin: {},
   cape: {}
 };
-
+// -x-
 var loginterval = setInterval(function(){
   var skinreqs = Object.keys(requests.skin).length;
   var capereqs = Object.keys(requests.cape).length;
@@ -686,7 +686,7 @@ var loginterval = setInterval(function(){
     logging.log("Currently waiting for " + skinreqs + " skin requests and " + capereqs + " cape requests.");
   }
 }, 1000);
-
+// -x-
 // add a request for +userId+ and +type+ to the queue
 function push_request(userId, type, callback) {
   // avoid special properties (e.g. 'constructor')
@@ -696,7 +696,7 @@ function push_request(userId, type, callback) {
   }
   requests[type][userId_safe].push(callback);
 }
-
+// -x-
 // calls back all queued requests that match userId and type
 function resume(userId, type, err, hash, slim) {
   var userId_safe = "!" + userId;
@@ -718,7 +718,7 @@ function resume(userId, type, err, hash, slim) {
     delete requests[type][userId_safe];
   }
 }
-
+// -x-
 // downloads the images for +userId+ while checking the cache
 // status based on +cache_details+. +type+ specifies which
 // image type should be called back on
@@ -770,15 +770,15 @@ function store_images(rid, userId, cache_details, type, callback) {
     });
   }
 }
-
+// -x-
 var exp = {};
-
+// -x-
 // returns true if the +userId+ is a valid userId
 // the UUID might not exist, however
 exp.id_valid = function(userId) {
   return valid_user_id.test(userId);
 };
-
+// -x-
 // decides whether to get a +type+ image for +userId+ from disk or to download it
 // callback: error, status, hash, slim
 // for status, see response.js
@@ -824,7 +824,7 @@ exp.get_image_hash = function(rid, userId, type, callback) {
     }
   });
 };
-
+// -x-
 
 // handles requests for +userId+ avatars with +size+
 // callback: error, status, image buffer, skin hash
@@ -855,7 +855,7 @@ exp.get_avatar = function(rid, userId, overlay, size, callback) {
     }
   });
 };
-
+// -x-
 // handles requests for +userId+ skins
 // callback: error, skin hash, status, image buffer, slim
 exp.get_skin = function(rid, userId, callback) {
@@ -879,7 +879,7 @@ exp.get_skin = function(rid, userId, callback) {
     }
   });
 };
-
+// -x-
 // helper method used for file names
 // possible returned names based on +overlay+ and +body+ are:
 // body, bodyhelm, head, headhelm
@@ -887,7 +887,7 @@ function get_type(overlay, body) {
   var text = body ? "body" : "head";
   return overlay ? text + "helm" : text;
 }
-
+// -x-
 // handles creations of 3D renders
 // callback: error, status, skin hash, image buffer
 exp.get_render = function(rid, userId, scale, overlay, body, callback) {
@@ -923,7 +923,7 @@ exp.get_render = function(rid, userId, scale, overlay, body, callback) {
     });
   });
 };
-
+// -x-
 // handles requests for +userId+ capes
 // callback: error, cape hash, status, image buffer
 exp.get_cape = function(rid, userId, callback) {
@@ -951,15 +951,15 @@ exp.get_cape = function(rid, userId, callback) {
     });
   });
 };
-
+// -x-
 exp.stoplog = function() {
   clearInterval(loginterval);
 }
-
+// -x-
 module.exports = exp;
 // -x-
 var config = require("../config");
-
+// -x-
 var exp = {};
 
 // returns all values in the +args+ object separated by " "
@@ -970,7 +970,7 @@ function join_args(args) {
   }
   return values.join(" ");
 }
-
+// -x-
 // prints +args+ to +logger+ (defaults to `console.log`)
 // the +level+ and a timestamp is prepended to each line of log
 // the timestamp can be disabled in the config
@@ -982,11 +982,12 @@ function log(level, args, logger) {
     logger(time, level + ":", lines[i]);
   }
 }
-
+// -x-
 // log with INFO level
 exp.log = function() {
   log(" INFO", arguments);
 };
+// -x-
 // log with WARN level
 exp.warn = function() {
   log(" WARN", arguments, console.warn);
@@ -995,6 +996,7 @@ exp.warn = function() {
 exp.error = function() {
   log("ERROR", arguments, console.error);
 };
+// -x-
 // log with DEBUG level if debug logging is enabled
 if (config.server.debug_enabled) {
   exp.debug = function() {
@@ -1003,6 +1005,7 @@ if (config.server.debug_enabled) {
 } else {
   exp.debug = function() {};
 }
+// -x-
 
 module.exports = exp;
 // -x-
