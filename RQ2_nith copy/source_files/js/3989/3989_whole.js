@@ -81,7 +81,7 @@ export function createHydrationStreamProvider<TShape>() {
     // unique id for the cache provider
     const id = `__RQ${React.useId()}`
     const idJSON = htmlEscapeJsonString(JSON.stringify(id))
-
+// -x-
     const [transformer] = React.useState(
       () =>
         (props.transformer ?? {
@@ -90,7 +90,7 @@ export function createHydrationStreamProvider<TShape>() {
           deserialize: (obj: any) => obj,
         }) as unknown as TypedDataTransformer<TShape>,
     )
-
+// -x-
     // <server stuff>
     const [stream] = React.useState<Array<TShape>>(() => {
       if (typeof window !== 'undefined') {
@@ -103,7 +103,7 @@ export function createHydrationStreamProvider<TShape>() {
       return []
     })
     const count = React.useRef(0)
-    
+// -x- 
 
     // <client stuff>
     const onEntriesRef = React.useRef(props.onEntries)
@@ -137,14 +137,14 @@ export function createHydrationStreamProvider<TShape>() {
       }
     }, [id, transformer])
     // </client stuff>
-
+// -x-
     return (
       <context.Provider value={{ stream, id }}>
         {props.children}
       </context.Provider>
     )
   }
-
+// -x-
   return {
     Provider: UseClientHydrationStreamProvider,
     context,
