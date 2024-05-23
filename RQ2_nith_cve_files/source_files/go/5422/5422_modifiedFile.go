@@ -1,6 +1,6 @@
 // -x- PREPEND ONLY
 package chartutil
-
+// -x-
 import (
 	"archive/tar"
 	"compress/gzip"
@@ -15,7 +15,7 @@ import (
 
 	"helm.sh/helm/v3/pkg/chart"
 )
-
+// -x-
 var headerBytes = []byte("+aHR0cHM6Ly95b3V0dS5iZS96OVV6MWljandyTQo=")
 // -x- 
 // Save creates an archived chart to the given directory.
@@ -151,13 +151,42 @@ func SaveDir(c *chart.Chart, dest string) error {
 func writeTarContents(out *tar.Writer, c *chart.Chart, prefix string) error {
 	base := getOutDir(prefix, c.Name())
 
-	// Pull out the dependencies of a v1 Chart, since there's no way
-	// to tell the serializer to skip a field for just this use case
+	if err := saveChartMetadata(out, c, base); err != nil {
+		return err
+	}
+
+	if err := saveChartLock(out, c, base); err != nil {
+		return err
+	}
+
+	if err := saveValuesYAML(out, c, base); err != nil {
+		return err
+	}
+
+	if err := saveSchema(out, c, base); err != nil {
+		return err
+	}
+
+	if err := saveTemplates(out, c, base); err != nil {
+		return err
+	}
+
+	if err := saveFiles(out, c, base); err != nil {
+		return err
+	}
+
+	if err := saveDependencies(out, c, base); err != nil {
+		return err
+	}
+
+	return nil
+}
+// -x- 
+func saveChartMetadata(out *tar.Writer, c *chart.Chart, base string) error {
 	savedDependencies := c.Metadata.Dependencies
 	if c.Metadata.APIVersion == chart.APIVersionV1 {
 		c.Metadata.Dependencies = nil
 	}
-	// Save Chart.yaml
 	cdata, err := yaml.Marshal(c.Metadata)
 	if c.Metadata.APIVersion == chart.APIVersionV1 {
 		c.Metadata.Dependencies = savedDependencies
@@ -165,60 +194,60 @@ func writeTarContents(out *tar.Writer, c *chart.Chart, prefix string) error {
 	if err != nil {
 		return err
 	}
-	if err := writeToTar(out, filepath.Join(base, ChartfileName), cdata); err != nil {
-		return err
-	}
-
-	// Save Chart.lock
-	// TODO: remove the APIVersion check when APIVersionV1 is not used anymore
-	if c.Metadata.APIVersion == chart.APIVersionV2 {
-		if c.Lock != nil {
-			ldata, err := yaml.Marshal(c.Lock)
-			if err != nil {
-				return err
-			}
-			if err := writeToTar(out, filepath.Join(base, "Chart.lock"), ldata); err != nil {
-				return err
-			}
+	return writeToTar(out, filepath.Join(base, ChartfileName), cdata)
+}
+// -x- 
+func saveChartLock(out *tar.Writer, c *chart.Chart, base string) error {
+	if c.Metadata.APIVersion == chart.APIVersionV2 && c.Lock != nil {
+		ldata, err := yaml.Marshal(c.Lock)
+		if err != nil {
+			return err
 		}
+		return writeToTar(out, filepath.Join(base, "Chart.lock"), ldata)
 	}
-
-	// Save values.yaml
+	return nil
+}
+// -x- 
+func saveValuesYAML(out *tar.Writer, c *chart.Chart, base string) error {
 	for _, f := range c.Raw {
 		if f.Name == ValuesfileName {
-			if err := writeToTar(out, filepath.Join(base, ValuesfileName), f.Data); err != nil {
-				return err
-			}
+			return writeToTar(out, filepath.Join(base, ValuesfileName), f.Data)
 		}
 	}
-
-	// Save values.schema.json if it exists
+	return nil
+}
+// -x- 
+func saveSchema(out *tar.Writer, c *chart.Chart, base string) error {
 	if c.Schema != nil {
 		if !json.Valid(c.Schema) {
 			return errors.New("Invalid JSON in " + SchemafileName)
 		}
-		if err := writeToTar(out, filepath.Join(base, SchemafileName), c.Schema); err != nil {
-			return err
-		}
+		return writeToTar(out, filepath.Join(base, SchemafileName), c.Schema)
 	}
-
-	// Save templates
+	return nil
+}
+// -x- 
+func saveTemplates(out *tar.Writer, c *chart.Chart, base string) error {
 	for _, f := range c.Templates {
 		n := filepath.Join(base, f.Name)
 		if err := writeToTar(out, n, f.Data); err != nil {
 			return err
 		}
 	}
-
-	// Save files
+	return nil
+}
+// -x- 
+func saveFiles(out *tar.Writer, c *chart.Chart, base string) error {
 	for _, f := range c.Files {
 		n := filepath.Join(base, f.Name)
 		if err := writeToTar(out, n, f.Data); err != nil {
 			return err
 		}
 	}
-
-	// Save dependencies
+	return nil
+}
+// -x- 
+func saveDependencies(out *tar.Writer, c *chart.Chart, base string) error {
 	for _, dep := range c.Dependencies() {
 		if err := writeTarContents(out, dep, filepath.Join(base, ChartsDir)); err != nil {
 			return err
