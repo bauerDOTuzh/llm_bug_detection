@@ -39,7 +39,7 @@ func GenerateAllModel() []any {
 		Notification{},
 	}
 }
-
+// -x-
 func logMode() gormlogger.Interface {
 	switch settings.ServerSettings.RunMode {
 	case gin.ReleaseMode:

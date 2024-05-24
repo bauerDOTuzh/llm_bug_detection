@@ -1,6 +1,6 @@
 // -x-
 package cosy
-
+// -x-
 import (
 	"fmt"
 	"github.com/0xJacky/Nginx-UI/internal/logger"
@@ -8,56 +8,56 @@ import (
 	"gorm.io/gorm"
 	"strings"
 )
-
+// -x-
 func (c *Ctx[T]) SetFussy(keys ...string) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, func(tx *gorm.DB) *gorm.DB {
 		return QueryToFussySearch(c.ctx, tx, keys...)
 	})
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) SetFussyKeys(value string, keys ...string) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, func(tx *gorm.DB) *gorm.DB {
 		return QueryToFussyKeysSearch(c.ctx, tx, value, keys...)
 	})
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) SetEqual(keys ...string) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, func(tx *gorm.DB) *gorm.DB {
 		return QueryToEqualSearch(c.ctx, tx, keys...)
 	})
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) SetIn(keys ...string) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, func(tx *gorm.DB) *gorm.DB {
 		return QueryToInSearch(c.ctx, tx, keys...)
 	})
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) SetOrFussy(keys ...string) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, func(tx *gorm.DB) *gorm.DB {
 		return QueryToOrFussySearch(c.ctx, tx, keys...)
 	})
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) SetOrEqual(keys ...string) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, func(tx *gorm.DB) *gorm.DB {
 		return QueryToOrEqualSearch(c.ctx, tx, keys...)
 	})
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) SetOrIn(keys ...string) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, func(tx *gorm.DB) *gorm.DB {
 		return QueryToOrInSearch(c.ctx, tx, keys...)
 	})
 	return c
 }
-
+// -x-
 func QueryToInSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	for _, v := range keys {
 		queryArray := c.QueryArray(v + "[]")
@@ -78,7 +78,7 @@ func QueryToInSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	}
 	return db
 }
-
+// -x-
 func QueryToEqualSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	for _, v := range keys {
 		if c.Query(v) != "" {
@@ -95,7 +95,7 @@ func QueryToEqualSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	}
 	return db
 }
-
+// -x-
 func QueryToFussySearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	for _, v := range keys {
 		if c.Query(v) != "" {
@@ -121,7 +121,7 @@ func QueryToFussySearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	}
 	return db
 }
-
+// -x-
 func QueryToFussyKeysSearch(c *gin.Context, db *gorm.DB, value string, keys ...string) *gorm.DB {
 	if c.Query(value) == "" {
 		return db
@@ -142,7 +142,7 @@ func QueryToFussyKeysSearch(c *gin.Context, db *gorm.DB, value string, keys ...s
 
 	return db.Where(condition)
 }
-
+// -x-
 func QueryToOrInSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	for _, v := range keys {
 		queryArray := c.QueryArray(v + "[]")
@@ -163,7 +163,7 @@ func QueryToOrInSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	}
 	return db
 }
-
+// -x-
 func QueryToOrEqualSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	for _, v := range keys {
 		if c.Query(v) != "" {
@@ -180,7 +180,7 @@ func QueryToOrEqualSearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB 
 	}
 	return db
 }
-
+// -x-
 func QueryToOrFussySearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB {
 	for _, v := range keys {
 		if c.Query(v) != "" {
@@ -208,14 +208,14 @@ func QueryToOrFussySearch(c *gin.Context, db *gorm.DB, keys ...string) *gorm.DB 
 }
 // -x-
 package cosy
-
+// -x-
 import "gorm.io/gorm"
-
+// -x-
 func (c *Ctx[T]) GormScope(hook func(tx *gorm.DB) *gorm.DB) *Ctx[T] {
 	c.gormScopes = append(c.gormScopes, hook)
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) beforeExecuteHook() {
 	if len(c.beforeExecuteHookFunc) > 0 {
 		for _, v := range c.beforeExecuteHookFunc {
@@ -223,7 +223,7 @@ func (c *Ctx[T]) beforeExecuteHook() {
 		}
 	}
 }
-
+// -x-
 func (c *Ctx[T]) beforeDecodeHook() {
 	if len(c.beforeDecodeHookFunc) > 0 {
 		for _, v := range c.beforeDecodeHookFunc {
@@ -231,17 +231,17 @@ func (c *Ctx[T]) beforeDecodeHook() {
 		}
 	}
 }
-
+// -x-
 func (c *Ctx[T]) BeforeDecodeHook(hook ...func(ctx *Ctx[T])) *Ctx[T] {
 	c.beforeDecodeHookFunc = append(c.beforeDecodeHookFunc, hook...)
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) BeforeExecuteHook(hook ...func(ctx *Ctx[T])) *Ctx[T] {
 	c.beforeExecuteHookFunc = append(c.beforeExecuteHookFunc, hook...)
 	return c
 }
-
+// -x-
 func (c *Ctx[T]) ExecutedHook(hook ...func(ctx *Ctx[T])) *Ctx[T] {
 	c.executedHookFunc = append(c.executedHookFunc, hook...)
 	return c

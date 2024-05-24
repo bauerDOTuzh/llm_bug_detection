@@ -1,0 +1,456 @@
+file_id,prompt,model_output,model
+2460,"Analyze the file content below and tell me if there's any line that may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')). Your output must adhere to the following structure.
+
+Expected Output Structure:
+SE: very Short Explanation of why the line may contain a bug of given type (e.g., The 'user_input' is directly concatenated into HTML content without sanitation).
+BL: the Bugged Line, if any is found, else none (e.g., `response = ""<html><body><h1>Welcome, "" + user_input + ""!</h1></body></html>""`).
+BUG FOUND: YES if a bug is found, else NO.
+
+Example output:
+SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `response = ""<html><body><h1>Welcome, "" + user_input + ""!</h1></body></html>""`
+BUG FOUND: YES
+
+File Content:
+<?php
+
+public function getIDsfilter(Request $request){
+    $conditionFilters = [];
+    $selectedIds = $request->get('selectedIds', []);
+    if (!empty($selectedIds)) {
+        $selectedIds = explode(',', $selectedIds);
+        //add a condition if id numbers are specified
+        $conditionFilters[] = 'id IN (' . implode(',', $selectedIds) . ')';
+    }
+    return $conditionFilters;
+}
+protected function addThumbnailCacheHeaders(Response $response): void
+{
+    $lifetime = 300;
+    $date = new \DateTime('now');
+    $date->add(new \DateInterval('PT' . $lifetime . 'S'));
+
+    $response->setMaxAge($lifetime);
+    $response->setPublic();
+    $response->setExpires($date);
+    $response->headers->set('Pragma', '');
+}
+/**
+ * @throws \Exception
+ */
+protected function getTreeNodeConfig(ElementInterface $element): array
+{
+    return $this->elementService->getElementTreeNodeConfig($element);
+}
+/**
+ * @Route(""/delete"", name=""pimcore_admin_asset_delete"", methods={""DELETE""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function deleteAction(Request $request): JsonResponse
+{
+    $type = $request->get('type');
+
+    if ($type === 'children') {
+        $parentAsset = Asset::getById((int) $request->get('id'));
+
+        $list = new Asset\Listing();
+        $list->setCondition('`path` LIKE ?', [Helper::escapeLike($parentAsset->getRealFullPath()) . '/%']);
+        $list->setLimit((int)$request->get('amount'));
+        $list->setOrderKey('LENGTH(`path`)', false);
+        $list->setOrder('DESC');
+
+        $deletedItems = [];
+        foreach ($list as $asset) {
+            $deletedItems[$asset->getId()] = $asset->getRealFullPath();
+            if ($asset->isAllowed('delete') && !$asset->isLocked()) {
+                $asset->delete();
+            }
+        }
+
+        return $this->adminJson(['success' => true, 'deleted' => $deletedItems]);
+    }
+    if ($request->get('id')) {
+        $asset = Asset::getById((int) $request->get('id'));
+        if ($asset && $asset->isAllowed('delete')) {
+            if ($asset->isLocked()) {
+                return $this->adminJson([
+                    'success' => false,
+                    'message' => 'prevented deleting asset, because it is locked: ID: ' . $asset->getId(),
+                ]);
+            }
+
+            $asset->delete();
+
+            return $this->adminJson(['success' => true]);
+        }
+    }
+
+    throw $this->createAccessDeniedHttpException();
+}
+/**
+ * @Route(""/add-folder"", name=""pimcore_admin_asset_addfolder"", methods={""POST""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function addFolderAction(Request $request): JsonResponse
+{
+    $success = false;
+    $parentAsset = Asset::getById((int)$request->get('parentId'));
+    $equalAsset = Asset::getByPath($parentAsset->getRealFullPath() . '/' . $request->get('name'));
+
+    if ($parentAsset->isAllowed('create')) {
+        if (!$equalAsset) {
+            $asset = Asset::create($request->get('parentId'), [
+                'filename' => $request->get('name'),
+                'type' => 'folder',
+                'userOwner' => $this->getAdminUser()->getId(),
+                'userModification' => $this->getAdminUser()->getId(),
+            ]);
+            $success = true;
+        }
+    } else {
+        Logger::debug('prevented creating asset because of missing permissions');
+    }
+
+    return $this->adminJson(['success' => $success]);
+}
+/**
+ * @Route(""/delete-info"", name=""pimcore_admin_asset_deleteinfo"", methods={""GET""})
+ *
+ * @param Request $request
+ * @param EventDispatcherInterface $eventDispatcher
+ *
+ * @return JsonResponse
+ */
+public function deleteInfoAction(Request $request, EventDispatcherInterface $eventDispatcher): JsonResponse
+{
+    return parent::deleteInfoAction($request, $eventDispatcher);
+}
+/**
+ * @Route(""/tree-get-root"", name=""pimcore_admin_asset_treegetroot"", methods={""GET""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function treeGetRootAction(Request $request): JsonResponse
+{
+    return parent::treeGetRootAction($request);
+}
+?>
+    "," SE: The 'type' and 'id' values from the request are directly used in SQL queries without any sanitation, which could potentially lead to SQL Injection.
+BL: In the 'deleteAction' function, `$parentAsset = Asset::getById((int) $request->get('id'));`, and `$list->setCondition('`path` LIKE ?', [Helper::escapeLike($parentAsset->getRealFullPath()) . '/%']);`
+BUG FOUND: YES
+
+SE: The 'parentId' and 'name' values from the request are directly used in SQL queries without any sanitation, which could potentially lead to SQL Injection.
+BL: In the 'addFolderAction' function, `$parentAsset = Asset::getById((int)$request->get('parentId'));`, and `$asset = Asset::create($request->get('parentId'), [...]);`
+BUG FOUND: YES
+
+Note: The 'deleteInfoAction' and 'treeGetRootAction' functions also have similar potential issues, but they are inherited from the parent class and not directly in the provided code.",mixtral-8x7b-32768
+2461,"Analyze the file content below and tell me if there's any line that may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')). Your output must adhere to the following structure.
+
+Expected Output Structure:
+SE: very Short Explanation of why the line may contain a bug of given type (e.g., The 'user_input' is directly concatenated into HTML content without sanitation).
+BL: the Bugged Line, if any is found, else none (e.g., `response = ""<html><body><h1>Welcome, "" + user_input + ""!</h1></body></html>""`).
+BUG FOUND: YES if a bug is found, else NO.
+
+Example output:
+SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `response = ""<html><body><h1>Welcome, "" + user_input + ""!</h1></body></html>""`
+BUG FOUND: YES
+
+File Content:
+<?php
+/**
+ * @throws \Exception
+ */
+protected function getTreeNodeConfig(ElementInterface $element): array
+{
+    return $this->elementService->getElementTreeNodeConfig($element);
+}
+/**
+ * @Route(""/delete-info"", name=""pimcore_admin_asset_deleteinfo"", methods={""GET""})
+ *
+ * @param Request $request
+ * @param EventDispatcherInterface $eventDispatcher
+ *
+ * @return JsonResponse
+ */
+public function deleteInfoAction(Request $request, EventDispatcherInterface $eventDispatcher): JsonResponse
+{
+    return parent::deleteInfoAction($request, $eventDispatcher);
+}
+public function getIDsfilter(Request $request){
+    $conditionFilters = [];
+    $selectedIds = $request->get('selectedIds', []);
+    if (!empty($selectedIds)) {
+        $selectedIds = explode(',', $selectedIds);
+        //add a condition if id numbers are specified
+        $conditionFilters[] = 'id IN (' . implode(',', $selectedIds) . ')';
+    }
+    return $conditionFilters;
+}
+/**
+ * @Route(""/publish-version"", name=""pimcore_admin_asset_publishversion"", methods={""POST""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function publishVersionAction(Request $request): JsonResponse
+{
+    $id = (int)$request->get('id');
+    $version = Model\Version::getById($id);
+    $asset = $version?->loadData();
+
+    if (!$asset) {
+        throw $this->createNotFoundException('Version with id [' . $id . ""] doesn't exist"");
+    }
+
+    $currentAsset = Asset::getById($asset->getId());
+    if ($currentAsset->isAllowed('publish')) {
+        try {
+            $asset->setUserModification($this->getAdminUser()->getId());
+            $asset->save();
+
+            $treeData = $this->getTreeNodeConfig($asset);
+
+            return $this->adminJson(['success' => true, 'treeData' => $treeData]);
+        } catch (\Exception $e) {
+            return $this->adminJson(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
+    throw $this->createAccessDeniedHttpException();
+}
+/**
+ * @Route(""/delete"", name=""pimcore_admin_asset_delete"", methods={""DELETE""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function deleteAction(Request $request): JsonResponse
+{
+    $type = $request->get('type');
+
+    if ($type === 'children') {
+        $parentAsset = Asset::getById((int) $request->get('id'));
+
+        $list = new Asset\Listing();
+        $list->setCondition('`path` LIKE ?', [Helper::escapeLike($parentAsset->getRealFullPath()) . '/%']);
+        $list->setLimit((int)$request->get('amount'));
+        $list->setOrderKey('LENGTH(`path`)', false);
+        $list->setOrder('DESC');
+
+        $deletedItems = [];
+        foreach ($list as $asset) {
+            $deletedItems[$asset->getId()] = $asset->getRealFullPath();
+            if ($asset->isAllowed('delete') && !$asset->isLocked()) {
+                $asset->delete();
+            }
+        }
+
+        return $this->adminJson(['success' => true, 'deleted' => $deletedItems]);
+    }
+    if ($request->get('id')) {
+        $asset = Asset::getById((int) $request->get('id'));
+        if ($asset && $asset->isAllowed('delete')) {
+            if ($asset->isLocked()) {
+                return $this->adminJson([
+                    'success' => false,
+                    'message' => 'prevented deleting asset, because it is locked: ID: ' . $asset->getId(),
+                ]);
+            }
+
+            $asset->delete();
+
+            return $this->adminJson(['success' => true]);
+        }
+    }
+
+    throw $this->createAccessDeniedHttpException();
+}
+protected function getSafeFilename(string $targetPath, string $filename): string
+{
+    $pathinfo = pathinfo($filename);
+    $originalFilename = $pathinfo['filename'];
+    $originalFileextension = empty($pathinfo['extension']) ? '' : '.' . $pathinfo['extension'];
+    $count = 1;
+
+    if ($targetPath == '/') {
+        $targetPath = '';
+    }
+
+    while (true) {
+        if (Asset\Service::pathExists($targetPath . '/' . $filename)) {
+            $filename = $originalFilename . '_' . $count . $originalFileextension;
+            $count++;
+        } else {
+            return $filename;
+        }
+    }
+}
+?>
+    "," SE: The 'selectedIds' from the request is directly concatenated into the SQL query without any sanitization, making it susceptible to SQL Injection.
+BL: `$conditionFilters[] = 'id IN (' . implode(',', $selectedIds) . ')';`
+BUG FOUND: YES
+</session>",mixtral-8x7b-32768
+2462,"Analyze the file content below and tell me if there's any line that may contain a bug of type CWE-89 (Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')). Your output must adhere to the following structure.
+
+Expected Output Structure:
+SE: very Short Explanation of why the line may contain a bug of given type (e.g., The 'user_input' is directly concatenated into HTML content without sanitation).
+BL: the Bugged Line, if any is found, else none (e.g., `response = ""<html><body><h1>Welcome, "" + user_input + ""!</h1></body></html>""`).
+BUG FOUND: YES if a bug is found, else NO.
+
+Example output:
+SE: The 'user_input' is directly concatenated into HTML content without sanitation.
+BL: `response = ""<html><body><h1>Welcome, "" + user_input + ""!</h1></body></html>""`
+BUG FOUND: YES
+
+File Content:
+<?php
+public function onKernelControllerEvent(ControllerEvent $event): void
+{
+    if (!$event->isMainRequest()) {
+        return;
+    }
+
+    $this->checkActionPermission($event, 'assets', [
+        'getImageThumbnailAction', 'getVideoThumbnailAction', 'getDocumentThumbnailAction',
+    ]);
+
+    $this->_assetService = new Asset\Service($this->getAdminUser());
+}
+/**
+ * @throws \Exception
+ */
+protected function getTreeNodeConfig(ElementInterface $element): array
+{
+    return $this->elementService->getElementTreeNodeConfig($element);
+}
+/**
+     * @Route(""/exists"", name=""pimcore_admin_asset_exists"", methods={""GET""})
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
+     * @throws \Exception
+     */
+    public function existsAction(Request $request): JsonResponse
+    {
+        $parentAsset = \Pimcore\Model\Asset::getById((int)$request->get('parentId'));
+
+        return new JsonResponse([
+            'exists' => Asset\Service::pathExists($parentAsset->getRealFullPath().'/'.$request->get('filename')),
+        ]);
+    }
+public function getIDsfilter(Request $request){
+    $conditionFilters = [];
+    $selectedIds = $request->get('selectedIds', []);
+    if (!empty($selectedIds)) {
+        $selectedIds = explode(',', $selectedIds);
+        //add a condition if id numbers are specified
+        $conditionFilters[] = 'id IN (' . implode(',', $selectedIds) . ')';
+    }
+    return $conditionFilters;
+}
+private function getResponseByScanStatus(Asset\Document $asset, bool $processBackground = true): ?Response
+{
+    if (!Config::getSystemConfiguration('assets')['document']['scan_pdf']) {
+        return null;
+    }
+
+    $scanStatus = $asset->getScanStatus();
+    if ($scanStatus === null) {
+        $scanStatus = Asset\Enum\PdfScanStatus::IN_PROGRESS;
+        if ($processBackground) {
+            \Pimcore::getContainer()->get('messenger.bus.pimcore-core')->dispatch(
+                new AssetUpdateTasksMessage($asset->getId())
+            );
+        }
+    }
+
+    return match($scanStatus) {
+        Asset\Enum\PdfScanStatus::IN_PROGRESS => $this->render('@PimcoreAdmin/admin/asset/get_preview_pdf_in_progress.html.twig'),
+        Asset\Enum\PdfScanStatus::UNSAFE => $this->render('@PimcoreAdmin/admin/asset/get_preview_pdf_unsafe.html.twig'),
+        default => null,
+    };
+}
+/**
+ * @Route(""/download"", name=""pimcore_admin_asset_download"", methods={""GET""})
+ *
+ * @param Request $request
+ *
+ * @return StreamedResponse
+ */
+public function downloadAction(Request $request): StreamedResponse
+{
+    $asset = Asset::getById((int) $request->get('id'));
+
+    if (!$asset) {
+        throw $this->createNotFoundException('Asset not found');
+    }
+
+    if (!$asset->isAllowed('view')) {
+        throw $this->createAccessDeniedException('not allowed to view asset');
+    }
+
+    $stream = $asset->getStream();
+
+    if (!is_resource($stream)) {
+        throw $this->createNotFoundException('Unable to get resource for asset ' . $asset->getId());
+    }
+
+    return new StreamedResponse(function () use ($stream) {
+        fpassthru($stream);
+    }, 200, [
+        'Content-Type' => $asset->getMimeType(),
+        'Content-Disposition' => sprintf('attachment; filename=""%s""', $asset->getFilename()),
+        'Content-Length' => $asset->getFileSize(),
+    ]);
+}
+/**
+ * @throws \Exception
+ */
+protected function getTreeNodeConfig(ElementInterface $element): array
+{
+    return $this->elementService->getElementTreeNodeConfig($element);
+}
+/**
+ * @Route(""/delete-info"", name=""pimcore_admin_asset_deleteinfo"", methods={""GET""})
+ *
+ * @param Request $request
+ * @param EventDispatcherInterface $eventDispatcher
+ *
+ * @return JsonResponse
+ */
+public function deleteInfoAction(Request $request, EventDispatcherInterface $eventDispatcher): JsonResponse
+{
+    return parent::deleteInfoAction($request, $eventDispatcher);
+}
+/**
+ * @Route(""/tree-get-root"", name=""pimcore_admin_asset_treegetroot"", methods={""GET""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function treeGetRootAction(Request $request): JsonResponse
+{
+    return parent::treeGetRootAction($request);
+}
+?>
+    "," SE: The 'parentId' and 'filename' are directly concatenated into an SQL query using string interpolation.
+BL: `$parentAsset = \Pimcore\Model\Asset::getById((int)$request->get('parentId'));`
+ `return new JsonResponse([`
+ `'exists' => Asset\Service::pathExists($parentAsset->getRealFullPath().'/'.$request->get('filename')),`
+ `]);`
+BUG FOUND: YES
+",mixtral-8x7b-32768
