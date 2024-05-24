@@ -20,7 +20,7 @@ import sys
 import ast
 
 cwe_id = sys.argv[2]
-gpt_model = sys.argv[1]
+model = sys.argv[1]
 
 only_check_removed_lines_in_patch = False
 only_provide_bug_window = False
@@ -30,7 +30,6 @@ n_processes = multiprocessing.cpu_count()*20
 openai_api_key = "..."
 temperature = 0
 file_path = f'../files_CWE-{cwe_id}.csv'
-model = f'gpt-{gpt_model}-turbo'
 
 # source_variable = 'Bug Line' # 'Input Length'
 # target_variable = 'TP'
@@ -199,7 +198,7 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 		max_tokens = 32768
 	elif '16k' in model:
 		max_tokens = 16385
-	elif 'preview' in model or 'turbo' in model:
+	elif model=='gpt-4o' or 'preview' in model or 'turbo' in model:
 		max_tokens = 4096 #128000
 		adjust_max_tokens = False
 	if not max_tokens:
