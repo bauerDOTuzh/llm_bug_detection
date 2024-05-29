@@ -27,7 +27,7 @@ only_provide_bug_window = False
 bug_window_size = 10
 
 n_processes = multiprocessing.cpu_count()*20
-openai_api_key = "..."
+openai_api_key = os.getenv('OPENAI_API_KEY')
 temperature = 0
 file_path = f'../files_CWE-{cwe_id}.csv'
 
@@ -111,6 +111,27 @@ correct_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_afte
 patch_line_regexp = r'@@ -(\d+,\d+) \+(\d+,\d+) @@' # Regular expression pattern to match line numbers in the diff
 patch_line_list = list(map(lambda x: list(map(int,map(lambda y: y[0].split(',')[0], re.findall(patch_line_regexp, x)))), patch_list))
 buggy_lines_list = list(map('\n'.join, map(get_removed_lines, patch_list)))
+
+buggy_content_len_list = list(map(len, buggy_content_list))
+patch_line_len_list = list(map(len, patch_list))
+print('content size stats:', {
+	'size':len(buggy_content_len_list), 
+	'list':buggy_content_len_list, 
+	'mean':np.mean(buggy_content_len_list), 
+	'std':np.std(buggy_content_len_list), 
+	'lower_quartile':np.quantile(buggy_content_len_list,.25), 
+	'median':np.quantile(buggy_content_len_list,.5), 
+	'upper_quartile':np.quantile(buggy_content_len_list,.75)
+})
+print('patch size stats:', {
+	'size':len(patch_line_len_list), 
+	'list':patch_line_len_list, 
+	'mean':np.mean(patch_line_len_list), 
+	'std':np.std(patch_line_len_list), 
+	'lower_quartile':np.quantile(patch_line_len_list,.25), 
+	'median':np.quantile(patch_line_len_list,.5), 
+	'upper_quartile':np.quantile(patch_line_len_list,.75)
+})
 
 buggy_window_list = [
 	'\n\n'.join([
