@@ -326,7 +326,7 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 
 	code = extract_code_or_return_original(model_output)
 	has_bug_line = (bool(bug_line_pattern.search(model_output)) and 'BL: None'.lower() not in model_output.lower()) or (code and code != model_output) and 'BUG FOUND: YES'.lower() in model_output
-	input_len = len(clean_whitespace(datapoint_dict['file_content']).split(' '))
+	input_len = len(datapoint_dict['file_content'])
 	max_line = datapoint_dict['file_content'].count('\n')
 	if datapoint_dict['type'] == 'not_buggy':
 		if has_bug_line:
@@ -341,8 +341,8 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 		# print(model_output)
 		# print('#'*10)
 		file_content_lines = datapoint_dict['file_content'].split('\n')
-		min_bug_pos = len(clean_whitespace('\n'.join(file_content_lines[:datapoint_dict['patch_line'][0]])).split(' '))
-		max_bug_pos = len(clean_whitespace('\n'.join(file_content_lines[:datapoint_dict['patch_line'][-1]])).split(' '))
+		min_bug_pos = len('\n'.join(file_content_lines[:datapoint_dict['patch_line'][0]]))
+		max_bug_pos = len('\n'.join(file_content_lines[:datapoint_dict['patch_line'][-1]]))
 		avg_bug_pos = (min_bug_pos+max_bug_pos)//2
 		if has_bug_line:
 			bug_line = re.split(bug_line_pattern, model_output, 1)[-2]
