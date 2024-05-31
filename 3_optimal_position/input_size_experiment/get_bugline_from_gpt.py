@@ -18,17 +18,31 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import ast
+import enum
+from dotenv import load_dotenv
+from pathlib import Path
+# import custom classes
+from models import Models, anyscale_names, model_mapping
 
-model = sys.argv[1]
+env_path = Path('../..') / '.env'
+load_dotenv(dotenv_path=env_path)
+
+model = model_mapping.get(sys.argv[1])
 cwe_id = sys.argv[2]
 bug_window_size = int(sys.argv[3])
+
+if not model:
+    raise ValueError(f"Model {sys.argv[1]} is not supported")
+else:
+	model = model.value #cast model to string
 
 only_check_removed_lines_in_patch = False
 only_provide_bug_window = True
 # bug_window_size = 6500 # characters
 
-n_processes = multiprocessing.cpu_count()*20
-openai_api_key = "..."
+n_processes = multiprocessing.cpu_count()*20 if model not in anyscale_names else 30 #anyscale supports only 30 concurent processes
+openai_api_key = os.getenv("OPENAI_API_KEY")
+anyscale_api_key = os.getenv("ANYSCALE_API_KEY")
 temperature = 0
 file_path = f'../../1_all_files_analysis/files_CWE-{cwe_id}.csv'
 
@@ -56,6 +70,7 @@ BUG FOUND: YES
 File Content:
 {file_content}
 """
+
 ########################################################
 # prompt = """Analyze the file content below and tell me if there's any line that may contain a bug of type CWE-{bug_type_id} ({bug_type_label}). Your output must adhere to the following structure.
 
@@ -99,7 +114,12 @@ def get_removed_lines(patch):
 	# Remove the leading - character from each line
 	return [line[1:] for line in removed_lines]
 
-chatgpt_client = openai.OpenAI(api_key=openai_api_key)
+if model in anyscale_names:
+    chatgpt_client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=anyscale_api_key)
+    print("anyscale endpoint selected")
+else:
+    chatgpt_client = openai.OpenAI(api_key=openai_api_key)
+
 
 bug_line_pattern = re.compile(r'(Bugged\s*)?[ -]*(Line|BL)\s*[:#]\s*(.*?)(?=BUG FOUND:)', re.IGNORECASE | re.DOTALL)
 bug_line_pattern_simple = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]', re.IGNORECASE)
@@ -273,7 +293,8 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 		if prompt_max_tokens < 1:
 			return missing_prompt, None
 		try:
-			response = chatgpt_client.chat.completions.create(model=model,
+			model_name = anyscale_names.get(model, model) #if no anyscale name, stick to model name -> gpt has no mapping
+			response = chatgpt_client.chat.completions.create(model=model_name,
 				messages=messages,
 				max_tokens=prompt_max_tokens,
 				n=n,
