@@ -19,32 +19,32 @@ import numpy as np
 import sys
 import ast
 import enum
-from dotenv import load_dotenv
 from pathlib import Path
 # import custom classes
 from models import Models, anyscale_names, model_mapping
 
-env_path = Path('../..') / '.env'
-load_dotenv(dotenv_path=env_path)
-
 model = model_mapping.get(sys.argv[1])
-cwe_id = sys.argv[2]
-bug_window_size = int(sys.argv[3])
+#cwe_id = sys.argv[2]
+#bug_window_size = int(sys.argv[3]) # 6500 # characters
 
 if not model:
-    raise ValueError(f"Model {sys.argv[1]} is not supported")
+	raise ValueError(f"Model {sys.argv[1]} is not supported")
 else:
 	model = model.value #cast model to string
 
-only_check_removed_lines_in_patch = False
-only_provide_bug_window = True
-# bug_window_size = 6500 # characters
+bug_window_size_list = [
+	# 13000, 
+	6500, 
+	3000, 
+	1500, 
+	500
+]
+cwe_id_list = ['22', '89', '79']
 
 n_processes = multiprocessing.cpu_count()*20 if model not in anyscale_names else 30 #anyscale supports only 30 concurent processes
 openai_api_key = os.getenv("OPENAI_API_KEY")
 anyscale_api_key = os.getenv("ANYSCALE_API_KEY")
 temperature = 0
-file_path = f'../../1_all_files_analysis/files_CWE-{cwe_id}.csv'
 
 # source_variable = 'Bug Line' # 'Input Length'
 # target_variable = 'TP'
@@ -71,43 +71,6 @@ File Content:
 {file_content}
 """
 
-########################################################
-# prompt = """Analyze the file content below and tell me if there's any line that may contain a bug of type CWE-{bug_type_id} ({bug_type_label}). Your output must adhere to the following structure.
-
-# Expected Output Structure:
-# SE: Short Explanation of why the line may contain a bug of type CWE-{bug_type_id} (e.g., The 'user_input' is directly concatenated into HTML content without sanitation).
-# BL: the Bugged Line, if any is found, else none (e.g., `response = "<html><body><h1>Welcome, " + user_input + "!</h1></body></html>"`).
-
-# File Content:
-# {file_content}
-# """
-########################################################
-# prompt = """"Analyze the file content below and tell me if there's any line which may contain a bug of type CWE-{bug_type_id} ({bug_type_label}). Your output must adhere to the following structure.
-
-# Expected Output:
-# SE: very Short Explanation of why the line may contain a bug of type CWE-{bug_type_id}.
-# BL: the Bugged Line, if any is found, else none.
-
-# File Content:
-# {file_content}
-# """
-########################################################
-# prompt = """Analyze the file content provided below and determine if there's any line that might contain a bug of type CWE-{bug_type_id} ({bug_type_label}). Your output must adhere to the following structure.
-
-# Example:
-# def create_response(user_input):
-# 	response = "<html><body><h1>Welcome, " + user_input + "!</h1></body></html>"
-# 	return response
-
-# Expected Output Structure:
-# SE: The 'user_input' is directly concatenated into HTML content without sanitation, potentially allowing script injection.
-# BL: response = "<html><body><h1>Welcome, " + user_input + "!</h1></body></html>"
-
-# File Content:
-# {file_content}
-# """
-########################################################
-
 def get_removed_lines(patch):
 	# Extract lines starting with -
 	removed_lines = re.findall(r'^-.*$', patch, re.MULTILINE)
@@ -115,119 +78,42 @@ def get_removed_lines(patch):
 	return [line[1:] for line in removed_lines]
 
 if model in anyscale_names:
-    chatgpt_client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=anyscale_api_key)
-    print("anyscale endpoint selected")
+	chatgpt_client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=anyscale_api_key)
+	print("anyscale endpoint selected")
 else:
-    chatgpt_client = openai.OpenAI(api_key=openai_api_key)
+	chatgpt_client = openai.OpenAI(api_key=openai_api_key)
 
-
-bug_line_pattern = re.compile(r'(Bugged\s*)?[ -]*(Line|BL)\s*[:#]\s*(.*?)(?=BUG FOUND:)', re.IGNORECASE | re.DOTALL)
-bug_line_pattern_simple = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]', re.IGNORECASE)
-
-data = pd.read_csv(file_path)
-
-id_list = data['file_id'].tolist()
-patch_list = data['patch'].tolist()
-buggy_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_before'].tolist())))
-correct_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_after'].tolist())))
-patch_line_regexp = r'@@ -(\d+,\d+) \+(\d+,\d+) @@' # Regular expression pattern to match line numbers in the diff
-patch_line_list = list(map(lambda x: list(map(int,map(lambda y: y[0].split(',')[0], re.findall(patch_line_regexp, x)))), patch_list))
-buggy_lines_list = list(map('\n'.join, map(get_removed_lines, patch_list)))
-
-buggy_content_len_list = list(map(len, buggy_content_list))
-patch_line_len_list = list(map(len, patch_list))
-print('content size stats:', {
-	'size':len(buggy_content_len_list), 
-	'list':buggy_content_len_list, 
-	'mean':np.mean(buggy_content_len_list), 
-	'std':np.std(buggy_content_len_list), 
-	'lower_quartile':np.quantile(buggy_content_len_list,.25), 
-	'median':np.quantile(buggy_content_len_list,.5), 
-	'upper_quartile':np.quantile(buggy_content_len_list,.75)
-})
-print('patch size stats:', {
-	'size':len(patch_line_len_list), 
-	'list':patch_line_len_list, 
-	'mean':np.mean(patch_line_len_list), 
-	'std':np.std(patch_line_len_list), 
-	'lower_quartile':np.quantile(patch_line_len_list,.25), 
-	'median':np.quantile(patch_line_len_list,.5), 
-	'upper_quartile':np.quantile(patch_line_len_list,.75)
-})
-
-def extract_around_line(p, b, x):
+def chunk_string(s, chunk_size=500, start=0, end=None):
+	# Limit the string to the first 10000 characters
+	s = s[start:end]
+	# Create chunks of 500 characters each
+	return [s[i:i+chunk_size] for i in range(0, len(s), chunk_size)]
+	
+def extract_chunks(p, b, x):
 	lines = b.splitlines()  # Split the content into lines
 	if p < 0 or p >= len(lines):
 		raise ValueError("Line index out of range")
 
-	line_at_p = lines[p]
-	k = (x - len(line_at_p)) // 2
-
-	# Join all lines into a single string to facilitate character indexing
-	full_text = b
-	
-	# Find the start and end index of the line at p in the full text
-	start_of_p = sum(len(lines[i]) + 1 for i in range(p)) if p > 0 else 0
-	end_of_p = start_of_p + len(line_at_p)
-	
-	# Calculate the number of characters to extract before and after line p
-	before_start_index = max(0, start_of_p - k)
-	after_end_index = min(len(full_text), end_of_p + k)
-	
-	# Extract characters
-	before_text = full_text[before_start_index:start_of_p]
-	after_text = full_text[end_of_p:after_end_index]
-	
-	# Adjust if necessary due to boundary limits
-	if len(before_text) < k:
-		extra_needed = k - len(before_text)
-		after_end_index = min(len(full_text), after_end_index + extra_needed)
-		after_text = full_text[end_of_p:after_end_index]
-	elif len(after_text) < k:
-		extra_needed = k - len(after_text)
-		before_start_index = max(0, before_start_index - extra_needed)
-		before_text = full_text[before_start_index:start_of_p]
-	
-	return before_text + line_at_p + after_text
-
-buggy_window_list = [
-	extract_around_line(p_list[0], b, bug_window_size) if p_list else ''
-	for p_list,b in zip(patch_line_list,buggy_content_list)
-]
-
-print('File chunk sizes:', list(map(len,buggy_window_list)))
-# print(json.dumps(buggy_window_list, indent=4))
-
-correct_window_list = [
-	extract_around_line(p_list[0], b, bug_window_size) if p_list else ''
-	for p_list,b in zip(patch_line_list,correct_content_list)
-]
-
-
-datapoint_dict_list = [
-	{
-		'file_id': _id,
-		'file_content': _content,
-		'patch': _patch,
-		'buggy_lines': _buggy_lines,
-		'patch_line': _patch_line,
-		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_window if only_provide_bug_window else _content),
-		'type': 'buggy',
-	}
-	for _id, _patch, _buggy_lines, _patch_line, _content, _window in zip(id_list,patch_list,buggy_lines_list,patch_line_list,buggy_content_list,buggy_window_list)
-	if _patch_line
-] + [
-	{
-		'file_id': _id,
-		'file_content': _content,
-		'prompt': prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=_window if only_provide_bug_window else _content),
-		'type': 'not_buggy',
-	}
-	for _id, _content, _window, _patch_line in zip(id_list,correct_content_list,correct_window_list,patch_line_list)	
-	if _patch_line
-]
-prompt_list = [d['prompt'] for d in datapoint_dict_list]
-# print(prompt_list[0])
+	chunk_list = []
+	buggy_chunk = None
+	current_chunk = ''
+	current_chunk_is_buggy = False
+	for i,line in enumerate(lines):
+		if len(current_chunk) + len(line) > x:
+			if current_chunk_is_buggy:
+				buggy_chunk = current_chunk
+				current_chunk_is_buggy = False
+			else:
+				chunk_list.append(current_chunk)
+			current_chunk = ''
+		if i==p:
+			current_chunk_is_buggy = True
+		current_chunk += line + '\n'
+	if current_chunk_is_buggy:
+		buggy_chunk = current_chunk
+	else:
+		chunk_list.append(current_chunk)
+	return chunk_list, buggy_chunk
 
 def create_cache(file_name, create_fn):
 	print(f'Creating cache <{file_name}>..')
@@ -284,7 +170,7 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 		else:
 			max_tokens = 4096
 			adjust_max_tokens = False
-	print('max_tokens', max_tokens)
+	# print('max_tokens', max_tokens)
 	def fetch_fn(missing_prompt):
 		messages = [ {"role": "user", "content": missing_prompt} ]
 		prompt_max_tokens = max_tokens
@@ -454,46 +340,159 @@ def classify(record, model_output):
 				
 	return classification
 
-tp=0
-tn=0
-fp=0
-fn=0
-for i,model_output in enumerate(instruct_model(prompt_list, model=model, temperature=temperature)):
-	if not model_output:
-		continue
+############################################################
+############################################################
 
-	datapoint_dict = datapoint_dict_list[i]
-	classification = classify(datapoint_dict, model_output)
+bug_line_pattern = re.compile(r'(Bugged\s*)?[ -]*(Line|BL)\s*[:#]\s*(.*?)(?=BUG FOUND:)', re.IGNORECASE | re.DOTALL)
+bug_line_pattern_simple = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]', re.IGNORECASE)
 
-	if classification == 'FP':
-		fp+=1
-	elif classification == 'TP':
-		tp += 1
-	elif classification == 'FN':
-		fn+=1
-	elif classification == 'TN':
-		tn += 1
+results_dict_list = []
+for cwe_id in cwe_id_list:
+	data = pd.read_csv(f'../../1_all_files_analysis/files_CWE-{cwe_id}.csv')
 
-try:
-	accuracy = (tp + tn) / (tp + tn + fp + fn)
-except ZeroDivisionError:
-	accuracy = float('nan')  # Not a Number, used for undefined values
-print("Accuracy:", accuracy)
-try:
-	precision = tp / (tp + fp)
-except ZeroDivisionError:
-	precision = float('nan')
-print("Precision:", precision)
-try:
-	recall = tp / (tp + fn)
-except ZeroDivisionError:
-	recall = float('nan')
-print("Recall:", recall)
-try:
-	if precision + recall == 0:
-		f1_score = float('nan')
-	else:
-		f1_score = 2 * (precision * recall) / (precision + recall)
-except ZeroDivisionError:
-	f1_score = float('nan')
-print("F1-Score:", f1_score)
+	id_list = data['file_id'].tolist()
+	patch_list = data['patch'].tolist()
+	buggy_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_before'].tolist())))
+	correct_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_after'].tolist())))
+	patch_line_regexp = r'@@ -(\d+,\d+) \+(\d+,\d+) @@' # Regular expression pattern to match line numbers in the diff
+	patch_line_list = list(map(lambda x: list(map(int,map(lambda y: y[0].split(',')[0], re.findall(patch_line_regexp, x)))), patch_list))
+	buggy_lines_list = list(map('\n'.join, map(get_removed_lines, patch_list)))
+
+	buggy_content_len_list = list(map(len, buggy_content_list))
+	patch_line_len_list = list(map(len, patch_list))
+	# print('content size stats:', {
+	# 	'size':len(buggy_content_len_list), 
+	# 	# 'list':buggy_content_len_list, 
+	# 	'mean':np.mean(buggy_content_len_list), 
+	# 	'std':np.std(buggy_content_len_list), 
+	# 	'lower_quartile':np.quantile(buggy_content_len_list,.25), 
+	# 	'median':np.quantile(buggy_content_len_list,.5), 
+	# 	'upper_quartile':np.quantile(buggy_content_len_list,.75)
+	# })
+	# print('patch size stats:', {
+	# 	'size':len(patch_line_len_list), 
+	# 	# 'list':patch_line_len_list, 
+	# 	'mean':np.mean(patch_line_len_list), 
+	# 	'std':np.std(patch_line_len_list), 
+	# 	'lower_quartile':np.quantile(patch_line_len_list,.25), 
+	# 	'median':np.quantile(patch_line_len_list,.5), 
+	# 	'upper_quartile':np.quantile(patch_line_len_list,.75)
+	# })
+
+	make_prompt = lambda x: prompt.format(bug_type_id=cwe_id, bug_type_label=cwe_id_label_dict[cwe_id], file_content=x)
+
+	print('#'*10)
+	print('CWE-ID:', cwe_id)
+
+	for bug_window_size in bug_window_size_list:
+		datapoint_dict_list = []
+		p_count = 0
+		for _id, _patch, _buggy_lines, _patch_line, _content in zip(id_list,patch_list,buggy_lines_list,patch_line_list,buggy_content_list):
+			if not _patch_line:
+				continue
+
+			extra_list, _window = extract_chunks(_patch_line[0], _content, bug_window_size)
+			datapoint_dict_list.append(
+				{
+					'file_id': _id,
+					'file_content': _content,
+					'chunk_content': _window,
+					'patch': _patch,
+					'buggy_lines': _buggy_lines,
+					'patch_line': _patch_line,
+					'prompt': make_prompt(_window),
+					'type': 'buggy',
+				}
+			)
+			p_count += 1
+			datapoint_dict_list += [
+				{
+					'file_id': _id,
+					'file_content': _content,
+					'chunk_content': c,
+					'prompt': make_prompt(c),
+					'type': 'not_buggy',
+				}
+				for c in extra_list
+			]
+		# for _id, _content, _patch_line in zip(id_list,correct_content_list,patch_line_list):
+		# 	if not _patch_line:
+		# 		continue
+		# 	_, _window = extract_chunks(_patch_line[0], _content, bug_window_size)
+		# 	datapoint_dict_list.append(
+		# 		{
+		# 			'file_id': _id,
+		# 			'file_content': _content,
+		# 			'chunk_content': _window,
+		# 			'prompt': make_prompt(_window),
+		# 			'type': 'not_buggy',
+		# 		}
+		# 	)
+		# print(list(map(lambda x: len(x['chunk_content']), datapoint_dict_list)))
+		prompt_list = [d['prompt'] for d in datapoint_dict_list]
+		# print(prompt_list[0])
+
+		tp=0
+		tn=0
+		fp=0
+		fn=0
+		for i,model_output in enumerate(instruct_model(prompt_list, model=model, temperature=temperature)):
+			if not model_output:
+				continue
+
+			datapoint_dict = datapoint_dict_list[i]
+			classification = classify(datapoint_dict, model_output)
+
+			if classification == 'FP':
+				fp+=1
+				# print(model_output)
+			elif classification == 'TP':
+				tp += 1
+			elif classification == 'FN':
+				fn+=1
+			elif classification == 'TN':
+				tn += 1
+
+		print('-'*10)
+		print('\tContext Window:', bug_window_size)
+		print('\tPoints:', len(prompt_list))
+		try:
+			accuracy = (tp + tn) / (tp + tn + fp + fn)
+		except ZeroDivisionError:
+			accuracy = float('nan')  # Not a Number, used for undefined values
+		print("\tAccuracy:", accuracy)
+		try:
+			precision = tp / (tp + fp)
+		except ZeroDivisionError:
+			precision = float('nan')
+		print("\tPrecision:", precision)
+		try:
+			recall = tp / (tp + fn)
+		except ZeroDivisionError:
+			recall = float('nan')
+		print("\tRecall:", recall)
+		try:
+			if precision + recall == 0:
+				f1_score = float('nan')
+			else:
+				f1_score = 2 * (precision * recall) / (precision + recall)
+		except ZeroDivisionError:
+			f1_score = float('nan')
+		print("\tF1-Score:", f1_score)
+
+		results_dict_list.append({
+			'model': model,
+			'cwe': cwe_id,
+			'context_window': bug_window_size,
+			'prompts_count': len(prompt_list),
+			'accuracy': accuracy,
+			'precision': precision,
+			'recall': recall,
+			'f1_score': f1_score
+		})
+
+# Convert list of dictionaries to DataFrame
+df = pd.DataFrame(results_dict_list)
+
+# Save DataFrame to CSV file
+df.to_csv(f'results/{model}.csv', index=False)
