@@ -18,10 +18,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import ast
-import enum
 from pathlib import Path
+from dotenv import load_dotenv
 # import custom classes
 from models import Models, anyscale_names, model_mapping
+
+env_path = Path('../..') / '.env'
+load_dotenv(env_path)
 
 model = model_mapping.get(sys.argv[1])
 #cwe_id = sys.argv[2]
