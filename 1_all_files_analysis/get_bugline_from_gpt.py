@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 
 from models import Models, anyscale_names, model_mapping
 
-env_path = Path('../..') / '.env'
+env_path = Path('..') / '.env'
 load_dotenv(env_path)
 
 cwe_id = sys.argv[2]
