@@ -18,16 +18,29 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import ast
+from pathlib import Path
+from dotenv import load_dotenv
+
+from models import Models, anyscale_names, model_mapping
+
+env_path = Path('../..') / '.env'
+load_dotenv(env_path)
 
 cwe_id = sys.argv[2]
-model = sys.argv[1]
+model = model_mapping.get(sys.argv[1])
+
+if not model:
+	raise ValueError(f"Model {sys.argv[1]} is not supported")
+else:
+	model = model.value #cast model to string
 
 only_check_removed_lines_in_patch = False
 only_provide_bug_window = False
 bug_window_size = 10
 
-n_processes = multiprocessing.cpu_count()*20
-openai_api_key = os.getenv('OPENAI_API_KEY')
+n_processes = multiprocessing.cpu_count()*20 if model not in anyscale_names else 30 #anyscale supports only 30 concurent processes
+openai_api_key = os.getenv("OPENAI_API_KEY")
+anyscale_api_key = os.getenv("ANYSCALE_API_KEY")
 temperature = 0
 file_path = f'../files_CWE-{cwe_id}.csv'
 
@@ -98,7 +111,11 @@ def get_removed_lines(patch):
 	# Remove the leading - character from each line
 	return [line[1:] for line in removed_lines]
 
-chatgpt_client = openai.OpenAI(api_key=openai_api_key)
+if model in anyscale_names:
+	chatgpt_client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=anyscale_api_key)
+	print("anyscale endpoint selected")
+else:
+	chatgpt_client = openai.OpenAI(api_key=openai_api_key)
 
 bug_line_pattern = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]\s*(.*?)(?=BUG FOUND:)', re.IGNORECASE | re.DOTALL)
 
@@ -237,7 +254,8 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 		if prompt_max_tokens < 1:
 			return missing_prompt, None
 		try:
-			response = chatgpt_client.chat.completions.create(model=model,
+			model_name = anyscale_names.get(model, model) #if no anyscale name, stick to model name -> gpt has no mapping
+			response = chatgpt_client.chat.completions.create(model=model_name,
 				messages=messages,
 				max_tokens=prompt_max_tokens,
 				n=n,
