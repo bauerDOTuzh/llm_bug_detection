@@ -2,6 +2,7 @@
 
 ## How to Setup this Repository
 
+### .env variables
 1. Copy `.env.example` to `.env`.
 2. Edit the `.env` file with the following API keys:
    - **GitHub**: Required for accessing GitHub repositories.
@@ -11,6 +12,16 @@
 
 *If you don't have an account with any of these providers, create one and follow the instructions on their respective websites to obtain your API token: [GitHub](https://github.com/), [OpenAI](https://openai.com/), [Anyscale](https://www.anyscale.com/), [Groq](https://groq.com/).*
 
+### Python Environment using Conda
+1. Create a new conda environment using the provided `environment.yml` file:
+   ```bash
+   conda env create -f environment.yml
+   ```
+2. Activate the environment:
+   ```bash
+    conda activate llm_bug_detection
+    ```
+  
 ## About this Repository
 
 ### Folder Structure: `./0_dataset_creation`
