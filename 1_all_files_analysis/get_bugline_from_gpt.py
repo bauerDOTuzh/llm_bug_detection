@@ -17,7 +17,7 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
-import ast
+# import ast
 from pathlib import Path
 # from dotenv import load_dotenv
 
@@ -123,8 +123,10 @@ data = pd.read_csv(file_path)
 
 id_list = data['file_id'].tolist()
 patch_list = data['patch'].tolist()
-buggy_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_before'].tolist())))
-correct_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_after'].tolist())))
+# buggy_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_before'].tolist())))
+buggy_content_list = data['file_before'].tolist()
+# correct_content_list = list(map('\n'.join, map(ast.literal_eval, data['file_after'].tolist())))
+correct_content_list = data['file_after'].tolist()
 patch_line_regexp = r'@@ -(\d+,\d+) \+(\d+,\d+) @@' # Regular expression pattern to match line numbers in the diff
 patch_line_list = list(map(lambda x: list(map(int,map(lambda y: y[0].split(',')[0], re.findall(patch_line_regexp, x)))), patch_list))
 buggy_lines_list = list(map('\n'.join, map(get_removed_lines, patch_list)))
