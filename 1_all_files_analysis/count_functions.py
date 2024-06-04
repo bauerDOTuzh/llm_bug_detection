@@ -6,27 +6,25 @@ cwe_id = sys.argv[1]
 
 def count_functions(file_content, file_extension):
     if file_extension == 'php':
-        pattern = r'function\s+[\w\s]+\([\w\s,=$]*\)\s*(:\s*\S+)?\s*\{'
+        pattern = r'function\s+\w+\s*\([^)]*\)\s*(:\s*\S+)?\s*\{'
     elif file_extension in ['ts', 'js']:
         pattern = r'(async\s+)?(?:function\s+\w+\s*\(.*?\)\s*\{|(?:\w+\s*=\s*)?\(.*?\)\s*=>\s*\{|[\w\.]+\s*\([\w\s,]*\)\s*\{)'
     elif file_extension == 'html':
-        # HTML doesn't typically have functions
         return 0
     elif file_extension == 'java':
         pattern = r'(public|protected|private|static|\s)+[\w<>\[\],\s]+\s+\w+\s*\([\w\s,<>\[\]]*\)\s*\{'
     elif file_extension == 'go':
-        pattern = r'func\s+(?:\([\w\s,*]+\)\s*)?\w+\s*\(.*?\)\s*\{'
+        pattern = r'func\s+(?:\([\w\s,*]*\)\s*)?\w+\s*\([^)]*\)\s*\{'
     elif file_extension == 'py':
-        pattern = r'(?:@[\w\.]+\s*)*def\s+\w+\s*\(.*?\)\s*:'
+        pattern = r'(?:@[\w\.]+\s*)*def\s+\w+\s*\([^)]*\)\s*:'
     elif file_extension == 'rb':
-        pattern = r'def\s+\w+\s*\([\w\s,=]*\)\s*(?:\n\s*)?'
+        pattern = r'def\s+\w+\s*\([^)]*\)\s*'
     elif file_extension == 'c':
         pattern = r'[\w\s*]+\s+\w+\s*\([\w\s,*]*\)\s*\{'
     else:
-        # For unsupported file types, return 0
         return 0
-    
-    matches = re.findall(pattern, file_content, re.MULTILINE)
+
+    matches = re.findall(pattern, file_content)
     return len(matches)
 
 # Read the CSV file
@@ -48,8 +46,10 @@ df['function_count'] = function_counts
 
 # Drop files with no functions
 print(len(df))
+# 
 df = df[df['function_count'] > 0]
 print(len(df))
+
 
 # Calculate the average function count across all files
 average_function_count = df['function_count'].mean()
