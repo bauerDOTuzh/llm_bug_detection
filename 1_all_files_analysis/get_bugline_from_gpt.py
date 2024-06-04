@@ -19,12 +19,12 @@ import numpy as np
 import sys
 import ast
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 from models import Models, anyscale_names, model_mapping
 
-env_path = Path('..') / '.env'
-load_dotenv(env_path)
+# env_path = Path('..') / '.env'
+# load_dotenv(env_path)
 
 cwe_id = sys.argv[2]
 model = model_mapping.get(sys.argv[1])
@@ -42,7 +42,7 @@ n_processes = multiprocessing.cpu_count()*20 if model not in anyscale_names else
 openai_api_key = os.getenv("OPENAI_API_KEY")
 anyscale_api_key = os.getenv("ANYSCALE_API_KEY")
 temperature = 0
-file_path = f'../files_CWE-{cwe_id}.csv'
+file_path = f'./files_CWE-{cwe_id}.csv'
 
 # source_variable = 'Bug Line' # 'Input Length'
 # target_variable = 'TP'
@@ -400,12 +400,12 @@ for i,model_output in enumerate(instruct_model(prompt_list, model=model, tempera
 # Create a DataFrame from the list length_outcomes
 df = pd.DataFrame(length_outcomes)
 # Define the filename for the CSV file
-csv_filename = f'../data/lr_CWE-{cwe_id}_model-{model}.csv'
+csv_filename = f'./data/lr_CWE-{cwe_id}_model-{model}.csv'
 # Save the DataFrame to a CSV file
 df.to_csv(csv_filename, index=False)
 
 df = pd.DataFrame(results)
-csv_filename = f'../data/data_CWE-{cwe_id}_{model}.csv'
+csv_filename = f'./data/data_CWE-{cwe_id}_{model}.csv'
 df.to_csv(csv_filename, index=False)
 
 try:
