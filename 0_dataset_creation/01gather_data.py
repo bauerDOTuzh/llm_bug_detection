@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
+# %% [markdown]
 # # GitHub Vulnerability Scraper
 # 
 # This Jupyter notebook is designed to scrape and process vulnerability data from the NIST National Vulnerability Database (NVD) and GitHub. It fetches CVE details and commit information to analyze vulnerabilities and their impact.
@@ -31,28 +29,23 @@
 # 3. Load existing data to avoid duplicate entries.
 # 4. Scrape data for each CWE ID and save the results to a CSV file.
 
-# In[1]:
+# %%
+%pip install requests pandas python-dotenv --quiet
 
-
-get_ipython().run_line_magic('pip', 'install requests pandas python-dotenv --quiet')
-
-
-# In[2]:
-
-
+# %%
 import requests
 import pandas as pd
 from datetime import datetime
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 import json
 import time
 from urllib.parse import urlparse
 from pathlib import Path
 
 # Load environment variables
-#env_path = Path('..') / '.env'
-#load_dotenv()
+env_path = Path('..') / '.env'
+load_dotenv()
 
 # GitHub token
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
@@ -60,12 +53,10 @@ GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 # Define base URL for the NIST API
 BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"
 
-
+# %% [markdown]
 # ## Functions to execute call to NIST API
 
-# In[3]:
-
-
+# %%
 def is_github(url):
     return "github.com" in url
 
@@ -111,12 +102,10 @@ def call_api(cwe_id, start_date, end_date):
 
     return vulnerabilities
 
-
+# %% [markdown]
 # ## Functions to process GITHUB data
 
-# In[4]:
-
-
+# %%
 # Function to get commit info from GitHub API
 def get_commit_info(owner, repo, commit_sha):
     url = f"https://api.github.com/repos/{owner}/{repo}/commits/{commit_sha}"
@@ -151,12 +140,10 @@ def parse_github_commit_url(url):
     else:
         raise ValueError("Invalid GitHub commit URL.")
 
-
+# %% [markdown]
 # # Support Function to gather data
 
-# In[5]:
-
-
+# %%
 # Function to parse vulnerabilities and check for GitHub commits
 def parse_vulnerability(vuln, cwe_id):
     cve = vuln['cve']
@@ -229,14 +216,14 @@ def load_existing_data(filepath):
         return pd.DataFrame()
 
 
+# %% [markdown]
 # # Main Execution
 
+# %% [markdown]
 # - As for usage of this repository it is important to define start and end date
 # - This enures smaller chunking of data as well as the code ensures that the data is not duplicated
 
-# In[6]:
-
-
+# %%
 # Define the start and end dates
 start_date = datetime(2024, 1, 1)
 end_date = datetime(2024, 1, 10)
@@ -288,9 +275,7 @@ if all_dataframes:
 else:
     print("No new entries found.")
 
-
-# In[ ]:
-
-
+# %%
 combined_df.head()
+
 

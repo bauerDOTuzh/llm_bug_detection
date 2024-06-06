@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
+# %% [markdown]
 # # GitHub Vulnerability File Processor
 # 
 # This Jupyter notebook is designed to process vulnerability data from GitHub repositories. It fetches file contents before and after a commit to analyze the changes and their impact. The main steps include loading existing data, counting tokens in file content, fetching file content from GitHub, and processing each vulnerability to extract relevant information.
@@ -27,45 +25,42 @@
 # 3. Process vulnerabilities and save the results.
 # 4. Filter and generate datasets for single file commits grouped by CWE ID.
 
-# In[1]:
+# %%
+%pip install requests pandas python-dotenv tqdm tiktoken
 
-
-get_ipython().run_line_magic('pip', 'install requests pandas python-dotenv tqdm')
-
-
-# In[2]:
-
-
+# %%
 import requests
 import pandas as pd
 import os
 import base64
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 import json
 from tqdm import tqdm
 from pathlib import Path
+import tiktoken
 
 # Load environment variables
-#env_path = Path('..') / '.env'
-#load_dotenv()
+env_path = Path('..') / '.env'
+load_dotenv()
 
-
-# In[3]:
-
-
+# %%
 ANALYZE_EXTENSIONS = ['php', 'tsx', 'ts', 'js', 'jsx', 'html', 'java', 'go', 'py', 'rb', 'c']
 MAX_VULNERABILITY_FILES = 15 #threshold for number of files to analyze -> aims to avoid commits with too many files
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
-
-# In[4]:
-
-
+# %%
 def load_existing_data(file_name):
     try:
         return pd.read_csv(file_name)
     except FileNotFoundError:
         return pd.DataFrame()
+# Function to count tokens in file content
+def count_tokens(file_content, from_base64=False):
+    tokenizer = tiktoken.get_encoding("cl100k_base")
+    if from_base64:
+        file_content = baseToString(file_content)
+    tokens = tokenizer.encode(file_content)
+    return len(tokens)
 
 def baseToString(encoded_data):
     decoded_data = base64.b64decode(encoded_data)
@@ -101,15 +96,18 @@ def process_vulnerability(row, unique_id_start, existing_keys):
         try:
             new_file = getFileContent(row['repo'], filename, commit_id, raw=True)
             old_file = getFileContent(row['repo'], filename, f"{commit_id}^", raw=True) if "status" in patch and patch["status"] == "modified" else None
+            old_file_tokens = count_tokens(old_file, from_base64=True) if old_file else 0
             processed_files.append({
                 'file_id': unique_id_start,
                 'vulnerability_id': row['vulnerability_id'],
                 "cwe_id": row["cwe_id"],
                 "cve_id": row["cve_id"],
                 'filename': filename,
+                "file_extension": ending,
                 'file_before': old_file,
                 'file_after': new_file,
                 'patch': patch.get("patch"),
+                'file_tokens': old_file_tokens,
             })
             unique_id_start += 1
         except Exception as e:
@@ -119,12 +117,10 @@ def process_vulnerability(row, unique_id_start, existing_keys):
 def file_exists(existing_keys, key):
     return key in existing_keys
 
-
+# %% [markdown]
 # # Fetch proper github file content
 
-# In[5]:
-
-
+# %%
 # Load vulnerabilities data from CSV
 input_csv = 'vulnerabilities.csv'
 vulnerabilities = load_existing_data(input_csv)
@@ -156,18 +152,13 @@ else:
 
 combined_df.to_csv(existing_files_csv, index=False)
 
-
-# In[6]:
-
-
+# %%
 combined_df.head()
 
-
+# %% [markdown]
 # # Create datasets for single file in commit CWE
 
-# In[7]:
-
-
+# %%
 vuln_counts = combined_df['vulnerability_id'].value_counts()
 single_occurrence_vulns = vuln_counts[vuln_counts == 1].index
 
@@ -180,7 +171,8 @@ filtered_df = filtered_df[filtered_df['file_tokens'] <= 18000]
 # Generate the 3 CSV files grouped by CWE_ID
 for cwe_id, group_df in filtered_df.groupby('cwe_id'):
     output_csv = f'files_{cwe_id}.csv'
-    group_df[['file_id', 'file_tokens', 'file_before', 'file_after', 'patch', 'cwe_id']].to_csv(output_csv, index=False)
+    group_df[['file_id', 'file_before', 'file_after', 'patch', 'cve_id', "cwe_id", "file_extension", "filename"]].to_csv(output_csv, index=False)
 
 print("CSV files created grouped by CWE_ID")
+
 
