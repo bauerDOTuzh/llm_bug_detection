@@ -1,15 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+# %%
+%pip install pandas matplotlib tabulate numpy statsmodels scikit-learn
 
-# In[1]:
-
-
-get_ipython().run_line_magic('pip', 'install pandas matplotlib tabulate numpy statsmodels')
-
-
-# In[2]:
-
-
+# %%
 import pandas as pd
 import re
 from difflib import SequenceMatcher
@@ -20,10 +12,7 @@ import statsmodels.api as sm
 from tabulate import tabulate
 #import ast
 
-
-# In[3]:
-
-
+# %%
 cwes = ["CWE-22", "CWE-89", "CWE-79"]
 # cwes = ["CWE-79"]
 models = ['mixtral-8x7b-32768', 'mixtral-8x22b-65536', "llama-3-70b-8192", "gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o"]
@@ -37,17 +26,17 @@ model_renames = {
     "llama-3-70b-8192": "llama-3-70b",
 }
 
-
+# %% [markdown]
 # - Usage -> define your models and skip to execution part
 # - The files must have structure data-CWE-XX-model.csv with following 3 headers: file_id, model_output, type (buggy, not_buggy)
 
+# %% [markdown]
 # # Functions
 
+# %% [markdown]
 # ## importing CVS
 
-# In[4]:
-
-
+# %%
 def import_csv(cwe_id, model):
 
     def _check_files(df_data, df_files):
@@ -111,11 +100,10 @@ def import_csv(cwe_id, model):
     return df
 
 
+# %% [markdown]
 # ## Classification
 
-# In[5]:
-
-
+# %%
 # Functions to work towards classification
 bug_line_pattern = re.compile(r'(Bugged\s*)?[ -]*(Line|BL)\s*[:#]\s*(.*?)(?=BUG FOUND:)', re.IGNORECASE | re.DOTALL)
 bug_line_pattern_simple = re.compile(r'(Bugged)?[ -]*(Line|BL) *[:#]', re.IGNORECASE)
@@ -289,12 +277,10 @@ def extract_removed_lines(patch_text):
 
     return removed_lines
 
-
+# %% [markdown]
 # ## Logistic Regression
 
-# In[6]:
-
-
+# %%
 def calculate_stats(df):
     fn = df[df['classification'] == 'FN'].shape[0]
     fp = df[df['classification'] == 'FP'].shape[0]
@@ -404,10 +390,7 @@ def calculate_outlier_thresholds(column):
     upper_bound = Q3 + 1.5 * IQR
     return lower_bound, upper_bound
 
-
-# In[7]:
-
-
+# %%
 def prepare_df(df):
     df[['classification', 'bug_line', 'patch_removal']] = df.apply(classify, axis=1)
 
@@ -428,12 +411,10 @@ def prepare_df(df):
 
     return df       
 
-
+# %% [markdown]
 # # Line Plots - Trends
 
-# In[8]:
-
-
+# %%
 performance_summary = []
 target_variable = 'classification_TP'
 fontsize = 14
@@ -499,23 +480,19 @@ plt.show()
 performance_summary_df = pd.DataFrame(performance_summary)    
 performance_summary_df.to_csv('./results/performance_summary.csv', index=False) 
 
-
+# %% [markdown]
 # Compute the average line size (chars).
 
-# In[9]:
-
-
+# %%
 all_sizes = []
 for f in df_all['file_to_use']:
     all_sizes += map(len,f.split('\n'))
 print('Average line size (chars):',np.mean(all_sizes))
 
-
+# %% [markdown]
 # # Violin Plot - Chars Distribution
 
-# In[10]:
-
-
+# %%
 # Define figure size and create subplots
 fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(3.2, 5), dpi=100)
 fig.subplots_adjust(hspace=0.4, wspace=0.3)
@@ -567,10 +544,7 @@ plt.tight_layout()
 plt.savefig("./results/chars_distribution.pdf")
 plt.show()
 
-
-# In[11]:
-
-
+# %%
 # TESTING
 
 # manual testing of one loop -> good for comparing responses and patch on given CWE (in jupyter variables)
@@ -607,4 +581,6 @@ print(print_stats(stats))
 # # difive values by 2
 # df = df / 2
 # print(df)
+
+
 
