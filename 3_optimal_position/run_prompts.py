@@ -18,13 +18,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 # import ast
 from pathlib import Path
-# from dotenv import load_dotenv
-# import custom classes
+from dotenv import load_dotenv
 import enum
-
 import sys
 
-model = model_mapping.get(sys.argv[1])
+env_path = Path('..') / '.env'
+load_dotenv(env_path)
+
 
 class Models(enum.Enum):
     GPT3_5 = "gpt-3.5-turbo"
@@ -49,9 +49,8 @@ model_mapping = {
     "mixtral8x7": Models.MIXTRAL8_7,
     "mixtral8x22": Models.MIXTRAL8_22
 }
+model = model_mapping.get(sys.argv[1])
 
-# env_path = Path('../..') / '.env'
-# load_dotenv(env_path)
 
 #cwe_id = sys.argv[2]
 #bug_window_size = int(sys.argv[3]) # 6500 # characters

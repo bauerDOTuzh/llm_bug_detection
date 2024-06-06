@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
+# %% [markdown]
 # # Script Documentation
 # 
 # ## Overview
@@ -8,10 +6,8 @@
 # 
 # ## Configuration
 # Set the following variables in the script:
-# - `ENDPOINT`: Choose between `OPENAI`, `GROK`, or `ANYSCALE`.
+# - `ENDPOINT`: Choose between `OPENAI` or `ANYSCALE`.
 # - `LLM_MODEL`: Select a model such as `GPT4`, `LLAMA3`, or `MIXTRAL8_22`.
-# 
-# - Important for Grok only LLama3 and Mixtral8_7 models are supported.
 # 
 # ## Key Parameters
 # - `CWES`: List of CWEs to analyze.
@@ -34,21 +30,15 @@
 # 
 # Simply adjust the variables and run the script to perform security analysis in a Jupyter notebook environment.
 
-# In[ ]:
+# %%
+%pip install langchain-core pandas python-dotenv tiktoken openai tqdm
 
-
-get_ipython().run_line_magic('pip', 'install langchain-core langchain-groq pandas python-dotenv tiktoken openai tqdm')
-
-
-# In[ ]:
-
-
+# %%
 # Import required modules
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_groq import ChatGroq
 import pandas as pd
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 import tiktoken
 import openai
 from tqdm import tqdm
@@ -60,13 +50,10 @@ import enum
 from pathlib import Path
 
 # Load environment variables
-#env_path = Path('..') / '.env'
-#load_dotenv()
+env_path = Path('..') / '.env'
+load_dotenv()
 
-
-# In[ ]:
-
-
+# %%
 class Models(enum.Enum):
     GPT3_5 = "gpt-3.5-turbo"
     GPT4 = "gpt-4-turbo"
@@ -77,13 +64,9 @@ class Models(enum.Enum):
 
 class Endpoints(enum.Enum):
     ANYSCALE = "ANYSCALE"
-    GROK = "GROK"
     OPENAI = "OPENAI"
 
-
-# In[ ]:
-
-
+# %%
 # Configuration
 # ENDPOINT = Endpoints.OPENAI
 # LLM_MODEL = Models.GPT4
@@ -98,12 +81,7 @@ WORKERS = 100
 RESULTS_CSV_FOLDER = "./runs/run5/inference"
 INPUT_CSV = "./data_to_process/files.csv"
 
-chat = ChatGroq(temperature=0, model_name=LLM_MODEL.value, groq_api_key=os.getenv('GROK_API_KEY'))
-
-
-# In[ ]:
-
-
+# %%
 def load_existing_results():
     all_results = pd.DataFrame(columns=['file_id', 'model'])
     for model in Models:
@@ -147,16 +125,10 @@ def save_result(file_id, prompt, response, model):
         result = pd.DataFrame([[file_id, prompt, response, model]], columns=['file_id', 'prompt', 'model_output', 'model'])
         result.to_csv(model_csv_path, mode='a', header=not os.path.exists(model_csv_path), index=False)
 
-
-# In[ ]:
-
-
+# %%
 df_selected_files 
 
-
-# In[ ]:
-
-
+# %%
 def get_model_response(prompt, data):
     prompt_whole = prompt.format(**data)
     if ENDPOINT == Endpoints.ANYSCALE or ENDPOINT == Endpoints.OPENAI:
@@ -182,16 +154,11 @@ def get_model_response(prompt, data):
         # print(resp)
         response = resp.model_dump()["choices"][0]["message"]["content"]
         return prompt_whole, response
-    elif ENDPOINT == Endpoints.GROK:
-        prompts = ChatPromptTemplate.from_messages([("human", prompt)])
-        chain = prompts | chat
-        response = chain.invoke(data)
-        return prompt_whole, response.content
+    else:
+        # throw error
+        raise ValueError(f"Endpoint {ENDPOINT} is not supported")
 
-
-# In[ ]:
-
-
+# %%
 def run_inference(file_content, cwe_id="79", github_repo=''):
     cwe_labels = {
         'CWE-79': 'Improper Neutralization of Input During Web Page Generation: Cross-Site Scripting',
@@ -216,12 +183,10 @@ File Content:
     '''
     return get_model_response(prompt, data)
 
-
+# %% [markdown]
 # ## Define workers
 
-# In[ ]:
-
-
+# %%
 class TokenDecayLimiter:
     def __init__(self, max_tokens, rate_decay):
         self.max_tokens = max_tokens
@@ -274,12 +239,10 @@ def worker(limiter, pbar=None):
             finally:
                 work_queue.task_done()
 
-
+# %% [markdown]
 # ## Main Execution
 
-# In[ ]:
-
-
+# %%
 # Main execution
 work_queue = Queue()
 for _, file in df_selected_files.iterrows():
@@ -305,4 +268,5 @@ for t in threads:
 # Ensure the progress bar is closed after all threads complete
 pbar.close()
 print("All files processed.")
+
 

@@ -19,7 +19,7 @@ import numpy as np
 import sys
 # import ast
 from pathlib import Path
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 import enum
 
@@ -47,8 +47,8 @@ model_mapping = {
     "mixtral8x22": Models.MIXTRAL8_22
 }
 
-# env_path = Path('..') / '.env'
-# load_dotenv(env_path)
+env_path = Path('..') / '.env'
+load_dotenv(env_path)
 
 cwe_id = sys.argv[2]
 model = model_mapping.get(sys.argv[1])
