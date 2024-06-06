@@ -1,0 +1,14 @@
+.env
+.DS_Store
+.ipynb_checkpoints
+.pyc
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+_extra/
+3_optimal_position/*.pkl
+3_optimal_position/cache/*.pkl
