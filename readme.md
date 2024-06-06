@@ -69,33 +69,44 @@ Ensure that both values match what you've set.
   
 ## About this Repository
 
-### Folder Structure: `./0_dataset_creation`
+### Supported LLMs
 
-- **Purpose**: This folder contains the code to create the dataset for the task of bug detection in code.
+All the following script are designed to run experiments for these LLMs:
+- gpt-3.5-turbo
+- gpt-4-turbo
+- gpt-4o
+- llama3-70b-8192
+- mixtral-8x7b-32768
+- mixtral-8x22b-65536
+
+### Folder: `./0_dataset_creation`
+
+- **Purpose**: This folder contains the code to extract the dataset for the task of bug detection in code.
 - **Files**:
-  - `01gather_data.ipynb`: Contains the code to gather data from the NIST database and save it.
-  - `02create_files.ipynb`: Contains the code to create the files for the dataset via GitHub scraping.
+  - `01gather_data.py`: Contains the code to gather data from the NIST database and save it.
+  - `02create_files.py`: Contains the code to create the files for the dataset via GitHub scraping.
 - **Output**: The product of these two scripts are three CSV files containing single commit files of CWE-79, CWE-89, and CWE-22.
 
-### Folder Structure: `./1_all_files_analysis`
+### Folder: `./1_all_files_analysis`
 
 This folder contains various scripts and data files for analyzing the dataset and evaluating different models for bug detection.
 
 #### Key Files and Scripts
 
-- **CSV Files**: 
-  - `files_CWE-22.csv`, `files_CWE-79.csv`, `files_CWE-89.csv`: Contain the original data for each CWE.
+- **Data Folder**: `cve_data`: 
+  - `files_CWE-22.csv`, `files_CWE-79.csv`, `files_CWE-89.csv`: Contain the vulnerabilities (and their patches) we extracted for each CWE.
 
 - **Python Scripts**:
-  - `get_bugline_from_gpt.py`: Calls all available models based on the input (model, desired CWE number).
-  - `analyse_results.ipynb`: Concatenates all needed results and performs analysis on the data.
+  - `run_prompts.py`: Calls all available models based on the input (model, desired CWE number).
+  - `analyse_results.py`: Concatenates all needed results and performs analysis on the data.
+  - `count_functions.py`: Computes functions' statistics: number per file and average size.
 
-#### Data Folder
+#### Cached Model Outputs
 
-- **Data Folder**: `data`
+- **Data Folder**: `model_outputs`
   - Contains results across all models.
 
-### Folder Structure: `./2_code_in_the_haystack`
+### Folder: `./2_code_in_the_haystack`
 
 This folder contains various scripts, data files, and analysis results for evaluating different models for bug detection and performing comprehensive analysis on the dataset.
 
@@ -104,7 +115,7 @@ This folder contains various scripts, data files, and analysis results for evalu
 - **Subfolder: `runs`**
   - Contains all runs performed for each model.
 
-- **Notebook: `create_files_with_padding.ipynb`**
+- **Python Script: `create_files_with_padding.py`**
   - Deploys an algorithm that creates files given source files, adding necessary padding.
 
 - **Subfolder: `source_files`**
@@ -116,14 +127,20 @@ This folder contains various scripts, data files, and analysis results for evalu
     - **modifiedFile**: The modified file without the bug. If the buggy function was extracted, it includes a refactored main function and added comments for clear separation.
     - **additional_padding**: A complete gathering of files to add for padding from the same repository, separated by function with clear separation comments.
 
-- **Notebook: `analyse_data.ipynb`**
+- **Python Script: `analyse_data.py`**
   - Gathers all important information across all models and visualizes the data through graphics.
   - Classifies the results to provide comprehensive insights.
 
-- **Notebook: `run_inference.ipynb`**
+- **Python Script: `run_inference.py`**
   - Allows the user to define the model, provider, and desired output.
   - Runs the inference file based on the defined parameters.
 
 #### Other Key Files
 
-- `files.csv`: Main data file generated via the padding algorithm used for LLM calls.
+- `data_to_process/files.csv`: Main data file generated via the padding algorithm used for LLM calls.
+
+### Folder: `./3_optimal_position`
+
+- **Purpose**: This folder contains the code to run the experiment of the third research question.
+- **Script**:
+  - `run_prompts.py`: It runs the prompts for all the CWE types once provided the model name as a parameter.
