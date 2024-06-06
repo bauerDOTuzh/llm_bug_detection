@@ -10,3 +10,6 @@ __pycache__/
 *.egg-info/
 
 _extra/
+3_optimal_position/input_size_experiment/_mixtral_8x7b_32768_cache.pkl
+3_optimal_position/input_size_experiment/_llama3_70b_8192_cache.pkl
+3_optimal_position/input_size_experiment/_mixtral_8x22b_65536_cache.pkl
