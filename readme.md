@@ -12,7 +12,7 @@ Researchers are increasingly investigating the use of Large language models (LLM
 
 This repository is tested and recommended on:
 
-- OS: Windows 11 (version 23H2 build 22631.3593), Linux (Debian 5.10.179 or newer) and macOS (13.2.1 Ventura or newer)
+- OS: Windows 11 (version 23H2, build 22631.3593), Linux (Debian 5.10.179 or newer) and macOS (13.2.1 Ventura or newer)
 - Python version: 3.11 or newer
 
 ### Installation of GitHub, OpenAI, and AnyScale Keys
