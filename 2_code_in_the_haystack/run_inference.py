@@ -51,7 +51,17 @@ from pathlib import Path
 
 # Load environment variables
 env_path = Path('..') / '.env'
-load_dotenv()
+if env_path.exists():
+    load_dotenv(dotenv_path=env_path)
+
+ANYSCALE_API_KEY = os.getenv('ANYSCALE_API_KEY')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+# Check if the environment variables are loaded
+if not all([ANYSCALE_API_KEY, OPENAI_API_KEY]):
+    raise EnvironmentError("Some environment variables are missing")
+
+
 
 # %%
 class Models(enum.Enum):
@@ -132,7 +142,7 @@ df_selected_files
 def get_model_response(prompt, data):
     prompt_whole = prompt.format(**data)
     if ENDPOINT == Endpoints.ANYSCALE or ENDPOINT == Endpoints.OPENAI:
-        client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        client = openai.OpenAI(api_key=OPENAI_API_KEY)
         model = LLM_MODEL.value if LLM_MODEL in [Models.GPT3_5, Models.GPT4, Models.GPT4o] else None
         if not model:
             anyscale_names = {
@@ -144,7 +154,7 @@ def get_model_response(prompt, data):
             if not model:
                 raise ValueError(f"Model {LLM_MODEL} is not supported by anyscale")
             
-            client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=os.environ["ANYSCALE_API_KEY"])
+            client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=ANYSCALE_API_KEY)
         resp = client.chat.completions.create(
             model=model,
             messages=[{"role": "user", "content": prompt.format(**data)}],

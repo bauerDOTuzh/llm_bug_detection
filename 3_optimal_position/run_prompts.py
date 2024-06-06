@@ -22,9 +22,6 @@ from dotenv import load_dotenv
 import enum
 import sys
 
-env_path = Path('..') / '.env'
-load_dotenv(env_path)
-
 
 class Models(enum.Enum):
     GPT3_5 = "gpt-3.5-turbo"
@@ -49,6 +46,18 @@ model_mapping = {
     "mixtral8x7": Models.MIXTRAL8_7,
     "mixtral8x22": Models.MIXTRAL8_22
 }
+
+env_path = Path('..') / '.env'
+if env_path.exists():
+	load_dotenv(env_path)
+
+openai_api_key = os.getenv('OPENAI_API_KEY')
+anyscale_api_key = os.getenv('ANYSCALE_API_KEY')
+
+# Check if the environment variables are loaded
+if not all([openai_api_key, anyscale_api_key]):
+    raise EnvironmentError("Some environment variables are missing")
+
 model = model_mapping.get(sys.argv[1])
 
 

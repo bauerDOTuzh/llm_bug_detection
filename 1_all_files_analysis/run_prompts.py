@@ -48,7 +48,16 @@ model_mapping = {
 }
 
 env_path = Path('..') / '.env'
-load_dotenv(env_path)
+if env_path.exists():
+	load_dotenv(env_path)
+
+openai_api_key = os.getenv('OPENAI_API_KEY')
+anyscale_api_key = os.getenv('ANYSCALE_API_KEY')
+
+# Check if the environment variables are loaded
+if not all([openai_api_key, anyscale_api_key]):
+    raise EnvironmentError("Some environment variables are missing")
+
 
 cwe_id = sys.argv[2]
 model = model_mapping.get(sys.argv[1])
@@ -63,8 +72,6 @@ only_provide_bug_window = False
 bug_window_size = 10
 
 n_processes = multiprocessing.cpu_count()*20 if model not in anyscale_names else 30 #anyscale supports only 30 concurent processes
-openai_api_key = os.getenv("OPENAI_API_KEY")
-anyscale_api_key = os.getenv("ANYSCALE_API_KEY")
 temperature = 0
 file_path = f'./cve_data/files_CWE-{cwe_id}.csv'
 
