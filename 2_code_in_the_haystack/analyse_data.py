@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('pip', 'install pandas numpy seaborn matplotlib statsmodels')
 
 
-# In[2]:
+# In[ ]:
 
 
 import pandas as pd
@@ -31,7 +31,7 @@ model_renames = {
 }
 
 
-# In[3]:
+# In[ ]:
 
 
 CWE_LIST = ["CWE-22", "CWE-89", "CWE-79"]
@@ -49,7 +49,7 @@ MAX_CHARS = 250001
 
 # ## Definition of files
 
-# In[4]:
+# In[ ]:
 
 
 files_dict = {
@@ -177,7 +177,7 @@ files_dict = {
 
 # ## Import CSV
 
-# In[5]:
+# In[ ]:
 
 
 def import_csv(cwe_list, models, files_path, inference_results_folder):
@@ -231,7 +231,7 @@ def _check_files(df_data, df_files):
 
 # ## Extracting functions for classification
 
-# In[6]:
+# In[ ]:
 
 
 def extract_code_or_return_original(text):
@@ -306,7 +306,7 @@ def clean_patch(patch):
     return re.sub(r'^[+-]', '', patch, flags=re.MULTILINE)
 
 
-# In[7]:
+# In[ ]:
 
 
 def load_buggy_file(filepath):
@@ -314,7 +314,7 @@ def load_buggy_file(filepath):
         return file.read()
 
 
-# In[8]:
+# In[ ]:
 
 
 def classify(record, file_dict):
@@ -366,28 +366,28 @@ def prepare_df(df, file_dict):
 
 # # Heatmap plotting
 
-# In[9]:
+# In[ ]:
 
 
 runs = {
     'run1': {
-        'files': './files.csv',
+        'files': './data_to_process/files.csv',
         'inference': './runs/run1/inference'
     },
     'run2': {
-        'files': './files.csv',
+        'files': './data_to_process/files.csv',
         'inference': './runs/run2/inference'
     },
     'run3': {
-        'files': './files.csv',
+        'files': './data_to_process/files.csv',
         'inference': './runs/run3/inference'
     },
     'run4': {
-        'files': './files.csv',
+        'files': './data_to_process/files.csv',
         'inference': './runs/run4/inference'
     },
     'run5': {
-        'files': './files.csv',
+        'files': './data_to_process/files.csv',
         'inference': './runs/run5/inference'
     }
     
@@ -409,7 +409,7 @@ df = df_total
 # df = prepare_df(combined_df, files_dict)
 
 
-# In[10]:
+# In[ ]:
 
 
 import numpy as np
@@ -516,7 +516,7 @@ def generate_heatmaps(data, group_by, save_path='./results', filename='heatmap_g
     plt.show()
 
 
-# In[11]:
+# In[ ]:
 
 
 # To display overview of all files aggregated per model
@@ -546,13 +546,13 @@ generate_heatmaps(
 
 # # Accumulation across runs
 
-# In[12]:
+# In[ ]:
 
 
 print(df['model'].unique())
 
 
-# In[13]:
+# In[ ]:
 
 
 accumulated_df = pd.DataFrame()
@@ -573,7 +573,7 @@ for i, run in enumerate(runs):
 
 # # Logistic Regression
 
-# In[14]:
+# In[ ]:
 
 
 import pandas as pd
@@ -647,7 +647,7 @@ plot_logistic_regressions_for_all_models(df_filtered, MODELS, ['target_length', 
 
 # # Classification
 
-# In[15]:
+# In[ ]:
 
 
 # df group by file_nr and display count of clasification
@@ -659,7 +659,7 @@ df_grouped
 
 # # Determine predicted position for each file
 
-# In[16]:
+# In[ ]:
 
 
 #this execution needs some time approx 3 min
@@ -697,7 +697,7 @@ def locate_bug_line_in_content(df):
 df_total = locate_bug_line_in_content(df_total)
 
 
-# In[17]:
+# In[ ]:
 
 
 fontsize= 12
