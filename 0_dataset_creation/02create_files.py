@@ -41,12 +41,19 @@ import tiktoken
 
 # Load environment variables
 env_path = Path('..') / '.env'
-load_dotenv()
+if env_path.exists():
+    load_dotenv(dotenv_path=env_path)
+    
+# GitHub token
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+
+# Check if the environment variables are loaded
+if not all([GITHUB_TOKEN]):
+    raise EnvironmentError("Some environment variables are missing")
 
 # %%
 ANALYZE_EXTENSIONS = ['php', 'tsx', 'ts', 'js', 'jsx', 'html', 'java', 'go', 'py', 'rb', 'c']
 MAX_VULNERABILITY_FILES = 15 #threshold for number of files to analyze -> aims to avoid commits with too many files
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 # %%
 def load_existing_data(file_name):
