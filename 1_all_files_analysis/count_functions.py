@@ -28,7 +28,7 @@ def count_functions(file_content, file_extension):
     return len(matches)
 
 # Read the CSV file
-file_path = f'./files_CWE-{cwe_id}.csv'
+file_path = f'./cve_data/files_CWE-{cwe_id}.csv'
 df = pd.read_csv(file_path)
 
 # Initialize a list to hold the function counts
@@ -63,6 +63,13 @@ df['adjusted_function_count'] = df['function_count'].apply(lambda x: x if x != 0
 
 # Calculate average function size
 df['average_function_size'] = df['file_size'] / df['adjusted_function_count']
+
+# Expand each average function size into a list of its size repeated by the adjusted function count
+expanded_sizes = []
+for _, row in df.iterrows():
+    expanded_sizes.extend([row['average_function_size']] * row['adjusted_function_count'])
+
+expanded_series = pd.Series(expanded_sizes)
 
 # Calculate the average function size across all files
 average_function_size = df['average_function_size'].mean()

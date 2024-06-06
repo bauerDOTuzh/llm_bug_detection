@@ -1,0 +1,717 @@
+file_id,model_output,type
+450,"SE: The 'file' and 'type' variables from user input are directly used in constructing a file path without proper validation or sanitization.
+BL: `$filelocation = __DIR__ . ""/images/$type/$file.$type"";`
+BUG FOUND: YES",buggy
+5260,"SE: The 'uri.getLastPathSegment()' is used to access files without validating or sanitizing the input, which could lead to path traversal vulnerabilities.
+BL: `File privateFile = new File(cacheDir, uri.getLastPathSegment());`
+BUG FOUND: YES",buggy
+8865,"SE: The 'uri' variable is derived from user input without proper validation or sanitization, potentially allowing path traversal attacks.
+BL: `String uri = request.getRequestURI().replace(""/."", ""/"");`
+BUG FOUND: YES",buggy
+485,"SE: The 'path' parameter from user input is used to access file system directories without sufficient validation of the input, potentially allowing directory traversal.
+BL: `$path = $_GET['path'];`
+BUG FOUND: YES",buggy
+8810,"SE: The 'GRAV_BASEDIR' environment variable is directly used in file paths without proper validation or sanitization.
+BL: `$_SERVER['SCRIPT_FILENAME'] = $_SERVER['DOCUMENT_ROOT'] . $grav_basedir .DIRECTORY_SEPARATOR . 'index.php';`
+BUG FOUND: YES",buggy
+5235,"SE: The 'extension' parameter from user input is used in file path construction without proper validation against directory traversal patterns.
+BL: `if( strpos($extension,'/') || strpos($extension,""\\"") or !file_exists($path = $WEBCONFIG['sitefusionPath'].'/extensions/'.$extension) )`
+BUG FOUND: YES",buggy
+476,"SE: The 'filename' parameter is directly used in file paths without validation or sanitization, potentially allowing path traversal.
+BL: `$this->importDirectory . $filename,`
+BUG FOUND: YES",buggy
+444,"SE: The file path from the zip file is directly joined with the destination directory without checking for path traversal attacks.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES",buggy
+435,"SE: The 'filename' is derived from user-controlled input without proper validation or sanitization, potentially allowing path traversal.
+BL: `full = os.path.join(directory, filename)`
+BUG FOUND: YES",buggy
+8846,"SE: The 'assetPath' is derived from user-controlled input without proper validation, potentially allowing path traversal.
+BL: `$filePath = $assetRoot . DIRECTORY_SEPARATOR . $assetPath;`
+BUG FOUND: YES",buggy
+8840,"SE: The 'unsafe_file_path' from user input is used to construct a file path without proper sanitization.
+BL: `$file = dirname(__FILE__) . '/USER-FILES/' . $unsafe_file_path;`
+BUG FOUND: YES",buggy
+8830,"SE: The file path for unzipping is constructed from a static path which might not properly handle arbitrary file paths or user inputs, potentially leading to directory traversal vulnerabilities.
+BL: `zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-sync-unzip/"");`
+BUG FOUND: YES",buggy
+457,"SE: The 'uploadedFileName' from user input is directly used to construct a file path without proper validation or sanitization.
+BL: `$temporaryFileNameAndPath = UploadManager::UPLOAD_FOLDER . '/' . $uploadedFileName;`
+BUG FOUND: YES",buggy
+487,"SE: The '$_REQUEST['fid']' is directly used to construct a file path without proper validation or sanitization.
+BL: `$id = ROOT_PATH.$_REQUEST['fid'];`
+BUG FOUND: YES",buggy
+8807,"SE: The file path is constructed with user input which may lead to path traversal if not properly sanitized.
+BL: `$file = $docDir.'/'.$filename;`
+BUG FOUND: YES",buggy
+5417,"SE: The 'entry.getName()' from a ZipEntry is used to construct a file path without validation, which can lead to path traversal vulnerabilities.
+BL: `File entryDestination = path.resolve(entry.getName()).toFile();`
+BUG FOUND: YES",buggy
+8680,"SE: The 'key' parameter from the URL is directly used to fetch files without validation or sanitization.
+BL: `Resource file = storageService.loadAsResource(key);`
+BUG FOUND: YES",buggy
+8708,"SE: The 'recording_file_path' from user input is decoded and used in file_exists and unlink without proper validation or sanitization.
+BL: `if (file_exists(base64_decode($recording_file_path[$index]))) { @unlink(base64_decode($recording_file_path[$index])); }`
+BUG FOUND: YES",buggy
+5317,"SE: The 'zipEntry.getName()' is used to construct a file path without validation, which can lead to path traversal if the zip file contains relative paths.
+BL: `File file = new File(destination, zipEntry.getName());`
+BUG FOUND: YES",buggy
+459,"SE: The 'request.url' is directly used in file path construction without proper validation or sanitization, which can lead to path traversal vulnerabilities.
+BL: `var nowTemp = host.frondend + (request.url.replace('/', '') || host.baseTemp);`
+BUG FOUND: YES",buggy
+8859,"SE: No path traversal vulnerabilities detected as there is no handling of file paths or user input directly affecting file system access.
+BL: none
+BUG FOUND: NO",buggy
+8892,"SE: The 'path' variable from the URL is directly used to construct a file path without proper validation or sanitization.
+BL: `file_path = os.path.join(current_app.template_folder, path)`
+BUG FOUND: YES",buggy
+478,"SE: The 'zoneid' from user input is used to construct a file path without proper validation or sanitization.
+BL: `target_directory = '/var/captiveportal/zone%s/htdocs/' % zoneid`
+BUG FOUND: YES",buggy
+5262,"Expected Output Structure:
+SE: No direct path manipulation or file access based on user input is observed in the code.
+BL: none
+BUG FOUND: NO",buggy
+8854,"SE: The 'user['Language']' input is used to construct a file path without proper validation or sanitization.
+BL: `$userLangFile = $prefix.'lang/'.$user['Language'].'.php';`
+BUG FOUND: YES",buggy
+452,"SE: The 'fileName' from the zip entry is used to create a file path without validating or sanitizing it, which could lead to path traversal vulnerabilities.
+BL: `file = new File(destDir, fileName);`
+BUG FOUND: YES",buggy
+8714,"SE: The 'paste' variable, which is derived from user input, is used to construct a file path without proper validation or sanitization.
+BL: `filename = os.path.join(PASTES_FOLDER, paste)`
+BUG FOUND: YES",buggy
+8845,"SE: The 'user' input is directly used in constructing a file path without proper validation or sanitization, potentially allowing path traversal.
+BL: `$filePath = $configDir . '/ssh/' . $user;`
+BUG FOUND: YES",buggy
+8749,"SE: The 'entry.getName()' from a ZipEntry is used to create a file path without validating or sanitizing the path, which can lead to path traversal vulnerabilities.
+BL: `File file = new File(dir, entry.getName());`
+BUG FOUND: YES",buggy
+471,"SE: The 'url' parameter is used directly in file_get_contents without proper validation, which may allow path traversal attacks.
+BL: `if(!$content = file_get_contents($this->url)) {`
+BUG FOUND: YES",buggy
+8738,"SE: The 'rawPath' is directly manipulated and used without proper validation or sanitization, potentially allowing path traversal.
+BL: `rawPath = _.trim(qs.unescape(rawPath))`
+BUG FOUND: YES",buggy
+433,"SE: The 'xmlPathInJar' variable is used to check for a specific file in the jar without validating or sanitizing the path, which could lead to path traversal vulnerabilities if manipulated.
+BL: `return je.getName().equals(xmlPathInJar);`
+BUG FOUND: YES",buggy
+8869,"SE: The dictionary 'individual' and 'case' contain multiple fields where file paths are directly assigned without any checks or sanitization.
+BL: `individual = dict(..., bam_file=str, ...)` and `case = dict(..., cnv_report=str, ...)`
+BUG FOUND: YES",buggy
+8889,"SE: The 'filename' parameter from the URL is directly used to construct a file path without proper validation or sanitization.
+BL: `filepath = path.join(app.config.get(""PRIVATE_DIR""), filename)`
+BUG FOUND: YES",buggy
+8812,"SE: The function does not properly handle directory traversal characters ('..' and '.') which can lead to path traversal vulnerabilities.
+BL: `let pathParts = _.filter(_.split(rawPath, '/'), p => { p = _.trim(p) return !_.isEmpty(p) && p !== '..' && p !== '.' })`
+BUG FOUND: YES",buggy
+8909,"SE: The 'directory' variable is user-controlled and appended to file paths without proper validation, potentially allowing directory traversal attacks.
+BL: `filePath = directory + ""/"" + filePath;`
+BUG FOUND: YES",buggy
+486,"SE: The 'entry.getName()' from a zip entry is used to construct a file path without validating or sanitizing the input, which could lead to path traversal vulnerabilities.
+BL: `File file = new File(dest, name);`
+BUG FOUND: YES",buggy
+445,"SE: The file path from the zip entry is directly joined with the destination directory without proper validation or sanitization, which can lead to path traversal vulnerabilities.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES",buggy
+8705,"SE: The 'widgetkey' from user input is directly used in file paths without proper validation or sanitization, potentially allowing path traversal.
+BL: `if (file_exists(""/conf/widget_image."" . $_GET['widgetkey']))`
+BUG FOUND: YES",buggy
+5146,"SE: The 'path' parameter is directly used in file operations without validation or sanitization.
+BL: `if os.path.exists(path):`
+BUG FOUND: YES",buggy
+480,"SE: The 'filename' from user input is used to construct a file path without sufficient validation.
+BL: `$file = DIR_LOGS . $filename;`
+BUG FOUND: YES",buggy
+8739,"SE: The 'path' parameter from the URL is used directly in file operations without proper validation or sanitization.
+BL: `dest_path = sanitized_join(path, pathlib.Path(app.config[""DATA_ROOT""]),)`
+BUG FOUND: YES",buggy
+8834,"SE: The 'all_files' file is opened and read without validating or sanitizing the input, which could allow path traversal if the file name is manipulated.
+BL: `f = open(""all_files"", ""r"")`
+BUG FOUND: YES",buggy
+8852,"SE: The 'name' variable from user input is directly used in a file path without validation, potentially allowing path traversal.
+BL: `aliasedRequire('./locale/' + name);`
+BUG FOUND: YES",buggy
+446,"SE: The function does not properly validate or sanitize the path from the tar header, potentially allowing path traversal attacks.
+BL: `path, err := te.outputPath(h.Name)`
+BUG FOUND: YES",buggy
+8685,"SE: The 'ds->value' is directly used to modify 'con->physical.basedir' and 'con->physical.path' without proper validation or sanitization, potentially allowing directory traversal.
+BL: `buffer_copy_buffer(con->physical.basedir, ds->value);`
+BUG FOUND: YES",buggy
+8702,"SE: The 'archive' parameter is directly used in file system operations without validation or sanitization, potentially allowing path traversal.
+BL: `var stream = fs.createReadStream(archive);`
+BUG FOUND: YES",buggy
+8907,"SE: The 'entry.getName()' from the zip file is used to create a file path without validation, which can lead to path traversal if the zip entry name includes relative paths.
+BL: `File dest = new File(destinationDir, entry.getName());`
+BUG FOUND: YES",buggy
+472,"SE: The 'archive' filename from user input is directly used in file path construction without proper validation or sanitization.
+BL: `$localArchive = Froxlor::getInstallDir() . '/updates/' . $toExtract;`
+BUG FOUND: YES",buggy
+436,"SE: The file path for the ZipEntry is directly constructed from user-controlled input without validation, which can lead to path traversal vulnerabilities.
+BL: `final File outFile = new File(targetFolder, name);`
+BUG FOUND: YES",buggy
+5236,"SE: The method 'pathOffset' uses 'context.pathParam(""*"")' which can include user-controlled path segments, potentially leading to path traversal if not properly sanitized.
+BL: `final String rest = context.pathParam(""*"");`
+BUG FOUND: YES",buggy
+437,"SE: The file path for extraction is constructed from user-controlled input without proper validation, which can lead to path traversal vulnerabilities.
+BL: `File newFile = new File(destDir, fileName);`
+BUG FOUND: YES",buggy
+430,"SE: The 'UriWithoutParams' variable is directly used to construct file paths without proper validation or sanitization, which can lead to path traversal vulnerabilities.
+BL: `$pathFile = $_SERVER['DOCUMENT_ROOT'] . $UriWithoutParams;`
+BUG FOUND: YES",buggy
+8879,"SE: The 'dir' and 'g.artifact.FilePath' are concatenated directly to form a file path without validation or sanitization.
+BL: `return ioutil.ReadFile(fmt.Sprintf(""%s/%s"", dir, g.artifact.FilePath))`
+BUG FOUND: YES",buggy
+8686,"SE: The function 'create_output_name' constructs file paths without properly sanitizing or validating the input directory and filename, potentially allowing path traversal via manipulated 'dir' or 'fname' inputs.
+BL: `if (dir) { strcpy((char *) name, (char *) dir); strcat((char *) name, ""/""); }`
+BUG FOUND: YES",buggy
+8745,"SE: The function 'trimUrl' does not adequately sanitize or validate the URL, potentially allowing path traversal if used improperly elsewhere.
+BL: `return url`
+BUG FOUND: YES",buggy
+438,"SE: The 'dent_node.name' is directly used in path concatenation without validation or sanitization.
+BL: `dent_path = os.path.join(path, dent_node.name)`
+BUG FOUND: YES",buggy
+484,"SE: The file path is constructed from user input without proper validation or sanitization, which can lead to path traversal attacks.
+BL: `$file = implode('/', $args);`
+BUG FOUND: YES",buggy
+5209,"SE: The variable `$id` used in file path construction is directly taken from user input without proper validation or sanitization.
+BL: `include_once($path_to_root.'/modules/'.$id.'/hooks.php');`
+BUG FOUND: YES",buggy
+8890,"SE: The function directly uses user-provided path input to access file system resources without proper validation or sanitization, which can lead to path traversal attacks.
+BL: `return send_file(get_absolute_path(f""./images/{path}""), mimetype='image/png', attachment_filename='snapshot.png', cache_timeout=0)`
+BUG FOUND: YES",buggy
+481,"SE: The 'file_key' from user input is directly used to construct a file path without proper validation or sanitization.
+BL: `file_path = os.path.join(work_path, file_key)`
+BUG FOUND: YES",buggy
+8728,"SE: The 'options.skeleton' parameter is dynamically required based on user input which can lead to path traversal if not properly sanitized.
+BL: `options.skeleton = require(options.skeleton.charAt(0) === '.' ? path.resolve(process.cwd(), options.skeleton) : options.skeleton)`
+BUG FOUND: YES",buggy
+463,"SE: The 'file.Name' from the zip archive is directly used to construct the file path without checking for path traversal characters.
+BL: `fullPath := filepath.Join(targetDir, file.Name)`
+BUG FOUND: YES",buggy
+439,"SE: The method attempts to sanitize the path by checking for "".."" but uses the result incorrectly, potentially allowing path traversal.
+BL: `path = (new File(path)).getCanonicalPath();`
+BUG FOUND: YES",buggy
+464,"SE: The 'file' parameter from POST request is directly used in file_get_contents without validation, allowing directory traversal.
+BL: `$data = file_get_contents($_POST['file']);`
+BUG FOUND: YES",buggy
+449,"SE: The 'filename' is constructed using user-controlled input without proper sanitization, which can lead to path traversal vulnerabilities.
+BL: `filename := filepath.Join(cmd.storage, strings.Trim(r.URL.Path, ""/""))`
+BUG FOUND: YES",buggy
+483,"SE: The 'sf_prefix' from user input is directly used to construct a file path without proper validation or sanitization.
+BL: `$downloadfile = $sf_directory . $downloadfile;`
+BUG FOUND: YES",buggy
+442,"SE: The 'deletefile' parameter from $_GET is directly used in file path operations without proper validation or sanitization, potentially allowing directory traversal attacks.
+BL: `if (!unlink($type . $name)) {`
+BUG FOUND: YES",buggy
+447,"SE: The 'downloadPath' parameter is directly used in file operations without validation or sanitization, potentially allowing path traversal attacks.
+BL: `Files.copy(in, Paths.get(downloadPath), StandardCopyOption.REPLACE_EXISTING);`
+BUG FOUND: YES",buggy
+5152,"SE: The 'zipEntry.getName()' is directly used to construct a file path without validation, which can lead to path traversal vulnerabilities.
+BL: `File file = new File(folder, zipEntry.getName());`
+BUG FOUND: YES",buggy
+431,"SE: The file path from the ZIP entry is directly used to create a file without validating if it traverses outside the intended directory.
+BL: `final File destFile = new File(importSandboxDirectory, zipEntry.getName());`
+BUG FOUND: YES",buggy
+8713,"SE: The 'filename' parameter derived from user input is used in file path operations without sufficient validation, potentially allowing path traversal.
+BL: `filename = path.normalize(path.join(ROOT_DIR, filename));`
+BUG FOUND: YES",buggy
+8746,"SE: The file path is directly constructed from user input without proper validation, which can lead to path traversal.
+BL: `const filePath = path.join(workspaceDir, file);`
+BUG FOUND: YES",buggy
+8766,"The provided PHP file does not contain any explicit file handling operations such as file reads or writes that directly involve user input in a way that would typically be vulnerable to a CWE-22 (Path Traversal) attack. The file primarily deals with handling data for custom reports, including creating, updating, deleting, and fetching report configurations and data, but it does not expose or manipulate file system paths based on user input directly.
+
+Expected Output Structure:
+SE: No direct file path manipulations with user input detected.
+BL: none
+BUG FOUND: NO",buggy
+8884,"SE: The 'req_path' from the URL is directly used in file system operations without proper validation or sanitization.
+BL: `abs_path = os.path.join(CONFIG['SRV_DIR'], req_path)`
+BUG FOUND: YES",buggy
+8904,"SE: The 'folderpath' parameter from the URL is directly used in filesystem operations without proper validation or sanitization.
+BL: `for root, subfolder, files in os.walk(os.path.join(cfg.wiki_directory, folderpath)):` 
+BUG FOUND: YES",buggy
+5196,"SE: The directory path is constructed from user input without proper validation or sanitization, which could lead to path traversal attacks.
+BL: `$save_path = $this->filePath($this->_dir);`
+BUG FOUND: YES",buggy
+8672,"SE: The function does not properly sanitize or validate the 'entry' parameter before using it to access file system paths, potentially allowing path traversal attacks.
+BL: `item = getEntry(entry);`
+BUG FOUND: YES",buggy
+8650,"SE: The function `cleanUrl` attempts to remove directory traversal characters but does not adequately prevent path traversal attacks as it only replaces instances of '..' without considering other forms such as encoded or alternative representations.
+BL: `while(url.indexOf('..').length > 0) { url = url.replace('..', ''); }`
+BUG FOUND: YES",buggy
+8838,"SE: The servlet path and path info from the user's request are used to construct a file path without proper validation or sanitization.
+BL: `file = new File(file, httpRequest.getPathInfo());`
+BUG FOUND: YES",buggy
+493,"SE: The 'username' parameter is directly used to construct a file path without validation or sanitization.
+BL: `with open(f""user_images/pfp/{username}.png"", ""wb"") as write_file:`
+BUG FOUND: YES",buggy
+8759,"The provided PHP file content does not explicitly show any direct manipulation of file paths based on user input that would typically lead to a path traversal vulnerability (CWE-22). The file primarily deals with widget configurations, layout handles, and Magento's internal data handling mechanisms. There is no evidence of direct filesystem access where user-controlled input is used to construct file paths.
+
+Expected Output Structure:
+SE: No direct file path manipulations with user input detected.
+BL: none
+BUG FOUND: NO",buggy
+440,"SE: The pathname is constructed from user-controlled input without proper validation, allowing directory traversal attacks.
+BL: `File outFile = new File(deployDir, en);`
+BUG FOUND: YES",buggy
+443,"SE: The wildcard in the path is directly used to append to the filename without proper validation or sanitization, potentially allowing directory traversal attacks.
+BL: `fname = filepath.Join(filename, m[0])`
+BUG FOUND: YES",buggy
+460,"SE: The 'path' parameter is directly used in file system operations without proper validation, potentially allowing directory traversal.
+BL: `public function getDirsCollection($path)`
+BUG FOUND: YES",buggy
+8754,"The provided PHP file content does not contain any explicit path traversal vulnerabilities (CWE-22) based on the code analysis. The file primarily deals with layout and block management in a Magento application, focusing on XML structure manipulation, block creation, and rendering without directly handling file paths or user input for file operations.
+
+Expected Output Structure:
+SE: No path traversal vulnerabilities detected in the provided PHP file content.
+BL: none
+BUG FOUND: NO",buggy
+8815,"SE: The 'path' parameter from the URL is directly used in file operations without proper sanitization.
+BL: `path = secure_filename(path)`
+BUG FOUND: YES",buggy
+8734,"SE: The method `getDataFilePath` constructs a file path using a record identifier and a relative file path without validating or sanitizing the input, which could allow path traversal if user-controlled input is passed.
+BL: `return Paths.get(dataRepositoryPath, relativeFilePath);`
+BUG FOUND: YES",buggy
+5192,"SE: The script directly includes files based on user input without proper validation or sanitization, which can lead to path traversal attacks.
+BL: `require './func/' . $module . '.php';`
+BUG FOUND: YES",buggy
+8895,"SE: The function `getModTime` uses `filepath.Abs` which can be manipulated by modifying `os.Args[0]` to traverse directories.
+BL: `absPath, err := filepath.Abs(path)`
+BUG FOUND: YES",buggy
+8855,"SE: The file path is constructed directly from user input without proper sanitization, which may allow path traversal attacks.
+BL: `file_path = msprintf(""%s/%s"", ((struct _u_compressed_inmemory_website_config *)user_data)->files_path, file_requested);`
+BUG FOUND: YES",buggy
+5219,"SE: The 'tensor_filename' is directly used to create a file path without validating or sanitizing the input, which could lead to path traversal if 'tensor_name' is manipulated.
+BL: `with open(os.path.join(self.temp_dir, tensor_filename), 'wb') as data_file:`
+BUG FOUND: YES",buggy
+8724,"SE: The 'dir' variable is used to construct a path without proper validation or sanitization, which could allow directory traversal attacks if external input is manipulated.
+BL: `$dir = dir($this->dir);`
+BUG FOUND: YES",buggy
+8883,"SE: The 'output_file_path' is derived from external input without proper validation or sanitization, potentially allowing path traversal.
+BL: `output_file = open(output_file_path, ""a+"", buffering=1)`
+BUG FOUND: YES",buggy
+8716,"SE: The file path is directly constructed from user input without proper validation or sanitization, which can lead to directory traversal attacks.
+BL: `$realFilePath = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . $file['path'];`
+BUG FOUND: YES",buggy
+8764,"SE: The file path is directly constructed from user input without proper validation or sanitization, which can lead to path traversal vulnerabilities.
+BL: `$target_file_to_save = normalize_path($target_dir . $name, false);`
+BUG FOUND: YES",buggy
+8660,"SE: The function 'imap_parse_path' directly processes the 'path' input without proper validation or sanitization, which could allow path traversal if the input is crafted maliciously.
+BL: `if (imap_parse_path(path, &mx) < 0)`
+BUG FOUND: YES",buggy
+448,"SE: The 'path' variable is constructed from user input without proper validation or sanitization, potentially allowing path traversal attacks.
+BL: `final String _path = localPath + Item.SEPARATOR + item.getPath();`
+BUG FOUND: YES",buggy
+8833,"SE: The '$_POST' data is directly used to construct file paths without proper validation or sanitization, which can lead to path traversal vulnerabilities.
+BL: `$oldFile = $icmsObj->getUploadDir(true) . $icmsObj->getVar($key, 'e');`
+BUG FOUND: YES",buggy
+8709,"SE: The 'file' parameter from GET request is directly used in file path operations without proper validation or sanitization.
+BL: `$stream_full_path = path_join($stream_path, $stream_file);`
+BUG FOUND: YES",buggy
+8751,"The analysis of the provided file content reveals a potential bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) in the handling of SCSI Extended Copy (XCOPY) commands. The bug is related to the handling of World Wide Name (WWN) identifiers, which are used to uniquely identify devices in a storage network. The code does not properly validate or sanitize these identifiers before using them to locate devices, which could potentially allow an attacker to manipulate these identifiers to access or modify data on unauthorized devices.
+
+Expected Output Structure:
+SE: The 'dev_wwn' is used directly in memory comparison without proper validation, potentially allowing path traversal.
+BL: `rc = memcmp(&tmp_dev_wwn[0], info->dev_wwn, XCOPY_NAA_IEEE_REGEX_LEN);`
+BUG FOUND: YES",buggy
+473,"The provided PHP file contains a potential CWE-22 vulnerability related to improper limitation of a pathname to a restricted directory (Path Traversal). The vulnerability is found in the `_joinPath` method, where user input (the `$name` parameter) is used to construct a file path without sufficient validation to prevent directory traversal attacks.
+
+Here's the analysis:
+
+**Vulnerable Line:**
+```php
+$path = $dir . DIRECTORY_SEPARATOR . $name;
+```
+In the `_joinPath` method, the `$name` parameter can potentially include directory traversal characters (e.g., `../`). If `$name` is not properly sanitized before being appended to `$dir`, an attacker could manipulate the path to access or modify files outside of the intended directory.
+
+**Expected Output:**
+```
+SE: The 'name' parameter is appended directly to a directory path without sufficient validation, which could lead to directory traversal.
+BL: `$path = $dir . DIRECTORY_SEPARATOR . $name;`
+BUG FOUND: YES
+```",buggy
+8799,"SE: The 'filename' parameter from the URL is directly used to construct a file path without proper validation or sanitization.
+BL: `file_path = os.path.join(PATH_NOTE_ATTACHMENTS, filename)`
+BUG FOUND: YES",buggy
+432,"The provided PHP file contains a potential CWE-22 vulnerability related to improper limitation of a pathname to a restricted directory (Path Traversal). The vulnerability is found in the `load_template` function where user input could potentially influence file paths without sufficient sanitization.
+
+Here's the analysis:
+
+**Vulnerable Line:**
+```php
+$tpl = trim( $tpl, ""./\\"" );
+```
+This line attempts to sanitize the `$tpl` variable by trimming slashes and dots, which is a common technique to prevent directory traversal. However, this method is not foolproof and can be bypassed if the input is crafted in a specific way (e.g., using URL encoding or double-dot sequences that are not caught by the trim function).
+
+**Explanation:**
+The function `load_template` constructs a file path using the `$tpl` variable which is derived from user input. Although there is an attempt to sanitize this input by trimming certain characters, more robust methods such as validating against a list of allowed templates or using realpath to resolve the path should be employed to prevent directory traversal attacks effectively.
+
+**Recommendation:**
+It is recommended to enhance the sanitization of the `$tpl` variable by using more secure methods such as:
+- Validating the input against a whitelist of allowed paths.
+- Using functions like `realpath()` to canonicalize paths and ensure they reside within the intended directory.
+
+**Output:**
+```plaintext
+SE: The '$tpl' variable is used to construct file paths potentially leading to directory traversal if not properly sanitized.
+BL: `$tpl = trim( $tpl, ""./\\"" );`
+BUG FOUND: YES
+```",buggy
+8691,"SE: The file path for the ZIP file is constructed using unsanitized user input, which can lead to path traversal vulnerabilities.
+BL: `$aZIPFileName = $this->config->item(""tempdir"").DIRECTORY_SEPARATOR.randomChars(30);`
+BUG FOUND: YES",buggy
+450,"SE: The 'file' and 'type' variables from user input are directly used in constructing a file path without proper validation or sanitization.
+BL: `$filelocation = __DIR__ . ""/images/$type/$file.$type"";`
+BUG FOUND: YES",not_buggy
+5260,"SE: The 'uri.getLastPathSegment()' is used to access files which can be manipulated to traverse directories.
+BL: `File privateFile = new File(cacheDir, uri.getLastPathSegment());`
+BUG FOUND: YES",not_buggy
+8865,"SE: The 'uri' variable is derived from user input and used in file path access without proper validation or sanitization.
+BL: `try (InputStream in = getServletContext().getResourceAsStream(uri))`
+BUG FOUND: YES",not_buggy
+485,"SE: The 'path' parameter from user input is used to access file system directories without sufficient validation of the input, potentially allowing directory traversal.
+BL: `$path = $_GET['path'];`
+BUG FOUND: YES",not_buggy
+8810,"SE: The 'path' variable is directly concatenated with 'root' without proper validation or sanitization, potentially allowing path traversal.
+BL: `if ($path !== '/index.php' && is_file($root . $path)) {`
+BUG FOUND: YES",not_buggy
+5235,"SE: The 'extension' parameter from user input is used in file path construction without sufficient validation.
+BL: `$path = realpath($allowedRoot.'/'.$extension);`
+BUG FOUND: YES",not_buggy
+476,"SE: The 'filename' parameter is sanitized using 'basename' to prevent directory traversal.
+BL: none
+BUG FOUND: NO",not_buggy
+444,"SE: The file path is constructed from user input without proper validation, potentially allowing path traversal.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES",not_buggy
+435,"SE: The 'filename' is derived from user input without proper validation or sanitization, potentially allowing path traversal.
+BL: `filename = request.path_info_pop(environ)`
+BUG FOUND: YES",not_buggy
+8846,"SE: The 'assetPath' is derived from user-controlled input without sufficient validation, potentially allowing directory traversal.
+BL: `$filePath = $assetRoot . DIRECTORY_SEPARATOR . $assetPath;`
+BUG FOUND: YES",not_buggy
+8840,"SE: The 'unsafe_file_path' from user input is used to construct file paths without proper validation, leading to potential path traversal.
+BL: `$full_unsafe_file_path = $xerte_toolkits_site->root_file_path . $xerte_toolkits_site->users_file_area_short . $unsafe_file_path;`
+BUG FOUND: YES",not_buggy
+8830,"Expected Output Structure:
+SE: The 'zipper.sync.unzip' function is used to unzip files without validating or sanitizing the paths within the zip file, which could lead to path traversal vulnerabilities if the zip file contains malicious paths.
+BL: `zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-sync-unzip/"");`
+BUG FOUND: YES",not_buggy
+457,"SE: The replacement of directory traversal sequences is incomplete, potentially allowing other forms of path traversal.
+BL: `$uploadedFileName = str_replace('..' . DIRECTORY_SEPARATOR, '', $uploadedFileName);`
+BUG FOUND: YES",not_buggy
+487,"SE: The script checks for '..' and '.php' in the 'fid' parameter but does not adequately prevent path traversal as it only checks for their presence, not their context or position.
+BL: `if(!Kotchasan\Login::isMember() || strpos($_REQUEST['fid'], '..') === false || strpos($_REQUEST['fid'], '.php') === false) exit();`
+BUG FOUND: YES",not_buggy
+8807,"SE: The 'filename' from user input ($_GET['file']) is used in file path operations without sufficient sanitization.
+BL: `$file = $docDir.'/'.$filename;`
+BUG FOUND: YES",not_buggy
+5417,"SE: The path from the zip entry is directly used to resolve the file path without proper validation, which can lead to path traversal.
+BL: `File entryDestination = path.resolve(entry.getName()).toFile();`
+BUG FOUND: YES",not_buggy
+8680,"SE: The 'key' parameter from the URL is used directly to fetch files without sufficient path traversal checks.
+BL: `Resource file = storageService.loadAsResource(key);`
+BUG FOUND: YES",not_buggy
+8708,"SE: The 'call_recording_path' and 'call_recording_name' are combined and used in file operations without proper validation or sanitization.
+BL: `if (file_exists($call_recording_path.'/'.$call_recording_name)) { @unlink($call_recording_path.'/'.$call_recording_name); }`
+BUG FOUND: YES",not_buggy
+5317,"Expected Output Structure:
+SE: The file path from the zip entry is not properly validated before being used to create a file, potentially allowing path traversal.
+BL: `File file = new File(destination, zipEntry.getName());`
+BUG FOUND: YES",not_buggy
+459,"SE: The 'request.url' is used in file path construction without proper validation, which may allow path traversal attacks.
+BL: `var nowTemp = (host.frondend + (request.url.replace('/', '') || host.baseTemp)).replace(/\.\./g, '');`
+BUG FOUND: YES",not_buggy
+8859,"SE: The method 'getCanonicalPath' can be used to normalize a path which may lead to path traversal vulnerabilities if not properly handled.
+BL: `""getcanonicalpath""`
+BUG FOUND: YES",not_buggy
+8892,"SE: The 'path' variable from user input is used to access files without proper validation, potentially allowing path traversal.
+BL: `file_path = safe_join(current_app.template_folder, path)`
+BUG FOUND: YES",not_buggy
+478,"SE: The 'zoneid' from user input is used to construct a file path without proper validation or sanitization.
+BL: `target_directory = '/var/captiveportal/zone%s/htdocs/' % zoneid`
+BUG FOUND: YES",not_buggy
+5262,"SE: The 'custom_less' setting from user input is used in CSS recompilation without proper validation against path traversal patterns.
+BL: `$this->assets->makeCss()->commit();`
+BUG FOUND: YES",not_buggy
+8854,"SE: The 'prefix' variable is directly used in file path construction without proper validation, potentially allowing directory traversal.
+BL: `$userLangFile = $prefix.'lang/'.preg_replace('/[^[:alnum:]_]+/', '', $user['Language']).'.php';`
+BUG FOUND: YES",not_buggy
+452,"SE: The file path from the zip entry is used directly to create a new file without checking if it traverses outside the intended directory.
+BL: `file = new File(destDir, fileName);`
+BUG FOUND: YES",not_buggy
+8714,"SE: The 'paste' variable, which is derived from external input, is used to construct a file path without sufficient sanitization.
+BL: `filename = os.path.join(PASTES_FOLDER, paste)`
+BUG FOUND: YES",not_buggy
+8845,"SE: The 'private_key' value from user input is used to create a file without proper validation of the path, potentially allowing path traversal.
+BL: `$file->fwrite($form->getElement('private_key')->getValue());`
+BUG FOUND: YES",not_buggy
+8749,"SE: The code properly checks for path traversal vulnerabilities by ensuring the canonical path of the extracted file starts with the expected directory path.
+BL: none
+BUG FOUND: NO",not_buggy
+471,"SE: The 'url' parameter is directly used in file_get_contents without sufficient validation, potentially allowing path traversal.
+BL: `if(!$content = file_get_contents($this->url)) {`
+BUG FOUND: YES",not_buggy
+8738,"SE: The function does not properly handle directory traversal characters ('..' and '.') which can lead to path traversal vulnerabilities.
+BL: `let pathParts = _.filter(_.split(rawPath, '/'), p => { p = _.trim(p) return !_.isEmpty(p) && p !== '..' && p !== '.' })`
+BUG FOUND: YES",not_buggy
+433,"SE: The file path from the jar entry is directly used to create a new file without proper validation, which can lead to path traversal if the jar entry name includes directory traversal characters.
+BL: `File copyFile = new File(file, jeName);`
+BUG FOUND: YES",not_buggy
+8869,"SE: The dictionary 'individual' and 'case' contain fields that directly assign user input to file path variables without any apparent validation or sanitization.
+BL: `bam_file=str,  # Path to bam file` and other similar lines in the 'individual' and 'case' dictionaries.
+BUG FOUND: YES",not_buggy
+8889,"SE: The 'filename' parameter from the URL is used in file path construction without explicit validation against path traversal.
+BL: `filepath = safe_join(app.config.get(""PRIVATE_DIR""), filename)`
+BUG FOUND: YES",not_buggy
+8812,"SE: The rawPath is sanitized to remove unsafe characters and sequences, but it still allows for potential directory traversal if not properly handled elsewhere in the application.
+BL: `rawPath = rawPath.replaceAll('\\', '').replaceAll('//', '').replaceAll(/\.\.+/ig, '')`
+BUG FOUND: YES",not_buggy
+8909,"SE: The 'directory' variable is user-controlled and appended to file paths without sufficient validation against directory traversal attacks.
+BL: `filePath = directory + ""/"" + filePath;`
+BUG FOUND: YES",not_buggy
+486,"SE: The 'entry.getName()' method is used to extract the file name from a zip entry and directly used to construct a file path without proper validation or sanitization.
+BL: `File file = new File(dest, entry.getName());`
+BUG FOUND: YES",not_buggy
+445,"SE: The file path is constructed from user input without proper validation, which can lead to directory traversal.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES",not_buggy
+8705,"SE: The 'widgetkey' from user input is used in file path construction without sufficient validation, potentially allowing path traversal.
+BL: `$image_filename = ""/conf/widget_image.{$wk}"";`
+BUG FOUND: YES",not_buggy
+5146,"SE: The 'path' parameter is directly used in file system operations without validation or sanitization, potentially allowing path traversal.
+BL: `if os.path.exists(path):`
+BUG FOUND: YES",not_buggy
+480,"SE: The 'filename' parameter from user input is used to construct a file path without sufficient validation, potentially allowing path traversal.
+BL: `$file = DIR_LOGS . $filename;`
+BUG FOUND: YES",not_buggy
+8739,"SE: The 'path' parameter from the URL is used directly in file system operations without sufficient validation or sanitization.
+BL: `data_file, metadata_file = get_paths(app.config[""DATA_ROOT""], path)`
+BUG FOUND: YES",not_buggy
+8834,"SE: The 'filename' is constructed from user input and used directly in file operations without proper sanitization.
+BL: `remove(werkzeug.utils.secure_filename(filename))`
+BUG FOUND: YES",not_buggy
+8852,"SE: The 'name' variable, which is user-controlled, is directly used in a file path without sufficient sanitization, potentially allowing path traversal.
+BL: `aliasedRequire('./locale/' + name);`
+BUG FOUND: YES",not_buggy
+446,"SE: The function does not properly handle path traversal when constructing the output path from the tar file's entry names.
+BL: `outPath = gopath.Join(te.Path, outPath)`
+BUG FOUND: YES",not_buggy
+8685,"SE: The code does not properly check for path traversal patterns after an alias match, potentially allowing access to restricted directories.
+BL: `if (uri_ptr[alias_len] == '.') {`
+BUG FOUND: YES",not_buggy
+8702,"SE: The 'archive' and 'dst' parameters are directly used in file system operations without proper validation or sanitization, potentially allowing path traversal.
+BL: `extractor = getExtractor(src);`
+BUG FOUND: YES",not_buggy
+8907,"SE: The 'toRead' parameter, which is a path within the zip file, is directly used to get an entry from the zip file without validation or sanitization.
+BL: `InputStream stream = file.getInputStream(file.getEntry(toRead));`
+BUG FOUND: YES",not_buggy
+472,"SE: The 'archive' filename from user input is used to construct a file path without proper validation or sanitization.
+BL: `$localArchive = FileDir::makeCorrectFile(Froxlor::getInstallDir() . '/updates/' . $toExtract);`
+BUG FOUND: YES",not_buggy
+436,"SE: The file path from the zip entry is directly used to create a file without proper validation, which can lead to path traversal attacks.
+BL: `final File outFile = new File(targetFolder, name);`
+BUG FOUND: YES",not_buggy
+5236,"SE: The 'rest' variable, derived from user input, is used to construct a file path without sufficient validation, potentially allowing path traversal.
+BL: `rest = HttpUtils.removeDots(rest.replace('\\', '/'));`
+BUG FOUND: YES",not_buggy
+437,"SE: The file path from the zip entry is directly used to create a new file without proper validation, which can lead to path traversal vulnerabilities.
+BL: `File newFile = new File(destDir, fileName);`
+BUG FOUND: YES",not_buggy
+430,"SE: The 'UriWithoutParams' variable is directly used to construct file paths without proper validation or sanitization, potentially allowing path traversal attacks.
+BL: `$pathFile = $_SERVER['DOCUMENT_ROOT'] . $UriWithoutParams;`
+BUG FOUND: YES",not_buggy
+8879,"SE: The 'artifact.FilePath' is directly used in constructing the file path without proper validation against path traversal attacks.
+BL: `filePath := fmt.Sprintf(""%s/%s"", dir, g.artifact.FilePath)`
+BUG FOUND: YES",not_buggy
+8686,"SE: The function 'ensure_filepath' modifies the input path directly, potentially allowing directory traversal by not properly validating or sanitizing the path components.
+BL: `ok = (mkdir(path, 0777 & ~user_umask) == 0);`
+BUG FOUND: YES",not_buggy
+8745,"SE: The URL from the request is directly checked against a 'file:///' prefix without proper validation or sanitization, which could allow path traversal attacks if manipulated.
+BL: `r.url().lastIndexOf('file:///', 0) === 0`
+BUG FOUND: YES",not_buggy
+438,"SE: The function 'is_safe_path' checks if the 'path' is within 'basedir', but it does not prevent directory traversal as it only compares the common path after joining, which can be manipulated.
+BL: `path = os.path.realpath(os.path.join(basedir, path))`
+BUG FOUND: YES",not_buggy
+484,"SE: The file path is constructed from user input without proper validation or sanitization, which can lead to path traversal attacks.
+BL: `$filePath = realpath($basePath . DS . $file);`
+BUG FOUND: YES",not_buggy
+5209,"SE: The 'id' parameter is directly used in file path construction without proper validation or sanitization.
+BL: `include_once($path_to_root.'/modules/'.clean_file_name($id).'/hooks.php');`
+BUG FOUND: YES",not_buggy
+8890,"SE: The function `get_absolute_path` constructs a file path using user-provided input without proper validation, which could lead to directory traversal attacks.
+BL: `abs_file_path = safe_join(script_dir, rel_path)`
+BUG FOUND: YES",not_buggy
+481,"SE: The 'file' variable from 'fz.namelist()' is directly used in 'fz.extract()' without validation or sanitization, potentially allowing path traversal.
+BL: `fz.extract(file, dist)`
+BUG FOUND: YES",not_buggy
+8728,"SE: The 'options.skeleton' is dynamically required based on user input without proper sanitization, which can lead to path traversal.
+BL: `options.skeleton = require(options.skeleton.charAt(0) === '.' ? path.resolve(process.cwd(), options.skeleton) : options.skeleton)`
+BUG FOUND: YES",not_buggy
+463,"SE: The function does not properly validate or sanitize the file path from the zip file, which could allow path traversal attacks if the file name contains directory traversal characters.
+BL: `fullPath := filepath.Join(targetDir, file.Name)`
+BUG FOUND: YES",not_buggy
+439,"SE: The path is normalized after checking for "".."", which might not prevent all path traversal issues if the path still results in a directory escape after normalization.
+BL: `path = (new File(path)).getCanonicalPath();`
+BUG FOUND: YES",not_buggy
+464,"SE: The 'basename' function is used on user-controlled input without further validation, which may allow path traversal.
+BL: `$logfile = htmlspecialchars($suricatalogdir . basename($_POST['file']));`
+BUG FOUND: YES",not_buggy
+449,"SE: The file path is constructed using user input without proper validation, which can lead to path traversal vulnerabilities.
+BL: `filename := filepath.Join(cmd.storage, filepath.FromSlash(path.Clean(""/""+strings.Trim(r.URL.Path, ""/""))))`
+BUG FOUND: YES",not_buggy
+483,"SE: The 'sf_prefix' from user input is used in constructing a file path without proper validation or sanitization.
+BL: `$downloadfile = $sf_directory . basename($downloadfile);`
+BUG FOUND: YES",not_buggy
+442,"SE: The 'name' variable derived from user input is used in file path operations without sufficient sanitization, potentially allowing path traversal.
+BL: `if (!unlink($type . $name)) {`
+BUG FOUND: YES",not_buggy
+447,"SE: The 'downloadPath' is directly used to save a file without validating or sanitizing the path, which could allow path traversal attacks if the path is manipulated.
+BL: `Files.copy(in, Paths.get(downloadPath), StandardCopyOption.REPLACE_EXISTING);`
+BUG FOUND: YES",not_buggy
+5152,"SE: The extracted file path is not properly checked against directory traversal attacks before use.
+BL: `File file = new File(folder, zipEntry.getName());`
+BUG FOUND: YES",not_buggy
+431,"SE: The file path from the zip entry is directly used to create a file without proper validation, which can lead to path traversal.
+BL: `final File destFile = new File(importSandboxDirectory, zipEntry.getName());`
+BUG FOUND: YES",not_buggy
+8713,"SE: The 'filename' parameter derived from user input is normalized and joined with ROOT_DIR but still used in file operations, which could lead to path traversal if not properly restricted.
+BL: `filename = path.normalize(path.join(ROOT_DIR, filename));`
+BUG FOUND: YES",not_buggy
+8746,"SE: The file path is constructed from user input without proper validation, which can lead to path traversal.
+BL: `const filePath = path.join(workspaceDir, file);`
+BUG FOUND: YES",not_buggy
+8766,"The provided PHP file does not contain any explicit path traversal vulnerabilities (CWE-22) based on the code analysis. The file primarily deals with handling custom reports, managing configurations, and interacting with data sources through defined APIs and methods. There is no direct manipulation of file paths or directories based on user input that would typically lead to a path traversal issue.
+
+Expected Output Structure:
+SE: No path traversal vulnerabilities detected as there is no direct manipulation of file paths or directories based on user input.
+BL: none
+BUG FOUND: NO",not_buggy
+8884,"SE: The 'req_path' from the URL is directly used in filesystem operations without proper validation or sanitization.
+BL: `abs_path = safe_join(CONFIG['SRV_DIR'], req_path)`
+BUG FOUND: YES",not_buggy
+8904,"SE: The 'folderpath' from the URL is directly used in filesystem operations without proper validation or sanitization.
+BL: `requested_path = os.path.join(cfg.wiki_directory,folderpath)`
+BUG FOUND: YES",not_buggy
+5196,"SE: The directory path is constructed from user input without proper validation, which could lead to path traversal.
+BL: `$save_path = $this->filePath($this->_dir);`
+BUG FOUND: YES",not_buggy
+8672,"SE: The function does not properly validate the path of the extracted entry, potentially allowing path traversal.
+BL: `var target = pth.resolve(targetPath, maintainEntryPath ? entryName : pth.basename(entryName));`
+BUG FOUND: YES",not_buggy
+8650,"SE: The 'cleanUrl' function attempts to prevent directory traversal by removing instances of '..', but replacing '..' with an empty string might not be sufficient to prevent all path traversal attacks.
+BL: `while(url.indexOf('..') >= 0) { url = url.replace('..', ''); }`
+BUG FOUND: YES",not_buggy
+8838,"SE: The servlet path is modified based on user input without sufficient validation, which could lead to directory traversal.
+BL: `fullFilePath = fullFilePath.resolve(httpRequest.getPathInfo());`
+BUG FOUND: YES",not_buggy
+493,"SE: The username is directly used to construct a file path without proper validation or sanitization, which could allow path traversal attacks.
+BL: `with open(f""user_images/pfp/{username}.png"", ""wb"") as write_file:`
+BUG FOUND: YES",not_buggy
+8759,"SE: The 'pageGroupData['entities']' is directly used in a path construction without proper validation or sanitization, which can lead to path traversal vulnerabilities.
+BL: `layoutHandleUpdates[] = str_replace('{{ID}}', $entity, $this->_specificEntitiesLayoutHandles[$pageGroup['page_group']]);`
+BUG FOUND: YES",not_buggy
+440,"SE: The file name is checked for path traversal patterns after creating a new File object, which might not prevent the path traversal.
+BL: `File outFile = new File(deployDir, en);`
+BUG FOUND: YES",not_buggy
+443,"SE: The function attempts to prevent path traversal but does not adequately check for "".."" sequences that could lead to directory traversal vulnerabilities.
+BL: `if !strings.Contains(req, "".."") { return false }`
+BUG FOUND: YES",not_buggy
+460,"SE: The function `deleteDirectory` uses `strpos` and `preg_match` to check for directory traversal but does not adequately prevent directory traversal sequences that are not at the beginning of the path.
+BL: `if (strpos($pathCmp, chr(0)) !== false || preg_match('#(^|[\\\\/])\.\.($|[\\\\/])#', $pathCmp)) { throw new Exception('Detected malicious path or filename input.'); }`
+BUG FOUND: YES",not_buggy
+8754,"The provided PHP file content does not contain any explicit path traversal vulnerabilities (CWE-22) based on the code analysis. The file primarily deals with layout management in a Magento application, focusing on block creation, layout updates, and XML configuration handling. There is no direct manipulation of file paths or directories based on user input that would typically lead to path traversal issues.
+
+Expected Output Structure:
+SE: No path traversal vulnerabilities detected in the provided code.
+BL: none
+BUG FOUND: NO",not_buggy
+8815,"SE: The 'path' parameter from the URL is directly used in file serving without proper validation or sanitization.
+BL: `return send_file(safe_join(app.cwd, path))`
+BUG FOUND: YES",not_buggy
+8734,"SE: The method does not properly sanitize or validate the 'relativeFilePath' parameter, which could allow path traversal if user-controlled input is passed.
+BL: `return Paths.get(dataRepositoryPath, relativeFilePath);`
+BUG FOUND: YES",not_buggy
+5192,"SE: The script directly includes files based on user input without proper sanitization, which can lead to path traversal attacks.
+BL: `require './func/' . $module . '.php';`
+BUG FOUND: YES",not_buggy
+8895,"SE: The function `getModTime` uses `filepath.Abs` which can be manipulated by modifying `os.Args[0]` to traverse directories.
+BL: `absPath, err := filepath.Abs(path)`
+BUG FOUND: YES",not_buggy
+8855,"SE: The file path is constructed from user input without proper validation, which can lead to path traversal.
+BL: `file_path = msprintf(""%s/%s"", ((struct _u_compressed_inmemory_website_config *)user_data)->files_path, file_requested);`
+BUG FOUND: YES",not_buggy
+5219,"SE: The external data tensor location is set to a relative path that navigates outside the model directory, which can lead to path traversal vulnerabilities.
+BL: `set_external_data(tensor, location=""../../file.bin"")`
+BUG FOUND: YES",not_buggy
+8724,"SE: The plugin name is directly used in file path construction without sufficient validation, which could lead to path traversal.
+BL: `$fn = ""$plugins_dir/$plugin_name/$plugin_name.php"";`
+BUG FOUND: YES",not_buggy
+8883,"SE: The 'output_file_path' is directly used in file operations without proper validation or sanitization.
+BL: `output_file = open(output_file_path, ""a+"", buffering=1)`
+BUG FOUND: YES",not_buggy
+8716,"SE: The file path is directly constructed from user input without proper validation or sanitization, which can lead to directory traversal attacks.
+BL: `$realFilePath = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . $file['path'];`
+BUG FOUND: YES",not_buggy
+8764,"SE: The file path is directly constructed from user input without proper validation, which can lead to directory traversal attacks.
+BL: `$target_file_to_save = normalize_path($target_dir . $name, false);`
+BUG FOUND: YES",not_buggy
+8660,"SE: The function does not properly validate or sanitize the 'path' parameter before using it, which could allow an attacker to manipulate the path to access or modify files or directories that are stored outside of the restricted directory.
+BL: `if (imap_parse_path(path, &mx) < 0)`
+BUG FOUND: YES",not_buggy
+448,"SE: The 'path' variable is constructed from user input without proper validation or sanitization, potentially allowing path traversal.
+BL: `String path = localPath + Item.SEPARATOR + item.getPath();`
+BUG FOUND: YES",not_buggy
+8833,"SE: User input for file paths is directly used without proper validation or sanitization, allowing for potential directory traversal attacks.
+BL: `$_POST['url_' . $key] = preg_replace('|[\.]+\/|', './', $_POST['url_' . $key]);`
+BUG FOUND: YES",not_buggy
+8709,"SE: The file path is constructed from user input without proper validation, allowing for potential directory traversal attacks.
+BL: `$stream_full_path = path_join($stream_path, $stream_file);`
+BUG FOUND: YES",not_buggy
+8751,"The provided code does not explicitly show any direct handling of user input for file paths or similar operations that would typically be vulnerable to CWE-22 (Path Traversal). The code primarily deals with SCSI commands, copying data between devices, and handling SCSI command structures. It does not appear to involve file system paths or external input that could be manipulated to exploit path traversal vulnerabilities.
+
+Expected Output Structure:
+SE: No direct user input for file paths or similar operations vulnerable to CWE-22 detected.
+BL: none
+BUG FOUND: NO",not_buggy
+473,"The provided PHP file contains a potential CWE-22 vulnerability related to improper limitation of a pathname to a restricted directory (Path Traversal). The vulnerability is found in the `_joinPath` method, where user input (file or directory names) is used to construct a file path without sufficient validation or sanitization. This could allow an attacker to traverse the file system and access files or directories that are outside of the intended directories.
+
+Here's the analysis:
+
+**Vulnerable Line:**
+```php
+$path = realpath($dir . DIRECTORY_SEPARATOR . $name);
+```
+In the `_joinPath` method, the `$dir` and `$name` variables are concatenated to form a path. If `$name` contains directory traversal characters like `../`, it could lead to path traversal.
+
+**Expected Output:**
+```
+SE: The method '_joinPath' constructs file paths without properly validating user input, which can lead to directory traversal.
+BL: `$path = realpath($dir . DIRECTORY_SEPARATOR . $name);`
+BUG FOUND: YES
+```",not_buggy
+8799,"SE: The 'filename' parameter from the URL is directly used to construct a file path without proper validation or sanitization.
+BL: `file_path = os.path.join(PATH_NOTE_ATTACHMENTS, filename)`
+BUG FOUND: YES",not_buggy
+432,"The provided PHP file contains a potential vulnerability related to CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) in the `load_template` function. This function constructs a file path based on user input without properly validating or sanitizing the input, which could allow an attacker to access or execute files outside of the intended directories.
+
+Here's the analysis:
+
+**Vulnerable Line:**
+```php
+$file = um_path . ""templates/{$tpl}.php"";
+```
+
+**Explanation:**
+The variable `$tpl` is used directly in the file path construction. If an attacker can control the `$tpl` variable, they might be able to traverse the file system (e.g., using `../` sequences) to access unauthorized directories or files.
+
+**Expected Output Structure:**
+```
+SE: The variable '$tpl' is directly used in file path construction without proper validation, leading to potential directory traversal issues.
+BL: `$file = um_path . ""templates/{$tpl}.php"";`
+BUG FOUND: YES
+```",not_buggy
+8691,"SE: The file path for the ZIP archive is constructed using unsanitized user input, which can lead to path traversal vulnerabilities.
+BL: `$aZIPFileName = $this->config->item(""tempdir"").DIRECTORY_SEPARATOR.randomChars(30);`
+BUG FOUND: YES",not_buggy

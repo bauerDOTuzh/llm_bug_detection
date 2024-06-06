@@ -1,0 +1,2033 @@
+file_id,model_output,type
+4268,"SE: The 'params[:sol]' is directly used in an SQL query without any sanitation or parameterization, which can lead to SQL Injection.
+BL: `@images = Image.where(sol: params[:sol])`
+BUG FOUND: YES",buggy
+399,"SE: The 'uemail' and 'upass' variables are directly concatenated into the SQL query without any sanitation or parameterization, making the code vulnerable to SQL Injection.
+BL: `query=""select * from admin where email='$uemail' and password='$upass'"";`
+BUG FOUND: YES",buggy
+8592,"SE: The 'search' array is directly used in the SQL query without proper sanitation or parameterization.
+BL: `return $query->where($search);`
+BUG FOUND: YES",buggy
+339,"SE: The 'name' and 'score' parameters from user input are directly concatenated into the SQL query without any sanitation or parameterization, making it vulnerable to SQL Injection.
+BL: `$query = ""INSERT INTO Highscores VALUES ($id, '$name', $score)"";`
+BUG FOUND: YES",buggy
+353,"SE: The 'params[:user]' is directly used in a query without proper sanitation or parameterization.
+BL: `@user = User.find_by(params[:user])`
+BUG FOUND: YES",buggy
+341,"SE: The 'key' parameter from the URL is directly concatenated into the SQL query without any sanitation or parameterization, making it vulnerable to SQL Injection.
+BL: `$result = mysqli_query($con,""SELECT * FROM users where secret = '$key' and authused=1"");`
+BUG FOUND: YES",buggy
+371,"SE: The 'userid' from `$vbulletin->userinfo['userid']` is directly concatenated into the SQL query without sanitation.
+BL: `$usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `userid` = '"" . $vbulletin->userinfo['userid'] . ""'"");`
+BUG FOUND: YES",buggy
+369,"SE: The 'referrername' from `$_POST` is directly concatenated into the SQL query without sanitation.
+BL: `$usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `username` = '"" . $_POST['referrername'] . ""'"");`
+BUG FOUND: YES",buggy
+8622,"SE: The 'id' parameter from the GET request is directly used without any validation or sanitation, which could lead to SQL Injection if it is used in an SQL query later in the code.
+BL: `if (isset($_GET['id']) && ($_GET['id'] == 0)) {`
+BUG FOUND: YES",buggy
+345,"SE: The variables `$symbol`, `$startDate`, and `$endDate` are directly concatenated into the SQL query without any sanitation or parameterization, making the code vulnerable to SQL Injection.
+BL: `$query = ""select date, EOD, MA20, MA50, delta, deltaMA5, deltaMA10, deltaMA20, P0, P1, P2, M1, M2, M3 from $symbol where date >= $startDate and date <= $endDate order by date DESC"";`
+BUG FOUND: YES",buggy
+8643,"SE: The '$_POST['action']' and '$_POST['id']' are directly used in the `call_user_func` function without any validation or sanitation, which could lead to SQL Injection if these values are used in SQL queries within the called methods.
+BL: `call_user_func([$plugin, $_POST['action']], $_POST['id']);`
+BUG FOUND: YES",buggy
+316,"SE: The 'name' parameter is directly concatenated into the SQL query string without proper sanitation.
+BL: `return self::getForQueryString(""SELECT * FROM \""DevNewsAggregatorConfiguration_htmlcontent\"" WHERE name = $name"");`
+BUG FOUND: YES",buggy
+356,"SE: The 'username' and 'password' are directly concatenated into the SQL query without sanitation, which can lead to SQL Injection.
+BL: `conn.query(""INSERT INTO user (username, password) VALUES ('""+username+""', '""+password+""')"", function (err, result) {`
+BUG FOUND: YES",buggy
+404,"SE: The '$_POST['itemtype']' is directly used in an array operation without any validation or sanitation.
+BL: `$already_pinned = $all_pinned[$_POST['itemtype']] ?? 0;`
+BUG FOUND: YES",buggy
+336,"SE: The 'sort' and 'direction' parameters from the request are directly concatenated into the SQL query without any sanitation or parameterization, making the code vulnerable to SQL Injection.
+BL: `$sql = ""select * from sample order by \""{$sort}\"" {$direction}"";`
+BUG FOUND: YES",buggy
+314,"SE: The 'sort' and 'direction' variables are directly concatenated into the SQL query without sanitation.
+BL: `{$sort} {$direction}`;
+BUG FOUND: YES",buggy
+311,"SE: The 'id' from the `$link` array is directly concatenated into the SQL query without sanitation.
+BL: ` $query = ""UPDATE short_links SET count = count + 1, last_request = NOW() WHERE id = "" . $link[""id""];`
+BUG FOUND: YES",buggy
+365,"SE: The 'id' parameter from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM contract_signer_role WHERE id="".$_GET['id']);`
+BUG FOUND: YES",buggy
+331,"SE: The 'msg' variable is directly concatenated into the SQL query without any sanitation, making it vulnerable to SQL injection.
+BL: `query = 'SELECT id FROM paises WHERE nome == ""%s""' % (msg)`
+BUG FOUND: YES
+
+SE: The 'cidade' and 'estado' variables are directly concatenated into the SQL query without any sanitation, making it vulnerable to SQL injection.
+BL: `query = 'SELECT estados.id FROM municipios JOIN estados ON municipios.estados_id == estados.id WHERE municipios.nome == ""%s"" AND estados.uf == ""%s"";' % (cidade, estado)`
+BUG FOUND: YES",buggy
+366,"SE: The 'id' parameter from the GET request is directly concatenated into the SQL query without any sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_pref WHERE id_pref="".$_GET['id']);`
+BUG FOUND: YES",buggy
+337,"SE: The 'LANG' parameter from user input is directly concatenated into the URL without sanitation.
+BL: `header (""Location: failed.php?LANG="".$LANG);`
+BUG FOUND: YES",buggy
+319,"SE: The 'where' parameter is directly concatenated into the SQL query without proper sanitation, making it vulnerable to SQL injection.
+BL: `$whereCondition = 'WHERE ' . (is_numeric($where) ? 'id=\''.$where.'\'' : 'naam=\''.$where.'\'');`
+BUG FOUND: YES",buggy
+8546,"SE: The SQL query is constructed by directly concatenating user input from `self::getSqlSearchFromPost()` without proper sanitization.
+BL: ` $sql .= self::getSqlSearchFromPost();`
+BUG FOUND: YES",buggy
+367,"SE: The 'id' parameter from the $_GET array is directly concatenated into the SQL query without any sanitation or parameterization.
+BL: `mysql_query(""DELETE FROM webfinance_roles WHERE id_role="".$_GET['id']);`
+BUG FOUND: YES",buggy
+396,"SE: The 'user' input is directly concatenated into the SQL query without proper sanitation.
+BL: `if ($sys == 1) $filter[2] = ""(owner = "" . pg_escape_string($user) . "" or gui_sysrss = 'yes')"";`
+BUG FOUND: YES",buggy
+350,"SE: The variable `$new` is directly concatenated into the SQL query without any sanitation or parameterization.
+BL: `		$results = $this->db->query(""SELECT * FROM `mirna` WHERE Name = '$new'"");`
+BUG FOUND: YES",buggy
+373,"SE: The 'tag.getMasterAccountId()' and 'tag.getValue()' are directly concatenated into the SQL query without proper sanitation, making it vulnerable to SQL Injection.
+BL: `Cursor cursor = db.query(MySQLiteHelper.TABLE_TAGS, allColumns, MySQLiteHelper.TAGS_COLUMN_ID_ACCOUNT + "" = "" + tag.getMasterAccountId() + "" AND "" + MySQLiteHelper.TAGS_COLUMN_TAG + "" = '"" + tag.getValue() + ""'"", null, null, null, null);`
+BUG FOUND: YES",buggy
+8539,"SE: The variable `$cycle` is directly concatenated into the SQL query without any sanitation or parameterization.
+BL: `WHERE `state` = '"".Crontask::STATE_RUNNING.""' AND unix_timestamp(`lastrun`) + $cycle * `frequency` < unix_timestamp(now())"";`
+BUG FOUND: YES",buggy
+326,"SE: The 'first_name' is directly concatenated into the SQL query without sanitation.
+BL: `people = Person.where(""first_name LIKE '%#{first_name}%'"")`
+BUG FOUND: YES
+
+SE: The 'last_name' is directly concatenated into the SQL query without sanitation.
+BL: `people = Person.where(""last_name LIKE '%#{last_name}%'"")`
+BUG FOUND: YES
+
+SE: The 'email' is directly concatenated into the SQL query without sanitation.
+BL: `emails = Email.where(""email LIKE '%#{email}%'"")`
+BUG FOUND: YES",buggy
+370,"SE: The '$_POST['t']' is directly concatenated into an SQL query without sanitation.
+BL: `$threadsql  = $vbulletin->db->query_read(""SELECT * FROM "" . TABLE_PREFIX . ""thread WHERE `threadid` = '"" . $_POST['t'] . ""'"");`
+BUG FOUND: YES",buggy
+348,"SE: The 'where' clause is constructed by directly concatenating user input without proper sanitization, making it vulnerable to SQL injection.
+BL: `if(is_string($value)) $arrTempWhere[] = '' . $key . "" = '"" . $value . ""'"";`
+BUG FOUND: YES",buggy
+377,"SE: The 'user' parameter from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: `$query = ""SELECT `password` FROM `admin_users` WHERE `name` = '"".$_GET[""user""].""';"";`
+BUG FOUND: YES",buggy
+8607,"SE: The '$_POST' variables are directly concatenated into the SQL query without proper sanitization or parameterization.
+BL: `$sql = 'INSERT INTO User (Username, Mail, Password, Type) VALUES ('.""'"".$_POST[""U""].""'"".','.""'"".$_POST[""M""].""'"".','.""'"".password_hash($_POST[""P""],PASSWORD_DEFAULT).""'"".',0);';`
+BUG FOUND: YES",buggy
+362,"SE: The 'sid' is directly concatenated into an SQL query without sanitation.
+BL: `WHERE session_id='$this->sid' AND ADDTIME(last_activity, '06:00:00:00')>NOW() LIMIT 1""`
+BUG FOUND: YES
+
+SE: The 'sid' is directly concatenated into an SQL query without sanitation.
+BL: `last_activity=NOW() WHERE session_id='$this->sid'""`
+BUG FOUND: YES
+
+SE: The 'iid' is directly concatenated into an SQL query without sanitation.
+BL: `AND item_id=$this->iid AND session_id='$this->sid' LIMIT 1""`
+BUG FOUND: YES",buggy
+8610,"SE: The '$_GET[""Name""]' and '$_GET[""Mail""]' are directly concatenated into SQL queries without sanitation.
+BL: `$sql = ""SELECT * FROM User WHERE Username='"".$_GET[""Name""].""';"";`
+BL: `$sql = ""SELECT * FROM User WHERE Mail='"".$_GET[""Mail""].""';"";`
+BUG FOUND: YES",buggy
+8621,"SE: The 'uid' is directly concatenated into the SQL query without proper sanitation.
+BL: `if (D(""Item"")->where(""uid = '$uid' and is_del = 0 "")->find()) {`
+BUG FOUND: YES",buggy
+310,"SE: The 'id' is directly concatenated into the SQL query without sanitation.
+BL: `connection.query(""select * from users where id = "" + id, function (err, rows) {`
+BUG FOUND: YES
+
+SE: The 'email' is directly concatenated into the SQL query without sanitation.
+BL: `connection.query(""select * from users where email = '"" + email + ""'"", function (err, rows) {`
+BUG FOUND: YES
+
+SE: The 'email' is directly concatenated into the SQL query without sanitation.
+BL: `connection.query(""SELECT * FROM `users` WHERE `email` = '"" + email + ""'"", function (err, rows) {`
+BUG FOUND: YES",buggy
+342,"SE: The '$_POST['gambleMoney']' is directly concatenated into an SQL query without proper sanitation.
+BL: `$dbCon->query('UPDATE users SET cash = (cash - ""' . $_POST['gambleMoney'] . '"") WHERE id = ""' . $userData['id'] . '""');`
+BUG FOUND: YES",buggy
+340,"SE: The 'year' parameter is directly concatenated into the SQL query without sanitation.
+BL: `WHERE berichte.state=1 AND berichte.date1 LIKE \''.$year.'%\''`
+BUG FOUND: YES",buggy
+329,"SE: The 'vars[""num""]' is directly concatenated into an SQL query without sanitation.
+BL: `query := fmt.Sprintf(`SELECT json_agg(r) FROM (select EXTRACT(epoch FROM day) as day, end_of_day_total from trello.dailytallies order by day DESC limit %s) r;`, vars[""num""])`
+BUG FOUND: YES
+
+SE: The 'vars[""num""]' is directly concatenated into an SQL query without sanitation.
+BL: `query := fmt.Sprintf(`SELECT json_agg(r) FROM (select EXTRACT(epoch FROM day) as day, up_count, down_count, finished_count from trello.dailytallies order by day DESC limit %s) r;`, vars[""num""])`
+BUG FOUND: YES",buggy
+361,"SE: The `$table` and `$id` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `		$query = 'SELECT * FROM `wuersch`.`' . $table . '` WHERE ';`
+BUG FOUND: YES
+
+SE: The `$query` variable is directly used in the SQL statement without proper sanitation.
+BL: `		$sth = Store::$pdo->prepare($query . ';');`
+BUG FOUND: YES
+
+SE: The `$table` and `$columns` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `		$query = 'SELECT * FROM `wuersch`.`' . $table . '` WHERE ';`
+BUG FOUND: YES
+
+SE: The `$table` and `$data` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `		$result = Store::$pdo->exec('INSERT INTO `wuersch`.`' . $table . '`(' . $columns . ') VALUES(' . $values . ');');`
+BUG FOUND: YES
+
+SE: The `$table`, `$id`, and `$data` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `		$query = 'UPDATE `wuersch`.`' . $table . '` SET ' . $columns . ' ';`
+BUG FOUND: YES",buggy
+4080,"SE: The 'attribute' is directly concatenated into the SQL JOIN clause without proper sanitation.
+BL: `scope = scope.joins(%(LEFT OUTER JOIN #{attr_table_name} AS #{table_name} ON #{table_name}.work_id = #{work_table_name}.id AND #{table_name}.key = ""#{attribute}""))`
+BUG FOUND: YES",buggy
+4626,"SE: The 'q' parameter from the request is directly concatenated into the SQL query without sanitation.
+BL: `cursor.execute(""SELECT id,title,artist,cover FROM recordstoreapp_record WHERE title like '%"" + q + ""%' or artist like '%"" + q + ""%' or label like '%"" + q + ""%' or cat_no like '%"" + q + ""%';"")`
+BUG FOUND: YES",buggy
+357,"SE: The 'id1' and 'id2' parameters from the request are directly concatenated into the SQL query without sanitation.
+BL: `cursor.execute(sql_function+sql_inside_of_function+"",""+str(id1)+"",""+str(id2)+"", true,true) join \""Data_minnesotabiketrails\"" as bt on bt.id=id2"")`
+BUG FOUND: YES",buggy
+4092,"SE: The 'word' variable is directly concatenated into the SQL query string without sanitation.
+BL: `String query = ""select * from news n "" + ""inner join newshighlights h on n.newsid=h.newsid and h.highlight like '%"" + word + ""%' order by date desc"";`
+BUG FOUND: YES",buggy
+364,"SE: The 'username' and 'password' are directly concatenated into the SQL query without sanitation.
+BL: `$query = ""SELECT * FROM  users where userName='$username' and userPassword='$password'"";`
+BUG FOUND: YES
+
+SE: The 'username' is directly concatenated into the SQL query without sanitation.
+BL: `$query = ""SELECT * FROM  users where userName='$username'"";`
+BUG FOUND: YES
+
+SE: The 'username' and 'password' are directly concatenated into the SQL query without sanitation.
+BL: `$insert = ""INSERT INTO users values('$username', '$password')"";`
+BUG FOUND: YES",buggy
+368,"SE: The '$_POST' variables are directly concatenated into the SQL query without proper sanitation.
+BL: `$q = sprintf(""INSERT INTO webfinance_personne (nom,prenom,email,tel,mobile,client,fonction,date_created,note) VALUES ('%s', '%s', '%s', '%s', '%s', %d, '%s', now(),'%s')"", $_POST['nom'], $_POST['prenom'], $_POST['email'], removeSpace($_POST['tel']), removeSpace($_POST['mobile']), $_POST['client'], $_POST['fonction'], $_POST['note'] );`
+BUG FOUND: YES
+
+SE: The '$_POST['id_personne']' is directly concatenated into the SQL query without proper sanitation.
+BL: `$res=mysql_query(""SELECT client FROM webfinance_personne WHERE id_personne="".$_POST['id_personne']) or die(""QUERY ERROR: "".mysql_error());`
+BUG FOUND: YES
+
+SE: The '$_POST['id_personne']' is directly concatenated into the SQL query without proper sanitation.
+BL: `$res=mysql_query(""SELECT nom, prenom, client FROM webfinance_personne WHERE id_personne="".$_POST['id_personne'])  or die(""QUERY ERROR: "".mysql_error());`
+BUG FOUND: YES
+
+SE: The '$_POST['id_personne']' is directly concatenated into the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_personne WHERE id_personne="".$_POST['id_personne']);`
+BUG FOUND: YES",buggy
+8532,"SE: The '$_POST' variables are directly used in SQL queries without proper sanitization or parameterization.
+BL: `$nat = $Admin->fetch_object (""nat"", ""id"", $_POST['id']);`
+BUG FOUND: YES",buggy
+8511,"SE: The 'sql' string in the `SqlString.format` function is directly concatenated with user-provided values without proper sanitation.
+BL: `return sql.replace(/\?/g, function(match) { if (!values.length) { return match; } return SqlString.escape(values.shift(), false, timeZone, dialect); });`
+BUG FOUND: YES",buggy
+8630,"SE: The 'word' and 'requested_limit' variables are directly concatenated into the SQL query without sanitation.
+BL: `cursor.execute(f""SELECT term FROM terms WHERE term > \""{floor}\"" AND term < \""{ceiling}\"" AND term LIKE \""{word}%%\"" ORDER BY length(term),term LIMIT {requested_limit}"")`
+BUG FOUND: YES",buggy
+4743,"SE: The 'title' parameter is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection.
+BL: ` $where .= "" (post_type = 'post' OR post_type = 'page') AND post_status = 'publish' AND (post_name like '%"".$title.""%' OR post_title like '%"".$title.""%')"";`
+BUG FOUND: YES
+
+SE: The 'title' parameter is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection.
+BL: `$where = "" (post_type = 'post' OR post_type = 'page') AND post_status = 'publish' AND (post_title like '%"".$title.""%')"";`
+BUG FOUND: YES
+
+SE: The 'searchWord' parameter is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection.
+BL: `$querystr = ""SELECT * FROM $wpdb->posts WHERE "".findPostWhereLike($searchWord);`
+BUG FOUND: YES
+
+SE: The 'searchWord' parameter is directly concatenated into the SQL query without proper sanitization, making it vulnerable to SQL injection.
+BL: `$querystr = ""SELECT *  FROM $wpdb->posts WHERE "".findPostWhereLikeNameTitle($searchWord);`
+BUG FOUND: YES",buggy
+8584,"SE: The `$object_id` is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql        = ""SELECT * FROM `$table_name` WHERE `id`='$object_id'"";`
+BUG FOUND: YES",buggy
+306,"SE: The user inputs `$name`, `$score`, `$level`, `$date`, `$ref`, `$ua`, `$remA`, and `$remH` are directly concatenated into the SQL query without proper sanitation.
+BL: `$db->exec('INSERT INTO highscore (name, score, level, date, log_referer, log_user_agent, log_remote_addr, log_remote_host, cheater) ' . 'VALUES (""' . $name . '"", ' . $score . ', ' . $level . ', ""' . $date . '"", ""' . $ref .'"", ""' . $ua . '"", ""' . $remA .'"", ""' . $remH . '"", ""' . $cheater .'"")');`
+BUG FOUND: YES",buggy
+391,"SE: The variable `$assignmentTable` is directly concatenated into the SQL query without sanitation.
+BL: `$segmentIds = \Pimcore\Db::get()->fetchOne(""SELECT `segments` FROM $assignmentTable WHERE `elementId` = ? AND `elementType` = ?"", [$id, $type]);`
+BUG FOUND: YES",buggy
+8614,"SE: The '$_GET[""Name""]' is directly concatenated into the SQL query without proper parameterization.
+BL: `$sql = ""SELECT * FROM User WHERE Username='"".mysqli::real_escape_string($_GET[""Name""]).""';"";`
+BUG FOUND: YES",buggy
+8639,"SE: The 'id' parameter is directly concatenated into the SQL query without proper sanitation, which can lead to SQL Injection.
+BL: `$row = Db::getInstance()->getRow('SELECT modified, content FROM ' . _DB_PREFIX_ . 'smarty_cache WHERE id_smarty_cache = ""' . pSQL($id, true) . '""');`
+BUG FOUND: YES",buggy
+354,"SE: The 'country_code' is directly concatenated into the SQL query without sanitation.
+BL: `$sql = ""SELECT lat, lng FROM country_name_map WHERE code = '$country_code'"";`
+BUG FOUND: YES",buggy
+401,"SE: The 'address' variable is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql .= "" WHERE I.device_id = D.device_id AND `ifPhysAddress` LIKE '%"" . trim(str_replace([':', ' ', '-', '.', '0x'], '', $vars['address'])) . ""%' $where "";`
+BUG FOUND: YES",buggy
+358,"SE: The '$_GET[""s""]' is directly concatenated into an SQL query without sanitation.
+BL: `$haku_s = mysqli_query($yht, ""SELECT * FROM `sivut` WHERE uid = '"".$_GET['s'].""' LIMIT 1"");`
+BUG FOUND: YES",buggy
+359,"SE: The 'table' and 'columns.get(""username"")' are directly concatenated into the SQL query without sanitation.
+BL: `String sql = ""SELECT * FROM "" + table + "" WHERE "" + columns.get(""username"") + ""= ? AND "" + columns.get(""password"") + ""= '?'"";`
+BUG FOUND: YES",buggy
+8555,"SE: The 'sw_lat', 'sw_lng', 'ne_lat', and 'ne_lng' are directly concatenated into the SQL query without sanitation.
+BL: `spans = ""#{lat_attr} BETWEEN #{sw_lat} AND #{ne_lat} AND ""`
+BUG FOUND: YES",buggy
+8599,"SE: The `$job_id` is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql = 'INSERT INTO plugin_hudson_widget (widget_name, owner_id, owner_type, job_id) VALUES (""' . $this->id . '"", ' . $this->owner_id . "", '"" . $this->owner_type . ""', "" . db_escape_int($job_id) . "" )"";`
+BUG FOUND: YES
+
+SE: The `$id` is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql = 'DELETE FROM plugin_hudson_widget WHERE id = ' . $id . ' AND owner_id = ' . $this->owner_id . "" AND owner_type = '"" . $this->owner_type . ""'"";`
+BUG FOUND: YES
+
+SE: The `$job_id` is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql = ""UPDATE plugin_hudson_widget SET job_id="" . $job_id . "" WHERE owner_id = "" . $this->owner_id . "" AND owner_type = '"" . $this->owner_type . ""' AND id = "" . (int) $request->get('content_id');`
+BUG FOUND: YES
+
+SE: The `$this->widget_id`, `$this->owner_id`, `$this->owner_type`, and `$this->content_id` are directly concatenated into the SQL query without proper sanitation.
+BL: `$sql = ""SELECT * FROM plugin_hudson_widget WHERE widget_name = '"" . db_es($this->widget_id) . ""' AND owner_id = "" . db_ei($this->owner_id) . "" AND owner_type = '"" . db_es($this->owner_type) . ""' AND id = "" . db_ei($this->content_id);`
+BUG FOUND: YES",buggy
+321,"SE: The 'region' parameter from the query string is directly concatenated into the SQL query without sanitation.
+BL: `$query  = ""SELECT * FROM $robustDB.regions WHERE regionName='$region';"";`
+BUG FOUND: YES",buggy
+8504,"SE: The variable `$jobname` is directly concatenated into the SQL query without any sanitation, making it vulnerable to SQL injection.
+BL: `$query .= ""WHERE Job.Name = '$jobname' AND Job.JobStatus = 'T' AND Job.Type = 'B' "";`
+BUG FOUND: YES",buggy
+8571,"SE: The 'device_id' is directly concatenated into an SQL query without proper sanitation.
+BL: `$query = ""SELECT * FROM `devices` WHERE `device_id` = $device_id LIMIT 1"";`
+BUG FOUND: YES",buggy
+376,"SE: The 'ps.tag' and 'tags' are directly concatenated into SQL queries without proper parameterization, even though there is a check with `safeForSql`, it is not a foolproof method to prevent SQL injection.
+BL: `query.andWhere(`'{""${normalizeForSearch(ps.tag)}""}' <@ note.tags`);`
+BUG FOUND: YES",buggy
+8598,"SE: The 'value_id' and 'column_id' are directly concatenated into the SQL query without sanitation.
+BL: `VALUES ($cardwall_tracker_id, $tracker_id, $field_id, $value_id, $column_id)"";`
+BUG FOUND: YES",buggy
+334,"SE: The 'name' and 'item' variables are directly concatenated into the SQL query without sanitation.
+BL: `keks = self.DBcursor.execute(u""SELECT nickname, count from kekse WHERE nickname like '%s' AND item =='%s' LIMIT 1"" % (name, item)).fetchall()`
+BUG FOUND: YES",buggy
+8625,"SE: The 'filterFullText' input from the request is directly concatenated into an SQL LIKE clause without proper sanitation.
+BL: ` $conditionFilters[] = 'path LIKE ' . $list->quote('%'. $list->escapeLike($request->get('filterFullText')) .'%');`
+BUG FOUND: YES",buggy
+394,"SE: The 'sql' parameter is directly used in the `execute` method without any sanitation or parameterization, which can lead to SQL Injection if the input is not properly sanitized.
+BL: `public function execute($sql, array $values = array())`
+BUG FOUND: YES",buggy
+346,"SE: The variables `$res_searx_version`, `$res_http_code`, and `$single_instance['id']` are directly concatenated into the SQL query without any sanitation.
+BL: `$query = ""UPDATE `#instances` SET "". ""`VERSION_STRING` = '"".$res_searx_version.""', "". ""`RETURN_CODE` = '"".$res_http_code.""', "". ""`LAST_UPDATE` = '"".date('Y-m-d H:i:s',$res_timestamp).""' "". ""WHERE `#instances`.`ID` ="".$single_instance['id']."";"";`
+BUG FOUND: YES",buggy
+335,"SE: The variable `$word` is directly concatenated into the SQL query without any sanitation or escaping, which can lead to SQL Injection.
+BL: `sql = 'SELECT word_id FROM ' . SEARCH_WORDLIST_TABLE . ' WHERE word_text = ""' . $word . '""';`
+BUG FOUND: YES
+
+SE: The variable `$word` is directly concatenated into the SQL query without any sanitation or escaping, which can lead to SQL Injection.
+BL: `sql = 'SELECT search_keywords, last_time FROM ' . $this->searchresults_table . ' WHERE search_keywords = ""' . $word . '""';`
+BUG FOUND: YES
+
+SE: The variable `$word` is directly concatenated into the SQL query without any sanitation or escaping, which can lead to SQL Injection.
+BL: `sql = 'UPDATE ' . $this->searchresults_table . ' SET hits = hits + 1, ' . $this->db->sql_build_array('UPDATE', $fields) . ' WHERE search_keywords = ""' . $word . '""';`
+BUG FOUND: YES",buggy
+330,"SE: The variable `$url` is directly concatenated into an SQL query without proper sanitation.
+BL: `db_uquery(""INSERT INTO `$LM_CCPWGL_CACHESCHEMA`.`lmproxyfiles` VALUES(DEFAULT,NOW(),'$url','$info','"". mysql_escape_string($data) .""');"");`
+BUG FOUND: YES",buggy
+338,"SE: The 'initial' is directly concatenated into the SQL query without sanitation.
+BL: `push @conditions, ""word LIKE '$initial%'"";`
+BUG FOUND: YES",buggy
+8637,"SE: The 'id_wishlist' from the WishList object is directly concatenated into the SQL query without sanitation.
+BL: `$querySearch->where('wp.id_wishlist = ' . (int) $this->wishList->id);`
+BUG FOUND: YES",buggy
+383,"SE: The 'login' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `$userInfoRes = $this->select(""SELECT id, pw, public_key, private_key, personal_folder, fonction_id, groupes_visibles, groupes_interdits, user_api_key FROM "" . prefixTable('users') . "" WHERE login='"".$login.""'"");`
+BUG FOUND: YES",buggy
+372,"SE: The 'ip' and 'useragent' variables are directly concatenated into an SQL query without sanitation.
+BL: `$this->crawler_info = $this->dbhandle->query(""SELECT crawler_ip FROM crawlers WHERE crawler_ip='$ip' AND crawler_useragent='$useragent'"");`
+BUG FOUND: YES
+
+SE: The 'crawler_ip' and 'crawler_useragent' variables are directly concatenated into an SQL query without sanitation.
+BL: `$last_seen_query = $this->dbhandle->query(""SELECT strftime('%s',datetime('now','localtime')) - strftime('%s',last_alert) FROM crawlers WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"") or die(sqlite_error_string($this->dbhandle->lastError()));;`
+BUG FOUND: YES
+
+SE: The 'crawler_ip' and 'crawler_useragent' variables are directly concatenated into an SQL query without sanitation.
+BL: `$last_alert_query = $this->dbhandle->query(""UPDATE crawlers SET last_alert=datetime('now','localtime') WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"");`
+BUG FOUND: YES
+
+SE: The 'crawler_ip' and 'useragent' variables are directly concatenated into an SQL query without sanitation.
+BL: `$this->dbhandle->query(""UPDATE crawlers SET last_seen = datetime('now','localtime'), num_hits=num_hits+1 WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"");`
+BUG FOUND: YES
+
+SE: The 'crawler_ip', 'crawler_rdns', and 'crawler_useragent' variables are directly concatenated into an SQL query without sanitation.
+BL: `$this->dbhandle->query(""INSERT INTO crawlers(crawler_ip, crawler_rdns, crawler_useragent, first_seen, last_seen, num_hits) VALUES('"" . $this->crawler_ip . ""', '$crawler_rdns', '"" . $this->crawler_useragent . ""', datetime('now','localtime'), datetime('now','localtime'), 1)"");`
+BUG FOUND: YES",buggy
+313,"SE: The 'username' is directly concatenated into the SQL query without sanitation.
+BL: `$sql = ""insert into MEMBER values (member_seq.nextval, '$username', '$password', '$name', '$email', $all_score, '$profile')"";`
+BUG FOUND: YES
+
+SE: The 'username' is directly concatenated into the SQL query without sanitation.
+BL: `$stid = oci_parse($db_conn, ""SELECT * FROM member where username='$username'"");`
+BUG FOUND: YES
+
+SE: The 'caption' is directly concatenated into the SQL query without sanitation.
+BL: `$sql = ""insert into PHOTO values (member_seq.nextval, '$caption', $owner, $loc_id, $timing_id, $pos_id, systimestamp)"";`
+BUG FOUND: YES
+
+SE: The 'msg' is directly concatenated into the SQL query without sanitation.
+BL: `$sql = ""insert into COMMENT_PHOTO values (comment_photo_seq.nextval, $m_id, $p_id, '$msg', systimestamp)"";`
+BUG FOUND: YES
+
+SE: The 'msg' is directly concatenated into the SQL query without sanitation.
+BL: `$sql = ""insert into MESSAGE values (message.nextval, $m_id, $to, msg, systimestamp)"";`
+BUG FOUND: YES",buggy
+320,"SE: The 'username' is directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""SELECT * FROM adult WHERE username= '"" +connection.escape(username)+""'"";`
+BUG FOUND: YES
+
+SE: The 'username' and 'password' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""SELECT * FROM adult WHERE username= '"" +connection.escape(username)+""'"" +""AND password= '"" + hashPassword(password)+""'"";`
+BUG FOUND: YES
+
+SE: The 'firstName', 'lastName', 'username', 'packNumber', 'leaderType', 'rankType', and 'phoneNumber' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""INSERT INTO adult VALUES('""+firstName+""', '""+lastName+""', '""+ username + ""', '"" +hashPassword(password) + ""', '"" + packNumber+""', '""+ leaderType +""', '""+ rankType+""', '""+phoneNumber+ ""', 'NULL')"";`
+BUG FOUND: YES
+
+SE: The 'firstName', 'lastName', 'username', 'packNumber', 'leaderType', 'rankType', and 'phoneNumber' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""UPDATE adult SET first_name=""+firstName+"", last_name=""+lastName+"", username=""+ username + "", password="" +hashPassword(password) + "", pack_number="" + packNumber+"", leader_type=""+ leaderType +"", rank_type=""+ rankType+"", phone_number=""+phoneNumber+ ""WHERE adult_id=""+id;`
+BUG FOUND: YES
+
+SE: The 'name', 'description', 'categoryID', and 'numElectives' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""INSERT INTO achievement  VALUES('""+name+""', '"" +  description + ""', '"" + categoryID +""', '""+ numElectives+ ""', 'NULL')"";`
+BUG FOUND: YES
+
+SE: The 'name', 'description', 'rankID', and 'numAchievments' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""INSERT INTO category VALUES('""+name+""', '"" +  description + ""', '"" + rankID+""', '""+numAchievments+ ""', 'NULL')"";`
+BUG FOUND: YES
+
+SE: The 'name' and 'description' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""INSERT INTO rank  VALUES('""+name+""', '"" +  description + ""', 'NULL')"";`
+BUG FOUND: YES
+
+SE: The 'recordRankType', 'dateDone', 'requirementID', and 'scoutID' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""INSERT INTO record  VALUES('""+recordRankType+""', '"" +  dateDone + ""', '"" +requirementID+""', '""+scoutID+""', 'NULL')"";`
+BUG FOUND: YES
+
+SE: The 'name', 'description', 'achievementID', and 'reqElec' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""INSERT INTO requirement VALUES('""+name+""', '"" +  description + ""', '"" + achievementID+""', '""+reqElec+ ""', 'NULL')"";`
+BUG FOUND: YES
+
+SE: The 'firstName', 'lastName', 'birthDate', 'packNumber', 'rankType', 'parentID', and 'leaderID' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""INSERT INTO scout VALUES('""+firstName+""', '"" +lastName+""', '""+ birthDate + ""', '"" + packNumber + ""', '""+ rankType+""', '""+parentID+"", ""+leaderID+""', 'NULL')"";`
+BUG FOUND: YES
+
+SE: The 'firstName', 'lastName', 'birthDate', 'packNumber', 'rankType', 'parentID', and 'leaderID' are directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""UPDATE scout SET first_name=""+firstName+"", last_name=""+lastName+"", birth_date=""+ + "", pack_number="" + + "", rank_type="" + packNumber+"", parent_id=""+ leaderType +"", leader_id=""+ rankType+"" WHERE scout_id=""+id;`
+BUG FOUND: YES
+
+SE: The 'adult.rowID' is directly concatenated into the SQL query without proper sanitation.
+BL: `var strQuery = ""SELECT * FROM scout WHERE parent_id= '"" +adult.rowID+""'"";`
+BUG FOUND: YES",buggy
+4673,"SE: The 'cc_number' is directly concatenated into an SQL query without sanitation.
+BL: `q = ""select * from cards where cc_number = '%s'"" % cc_number.replace('-', '')`
+BUG FOUND: YES",buggy
+8588,"SE: The 'group_id' is directly concatenated into the SQL query without proper sanitation.
+BL: `WHERE \`group_id\` = '.$group_id.'`
+BUG FOUND: YES",buggy
+324,"SE: The 'id' parameter from the request data is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL Injection.
+BL: `foreach (explode(',', $requestData['id']) as $id) { $model::findOne($id)->delete(); }`
+BUG FOUND: YES",buggy
+390,"SE: The `$id` is directly concatenated into the SQL query without sanitation.
+BL: `$estmt = $edb->conn->query(""SELECT email, username FROM $tbl_name WHERE id = '$id'"");`
+BUG FOUND: YES
+
+SE: The `$myusername` is directly concatenated into the SQL query without sanitation.
+BL: `$stmt = $stmt = $db->conn->query(""SELECT * FROM $tbl_name WHERE username='$myusername'"");`
+BUG FOUND: YES",buggy
+322,"SE: The 'id' parameter is directly used in the SQL query without proper sanitation.
+BL: `$model = $m->findByPk($id);`
+BUG FOUND: YES",buggy
+318,"SE: The 'session' variable is directly concatenated into an SQL query without proper sanitation.
+BL: `Settings::$sql->query(""update sio_session set id='$mutated' where id='$session'"");`
+BUG FOUND: YES",buggy
+333,"SE: The '$_GET' parameters are directly concatenated into SQL queries without proper parameterization, even though `mysql_real_escape_string` is used, it is not sufficient to prevent SQL Injection.
+BL: `mysql_query('INSERT INTO `peer` (`peer_id`, `user_agent`, `ip_address`, `key`, `port`) ' . ""VALUES ('"" . mysql_real_escape_string(bin2hex($_GET['peer_id'])) . ""', '"" . mysql_real_escape_string(substr($_SERVER['HTTP_USER_AGENT'], 0, 80)) . ""', INET_ATON('"" . mysql_real_escape_string($_SERVER['REMOTE_ADDR']) . ""'), '"" . mysql_real_escape_string(sha1($_GET['key'])) . ""', "" . intval($_GET['port']) . "") "" . 'ON DUPLICATE KEY UPDATE `peer_id`=VALUES(`peer_id`), `user_agent` = VALUES(`user_agent`), `ip_address` = VALUES(`ip_address`), `key`=VALUES(`key`), `port` = VALUES(`port`), `id` = LAST_INSERT_ID(`peer`.`id`)') or die(track('Cannot update peer: '.mysql_error()));`
+BUG FOUND: YES",buggy
+351,"SE: The 'c.getPackagesLike()' is directly concatenated into the SQL query without sanitation.
+BL: `String query = ""select object_name from user_objects where object_type = 'PACKAGE' and object_name like '"" + c.getPackagesLike() + ""'"";`
+BUG FOUND: YES",buggy
+8596,"SE: The 'dbname' is directly concatenated into the SQL command without sanitation.
+BL: `Database::query(""CREATE DATABASE `"" . $dbname . ""`"");`
+BUG FOUND: YES
+
+SE: The 'username' and 'access_host' are directly concatenated into the SQL command without sanitation.
+BL: `CREATE USER '"" . $username . ""'@'"" . $access_host . ""' IDENTIFIED BY PASSWORD :password`
+BUG FOUND: YES
+
+SE: The 'username' and 'access_host' are directly concatenated into the SQL command without sanitation.
+BL: `CREATE USER '"" . $username . ""'@'"" . $access_host . ""' IDENTIFIED WITH mysql_native_password AS :password`
+BUG FOUND: YES
+
+SE: The 'username' and 'access_host' are directly concatenated into the SQL command without sanitation.
+BL: `CREATE USER '"" . $username . ""'@'"" . $access_host . ""' IDENTIFIED BY :password`
+BUG FOUND: YES
+
+SE: The 'username' is directly concatenated into the SQL command without sanitation.
+BL: `GRANT ALL ON `"" . $username . ""`.* TO :username@:host`
+BUG FOUND: YES
+
+SE: The 'dbname' is directly concatenated into the SQL command without sanitation.
+BL: `REVOKE ALL PRIVILEGES, GRANT OPTION FROM `"" . $dbname . ""``
+BUG FOUND: YES
+
+SE: The 'dbname' is directly concatenated into the SQL command without sanitation.
+BL: `DROP DATABASE IF EXISTS `"" . $dbname . ""``
+BUG FOUND: YES
+
+SE: The 'username' and 'host' are directly concatenated into the SQL command without sanitation.
+BL: `REVOKE ALL PRIVILEGES ON * . * FROM `"" . $username . ""`@`"" . $host . ""``
+BUG FOUND: YES
+
+SE: The 'username' and 'host' are directly concatenated into the SQL command without sanitation.
+BL: `REVOKE ALL PRIVILEGES, GRANT OPTION FROM `' . $username . '`@`' . $host . '``
+BUG FOUND: YES
+
+SE: The 'username' and 'host' are directly concatenated into the SQL command without sanitation.
+BL: `SELECT EXISTS(SELECT 1 FROM mysql.user WHERE user = '"" . $username . ""' AND host = '"" . $host . ""')`
+BUG FOUND: YES
+
+SE: The 'username' and 'host' are directly concatenated into the SQL command without sanitation.
+BL: `GRANT ALL PRIVILEGES ON `' . $username . '`.* TO `' . $username . '`@`' . $host . '``
+BUG FOUND: YES
+
+SE: The 'username' and 'host' are directly concatenated into the SQL command without sanitation.
+BL: `GRANT ALL PRIVILEGES ON `' . str_replace('_', '\_', $username) . '` . * TO `' . $username . '`@`' . $host . '``
+BUG FOUND: YES",buggy
+403,"SE: The 'state_code' is directly concatenated into the SQL query without sanitation.
+BL: `filter_cond = f"" WHERE {view_name}.{key}='{state_code}'""`
+BUG FOUND: YES",buggy
+325,"SE: The 'comment_id' from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: ` $where_clauses[] = 'com.id = '.pwg_db_real_escape_string($_GET['comment_id']);`
+BUG FOUND: YES",buggy
+385,"SE: The 'searchnum' and 'idcookie' variables are directly concatenated into SQL queries without proper sanitation.
+BL: `mysql_query(""DELETE FROM autofinger WHERE owner = '$idcookie' and interest = '$searchnum'"");`
+BUG FOUND: YES
+
+SE: The 'searchnum' and 'idcookie' variables are directly concatenated into SQL queries without proper sanitation.
+BL: `mysql_query(""INSERT INTO autofinger (owner, interest, priority) VALUES ('$idcookie', '$searchnum', '$privlevel') ON DUPLICATE KEY UPDATE priority=$privlevel"");`
+BUG FOUND: YES
+
+SE: The 'searchnum' and 'idcookie' variables are directly concatenated into SQL queries without proper sanitation.
+BL: `mysql_query(""Select priority From autofinger where owner = '$idcookie' and interest = '$searchnum'"");`
+BUG FOUND: YES",buggy
+307,"SE: The 'filter['data']' is directly used in the SQL query without proper sanitization.
+BL: `query->where($filter['field'], $filter['op'], $filter['data']);`
+BUG FOUND: YES",buggy
+317,"SE: The SQL query is constructed by directly concatenating user input values without proper parameterization, which can lead to SQL Injection.
+BL: `sql.gsub!(':uke_import_id', @active_import.id.to_s)`
+BUG FOUND: YES",buggy
+303,"SE: The 'userID' is directly concatenated into an SQL query string without sanitation.
+BL: `query := fmt.Sprintf(""SELECT messages.id, user_id, body, title, subtitle, image, link, eventType, hidden_at, timestamp, display_name, display_color, created_at, disabled_at,  previous_names, namechanged_at, authenticated_at, scopes, type FROM messages INNER JOIN users ON messages.user_id = users.id WHERE user_id IS '%s'"", userID)`
+BUG FOUND: YES",buggy
+378,"SE: The 'id' parameter from the URL is directly concatenated into the SQL query without proper sanitation.
+BL: `$wpdb->query('UPDATE `'.$wpdb->prefix.$this->table_messages.'` SET paid='.esc_sql($_GET[""status""]).' WHERE id='.$_GET['lu']);`
+BUG FOUND: YES
+
+SE: The 'id' parameter from the URL is directly concatenated into the SQL query without proper sanitation.
+BL: `$wpdb->query('DELETE FROM `'.$wpdb->prefix.$this->table_messages.'` WHERE id='.$_GET['ld']);`
+BUG FOUND: YES
+
+SE: The 'id' parameter from the URL is directly concatenated into the SQL query without proper sanitation.
+BL: `$myform = $wpdb->get_results( 'SELECT * FROM '.$wpdb->prefix.$this->table_items .' WHERE id='.$this->item);`
+BUG FOUND: YES
+
+SE: The 'search', 'dfrom', and 'dto' parameters from the URL are directly concatenated into the SQL query without proper sanitation.
+BL: `$events = $wpdb->get_results( ""SELECT * FROM "".$wpdb->prefix.$this->table_messages."" WHERE 1=1 "".$cond."" ORDER BY `time` DESC"" );`
+BUG FOUND: YES",buggy
+375,"SE: The 'search' parameter is decoded from JSON and directly used in SQL conditions without proper sanitation.
+BL: `return implode("" AND "", $itemsSearch);`
+BUG FOUND: YES",buggy
+8635,"SE: The 'condition' parameter is directly concatenated into the SQL query string without proper sanitation.
+BL: `$condition = '('.$condition.')';`
+BUG FOUND: YES",buggy
+402,"SE: The 'value' is directly concatenated into the SQL query without proper sanitation.
+BL: `return $key.' LIKE '.$value.' ';`
+BUG FOUND: YES",buggy
+405,"SE: The '$_GET['s']' parameter is directly used in an SQL query without proper sanitization, which can lead to SQL Injection.
+BL: `$prepare = $this->db->prepare(""SELECT * from `{$this->tb_prefix}sms_subscribes` WHERE name LIKE %s OR mobile IN ({$metaValue})"", '%' . $this->db->esc_like($_GET['s']) . '%');`
+BUG FOUND: YES",buggy
+407,"SE: The 'dni_profe' parameter from the GET request is directly concatenated into an SQL query without sanitation.
+BL: `mysqli_query($db_con, ""delete from departamentos where dni = '"".$_GET['dni_profe'].""'"");`
+BUG FOUND: YES",buggy
+8545,"SE: The `$page_uri` and `$current_page['type']` are directly concatenated into the SQL query without proper parameterization or escaping.
+BL: `$exist = $wpdb->get_row( ""SELECT `page_id` FROM `"" . DB::table( 'pages' ) . ""` WHERE `date` = '"" . TimeZone::getCurrentDate( 'Y-m-d' ) . ""' "" . ( array_key_exists( ""search_query"", $current_page ) === true ? ""AND `uri` = '"" . $page_uri . ""'"" : """" ) . ""AND `type` = '{$current_page['type']}' AND `id` = {$current_page['id']}"", ARRAY_A );`
+BUG FOUND: YES",buggy
+379,"SE: The variable `$lid` is directly concatenated into the SQL query without any sanitation, making it vulnerable to SQL injection.
+BL: `$q = ""select l.lid, l.cid, l.title, l.ext, l.res_x, l.res_y, l.bgcolor, l.status, l.members, l.date, l.hits, l.rating, l.votes, l.comments, l.submitter, t.description, l.gametype, l.license, l.classfile from "".$xoopsDB->prefix(""flashgames_games"")."" l, "".$xoopsDB->prefix(""flashgames_text"")."" t where l.lid=$lid and l.lid=t.lid and status>0"";`
+BUG FOUND: YES",buggy
+4931,"SE: The `query_string` is directly used in the SQL query execution without proper sanitation or parameterization.
+BL: `for qs in [x for x in query_string.split('\0') if x]:`
+BUG FOUND: YES",buggy
+8916,"SE: The 'fieldIds' are directly concatenated into the SQL query without proper sanitation.
+BL: `$database->delete('forms_fields_validation', 'field_id IN(' . implode(',', $fieldIds) . ')');`
+BUG FOUND: YES",buggy
+408,"SE: The `$property` and `$value` variables are directly concatenated into the SQL query without proper sanitization.
+BL: `		$rows = $wpdb->get_results( 'SELECT * FROM ' . static::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\'' );`
+BUG FOUND: YES
+
+SE: The `$property` and `$value` variables are directly concatenated into the SQL query without proper sanitization.
+BL: `		$row = $wpdb->get_row( 'SELECT * FROM ' . static::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\' LIMIT 0,1' );`
+BUG FOUND: YES
+
+SE: The `$where` variable is directly concatenated into the SQL query without proper sanitization.
+BL: `		$rows = $wpdb->get_results( 'SELECT * FROM ' . static::table_name() . ' WHERE ' . $where );`
+BUG FOUND: YES
+
+SE: The `$where` variable is directly concatenated into the SQL query without proper sanitization.
+BL: `		$row = $wpdb->get_row( 'SELECT * FROM ' . static::table_name() . ' WHERE ' . $where . ' LIMIT 0,1' );`
+BUG FOUND: YES
+
+SE: The `$value` variable is directly concatenated into the SQL query without proper sanitization.
+BL: `		$sql = sprintf( ""UPDATE %s SET %s = '%s' WHERE id = %s"", static::table_name(), $attribute, mysqli_real_escape_string($value), $this->id );`
+BUG FOUND: YES
+
+SE: The `$sql_suffix` variable is directly concatenated into the SQL query without proper sanitization.
+BL: `		$rows = $wpdb->get_results( 'SELECT * FROM ' . static::table_name() . ' ' . $sql_suffix );`
+BUG FOUND: YES
+
+SE: The `$this->id` variable is directly concatenated into the SQL query without proper sanitization.
+BL: `		$sql = 'DELETE FROM ' . static::table_name() . ' WHERE id = ' . $this->id;`
+BUG FOUND: YES",buggy
+315,"SE: The '$_GET['searchstring']' is directly concatenated into SQL queries without sanitation.
+BL: `$query = ""SELECT * FROM domain AS a WHERE domain_name LIKE '%"".$_GET['searchstring'].""%' AND "".$allowed_domains1.""') ORDER BY domain_name"";`
+BUG FOUND: YES
+
+SE: The '$_GET['searchstring']' is directly concatenated into SQL queries without sanitation.
+BL: `$query = ""SELECT DISTINCT a.username, a.domain_name FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%"".$_GET['searchstring'].""%') OR (v.alias LIKE '%"".$_GET['searchstring'].""%')) AND (v.username=a.username) AND "".$allowed_domains1.""') ORDER BY username"";`
+BUG FOUND: YES
+
+SE: The '$_GET['searchstring']' is directly concatenated into SQL queries without sanitation.
+BL: `$query = ""SELECT DISTINCT a.* FROM virtual as v, accountuser as a WHERE ((v.username LIKE '%"".$_GET['searchstring'].""%') OR (v.alias LIKE '%"".$_GET['searchstring'].""%')) AND (v.username=a.username) AND "".$allowed_domains1.""') ORDER BY username"";`
+BUG FOUND: YES
+
+SE: The '$_GET['searchstring']' is directly concatenated into SQL queries without sanitation.
+BL: `$query3 = ""SELECT DISTINCT alias, username FROM virtual WHERE (((dest LIKE '%"".$_GET['searchstring'].""%') OR (alias LIKE '%"".$_GET['searchstring'].""%')) AND (dest <> username) AND (username<>'')) AND "".$allowed_domains3.""') ORDER BY username"";`
+BUG FOUND: YES",buggy
+305,"SE: The user input `$detail` is directly concatenated into an SQL query without proper sanitation.
+BL: `db(""SELECT * FROM "".$_SESSION['dbprefix'].""people WHERE name LIKE '%"".$c->real_escape_string($detail).""%' OR form LIKE '%"".$c->real_escape_string($detail).""%' ORDER BY updated DESC LIMIT 1"", $c);`
+BUG FOUND: YES",buggy
+393,"SE: The variable `$id` is directly concatenated into the SQL query without proper sanitation.
+BL: ` $sql = ""DELETE FROM scheduled_reports WHERE id="".$id;`
+BUG FOUND: YES",buggy
+8535,"SE: The 'search_term' is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql_find = ""SELECT * FROM $courseTable course WHERE ( course.code LIKE '%"".$search_term_safe.""%' OR course.title LIKE '%"".$search_term_safe.""%' OR course.tutor_name LIKE '%"".$search_term_safe.""%' ) $avoidCoursesCondition $visibilityCondition ORDER BY title, visual_code ASC $limitFilter "";`
+BUG FOUND: YES",buggy
+392,"SE: The 'block_ip' parameter from the GET request is directly concatenated into the SQL query without proper sanitization.
+BL: `$where = ""block_ip = '"". t3lib_div::_GP('block_ip') .""'"";`
+BUG FOUND: YES",buggy
+384,"```plaintext
+SE: The 'query' parameter is directly concatenated into the SQL command without proper sanitation.
+BL: $queryCondition = '( MATCH (`data`,`properties`) AGAINST (' . $db->quote($query) . ' IN BOOLEAN MODE) )';
+BUG FOUND: YES
+```",buggy
+4627,"SE: The 'nome' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `stmt = con.prepareStatement(stmtBuscarNome + ""'%"" + nome + ""%' and (perfil = 2 or perfil = 3) and inativo=false order by nome"");`
+BUG FOUND: YES
+
+SE: The 'cpf' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `stmt = con.prepareStatement(stmtBuscarCPF + ""'%"" + cpf + ""%' and (perfil = 2 or perfil = 3) and inativo=false order by nome"");`
+BUG FOUND: YES
+
+SE: The 'email' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `stmt = con.prepareStatement(stmtBuscarEmail + ""'%"" + email + ""%' and (perfil = 2 or perfil = 3) and inativo=false order by nome"");`
+BUG FOUND: YES
+
+SE: The 'nome' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `stmt = con.prepareStatement(stmtBuscarNome + ""'%"" + nome + ""%' and perfil = 1 and inativo=false order by nome"");`
+BUG FOUND: YES
+
+SE: The 'cpf' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `stmt = con.prepareStatement(stmtBuscarCPF + ""'%"" + cpf + ""%' and perfil = 1 and inativo=false order by nome"");`
+BUG FOUND: YES
+
+SE: The 'email' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `stmt = con.prepareStatement(stmtBuscarEmail + ""'%"" + email + ""%' and perfil = 1 and inativo=false order by nome"");`
+BUG FOUND: YES",buggy
+8541,"SE: The variables `$from_id`, `$to_id`, `$patient_id`, `$doc_type`, `$doc_id`, and `$enc` are directly concatenated into the SQL query without proper parameterization or sanitation.
+BL: `$sql = ""INSERT into form_taskman (REQ_DATE, FROM_ID,  TO_ID,  PATIENT_ID,  DOC_TYPE,  DOC_ID,  ENC_ID) VALUES (NOW(), '$from_id', '$to_id','$patient_id','$doc_type','$doc_id','$enc')"";`
+BUG FOUND: YES",buggy
+8566,"SE: The `$columnValue` is directly concatenated into the SQL query without proper sanitization.
+BL: `$sqlWhereCondition .= ' AND ' . $columnName . ' = \'' . $columnValue . '\' ';`
+BUG FOUND: YES",buggy
+323,"SE: The 'id' parameter from the URL is directly concatenated into the SQL query without sanitation.
+BL: `var query = connection.query('SELECT Section.id, Section.name AS secname, Section.description AS secdesc, Survey.title AS stitle, Survey.description AS sdesc, Survey.id AS sid, Survey.holder from Section,Survey WHERE Survey.sectionId=Section.id AND Section.status=1 AND Survey.status=1 AND sectionId='+id, function(err, rows, fields) {`
+BUG FOUND: YES
+
+SE: The 'id' parameter from the URL is directly concatenated into the SQL query without sanitation.
+BL: `var sql ='SELECT Survey.id as sid, Survey.title AS stitle, Survey.description AS sdesc, Question.id AS qid, Item.id AS iid,question, item from Survey, Question, Item where Survey.id=' + id +' AND Survey.status=1 AND Question.status=1 AND Item.status=1 AND Question.surveyId=Survey.id AND Item.questionId=Question.id ORDER BY qid,iid;';`
+BUG FOUND: YES
+
+SE: The 'id' parameter from the URL is directly concatenated into the SQL query without sanitation.
+BL: `var query = connection.query('UPDATE Section SET status=0 WHERE id=' + id, function(err, rows, fields) {`
+BUG FOUND: YES
+
+SE: The 'id' parameter from the URL is directly concatenated into the SQL query without sanitation.
+BL: `var sql = 'SELECT Section.id AS categoryId, Survey.id AS sid, Survey.title AS stitle, Survey.description as sdesc, Question.id AS qid, question, Item.id AS iid, item from Section,Survey,Question,Item where Survey.id=' + id +' AND Survey.status=1 AND Question.status=1 And Item.status=1 AND Section.id=Survey.sectionId AND Question.surveyId=Survey.id AND Item.questionId=Question.id ORDER BY qid,iid;';`
+BUG FOUND: YES
+
+SE: The 'id' parameter from the URL is directly concatenated into the SQL query without sanitation.
+BL: `connection.query('SELECT * FROM Section WHERE id='+id, function(err, rows, fields){`
+BUG FOUND: YES
+
+SE: The 'id' parameter from the URL is directly concatenated into the SQL query without sanitation.
+BL: `var query = connection.query('UPDATE Section SET ? where id='+id, body, function(err, rows, fields){`
+BUG FOUND: YES
+
+SE: The 'values' variable, which includes user input, is directly concatenated into the SQL query without sanitation.
+BL: `var query = connection.query('INSERT INTO Section(name, description, status) VALUES('+values+')', function(err, rows, fields) {`
+BUG FOUND: YES",buggy
+8611,"SE: The 'terms' variable is directly concatenated into the SQL query without proper sanitation.
+BL: `WHERE term_taxonomy_id IN ($terms)`
+BUG FOUND: YES",buggy
+304,"SE: The 'condition' string is constructed by directly concatenating user input without proper sanitization, which can lead to SQL Injection.
+BL: `condition.append("" bible.content like '%"" + _keyword + ""%' "");`
+BUG FOUND: YES",buggy
+4155,"SE: The 'req.params.num' is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts order by time desc LIMIT '+ docnum + ' , 10', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The 'req.params.shortname' is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where shortname = ' + connection.escape(req.params.shortname), function(err, rows) {`
+BUG FOUND: YES
+
+SE: The 'req.params.num' is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts order by time desc LIMIT '+ docnum + ' , 10', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The 'req.params.shortname' is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where category = ' + connection.escape(cat.id) + ' order by time desc', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The 'req.params.postid' is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where id = ' + connection.escape(req.params.postid), function(err, rows) {`
+BUG FOUND: YES
+
+SE: The 'req.params.shortname' is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where category = ' + connection.escape(info.id) + ' order by time desc', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The 'query' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('select * from bi_posts where concat(title,content) like ""%'+ query +'%""', function(err, rows) {`
+BUG FOUND: YES",buggy
+309,"SE: The `field` variable is directly embedded into the SQL statement without proper sanitization, which can lead to SQL injection.
+BL: `q = ""UPDATE users SET \""%s\"" = ? WHERE profileid = ?""`
+BUG FOUND: YES",buggy
+8641,"SE: The 'sql' and 'params' variables are directly used in the 'connection.query' method without proper sanitization.
+BL: `connection.query(sql, params, function(err, data) {`
+BUG FOUND: YES",buggy
+4738,"SE: The `$table` and `$field` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `try { $this->Database->runQuery(""update `$table` set `$field` = ? where `$field` = ?;"", array($new_value, $old_value)); }`
+BUG FOUND: YES",buggy
+312,"SE: The 'dev_tokens_string' is directly concatenated into an SQL query without sanitation.
+BL: `update_new_dev_tokens_statement = ( ""update user_info set dev_token_first_seen = now() "" ""where dev_token_first_seen is null and "" ""username in ('"" + dev_tokens_string + ""')"" )`
+BUG FOUND: YES",buggy
+8633,"SE: The 'lineage' parameter is directly concatenated into the SQL query without sanitation.
+BL: `sql := ""SELECT t.path, t.serial, t.tf_version, t.version_id, t.last_modified, count(resources.*) as resource_count"" + "" FROM (SELECT states.id, states.path, states.serial, states.tf_version, versions.version_id, versions.last_modified FROM states JOIN lineages ON lineages.id = states.lineage_id JOIN versions ON versions.id = states.version_id WHERE lineages.value = ? ORDER BY states.path, versions.last_modified ASC) t"" + "" JOIN modules ON modules.state_id = t.id"" + "" JOIN resources ON resources.module_id = modules.id"" + "" GROUP BY t.path, t.serial, t.tf_version, t.version_id, t.last_modified"" + "" ORDER BY last_modified ASC""`
+BUG FOUND: YES",buggy
+349,"SE: The 'studentID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT wartosc,tematyka,nazwa from oceny_uczniow join rodzaje_aktywnosci ra on id_aktywnosci=ra.id where id_ucznia='"" + studentID + ""' and id_przedmiotu="" + subjectID + "";"");`
+BUG FOUND: YES
+
+SE: The 'studentID', 'fromData', and 'toData' are directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT pl.data,p.nr_lekcji from nieobecnosci n join przeprowadzone_lekcje pl on n.id_lekcji=pl.id join plan_lekcji p on pl.id_lekcji=p.id where id_ucznia='"" + studentID + ""' and data>=to_date('"" + fromData + ""', 'DD.MM.YYYY') and data<=to_date('"" + toData + ""', 'DD.MM.YYYY');"");`
+BUG FOUND: YES
+
+SE: The 'studentID', 'fromData', and 'toData' are directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT opis,data_wystawienia,czy_pozytywna from uwagi where id_ucznia='"" + studentID + ""' and data_wystawienia>=to_date('"" + fromData + ""', 'DD.MM.YYYY')"" + "" and data_wystawienia<=to_date('"" + toData + ""', 'DD.MM.YYYY');"");`
+BUG FOUND: YES
+
+SE: The 'studentID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT p.id,nazwa from przedmioty p join klasy k on p.id_klasy=k.id join uczniowie u on u.id_klasy=k.id where pesel='"" + studentID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'teacherID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT p.id,nazwa,oddzial,rok_rozpoczecia from przedmioty p join klasy k on p.id_klasy=k.id where aktywny=true and id_prowadzacego='"" + teacherID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'subjectID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT imie,nazwisko,pesel from przedmioty p join klasy k on p.id_klasy=k.id join uczniowie u on u.id_klasy=k.id where p.id='"" + subjectID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'subjectID', 'studentID', 'gradeValue', 'activityID', and 'topic' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO oceny_uczniow(id_przedmiotu,id_ucznia,wartosc,id_aktywnosci,tematyka) values("" + subjectID + "","" + studentID + "","" + gradeValue + "","" + activityID + "",'"" + topic + ""');"");`
+BUG FOUND: YES
+
+SE: The 'studentID', 'teacherID', 'note', 'isPositive', and 'date' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO uwagi(id_ucznia,id_nauczyciela,opis,czy_pozytywna,data_wystawienia) values('"" + studentID + ""',"" + teacherID + "",'"" + note + ""',"" + isPositive + "",to_date('"" + date + ""', 'DD.MM.YYYY'));"");`
+BUG FOUND: YES
+
+SE: The 'studentID' and 'lessonID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO nieobecnosci(id_ucznia,id_lekcji) values('"" + studentID + ""',"" + lessonID + "");"");`
+BUG FOUND: YES
+
+SE: The 'data', 'teacherID', 'lessonID', and 'topic' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO przeprowadzone_lekcje(data,id_prowadzacego,id_lekcji,temat_zajec) values(to_date('"" + data + ""', 'DD.MM.YYYY'),"" + teacherID + "","" + lessonID + "",'"" + topic + ""');"");`
+BUG FOUND: YES
+
+SE: The 'name', 'lastname', 'pesel', 'phoneNumber', and 'classID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO uczniowie(imie,nazwisko,pesel,telefon_do_rodzica,id_klasy) values('"" + name + ""','"" + lastname + ""','"" + pesel + ""',"" + phoneNumber + "","" + classID + "");"");`
+BUG FOUND: YES
+
+SE: The 'section', 'startYear', and 'tutorID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO klasy(oddzial,rok_rozpoczecia,id_wychowawcy) values('"" + section + ""',"" + startYear + "","" + tutorID + "");"");`
+BUG FOUND: YES
+
+SE: The 'name' and 'lastname' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO nauczyciele(imie,nazwisko) values('"" + name + ""','"" + lastname + ""');"");`
+BUG FOUND: YES
+
+SE: The 'name', 'classID', and 'teacherID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO przedmioty(nazwa,id_klasy,id_prowadzacego) values('"" + name + ""',"" + classID + "","" + teacherID + "");"");`
+BUG FOUND: YES
+
+SE: The 'subjectID', 'lessonNumber', and 'weekday' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO plan_lekcji(id_przedmiotu,nr_lekcji,dzien_tygodnia) values("" + subjectID + "","" + lessonNumber + "","" + weekday + "");"");`
+BUG FOUND: YES
+
+SE: The 'studentID' is directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""UPDATE uczniowie SET aktywny = false where pesel='"" + studentID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'login', 'password', and 'pesel' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO uzytkownicy(login,haslo) values('"" + login + ""','"" + password + ""');"");`
+BUG FOUND: YES
+
+SE: The 'login' and 'pesel' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""UPDATE uczniowie SET id_uzytkownika = '"" + login + ""' where pesel='"" + pesel + ""';"");`
+BUG FOUND: YES
+
+SE: The 'login', 'password', and 'teacherID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO uzytkownicy(login,haslo) values('"" + login + ""','"" + password + ""');"");`
+BUG FOUND: YES
+
+SE: The 'login' and 'teacherID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""UPDATE nauczyciele SET id_uzytkownika = '"" + login + ""' where id="" + teacherID + "";"");`
+BUG FOUND: YES
+
+SE: The 'login' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT * from uzytkownicy join uczniowie on login=id_uzytkownika where login='"" + login + ""';"");`
+BUG FOUND: YES
+
+SE: The 'login' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT * from uzytkownicy join nauczyciele on login=id_uzytkownika where login='"" + login + ""';"");`
+BUG FOUND: YES
+
+SE: The 'pesel' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""select p.nazwa,pl.nr_lekcji from plan_lekcji pl join przedmioty p on pl.id_przedmiotu = p.id join klasy k on p.id_klasy = k.id join uczniowie u on k.id=u.id_klasy where dzien_tygodnia = ""+i+"" and u.pesel = '""+pesel+""' order by pl.nr_lekcji;"");`
+BUG FOUND: YES
+
+SE: The 'pesel' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""select id_uzytkownika from uzytkownicy uz join uczniowie on id_uzytkownika=uz.login where pesel='"" + pesel + ""';"");`
+BUG FOUND: YES
+
+SE: The 'password' and 'userID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""UPDATE uzytkownicy SET haslo = '""+password+""' where login='""+userID+""';"");`
+BUG FOUND: YES
+
+SE: The 'id' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""select id_uzytkownika from uzytkownicy uz join nauczyciele on id_uzytkownika=uz.login where id="" + id + "";"");`
+BUG FOUND: YES
+
+SE: The 'password' and 'userID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""UPDATE uzytkownicy SET haslo = '""+password+""' where login = '""+userID+""';"");`
+BUG FOUND: YES
+
+SE: The 'data' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT pl.id,k.oddzial,k.rok_rozpoczecia,p.nazwa,pl.nr_lekcji from plan_lekcji pl join przedmioty p on pl.id_przedmiotu = p.id join klasy k on p.id_klasy = k.id where pl.dzien_tygodnia=extract(dow from to_date('"" + data + ""', 'DD.MM.YYYY'))+1;"");`
+BUG FOUND: YES
+
+SE: The 'lessonID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT imie,nazwisko,pesel from uczniowie u join klasy k on k.id =u.id_klasy join przedmioty p on p.id_klasy=k.id join plan_lekcji pl on pl.id_przedmiotu =p.id join przeprowadzone_lekcje p_l on pl.id=p_l.id_lekcji where p_l.id=""+lessonID+"";"");`
+BUG FOUND: YES
+
+SE: The 'id' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""select p.nazwa,pl.nr_lekcji,k.oddzial,k.rok_rozpoczecia from plan_lekcji pl join przedmioty p on pl.id_przedmiotu = p.id join klasy k on p.id_klasy = k.id join nauczyciele n on n.id=p.id_prowadzacego where dzien_tygodnia = ""+i+"" and n.id = '""+id+""' order by pl.nr_lekcji;"");`
+BUG FOUND: YES",buggy
+360,"SE: The 'group' parameter from 'req.args' is directly concatenated into the SQL query without sanitation.
+BL: `cursor.execute(""SELECT builds.id, builds.buildgroup, builds.portname, builds.pkgversion, builds.status, builds.buildstatus, builds.buildreason, builds.buildlog, builds.wrkdir, builds.startdate, CASE WHEN builds.enddate < builds.startdate THEN extract(epoch from now())*1000000 ELSE builds.enddate END, buildqueue.id, buildqueue.priority, buildqueue.owner FROM builds, buildqueue WHERE buildqueue.id = builds.queueid AND builds.status < 90 AND (builds.buildgroup = %s OR %s = '') ORDER BY builds.status DESC, buildqueue.priority, builds.id DESC LIMIT 50"", (group, group))`
+BUG FOUND: YES",buggy
+387,"SE: The SQL query is constructed by directly concatenating user input (`$_GET[""id""]`), which can lead to SQL Injection.
+BL: `$query = ""SELECT * FROM "".TDE_APP_CONFIG."" where "".TDE_APP_CONFIG_ID.""='"".$calid.""'"";`
+BUG FOUND: YES",buggy
+8629,"```
+SE: The 'filter['value']' is directly concatenated into an SQL query without proper sanitation.
+BL: $conditionFilters[] = 'oo_id IN (SELECT id FROM search_backend_data WHERE maintype = ""object"" AND MATCH (`data`,`properties`) AGAINST (' . $list->quote($query) . ' IN BOOLEAN MODE))';
+BUG FOUND: YES
+```",buggy
+352,"SE: The method `whereRaw` allows raw SQL conditions to be passed directly, which can lead to SQL injection if user input is not properly sanitized.
+BL: `@method $this whereRaw(string $condition)`
+BUG FOUND: YES",buggy
+374,"```plaintext
+SE: The 'content_id' is directly concatenated into an SQL query without sanitation.
+BL: $page=SiteTree::get()->filter('KapostRefID', Convert::raw2sql($content_id))->first();
+BUG FOUND: YES
+```",buggy
+8575,"SE: The `$id_product` and `$id_product_attribute` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `$query->where('id_product = ' . (int) $id_product);`
+BUG FOUND: YES",buggy
+400,"SE: The 'searchPhrase' is directly concatenated into the SQL query without proper sanitation.
+BL: `$dbSearchPhrase = sprintf('""%%%s%%""', $searchPhrase);`
+BUG FOUND: YES",buggy
+398,"SE: The 'filter['value']' is directly concatenated into an SQL query without proper sanitation.
+BL: `if (!empty($query)) { $conditionFilters[] = 'oo_id IN (SELECT id FROM search_backend_data WHERE maintype = ""object"" AND MATCH (`data`,`properties`) AGAINST (' . $list->quote($query) . ' IN BOOLEAN MODE))'; }`
+BUG FOUND: YES",buggy
+8606,"```plaintext
+SE: The 'projectname' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""SELECT unix_group_name from `groups` where group_id="" . db_ei($group_id);
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'cvs_repository' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""select distinct cvs_branches.* FROM cvs_branches, cvs_checkins, cvs_repositories  where "" . ""cvs_checkins.repositoryid=cvs_repositories.id AND cvs_repositories.repository='$cvs_repository' "" . ""AND cvs_checkins.branchid=cvs_branches.id"";
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'projectname' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""SELECT DISTINCT user.user_name, user.user_name "" . ""FROM cvs_checkins, cvs_repositories, user "" . ""WHERE (cvs_repositories.repository like '$cvs_repository') AND (cvs_repositories.id = cvs_checkins.repositoryid) AND (cvs_checkins.whoid=user.user_id) "" . ""ORDER BY user.user_name ASC"";
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'projectname' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""SELECT unix_group_name from `groups` where group_id="" . db_ei($group_id);
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'cvs_repository' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""select distinct stickytag, stickytag from cvs_checkins, cvs_repositories where cvs_checkins.repositoryid=cvs_repositories.id AND cvs_repositories.repository='$cvs_repository'"";
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'user_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_user = db_query(""SELECT shell FROM user WHERE user_id=$user_id"");
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $query = ""SELECT id from cvs_repositories where cvs_repositories.repository='$cvs_repository' "";
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'commit_id' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""SELECT repository, cvs_commits.comm_when as c_when, repositoryid, description, file, fileid, dir, dirid, type, branch, revision, addedlines, removedlines "" . ""FROM cvs_dirs, cvs_descs, cvs_files, cvs_checkins, cvs_branches, cvs_repositories, cvs_commits "" . ""WHERE cvs_checkins.fileid=cvs_files.id "" . ""   AND cvs_checkins.dirid=cvs_dirs.id "" . ""   AND cvs_checkins.commitid=cvs_commits.id "" . ""   AND cvs_checkins.branchid=cvs_branches.id "" . ""   AND cvs_checkins.descid=cvs_descs.id "" . ""   AND cvs_checkins.repositoryid=cvs_repositories.id "" . ""   AND cvs_checkins.commitid=$commit_id "";
+BUG FOUND: YES
+```",buggy
+8544,"```plaintext
+SE: The 'params' array values are directly concatenated into an SQL query without proper sanitization.
+BL: $params['sef_name'] = $db->selectValue('section', 'sef_name', 'id='.intval($params['section']));
+BUG FOUND: YES
+```",buggy
+8572,"```plaintext
+SE: The 'query' parameter is directly concatenated into an SQL command without sanitation.
+BL: `expectSortedEqual(await adapter.unsafeSqlQuery('tasks', `SELECT * FROM tasks WHERE id = 't2'`), ['t2'])`
+BUG FOUND: YES
+```",buggy
+8917,"```plaintext
+SE: The 'ids' are directly concatenated into the SQL query without proper sanitation.
+BL: $metaIds = (array) $database->getColumn('SELECT meta_id FROM blog_posts AS p WHERE id IN (' . $idPlaceHolders . ') AND language = ?', array_merge($ids, [BL::getWorkingLanguage()]));
+BUG FOUND: YES
+```",buggy
+388,"```plaintext
+SE: The 'widget_id' and 'maintype' are directly concatenated into the SQL query without proper sanitation.
+BL: $query = ""SELECT COUNT(1) AS total FROM "" . $this->dbtable . "" WHERE widget_id = '"" . $widget_id . ""' AND maintype = '"" . $maintype . ""' AND name = 'default'"";
+BUG FOUND: YES
+```",buggy
+386,"SE: The '$_REQUEST' parameters are directly concatenated into the SQL query without proper sanitization.
+BL: `$qwhere.=' AND object_type='.db_input($_REQUEST['type'] ?: 'D');`
+BUG FOUND: YES",buggy
+8638,"```
+SE: The 'id' parameter is directly used in an SQL query without proper sanitization.
+BL: $data['leave'] = $this->leaves_model->getLeaves($id);
+BUG FOUND: YES
+```",buggy
+8512,"```
+SE: The 'catid' and 'search_categ' variables are directly concatenated into the SQL query without proper sanitation.
+BL: if ($catid > 0)    $sql.= "" AND cm.fk_categorie = "".$db->escape($catid);
+BUG FOUND: YES
+```",buggy
+8591,"```plaintext
+SE: The 'org' parameter is directly concatenated into the SQL query without sanitation.
+BL: $sql = 'SELECT DISTINCT EXTRACT(EPOCH FROM CAST(created AS DATE)) AS ""Date"", COUNT(id) AS count FROM logs WHERE action NOT IN (' . $condnotinaction . ') ' . $condOrg . ' GROUP BY ""Date"" ORDER BY ""Date""';
+BUG FOUND: YES
+```",buggy
+4767,"SE: The 'post_id' and 'ip' variables are directly concatenated into the SQL query without sanitation.
+BL: `$wpdb->query(""INSERT INTO "".$wpdb->prefix.""irecommendthis_votes VALUES ('', NOW(), '$post_id', '$ip')"");`
+BUG FOUND: YES",buggy
+8527,"SE: The `$str` parameter in the `query` method is directly used to prepare an SQL statement without any validation or sanitation.
+BL: `public function query($str, $fetchSql = false, $master = false)`
+BUG FOUND: YES",buggy
+8616,"```plaintext
+SE: The 'searchfilter' is directly concatenated into the SQL query without sanitation.
+BL: $query = 'select * from classificationstore_collectionrelations where groupId in (' . implode(',', $allowedGroupIds) .')';
+BUG FOUND: YES
+```",buggy
+4749,"SE: The 'postid' parameter from the GET request is directly concatenated into the SQL query without sanitation.
+BL: `$where .= "" AND (`post_status` = 'draft' OR `post_status` = 'publish' OR `post_status` = 'future')"";`
+BUG FOUND: YES",buggy
+8560,"```plaintext
+SE: The 'name' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: $values="" VALUES('"" . $this->db->prepare_string($name). ""',"" .
+BUG FOUND: YES
+```",buggy
+4268,"SE: The 'params[:sol]' is directly used in the SQL query without any sanitation or parameterization.
+BL: `@images = Image.where(:sol => params[:sol])`
+BUG FOUND: YES",not_buggy
+399,"SE: The 'uemail' and 'upass' variables are directly concatenated into the SQL query string, which can lead to SQL Injection even though they are sanitized using `mysqli_real_escape_string`.
+BL: `query=""select * from admin where email='$uemail' and password='$upass'"";`
+BUG FOUND: YES",not_buggy
+8592,"SE: The 'allowed_search' array is directly used in the SQL query without proper sanitation, which can lead to SQL Injection if the 'search' array contains malicious input.
+BL: `return $query->where($allowed_search);`
+BUG FOUND: YES",not_buggy
+339,"SE: The variable `$minID` is directly concatenated into the SQL query without sanitation.
+BL: ` $query = ""DELETE FROM Highscores WHERE idHighscores = $minID"";`
+BUG FOUND: YES",not_buggy
+353,"SE: The 'params[:id]' is directly used in a method call without any sanitation or validation, which could lead to SQL Injection if the method 'load_from_reset_password_token' is not properly handling the input.
+BL: `@user = User.load_from_reset_password_token(params[:id])`
+BUG FOUND: YES",not_buggy
+341,"SE: The variable 'key' is directly concatenated into the SQL query without proper parameterization, even though it is sanitized using `mysqli_real_escape_string`. This can still be vulnerable to SQL Injection if not handled correctly.
+BL: `result = mysqli_query($con,""SELECT * FROM users where secret = '$key' and authused=1"");`
+BUG FOUND: YES",not_buggy
+371,"SE: The 'userid' is directly concatenated into the SQL query without proper sanitation, which can lead to SQL Injection.
+BL: `$usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `userid` = "" . $vbulletin->db->escape_string($vbulletin->userinfo['userid']));`
+BUG FOUND: YES",not_buggy
+369,"SE: The 'username' parameter from `$_POST['referrername']` is directly concatenated into the SQL query without proper parameterization, even though it is escaped, it is still vulnerable to SQL Injection.
+BL: `$usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `username` = "" . $vbulletin->db->escape_string($_POST['referrername']));`
+BUG FOUND: YES",not_buggy
+8622,"SE: The 'custom_css_code' from the POST request is directly used in an SQL command without proper sanitation.
+BL: `$_POST['custom_css_code'] = $DB->escape($_UPOST['custom_css_code']);`
+BUG FOUND: YES",not_buggy
+345,"SE: The 'symbol', 'startDate', and 'endDate' parameters are directly concatenated into the SQL query without proper sanitation.
+BL: `$query = ""select date, EOD, MA20, MA50, delta, deltaMA5, deltaMA10, deltaMA20, P0, P1, P2, M1, M2, M3 from $pdo->quote($symbol) where date between $pdo->quote($startDate) and $pdo->quote($endDate) order by date DESC"";`
+BUG FOUND: YES",not_buggy
+8643,"SE: The 'id' parameter is directly used in SQL commands without proper sanitation.
+BL: `$id     = isset($_POST['id']) && is_numeric($_POST['id']) ? (int)$_POST['id'] : null;`
+BUG FOUND: YES",not_buggy
+316,"SE: The 'userId' is directly concatenated into the SQL query without sanitation.
+BL: ` "" AND htmlcontent_users.user_id = $1 "";`
+BUG FOUND: YES",not_buggy
+356,"SE: The 'username' and 'password' variables are directly concatenated into the SQL query string, which can lead to SQL Injection.
+BL: `conn.query(""INSERT INTO user (username, password) VALUES ('""+username+""', '""+password+""')"", function (err, result) {`
+BUG FOUND: YES",not_buggy
+404,"SE: The 'itemtype' parameter from the POST request is directly used in the `getItemForItemtype` function without proper validation or sanitization, which could lead to SQL Injection if the function constructs SQL queries using this parameter.
+BL: `if (!is_string($_POST['itemtype']) || getItemForItemtype($_POST['itemtype']) === false) {`
+BUG FOUND: YES",not_buggy
+336,"SE: The 'sort' parameter is directly concatenated into the SQL query without proper sanitation, which can lead to SQL Injection.
+BL: `    $sql = ""select * from sample order by {$sort} {$direction}"";`
+BUG FOUND: YES",not_buggy
+314,"SE: The 'sort' and 'direction' variables are directly concatenated into the SQL query without proper sanitization or parameterization, which can lead to SQL Injection.
+BL: `{$sort} {$direction}`;
+BUG FOUND: YES",not_buggy
+311,"SE: The 'id' from the `$link` array is directly concatenated into the SQL query without proper sanitation.
+BL: `$query = sprintf(""UPDATE short_links SET count = count + 1, last_request = NOW() WHERE id = ''%s''"", $link[""id""]);`
+BUG FOUND: YES",not_buggy
+365,"SE: The 'id' parameter from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM contract_signer_role WHERE id="".$_GET['id']);`
+BUG FOUND: YES",not_buggy
+331,"SE: The 'msg.body' is directly used in the `sub.set_flair` method without any sanitation, which could lead to SQL Injection if the method internally constructs SQL queries.
+BL: `sub.set_flair(msg.author,msg.body,estado)`
+BUG FOUND: YES",not_buggy
+366,"SE: The 'id' parameter from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_pref WHERE id_pref="".$_GET['id']);`
+BUG FOUND: YES",not_buggy
+337,"SE: The 'LANG' parameter from user input is directly concatenated into the URL without proper sanitation.
+BL: `header (""Location: failed.php?LANG="".$LANG);`
+BUG FOUND: YES",not_buggy
+319,"SE: The 'id' parameter from the URL is directly used in the SQL query without proper sanitation.
+BL: `$slim->get('/dieren/:id', function($id){`
+BUG FOUND: YES",not_buggy
+8546,"SE: The SQL query is constructed by directly concatenating user input without proper sanitization, which can lead to SQL Injection.
+BL: `$sql .= self::getSqlSearchFromPost();`
+BUG FOUND: YES",not_buggy
+367,"SE: The 'id' parameter from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: `mysql_query(""DELETE FROM webfinance_roles WHERE id_role="".$_GET['id']);`
+BUG FOUND: YES",not_buggy
+396,"SE: The 'user' input is directly concatenated into an SQL command without proper sanitation.
+BL: `if ($sys == 1) $filter[2] = ""(owner = "" . pg_escape_literal($user) . "" or gui_sysrss = 'yes')"";`
+BUG FOUND: YES",not_buggy
+350,"SE: The 'tissue' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `$total = $this->db->prepare(""SELECT count(*) FROM mirna WHERE Name LIKE ? AND tissue = ? AND Cancer_Effect LIKE ?"");`
+BUG FOUND: YES",not_buggy
+373,"SE: The 'deleteAllTags' method deletes all records from the TAGS table without any condition, which is not directly related to SQL Injection but could be a potential risk if misused. However, no direct SQL Injection vulnerability (CWE-89) is found in the provided code as all SQL queries use parameterized methods.
+BL: none
+BUG FOUND: NO",not_buggy
+8539,"SE: The variable `$cycle` is directly concatenated into the SQL query without proper sanitation.
+BL: `WHERE \`state\` = '"".Crontask::STATE_RUNNING.""' AND unix_timestamp(\`lastrun\`) + $cycle * \`frequency\` < unix_timestamp(now())"";`
+BUG FOUND: YES",not_buggy
+326,"SE: The 'first_name' is directly concatenated into the SQL query without sanitation.
+BL: `people = Person.where(""first_name LIKE '%#{first_name}%'"")`
+BUG FOUND: YES
+
+SE: The 'last_name' is directly concatenated into the SQL query without sanitation.
+BL: `people = Person.where(""last_name LIKE '%#{last_name}%'"")`
+BUG FOUND: YES
+
+SE: The 'email' is directly concatenated into the SQL query without sanitation.
+BL: `emails = Email.where(""email LIKE '%#{email}%'"")`
+BUG FOUND: YES",not_buggy
+370,"SE: The 'username' from the `$thread['postusername']` is directly concatenated into the SQL query without proper sanitation.
+BL: `usersql  = $vbulletin->db->query_read(""SELECT `userid`, `username`, `email` FROM "" . TABLE_PREFIX . ""user WHERE `username` = "" . $vbulletin->db->escape_string($thread['postusername']));`
+BUG FOUND: YES",not_buggy
+348,"SE: The 'table' parameter is directly concatenated into the SQL query without sanitation.
+BL: `function select($columns = array(), $table = '', $where = array())`
+BUG FOUND: YES
+
+SE: The 'table' parameter is directly concatenated into the SQL query without sanitation.
+BL: `function insert($values = array(), $table = '')`
+BUG FOUND: YES
+
+SE: The 'table' parameter is directly concatenated into the SQL query without sanitation.
+BL: `function delete($table = '', $where = array())`
+BUG FOUND: YES
+
+SE: The 'table' parameter is directly concatenated into the SQL query without sanitation.
+BL: `function update($values = array(), $table = '', $where = array())`
+BUG FOUND: YES",not_buggy
+377,"SE: The 'user' parameter from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: `$query = ""SELECT `password` FROM `admin_users` WHERE `name` = '"".$my->real_escape_string($_GET[""user""]).""';"";`
+BUG FOUND: YES",not_buggy
+8607,"SE: The '$_POST' variables are directly concatenated into the SQL query without proper sanitation.
+BL: `$sql = 'INSERT INTO User (Username, Mail, Password, Type) VALUES ('.""'"".mysqli::real_escape_string($_POST[""U""]).""'"".','.""'"".mysqli::real_escape_string($_POST[""M""]).""'"".','.""'"".password_hash(mysqli::real_escape_string($_POST[""P""]),PASSWORD_DEFAULT).""'"".','.$USOC[""userRights""][""AfterRegistration""].');';`
+BUG FOUND: YES",not_buggy
+362,"SE: The `$this->sid` is directly concatenated into an SQL query without proper sanitation.
+BL: `WHERE session_id='$this->sid' AND ADDTIME(last_activity, '06:00:00:00')>NOW() LIMIT 1""`
+BUG FOUND: YES
+
+SE: The `$this->sid` is directly concatenated into an SQL query without proper sanitation.
+BL: `last_activity=NOW() WHERE session_id='$this->sid'""`
+BUG FOUND: YES
+
+SE: The `$this->iid` is directly concatenated into an SQL query without proper sanitation.
+BL: `AND item_id=$this->iid AND session_id='$this->sid' LIMIT 1""`
+BUG FOUND: YES",not_buggy
+8610,"SE: The '$_GET[""Name""]' is directly concatenated into the SQL query without proper parameterization.
+BL: `$sql = ""SELECT * FROM User WHERE Username='"".mysqli::real_escape_string($_GET[""Name""]).""';"";`
+BUG FOUND: YES",not_buggy
+8621,"SE: The variable `$uid` is directly concatenated into the SQL query without proper sanitation.
+BL: `if (D(""Item"")->where(""uid = '$uid' and is_del = 0 "")->find()) {`
+BUG FOUND: YES",not_buggy
+310,"SE: The 'email' is directly concatenated into the SQL query string without proper parameterization.
+BL: `connection.query(""select * from users where email = ?"" + [email], function (err, rows) {`
+BUG FOUND: YES",not_buggy
+342,"SE: The 'session_id' from the `$userData` array is directly concatenated into the SQL query without proper sanitation.
+BL: `$result = $dbCon->query('SELECT cash FROM users WHERE session_id = ""' . $userData['session_id'] . '""');`
+BUG FOUND: YES
+
+SE: The 'id' from the `$userData` array is directly concatenated into the SQL query without proper sanitation.
+BL: `$dbCon->query('UPDATE users SET cash = (cash + ""' . (int) (addslashes($_POST['gambleMoney']) * 36) . '"") WHERE id = ""' . $userData['id'] . '""');`
+BUG FOUND: YES
+
+SE: The 'id' from the `$userData` array is directly concatenated into the SQL query without proper sanitation.
+BL: `$dbCon->query('UPDATE users SET cash = (cash - ""' . (int) addslashes($_POST['gambleMoney']) . '"") WHERE id = ""' . $userData['id'] . '""');`
+BUG FOUND: YES",not_buggy
+340,"SE: The 'year' variable is directly concatenated into the SQL query without proper sanitation.
+BL: `WHERE berichte.state=1 AND berichte.date1 LIKE '.$db->quote($year.'%').`
+BUG FOUND: YES",not_buggy
+329,"SE: The 'vars[""num""]' is directly used in the SQL query without proper sanitation or parameterization.
+BL: `query := `SELECT json_agg(r) FROM (select EXTRACT(epoch FROM day) as day, end_of_day_total from trello.dailytallies order by day DESC limit $1) r;`
+    err := db.QueryRow(query, vars[""num""]).Scan(&output)`
+BUG FOUND: YES",not_buggy
+361,"SE: The 'query' parameter is directly used in the SQL statement without any sanitation or parameterization.
+BL: `public function getByCustomQuery($query){`
+BUG FOUND: YES",not_buggy
+4080,"SE: The 'key' value is directly interpolated into the SQL JOIN statement without proper sanitization.
+BL: `scope = scope.joins(%(LEFT OUTER JOIN #{attr_table_name} AS #{table_name} ON #{table_name}.work_id = #{work_table_name}.id AND #{table_name}.key = ""#{key}""))`
+BUG FOUND: YES",not_buggy
+4626,"SE: The 'q' parameter from the request is directly used in an SQL query without proper sanitation, which can lead to SQL Injection.
+BL: `cursor.execute(""SELECT id,title,artist,cover FROM recordstoreapp_record WHERE title like %s or artist like %s or label like %s or cat_no like %s;"", [q,q,q,q])`
+BUG FOUND: YES",not_buggy
+357,"SE: The 'id1' and 'id2' parameters are directly concatenated into the SQL query without proper sanitation.
+BL: `cursor.execute(sql_function+sql_inside_of_function+"", %s , %s , true,true) join \""Data_minnesotabiketrails\"" as bt on bt.id=id2"",(str(id1),str(id2),))`
+BUG FOUND: YES",not_buggy
+4092,"SE: The 'date' parameter is directly concatenated into the SQL query string without sanitation.
+BL: `Query query = em.createQuery(""SELECT n FROM News n WHERE n.date > '""+date+""' ORDER BY date DESC"");`
+BUG FOUND: YES",not_buggy
+364,"SE: The 'username' and 'password' are directly concatenated into the SQL query without sanitation.
+BL: `$query = ""SELECT * FROM  users where userName='$username' and userPassword='$password'"";`
+BUG FOUND: YES",not_buggy
+368,"SE: The 'id_personne' is directly concatenated into the SQL query without sanitation.
+BL: `  $res=mysql_query(""SELECT client FROM webfinance_personne WHERE id_personne="".$_POST['id_personne']) or die(""QUERY ERROR: "".mysql_error());`
+BUG FOUND: YES
+
+SE: The 'id_personne' is directly concatenated into the SQL query without sanitation.
+BL: `  $res=mysql_query(""SELECT nom, prenom, client FROM webfinance_personne WHERE id_personne="".$_POST['id_personne'])  or die(""QUERY ERROR: "".mysql_error());`
+BUG FOUND: YES
+
+SE: The 'id_personne' is directly concatenated into the SQL query without sanitation.
+BL: `  mysql_query(""DELETE FROM webfinance_personne WHERE id_personne="".$_POST['id_personne']);`
+BUG FOUND: YES",not_buggy
+8532,"SE: The '$_POST' variables are directly used in SQL queries without proper sanitization or parameterization.
+BL: `$nat = $Admin->fetch_object (""nat"", ""id"", $_POST['id']);`
+BUG FOUND: YES",not_buggy
+8511,"SE: The 'sql' string in the `SqlString.format` function is directly replaced with values without any validation or sanitation, which can lead to SQL Injection if the `sql` string contains user input.
+BL: `return sql.replace(/\?/g, function(match) {`
+BUG FOUND: YES",not_buggy
+8630,"SE: The 'word' variable is directly concatenated into the SQL query without proper sanitation, making it vulnerable to SQL injection.
+BL: `cursor.execute(f""SELECT term FROM terms WHERE term > \""{floor}\"" AND term < \""{ceiling}\"" AND term LIKE \""{word}%%\"" ORDER BY length(term),term LIMIT {requested_limit}"")`
+BUG FOUND: YES",not_buggy
+4743,"SE: The 'searchWord' is directly concatenated into an SQL query without proper sanitation.
+BL: `    $querystr = ""SELECT * FROM $wpdb->posts WHERE "".findPostWhereLike($searchWord);`
+BUG FOUND: YES
+
+SE: The 'searchWord' is directly concatenated into an SQL query without proper sanitation.
+BL: `    $querystr = ""SELECT *  FROM $wpdb->posts WHERE "".findPostWhereLikeNameTitle($searchWord);`
+BUG FOUND: YES",not_buggy
+8584,"SE: The 'table_name' is directly concatenated into the SQL query without proper sanitation, which can lead to SQL Injection.
+BL: `$sql = ""SELECT * FROM `$table` WHERE `id`= ?"";`
+BUG FOUND: YES",not_buggy
+306,"SE: The 'page' parameter from user input is directly concatenated into the SQL query without sanitation.
+BL: `$results = $db->query('SELECT name, score FROM highscore WHERE cheater = 0 AND name != """" ORDER BY score DESC LIMIT 10 OFFSET ' . ($page-1)*10);`
+BUG FOUND: YES",not_buggy
+391,"SE: The `$assignmentTable` variable is directly concatenated into the SQL query without sanitation.
+BL: ` $segmentIds = \Pimcore\Db::get()->fetchOne(""SELECT `segments` FROM $assignmentTable WHERE `elementId` = ? AND `elementType` = ?"", [$id, $type]);`
+BUG FOUND: YES",not_buggy
+8614,"SE: The '$_POST[""N""]' is directly concatenated into an SQL query without proper sanitation.
+BL: `$sql = ""SELECT * FROM user WHERE id='"".mysqli::real_escape_string($_POST[""N""]).""';"";`
+BUG FOUND: YES
+
+SE: The '$_POST[""N""]' is directly concatenated into an SQL query without proper sanitation.
+BL: `$sql = ""UPDATE User "".($permissionLevel === false?"""":""SET Type='"".$permissionLevel.""'"".($b==false?"""":"", "")).($b==false?"""":""blocked ='"".$b.""' "").""WHERE Id='"".mysqli::real_escape_string($_POST[""N""]).""';"";`
+BUG FOUND: YES",not_buggy
+8639,"SE: The 'id' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `$row = Db::getInstance()->getRow('SELECT modified, content FROM ' . _DB_PREFIX_ . 'smarty_cache WHERE id_smarty_cache = ""' . pSQL($id, true) . '""');`
+BUG FOUND: YES
+
+SE: The 'id' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `$value = Db::getInstance()->getValue('SELECT modified FROM ' . _DB_PREFIX_ . 'smarty_cache WHERE id_smarty_cache = ""' . pSQL($id, true) . '""');`
+BUG FOUND: YES
+
+SE: The 'id', 'name', and 'cache_id' parameters are directly concatenated into the SQL query without proper sanitation.
+BL: `Db::getInstance()->execute('REPLACE INTO ' . _DB_PREFIX_ . 'smarty_cache (id_smarty_cache, name, cache_id, content) VALUES ( ""' . pSQL($id, true) . '"", ""' . pSQL(sha1($name)) . '"", ""' . pSQL($cache_id, true) . '"", ""' . $this->phpEncryption->encrypt($content) . '"" )');`
+BUG FOUND: YES
+
+SE: The 'name', 'exp_time', and 'cache_id' parameters are directly concatenated into the SQL query without proper sanitation.
+BL: `Db::getInstance()->execute('DELETE FROM ' . _DB_PREFIX_ . 'smarty_cache WHERE ' . implode(' AND ', $where));`
+BUG FOUND: YES",not_buggy
+354,"SE: The 'country_code' parameter is directly concatenated into the SQL query string without proper parameterization.
+BL: `WHERE code = ':country_code'`
+BUG FOUND: YES",not_buggy
+401,"SE: The 'address' variable is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql .= ' AND ipv4_address LIKE ?'; $param[] = ""%$address%"";`
+BUG FOUND: YES",not_buggy
+358,"SE: The '$_GET['s']' parameter is directly concatenated into an SQL query without proper sanitation.
+BL: `$haku_s = mysqli_query($yht, ""SELECT * FROM `sivut` WHERE uid = '"".$_GET['s'].""' LIMIT 1"");`
+BUG FOUND: YES",not_buggy
+359,"SE: The 'table' and 'columns.get(""username"")' and 'columns.get(""password"")' are directly concatenated into the SQL query without sanitation.
+BL: `String sql = ""SELECT * FROM "" + table + "" WHERE "" + columns.get(""username"") + ""= ? AND "" + columns.get(""password"") + ""= ?"";`
+BUG FOUND: YES",not_buggy
+8555,"SE: The 'sw_lat', 'sw_lng', 'ne_lat', and 'ne_lng' are directly concatenated into the SQL query without sanitation.
+BL: `spans = ""#{lat_attr} BETWEEN #{sw_lat.to_f} AND #{ne_lat.to_f} AND ""`
+BUG FOUND: YES",not_buggy
+8599,"SE: The 'job_id' is directly used in an SQL query without proper sanitation.
+BL: `job_id = $request->get($this->widget_id . '_job_id');`
+BUG FOUND: YES",not_buggy
+321,"SE: The 'region' variable is directly concatenated into the SQL query without proper sanitation.
+BL: `$query  = ""SELECT * FROM $robustDB.regions WHERE regionName='$region';"";`
+BUG FOUND: YES",not_buggy
+8504,"SE: The variable `$jobname` is directly concatenated into the SQL query without any sanitation, making it vulnerable to SQL injection.
+BL: `$query .= ""WHERE Job.Name = '$jobname' AND Job.JobStatus = 'T' AND Job.Type = 'B' "";`
+BUG FOUND: YES",not_buggy
+8571,"SE: The 'device_id' is directly used in the SQL query without proper sanitation.
+BL: `$query = ""SELECT * FROM `devices` WHERE `device_id` = ? LIMIT 1"";`
+BUG FOUND: YES",not_buggy
+376,"SE: The 'normalizeForSearch(ps.tag)' is directly concatenated into an SQL query without proper parameterization.
+BL: `query.andWhere('{""${normalizeForSearch(ps.tag)}""} <@ note.tags');`
+BUG FOUND: YES",not_buggy
+8598,"SE: The variable `$cardwall_tracker_id` is directly concatenated into the SQL query without using prepared statements.
+BL: `WHERE cardwall_tracker_id = $cardwall_tracker_id"";`
+BUG FOUND: YES",not_buggy
+334,"SE: The 'name' parameter is directly used in the SQL query without proper parameterization.
+BL: `keks = self.DBcursor.execute(u""SELECT `nickname`, `count` from kekse WHERE item==? AND `count`>=1 ORDER BY `count` DESC LIMIT 10"", (name)).fetchall()`
+BUG FOUND: YES",not_buggy
+8625,"SE: The 'filterFullText' parameter from the request is directly concatenated into an SQL condition without proper sanitation.
+BL: ` $conditionFilters[] = 'path LIKE ' . $list->quote('%'. $list->escapeLike($request->get('filterFullText')) .'%');`
+BUG FOUND: YES",not_buggy
+394,"SE: The 'value' parameter is directly used in SQL without proper sanitation, which can lead to SQL Injection.
+BL: `if (preg_match('/^[a-z0-9_]+$/', $value) === 0) { throw new SQLException('Invalid identifier: '.$value); }`
+BUG FOUND: YES",not_buggy
+346,"SE: The 'single_instance['id']' is directly concatenated into the SQL query without proper sanitation.
+BL: `WHERE `#instances`.`ID` ="".(int)$single_instance['id']."";"";`
+BUG FOUND: YES",not_buggy
+335,"SE: The variable `$word` is directly concatenated into the SQL query without being properly escaped or parameterized.
+BL: `WHERE search_keywords = ""' . $word . '""';`
+BUG FOUND: YES",not_buggy
+330,"SE: The variable `$url` is directly concatenated into the SQL query without proper sanitation.
+BL: `db_uquery(""INSERT INTO `$LM_CCPWGL_CACHESCHEMA`.`lmproxyfiles` VALUES(DEFAULT,NOW(),'$url','$info','"". mysql_escape_string($data) .""');"");`
+BUG FOUND: YES",not_buggy
+338,"SE: The 'langarg' is directly concatenated into an SQL query without proper sanitation.
+BL: `my $langid=$dbh->selectrow_array(""SELECT langid FROM languages WHERE tag=?"", undef, $langarg);`
+BUG FOUND: YES",not_buggy
+8637,"SE: The 'id_wishlist' is directly concatenated into the SQL query without sanitation.
+BL: `$querySearch->where('wp.id_wishlist = ' . (int) $this->wishList->id);`
+BUG FOUND: YES",not_buggy
+383,"```plaintext
+SE: The 'inputData' values are directly concatenated into SQL queries without proper parameterization.
+BL: $apiInfo = $this->select(""SELECT count(*) FROM "" . prefixTable('api') . "" WHERE value='"".$inputData['apikey'].""' AND label='"".$inputData['login'].""'"");
+BUG FOUND: YES
+```",not_buggy
+372,"SE: The 'crawler_ip' and 'crawler_useragent' are directly concatenated into an SQL query without proper parameterization, making it vulnerable to SQL Injection.
+BL: `$this->crawler_info = $this->dbhandle->query(""SELECT crawler_ip FROM crawlers WHERE crawler_ip='$this->ip' AND crawler_useragent='$this->useragent'"");`
+BUG FOUND: YES
+
+SE: The 'crawler_ip' and 'crawler_useragent' are directly concatenated into an SQL query without proper parameterization, making it vulnerable to SQL Injection.
+BL: `$last_seen_query = $this->dbhandle->query(""SELECT strftime('%s',datetime('now','localtime')) - strftime('%s',last_alert) FROM crawlers WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"") or die(sqlite_error_string($this->dbhandle->lastError()));;`
+BUG FOUND: YES
+
+SE: The 'crawler_ip' and 'crawler_useragent' are directly concatenated into an SQL query without proper parameterization, making it vulnerable to SQL Injection.
+BL: `$last_alert_query = $this->dbhandle->query(""UPDATE crawlers SET last_alert=datetime('now','localtime') WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"");`
+BUG FOUND: YES
+
+SE: The 'crawler_ip' and 'crawler_useragent' are directly concatenated into an SQL query without proper parameterization, making it vulnerable to SQL Injection.
+BL: `$this->dbhandle->query(""UPDATE crawlers SET last_seen = datetime('now','localtime'), num_hits=num_hits+1 WHERE crawler_ip='"" . $this->crawler_ip . ""' AND crawler_useragent='"" . $this->crawler_useragent . ""'"");`
+BUG FOUND: YES
+
+SE: The 'crawler_ip', 'crawler_rdns', and 'crawler_useragent' are directly concatenated into an SQL query without proper parameterization, making it vulnerable to SQL Injection.
+BL: `$this->dbhandle->query(""INSERT INTO crawlers(crawler_ip, crawler_rdns, crawler_useragent, first_seen, last_seen, num_hits) VALUES('"" . $this->crawler_ip . ""', '$crawler_rdns', '"" . $this->crawler_useragent . ""', datetime('now','localtime'), datetime('now','localtime'), 1)"");`
+BUG FOUND: YES",not_buggy
+313,"SE: The 'username' is directly concatenated into an SQL query without proper sanitation.
+BL: `$stid = oci_parse($db_conn, ""SELECT * FROM member where username='$username'"");`
+BUG FOUND: YES",not_buggy
+320,"SE: The 'id' variable is used directly in the SQL query without being escaped or sanitized.
+BL: `""WHERE adult_id=""+connection.escape(id);`
+BUG FOUND: YES",not_buggy
+4673,"SE: The SQL query is constructed using string concatenation with user input, which can lead to SQL Injection.
+BL: `rs = request.db.execute(""select cc_number, datetime, operation_code, total from cards c inner join operations o on c.id = o.card_id"")`
+BUG FOUND: YES",not_buggy
+8588,"SE: The 'group_id' is directly concatenated into the SQL query without proper sanitation.
+BL: `WHERE `group_id` = '.$group_id.'`
+BUG FOUND: YES",not_buggy
+324,"SE: The 'id' parameter from the request data is directly used in the SQL query without proper sanitization or parameterization, which can lead to SQL Injection.
+BL: `foreach (explode(',', $requestData['id']) as $id) { $model::findOne($id)->delete(); }`
+BUG FOUND: YES",not_buggy
+390,"SE: The 'id' parameter is directly concatenated into the SQL query without sanitation.
+BL: `$estmt = $edb->conn->query(""SELECT email, username FROM $tbl_name WHERE id = '$id'"");`
+BUG FOUND: YES",not_buggy
+322,"SE: The 'id' parameter is directly used in the SQL query without proper sanitization.
+BL: `$model = $m->findByPk($id);`
+BUG FOUND: YES",not_buggy
+318,"SE: The 'session' variable is directly concatenated into an SQL query without proper parameterization, even though it is escaped, which is not sufficient to prevent SQL Injection.
+BL: `Settings::$sql->query(""delete sio_sessiondata from sio_sessiondata left join sio_session on sid=id where id is null"");`
+BUG FOUND: YES",not_buggy
+333,"SE: The '$_GET' parameters are directly concatenated into SQL queries without proper parameterization, even though `mysql_real_escape_string` is used, which is not sufficient to prevent SQL Injection.
+BL: `mysql_query('INSERT INTO `peer` (`peer_id`, `user_agent`, `ip_address`, `key`, `port`) ' . ""VALUES ('"" . mysql_real_escape_string(bin2hex($_GET['peer_id'])) . ""', '"" . mysql_real_escape_string(substr($_SERVER['HTTP_USER_AGENT'], 0, 80)) . ""', INET_ATON('"" . mysql_real_escape_string($_SERVER['REMOTE_ADDR']) . ""'), '"" . mysql_real_escape_string(sha1($_GET['key'])) . ""', "" . intval($_GET['port']) . "") "" . 'ON DUPLICATE KEY UPDATE `peer_id`=VALUES(`peer_id`), `user_agent` = VALUES(`user_agent`), `ip_address` = VALUES(`ip_address`), `key`=VALUES(`key`), `port` = VALUES(`port`), `id` = LAST_INSERT_ID(`peer`.`id`)') or die(track('Cannot update peer: '.mysql_error()));`
+BUG FOUND: YES",not_buggy
+351,"SE: The 'packageNameFilter' and 'procedureNameFilter' are directly concatenated into the SQL query without sanitation.
+BL: `return jdbcTemplate.query(GET_ALL_PROCEDURE, (resultSet, i) -> new Procedure.Builder() .objectName(resultSet.getString(""object_name"")) .procedureName(resultSet.getString(""procedure_name"")) .overload(resultSet.getString(""overload"") == null ? """" : resultSet.getString(""overload"")) .methodType(resultSet.getInt(""proc_or_func"") == 0 ? ""PROCEDURE"" : ""FUNCTION"") .argumentList(getProcedureArguments(resultSet.getString(""object_name""), resultSet.getString(""procedure_name""), resultSet.getString(""overload""))) .build(), packageNameFilter, procedureNameFilter);`
+BUG FOUND: YES",not_buggy
+8596,"SE: The 'username' and 'host' are directly concatenated into the SQL command without proper sanitation.
+BL: `Database::prepare(""REVOKE ALL PRIVILEGES ON * . * FROM `"" . $username . ""`@`"" . $host . ""`"");`
+BUG FOUND: YES",not_buggy
+403,"SE: The 'view_code' is directly concatenated into the SQL query without sanitation.
+BL: `rs = con.execute(""SELECT {} FROM {} WHERE adm1_pcode='{}' ORDER BY area_km2 DESC LIMIT {};"".format(cols, view_name, view_code, limit))`
+BUG FOUND: YES",not_buggy
+325,"SE: The 'comment_id' from the GET request is directly concatenated into the SQL query without proper sanitation.
+BL: ` $where_clauses[] = 'com.id = '.pwg_db_real_escape_string($_GET['comment_id']);`
+BUG FOUND: YES",not_buggy
+385,"SE: The 'searchnum' and 'idcookie' variables are directly concatenated into SQL queries without proper sanitation.
+BL: `mysql_query(""DELETE FROM autofinger WHERE owner = '$idcookie' and interest = '$searchnum'"");`
+BUG FOUND: YES
+
+SE: The 'searchnum' and 'idcookie' variables are directly concatenated into SQL queries without proper sanitation.
+BL: `mysql_query(""INSERT INTO autofinger (owner, interest, priority) VALUES ('$idcookie', '$searchnum', '$privlevel') ON DUPLICATE KEY UPDATE priority=$privlevel"");`
+BUG FOUND: YES
+
+SE: The 'searchnum' and 'idcookie' variables are directly concatenated into SQL queries without proper sanitation.
+BL: `mysql_query(""Select priority From autofinger where owner = '$idcookie' and interest = '$searchnum'"");`
+BUG FOUND: YES",not_buggy
+307,"SE: The 'filter['data']' is directly used in the SQL query without proper sanitization or parameterization.
+BL: `query->where($filter['field'], $filter['op'], $filter['data']);`
+BUG FOUND: YES",not_buggy
+317,"SE: The SQL query is constructed using string interpolation with user input without proper parameterization, which can lead to SQL injection.
+BL: `result_to_hash select_using_uke_stations_sql(sql.gsub(':stations_sql', stations_sql).gsub(':sort', sort).gsub(':limit', @limit.to_s))`
+BUG FOUND: YES",not_buggy
+303,"SE: The 'userID' is directly used in the SQL query without proper sanitation.
+BL: `query := ""SELECT messages.id, user_id, body, title, subtitle, image, link, eventType, hidden_at, timestamp, display_name, display_color, created_at, disabled_at,  previous_names, namechanged_at, authenticated_at, scopes, type FROM messages INNER JOIN users ON messages.user_id = users.id WHERE user_id IS ?""`
+BUG FOUND: YES",not_buggy
+378,"SE: The '$_GET['ld']' is directly concatenated into an SQL query without proper sanitation.
+BL: `$wpdb->query('DELETE FROM `'.$wpdb->prefix.$this->table_messages.'` WHERE id='.$_GET['ld']);`
+BUG FOUND: YES",not_buggy
+375,"SE: The 'search' parameter is directly used in the SQL query without proper sanitation.
+BL: `return implode("" AND "", $this->_parseWhere($search));`
+BUG FOUND: YES",not_buggy
+8635,"SE: The 'condition' parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `$condition = '('.$condition.')';`
+BUG FOUND: YES",not_buggy
+402,"SE: The `$value` is directly concatenated into the SQL query without proper sanitation.
+BL: `return $key.' LIKE '.$value.' ';`
+BUG FOUND: YES",not_buggy
+405,"SE: The '$_GET['s']' is directly used in an SQL query without proper parameterization, which can lead to SQL Injection.
+BL: `$prepare = $this->db->prepare(""SELECT * FROM `{$this->tb_prefix}sms_subscribes` WHERE name LIKE %s OR mobile IN ({$metaValue})"", '%' . $this->db->esc_like($_GET['s']) . '%');`
+BUG FOUND: YES",not_buggy
+407,"SE: The 'dni_profe' parameter from the URL is directly concatenated into an SQL query without proper sanitization.
+BL: `mysqli_query($db_con, ""delete from departamentos where dni = '"".$dni_profe.""'"");`
+BUG FOUND: YES",not_buggy
+8545,"SE: The 'page_uri' is directly concatenated into an SQL query without proper parameterization.
+BL: `$exist = $wpdb->get_row( ""SELECT `page_id` FROM `"" . DB::table( 'pages' ) . ""` WHERE `date` = '"" . TimeZone::getCurrentDate( 'Y-m-d' ) . ""' "" . ( array_key_exists( ""search_query"", $current_page ) === true ? ""AND `uri` = '"" . esc_sql( $page_uri ) . ""'"" : """" ) . ""AND `type` = '{$current_page['type']}' AND `id` = {$current_page['id']}"", ARRAY_A );`
+BUG FOUND: YES",not_buggy
+379,"SE: The variable `$lid` is directly concatenated into an SQL query without proper sanitation.
+BL: `$q = ""select l.lid, l.cid, l.title, l.ext, l.res_x, l.res_y, l.bgcolor, l.status, l.members, l.date, l.hits, l.rating, l.votes, l.comments, l.submitter, t.description, l.gametype, l.license, l.classfile from "".$xoopsDB->prefix(""flashgames_games"")."" l, "".$xoopsDB->prefix(""flashgames_text"")."" t where l.lid=$lid and l.lid=t.lid and status>0"";`
+BUG FOUND: YES",not_buggy
+4931,"SE: The 'name' parameter is directly concatenated into an SQL query string without sanitation.
+BL: `raise LookupError(""No SAWrapper instance registered under name "" + name)`
+BUG FOUND: YES",not_buggy
+8916,"SE: The 'field_id' values are directly concatenated into the SQL query without proper sanitation.
+BL: `$database->delete('forms_fields_validation', 'field_id IN(' . implode(',', $fieldIds) . ')');`
+BUG FOUND: YES",not_buggy
+408,"SE: The `$property` and `$value` variables are directly concatenated into the SQL query without proper sanitization, which can lead to SQL Injection.
+BL: `$rows = $wpdb->get_results('SELECT * FROM ' . static::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\'');`
+BUG FOUND: YES",not_buggy
+315,"SE: The '$_GET['searchstring']' is directly concatenated into SQL queries without proper sanitation.
+BL: `$query = ""SELECT * FROM domain AS a WHERE domain_name LIKE '%"".addslashes($_GET['searchstring']).""%' AND "".$allowed_domains1.""') ORDER BY domain_name"";`
+BUG FOUND: YES",not_buggy
+305,"SE: The user input `$detail` is directly concatenated into an SQL query without proper sanitation.
+BL: `db(""SELECT * FROM `"".$_SESSION['dbprefix'].""people` WHERE `name` LIKE '%"".$c->real_escape_string($detail).""%' OR `form` LIKE '%"".$c->real_escape_string($detail).""%' ORDER BY `updated` DESC LIMIT 1;"", $c);`
+BUG FOUND: YES",not_buggy
+393,"SE: The variable `$id` is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql = ""DELETE FROM scheduled_reports WHERE id="".$id;`
+BUG FOUND: YES",not_buggy
+8535,"SE: The 'search_term' is directly concatenated into the SQL query without proper sanitation.
+BL: `course.code LIKE '%"".$search_term_safe.""%' OR`
+BUG FOUND: YES",not_buggy
+392,"SE: The 'block_ip' parameter from the GET request is directly concatenated into the SQL query without proper sanitization.
+BL: `if (t3lib_div::_GP('block_ip')) { $where = 'block_ip = '. $GLOBALS['TYPO3_DB']->fullQuoteStr(t3lib_div::_GP('block_ip'), 'tx_mhhttpbl_blocklog'); } else { $where = ''; }`
+BUG FOUND: YES",not_buggy
+384,"SE: The 'query' parameter is directly concatenated into the SQL command without proper sanitation.
+BL: `$queryCondition = '( MATCH (`data`,`properties`) AGAINST (' . $db->quote($query) . ' IN BOOLEAN MODE) )';`
+BUG FOUND: YES",not_buggy
+4627,"SE: The 'sobrenome' is directly concatenated into the SQL query without sanitation.
+BL: `stmt = con.prepareStatement(stmtProcuraSobreNome+""'%""+sobrenome+""%'"");`
+BUG FOUND: YES",not_buggy
+8541,"SE: The 'user_input' is directly concatenated into an SQL query without sanitation.
+BL: $query = ""select  *,form_encounter.date as encounter_date from forms,form_encounter,form_eye_base, form_eye_hpi,form_eye_ros,form_eye_vitals,form_eye_acuity,form_eye_refraction,form_eye_biometrics,form_eye_external, form_eye_antseg,form_eye_postseg,form_eye_neuro,form_eye_locking where forms.deleted != '1'  and forms.formdir='eye_mag' and forms.encounter=form_encounter.encounter  and forms.form_id=form_eye_base.id and forms.form_id=form_eye_hpi.id and forms.form_id=form_eye_ros.id and forms.form_id=form_eye_vitals.id and forms.form_id=form_eye_acuity.id and forms.form_id=form_eye_refraction.id and forms.form_id=form_eye_biometrics.id and forms.form_id=form_eye_external.id and forms.form_id=form_eye_antseg.id and forms.form_id=form_eye_postseg.id and forms.form_id=form_eye_neuro.id and forms.form_id=form_eye_locking.id and forms.form_id =? and forms.pid=?"";
+BUG FOUND: YES",not_buggy
+8566,"SE: The 'id' parameter is directly used in an SQL query without proper sanitation or parameterization.
+BL: `if ($id > 0) { $this->readDataById($id); }`
+BUG FOUND: YES",not_buggy
+323,"```plaintext
+SE: The 'itemIdtoUpdate' array is directly concatenated into the SQL query without proper sanitation.
+BL: `var updateSql = 'UPDATE Item SET count=count+1 WHERE id IN ('+itemIdtoUpdate.join(',') + ')';`
+BUG FOUND: YES
+```",not_buggy
+8611,"SE: The 'terms' variable is directly concatenated into the SQL query without proper sanitation.
+BL: `$terms = implode( ',', $terms );`
+BUG FOUND: YES",not_buggy
+304,"SE: The SQL query is constructed using string concatenation with user input, which can lead to SQL injection if the input is not properly sanitized.
+BL: `String SQL = ""SELECT bible.*,book.book_name FROM "" + bible.getTableName() + "" as bible left join "" + book.getTableName() + "" as book on bible.book_id=book.book_id where "" + condition + "" order by bible.book_id,bible.chapter_id limit "" + startIndex + "","" + pageSize;`
+BUG FOUND: YES",not_buggy
+4155,"SE: The `req.params.num` is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts order by time desc LIMIT '+ docnum + ' , 10', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The `req.params.shortname` is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where shortname = ' + connection.escape(req.params.shortname), function(err, rows) {`
+BUG FOUND: YES
+
+SE: The `req.params.shortname` is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where category = ' + connection.escape(cat.id) + ' order by time desc', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The `req.params.postid` is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where id = ' + connection.escape(req.params.postid), function(err, rows) {`
+BUG FOUND: YES
+
+SE: The `req.params.shortname` is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts where category = ' + connection.escape(info.id) + ' order by time desc', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The `req.params.num` is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('SELECT * FROM bi_posts order by time desc LIMIT '+ docnum + ' , 10', function(err, rows) {`
+BUG FOUND: YES
+
+SE: The `req.param('url')`, `req.param('content')`, `req.param('title')`, and `req.param('category')` are directly concatenated into the SQL query without proper sanitation.
+BL: `var q = 'INSERT INTO `bi_posts`(`time`, `content`, `title`, `shortname`, `category`) VALUES (' + time + ',' +  connection.escape(req.param('content')) + ',' + connection.escape(req.param('title')) + ',' +  connection.escape(req.param('url')) + ',' + category + ')';`
+BUG FOUND: YES
+
+SE: The `query` parameter is directly concatenated into the SQL query without proper sanitation.
+BL: `connection.query('select * from bi_posts where concat(title,content) like ""%'+ connection.escape(query) +'%""', function(err, rows) {`
+BUG FOUND: YES",not_buggy
+309,"SE: The 'postdata' dictionary values are directly used in the SQL query without proper sanitation.
+BL: `row = tx.queryone(""SELECT COUNT(*) FROM banned WHERE gameid = ? AND ipaddr = ?"", (postdata['gamecd'][:-1], postdata['ipaddr']))`
+BUG FOUND: YES",not_buggy
+8641,"SE: The `sql` parameter is directly used in the `connection.query` method without any sanitization or parameterization, which can lead to SQL Injection.
+BL: `connection.query(sql, params, function(err, data) {`
+BUG FOUND: YES",not_buggy
+4738,"SE: The `$table` and `$field` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `try { $this->Database->runQuery(""update `$table` set `$field` = ? where `$field` = ?;"", array($new_value, $old_value)); }`
+BUG FOUND: YES",not_buggy
+312,"SE: The 'dev_tokens_users' list is directly concatenated into the SQL query without proper sanitation.
+BL: `update_new_dev_tokens_statement = ( ""update user_info set dev_token_first_seen = now() "" ""where dev_token_first_seen is null and "" ""username in ("" + (""%s, "" * (len(dev_tokens_users) - 1)) + ""%s)"" )`
+BUG FOUND: YES",not_buggy
+8633,"SE: The 'lineage' parameter is directly concatenated into the SQL query without sanitation.
+BL: `sql := ""SELECT t.path, t.serial, t.tf_version, t.version_id, t.last_modified, count(resources.*) as resource_count"" + "" FROM (SELECT states.id, states.path, states.serial, states.tf_version, versions.version_id, versions.last_modified FROM states JOIN lineages ON lineages.id = states.lineage_id JOIN versions ON versions.id = states.version_id WHERE lineages.value = ? ORDER BY states.path, versions.last_modified ASC) t"" + "" JOIN modules ON modules.state_id = t.id"" + "" JOIN resources ON resources.module_id = modules.id"" + "" GROUP BY t.path, t.serial, t.tf_version, t.version_id, t.last_modified"" + "" ORDER BY last_modified ASC""`
+BUG FOUND: YES",not_buggy
+349,"SE: The 'studentID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT wartosc,tematyka,nazwa from oceny_uczniow join rodzaje_aktywnosci ra on id_aktywnosci=ra.id where id_ucznia='"" + studentID + ""' and id_przedmiotu="" + subjectID + "";"");`
+BUG FOUND: YES
+
+SE: The 'studentID', 'fromData', and 'toData' are directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT pl.data,p.nr_lekcji from nieobecnosci n join przeprowadzone_lekcje pl on n.id_lekcji=pl.id join plan_lekcji p on pl.id_lekcji=p.id where id_ucznia='"" + studentID + ""' and data>=to_date('"" + fromData + ""', 'DD.MM.YYYY') and data<=to_date('"" + toData + ""', 'DD.MM.YYYY');"");`
+BUG FOUND: YES
+
+SE: The 'studentID', 'fromData', and 'toData' are directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT opis,data_wystawienia,czy_pozytywna from uwagi where id_ucznia='"" + studentID + ""' and data_wystawienia>=to_date('"" + fromData + ""', 'DD.MM.YYYY')"" + "" and data_wystawienia<=to_date('"" + toData + ""', 'DD.MM.YYYY');"");`
+BUG FOUND: YES
+
+SE: The 'studentID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT p.id,nazwa from przedmioty p join klasy k on p.id_klasy=k.id join uczniowie u on u.id_klasy=k.id where pesel='"" + studentID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'teacherID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT p.id,nazwa,oddzial,rok_rozpoczecia from przedmioty p join klasy k on p.id_klasy=k.id where aktywny=true and id_prowadzacego='"" + teacherID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'subjectID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT imie,nazwisko,pesel from przedmioty p join klasy k on p.id_klasy=k.id join uczniowie u on u.id_klasy=k.id where p.id='"" + subjectID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'studentID' and 'lessonID' are directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""INSERT INTO nieobecnosci(id_ucznia,id_lekcji) values('"" + studentID + ""',"" + lessonID + "");"");`
+BUG FOUND: YES
+
+SE: The 'pesel' is directly concatenated into the SQL query without sanitation.
+BL: `stmt.executeUpdate(""UPDATE uczniowie SET aktywny = false where pesel='"" + studentID + ""';"");`
+BUG FOUND: YES
+
+SE: The 'pesel' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""select p.nazwa,pl.nr_lekcji from plan_lekcji pl join przedmioty p on pl.id_przedmiotu = p.id join klasy k on p.id_klasy = k.id join uczniowie u on k.id=u.id_klasy where dzien_tygodnia = ""+i+"" and u.pesel = '""+pesel+""' order by pl.nr_lekcji;"");`
+BUG FOUND: YES
+
+SE: The 'data' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT pl.id,k.oddzial,k.rok_rozpoczecia,p.nazwa,pl.nr_lekcji from plan_lekcji pl join przedmioty p on pl.id_przedmiotu = p.id join klasy k on p.id_klasy = k.id where pl.dzien_tygodnia=extract(dow from to_date('"" + data + ""', 'DD.MM.YYYY'))+1;"");`
+BUG FOUND: YES
+
+SE: The 'lessonID' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""SELECT imie,nazwisko,pesel from uczniowie u join klasy k on k.id =u.id_klasy join przedmioty p on p.id_klasy=k.id join plan_lekcji pl on pl.id_przedmiotu =p.id join przeprowadzone_lekcje p_l on pl.id=p_l.id_lekcji where p_l.id=""+lessonID+"";"");`
+BUG FOUND: YES
+
+SE: The 'id' is directly concatenated into the SQL query without sanitation.
+BL: `ResultSet rs = stmt.executeQuery(""select p.nazwa,pl.nr_lekcji,k.oddzial,k.rok_rozpoczecia from plan_lekcji pl join przedmioty p on pl.id_przedmiotu = p.id join klasy k on p.id_klasy = k.id join nauczyciele n on n.id=p.id_prowadzacego where dzien_tygodnia = ""+i+"" and n.id = '""+id+""' order by pl.nr_lekcji;"");`
+BUG FOUND: YES",not_buggy
+360,"SE: The 'queueid' is directly concatenated into the SQL query without sanitation.
+BL: `filter += ""AND buildqueue.id = '%s'"" % (re.sub(""[\""']"", """", self.queueid))`
+BUG FOUND: YES",not_buggy
+387,"SE: The SQL query uses direct concatenation of user input (`$_GET[""id""]`) without proper sanitization.
+BL: `$query = ""SELECT * FROM "".TDE_APP_CONFIG."" where "".TDE_APP_CONFIG_ID.""='"".$calid.""'"";`
+BUG FOUND: YES",not_buggy
+8629,"SE: The 'filter['value']' is directly concatenated into an SQL query without proper sanitation.
+BL: `if (!empty($query)) { $conditionFilters[] = 'oo_id IN (SELECT id FROM search_backend_data WHERE maintype = ""object"" AND MATCH (`data`,`properties`) AGAINST (' . $list->quote($query) . ' IN BOOLEAN MODE))'; }`
+BUG FOUND: YES",not_buggy
+352,"SE: The method `whereRaw` allows raw SQL conditions to be passed directly, which can lead to SQL injection if user input is not properly sanitized.
+BL: `public function whereRaw(string $condition)`
+BUG FOUND: YES",not_buggy
+374,"```
+SE: The 'auth' parameter is directly used in an SQL query without proper sanitization.
+BL: `$token=KapostPreviewToken::get()->filter('Code', Convert::raw2sql($auth))->first();`
+BUG FOUND: YES
+```",not_buggy
+8575,"```plaintext
+SE: The 'id_product' and 'id_product_attribute' are directly concatenated into the SQL query without proper sanitation.
+BL: $query->where('id_product = ' . (int) $id_product . ' AND id_product_attribute = ' . (int) $id_product_attribute . StockAvailable::addSqlShopRestriction(null, $id_shop));
+BUG FOUND: YES
+```",not_buggy
+400,"```plaintext
+SE: The 'searchPhrase' is directly concatenated into the SQL query without proper sanitation.
+BL: $dbSearchPhrase = sprintf('""%%%s%%""', pSQL($searchPhrase));
+BUG FOUND: YES
+```",not_buggy
+398,"SE: The 'filterField' and 'filter['value']' are directly concatenated into an SQL query without proper sanitation.
+BL: `if ($filterField == 'fullpath') { $conditionPartsFilters[] = 'concat(o_path, o_key) ' . $operator . ' ' . $db->quote('%' . $filter['value'] . '%'); }`
+BUG FOUND: YES",not_buggy
+8606,"```plaintext
+SE: The 'projectname' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""SELECT unix_group_name from `groups` where group_id="" . db_ei($group_id);
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'cvs_repository' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""select distinct cvs_branches.* FROM cvs_branches, cvs_checkins, cvs_repositories  where "" . ""cvs_checkins.repositoryid=cvs_repositories.id AND cvs_repositories.repository='$cvs_repository' "" . ""AND cvs_checkins.branchid=cvs_branches.id"";
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'projectname' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""SELECT DISTINCT user.user_name, user.user_name "" . ""FROM cvs_checkins, cvs_repositories, user "" . ""WHERE (cvs_repositories.repository like '$cvs_repository') AND (cvs_repositories.id = cvs_checkins.repositoryid) AND (cvs_checkins.whoid=user.user_id) "" . ""ORDER BY user.user_name ASC"";
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""SELECT unix_group_name from `groups` where group_id="" . db_ei($group_id);
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'cvs_repository' is directly concatenated into an SQL query without sanitation.
+BL: $sql = ""select distinct stickytag, stickytag from cvs_checkins, cvs_repositories where cvs_checkins.repositoryid=cvs_repositories.id AND cvs_repositories.repository='$cvs_repository'"";
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp = db_query(""SELECT * FROM `groups` WHERE group_id="" . db_ei($group_id));
+BUG FOUND: YES
+```
+
+```plaintext
+SE: The 'group_id' is directly concatenated into an SQL query without sanitation.
+BL: $res_grp =",not_buggy
+8544,"SE: The 'params' array values are directly concatenated into the SQL query without proper sanitization.
+BL: `$params['sef_name'] = $db->selectValue('section', 'sef_name', 'id='.intval($params['section']));`
+BUG FOUND: YES",not_buggy
+8572,"```plaintext
+SE: The `unsafeSqlQuery` method executes raw SQL queries, which can be vulnerable to SQL injection if user input is not properly sanitized.
+BL: `expectSortedEqual(await adapter.unsafeSqlQuery('tasks', `SELECT * FROM tasks`), [ 't1', 't2', 't3', ])`
+BUG FOUND: YES
+```",not_buggy
+8917,"SE: The 'ids' array is directly concatenated into the SQL query without proper sanitation.
+BL: `WHERE id IN (' . $idPlaceHolders . ') AND language = ?'`
+BUG FOUND: YES",not_buggy
+388,"```plaintext
+SE: The 'widget_id', 'maintype', and 'name' variables are directly concatenated into the SQL query without proper sanitation.
+BL: $query = ""SELECT COUNT(1) AS total FROM "" . $this->dbtable . "" WHERE widget_id = %s AND maintype = %s AND name = %s"";
+BUG FOUND: YES
+```",not_buggy
+386,"SE: The '$_REQUEST' parameters are directly concatenated into the SQL query without proper sanitization.
+BL: `$qwhere.=' AND object_type='.db_input($_REQUEST['type'] ?: 'D');`
+BUG FOUND: YES",not_buggy
+8638,"```plaintext
+SE: The 'id' parameter is directly used in an SQL query without proper sanitization.
+BL: $data['leave'] = $this->leaves_model->getLeaves($id);
+BUG FOUND: YES
+```",not_buggy
+8512,"SE: The `$catid` and `$search_categ` variables are directly concatenated into the SQL query without proper sanitation.
+BL: `if ($catid > 0)    $sql.= "" AND cm.fk_categorie = "".$db->escape($catid);`
+BUG FOUND: YES",not_buggy
+8591,"SE: The `$condnotinaction` variable is directly concatenated into the SQL query without proper sanitation.
+BL: ` $condnotinaction = ""'"" . implode(""', '"", $conditions['AND']['NOT']['action']) . ""'"";`
+BUG FOUND: YES",not_buggy
+4767,"SE: The 'post_id' and 'ip' variables are directly concatenated into an SQL query without proper sanitation.
+BL: `$wpdb->query(""INSERT INTO "".$wpdb->prefix.""irecommendthis_votes VALUES ('', NOW(), '$post_id', '$ip')"");`
+BUG FOUND: YES",not_buggy
+8527,"SE: The `$str` parameter is directly used in the SQL query without proper sanitization or parameter binding.
+BL: `public function query($str, $fetchSql = false, $master = false)`
+BUG FOUND: YES",not_buggy
+8616,"```plaintext
+SE: The 'groupId' parameter is directly concatenated into an SQL query without sanitation.
+BL: $query = 'select * from classificationstore_collectionrelations where groupId in (' . implode(',', $allowedGroupIds) .')';
+BUG FOUND: YES
+```",not_buggy
+4749,"SE: The 'postid' parameter from the GET request is directly used in the SQL query without proper sanitization.
+BL: `$edcal_postid = isset($_GET['postid'])?$_GET['postid']:null;`
+BUG FOUND: YES",not_buggy
+8560,"SE: The 'node_id' is directly concatenated into the SQL query without proper sanitation.
+BL: `$sql = ""SELECT id from {$this->object_table} WHERE parent_id = {$node_id}"";`
+BUG FOUND: YES",not_buggy

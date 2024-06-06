@@ -1,0 +1,842 @@
+file_id,content,bug_position,length,additional_padding,database_file_id,target_bug_position,target_length,CWE_ID
+0,"<?php
+
+public function getIDsfilter(Request $request){
+    $conditionFilters = [];
+    $selectedIds = $request->get('selectedIds', []);
+    if (!empty($selectedIds)) {
+        $selectedIds = explode(',', $selectedIds);
+        //add a condition if id numbers are specified
+        $conditionFilters[] = 'id IN (' . implode(',', $selectedIds) . ')';
+    }
+    return $conditionFilters;
+}
+/**
+ * @Route(""/download"", name=""pimcore_admin_asset_download"", methods={""GET""})
+ *
+ * @param Request $request
+ *
+ * @return StreamedResponse
+ */
+public function downloadAction(Request $request): StreamedResponse
+{
+    $asset = Asset::getById((int) $request->get('id'));
+
+    if (!$asset) {
+        throw $this->createNotFoundException('Asset not found');
+    }
+
+    if (!$asset->isAllowed('view')) {
+        throw $this->createAccessDeniedException('not allowed to view asset');
+    }
+
+    $stream = $asset->getStream();
+
+    if (!is_resource($stream)) {
+        throw $this->createNotFoundException('Unable to get resource for asset ' . $asset->getId());
+    }
+
+    return new StreamedResponse(function () use ($stream) {
+        fpassthru($stream);
+    }, 200, [
+        'Content-Type' => $asset->getMimeType(),
+        'Content-Disposition' => sprintf('attachment; filename=""%s""', $asset->getFilename()),
+        'Content-Length' => $asset->getFileSize(),
+    ]);
+}
+/**
+ * @Route(""/show-version"", name=""pimcore_admin_asset_showversion"", methods={""GET""})
+ *
+ * @param Request $request
+ *
+ * @return Response
+ */
+public function showVersionAction(Request $request): Response
+{
+    $id = (int)$request->get('id');
+    $version = Model\Version::getById($id);
+    $asset = $version?->loadData();
+    if (!$asset) {
+        throw $this->createNotFoundException('Version with id [' . $id . ""] doesn't exist"");
+    }
+
+    if (!$asset->isAllowed('versions')) {
+        throw $this->createAccessDeniedHttpException('Permission denied, version id [' . $id . ']');
+    }
+
+    if ($asset->getMimeType() === 'application/pdf') {
+        $scanResponse = $this->getResponseByScanStatus($asset, false);
+        if ($scanResponse) {
+            return $scanResponse;
+        }
+    }
+
+    $loader = \Pimcore::getContainer()->get('pimcore.implementation_loader.asset.metadata.data');
+
+    return $this->render(
+        '@PimcoreAdmin/admin/asset/show_version_' . strtolower($asset->getType()) . '.html.twig',
+        [
+            'asset' => $asset,
+            'version' => $version,
+            'loader' => $loader,
+        ]
+    );
+}
+/**
+ * @Route(""/publish-version"", name=""pimcore_admin_asset_publishversion"", methods={""POST""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function publishVersionAction(Request $request): JsonResponse
+{
+    $id = (int)$request->get('id');
+    $version = Model\Version::getById($id);
+    $asset = $version?->loadData();
+
+    if (!$asset) {
+        throw $this->createNotFoundException('Version with id [' . $id . ""] doesn't exist"");
+    }
+
+    $currentAsset = Asset::getById($asset->getId());
+    if ($currentAsset->isAllowed('publish')) {
+        try {
+            $asset->setUserModification($this->getAdminUser()->getId());
+            $asset->save();
+
+            $treeData = $this->getTreeNodeConfig($asset);
+
+            return $this->adminJson(['success' => true, 'treeData' => $treeData]);
+        } catch (\Exception $e) {
+            return $this->adminJson(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
+    throw $this->createAccessDeniedHttpException();
+}
+/**
+ * @Route(""/save"", name=""pimcore_admin_asset_save"", methods={""PUT"",""POST""})
+ *
+ * @param Request $request
+ * @param EventDispatcherInterface $eventDispatcher
+ *
+ * @return JsonResponse
+ *
+ * @throws \Exception
+ */
+public function saveAction(Request $request, EventDispatcherInterface $eventDispatcher): JsonResponse
+{
+    $asset = Asset::getById((int) $request->get('id'));
+
+    if (!$asset) {
+        throw $this->createNotFoundException('Asset not found');
+    }
+
+    if ($asset->isAllowed('publish')) {
+        // metadata
+        if ($request->get('metadata')) {
+            $metadata = $this->decodeJson($request->get('metadata'));
+
+            $metadataEvent = new GenericEvent($this, [
+                'id' => $asset->getId(),
+                'metadata' => $metadata,
+            ]);
+            $eventDispatcher->dispatch($metadataEvent, AdminEvents::ASSET_METADATA_PRE_SET);
+
+            $metadata = $metadataEvent->getArgument('metadata');
+            $metadataValues = $metadata['values'];
+
+            $metadataValues = Asset\Service::minimizeMetadata($metadataValues, 'editor');
+            $asset->setMetadataRaw($metadataValues);
+        }
+
+        // properties
+        if ($request->get('properties')) {
+            $properties = [];
+            $propertiesData = $this->decodeJson($request->get('properties'));
+
+            if (is_array($propertiesData)) {
+                foreach ($propertiesData as $propertyName => $propertyData) {
+                    $value = $propertyData['data'];
+
+                    try {
+                        $property = new Model\Property();
+                        $property->setType($propertyData['type']);
+                        $property->setName($propertyName);
+                        $property->setCtype('asset');
+                        $property->setDataFromEditmode($value);
+                        $property->setInheritable($propertyData['inheritable']);
+
+                        $properties[$propertyName] = $property;
+                    } catch (\Exception $e) {
+                        Logger::err(""Can't add "" . $propertyName . ' to asset ' . $asset->getRealFullPath());
+                    }
+                }
+
+                $asset->setProperties($properties);
+            }
+        }
+
+        $this->applySchedulerDataToElement($request, $asset);
+
+        if ($request->get('data')) {
+            $asset->setData($request->get('data'));
+        }
+
+        // image specific data
+        if ($asset instanceof Asset\Image) {
+            if ($request->get('image')) {
+                $imageData = $this->decodeJson($request->get('image'));
+                if (isset($imageData['focalPoint'])) {
+                    $asset->setCustomSetting('focalPointX', $imageData['focalPoint']['x']);
+                    $asset->setCustomSetting('focalPointY', $imageData['focalPoint']['y']);
+                }
+            } else {
+                // wipe all data
+                $asset->removeCustomSetting('focalPointX');
+                $asset->removeCustomSetting('focalPointY');
+            }
+        }
+
+        $asset->setUserModification($this->getAdminUser()->getId());
+        if ($request->get('task') === 'session') {
+            // save to session only
+            Asset\Service::saveElementToSession($asset, $request->getSession()->getId());
+        } else {
+            $asset->save();
+        }
+
+        $treeData = $this->getTreeNodeConfig($asset);
+
+        return $this->adminJson([
+            'success' => true,
+            'data' => [
+                'versionDate' => $asset->getModificationDate(),
+                'versionCount' => $asset->getVersionCount(),
+            ],
+            'treeData' => $treeData,
+        ]);
+    } else {
+        throw $this->createAccessDeniedHttpException();
+    }
+}
+/**
+ * @Route(""/update"", name=""pimcore_admin_asset_update"", methods={""PUT""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ *
+ * @throws \Exception
+ * @throws RuntimeException
+ */
+public function updateAction(Request $request): JsonResponse
+{
+    $data = ['success' => false];
+    $allowUpdate = true;
+
+    $updateData = array_merge($request->request->all(), $request->query->all());
+
+    $asset = Asset::getById((int) $request->get('id'));
+    if ($asset->isAllowed('settings')) {
+        $asset->setUserModification($this->getAdminUser()->getId());
+
+        // if the position is changed the path must be changed || also from the children
+        if ($parentId = $request->get('parentId')) {
+            $parentAsset = Asset::getById((int) $parentId);
+
+            //check if parent is changed i.e. asset is moved
+            if ($asset->getParentId() != $parentAsset->getId()) {
+                if (!$parentAsset->isAllowed('create')) {
+                    throw new RuntimeException('Prevented moving asset - no create permission on new parent.');
+                }
+
+                $intendedPath = $parentAsset->getRealPath();
+                $pKey = $parentAsset->getKey();
+                if (!empty($pKey)) {
+                    $intendedPath .= $parentAsset->getKey() . '/';
+                }
+
+                $assetWithSamePath = Asset::getByPath($intendedPath . $asset->getKey());
+
+                if ($assetWithSamePath != null) {
+                    $allowUpdate = false;
+                }
+
+                if ($asset->isLocked()) {
+                    $allowUpdate = false;
+                }
+            }
+        }
+
+        if ($allowUpdate) {
+            if ($request->get('filename') != $asset->getFilename() && !$asset->isAllowed('rename')) {
+                unset($updateData['filename']);
+                Logger::debug('prevented renaming asset because of missing permissions.');
+            }
+
+            $asset->setValues($updateData);
+
+            try {
+                $asset->save();
+                $data = [
+                    'success' => true,
+                    'treeData' => $this->getTreeNodeConfig($asset),
+                ];
+            } catch (\Exception $e) {
+                return $this->adminJson(['success' => false, 'message' => $e->getMessage()]);
+            }
+        } else {
+            $msg = 'prevented moving asset, asset with same path+key already exists';
+            $msg .= ' at target location or the asset is locked. ID: ' . $asset->getId();
+            Logger::debug($msg);
+
+            return $this->adminJson(['success' => false, 'message' => $msg]);
+        }
+    } elseif ($asset->isAllowed('rename') && $request->get('filename')) {
+        //just rename
+        try {
+            $asset->setFilename($request->get('filename'));
+            $asset->save();
+            $data = [
+                'success' => true,
+                'treeData' => $this->getTreeNodeConfig($asset),
+            ];
+        } catch (\Exception $e) {
+            return $this->adminJson(['success' => false, 'message' => $e->getMessage()]);
+        }
+    } else {
+        Logger::debug('prevented update asset because of missing permissions ');
+    }
+
+    return $this->adminJson($data);
+}
+/**
+ * @throws \Exception
+ */
+protected function getTreeNodeConfig(ElementInterface $element): array
+{
+    return $this->elementService->getElementTreeNodeConfig($element);
+}
+/**
+ * @Route(""/delete"", name=""pimcore_admin_asset_delete"", methods={""DELETE""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function deleteAction(Request $request): JsonResponse
+{
+    $type = $request->get('type');
+
+    if ($type === 'children') {
+        $parentAsset = Asset::getById((int) $request->get('id'));
+
+        $list = new Asset\Listing();
+        $list->setCondition('`path` LIKE ?', [Helper::escapeLike($parentAsset->getRealFullPath()) . '/%']);
+        $list->setLimit((int)$request->get('amount'));
+        $list->setOrderKey('LENGTH(`path`)', false);
+        $list->setOrder('DESC');
+
+        $deletedItems = [];
+        foreach ($list as $asset) {
+            $deletedItems[$asset->getId()] = $asset->getRealFullPath();
+            if ($asset->isAllowed('delete') && !$asset->isLocked()) {
+                $asset->delete();
+            }
+        }
+
+        return $this->adminJson(['success' => true, 'deleted' => $deletedItems]);
+    }
+    if ($request->get('id')) {
+        $asset = Asset::getById((int) $request->get('id'));
+        if ($asset && $asset->isAllowed('delete')) {
+            if ($asset->isLocked()) {
+                return $this->adminJson([
+                    'success' => false,
+                    'message' => 'prevented deleting asset, because it is locked: ID: ' . $asset->getId(),
+                ]);
+            }
+
+            $asset->delete();
+
+            return $this->adminJson(['success' => true]);
+        }
+    }
+
+    throw $this->createAccessDeniedHttpException();
+}
+/**
+ * @Route(""/add-folder"", name=""pimcore_admin_asset_addfolder"", methods={""POST""})
+ *
+ * @param Request $request
+ *
+ * @return JsonResponse
+ */
+public function addFolderAction(Request $request): JsonResponse
+{
+    $success = false;
+    $parentAsset = Asset::getById((int)$request->get('parentId'));
+    $equalAsset = Asset::getByPath($parentAsset->getRealFullPath() . '/' . $request->get('name'));
+
+    if ($parentAsset->isAllowed('create')) {
+        if (!$equalAsset) {
+            $asset = Asset::create($request->get('parentId'), [
+                'filename' => $request->get('name'),
+                'type' => 'folder',
+                'userOwner' => $this->getAdminUser()->getId(),
+                'userModification' => $this->getAdminUser()->getId(),
+            ]);
+            $success = true;
+        }
+    } else {
+        Logger::debug('prevented creating asset because of missing permissions');
+    }
+
+    return $this->adminJson(['success' => $success]);
+}
+protected function getSafeFilename(string $targetPath, string $filename): string
+{
+    $pathinfo = pathinfo($filename);
+    $originalFilename = $pathinfo['filename'];
+    $originalFileextension = empty($pathinfo['extension']) ? '' : '.' . $pathinfo['extension'];
+    $count = 1;
+
+    if ($targetPath == '/') {
+        $targetPath = '';
+    }
+
+    while (true) {
+        if (Asset\Service::pathExists($targetPath . '/' . $filename)) {
+            $filename = $originalFilename . '_' . $count . $originalFileextension;
+            $count++;
+        } else {
+            return $filename;
+        }
+    }
+}
+/**
+ * @param Request $request
+ * @param Config $config
+ *
+ * @return array{success: bool, asset: ?Asset}
+ *
+ * @throws \Exception
+ */
+protected function addAsset(Request $request, Config $config): array
+{
+    $defaultUploadPath = $config['assets']['default_upload_path'] ?? '/';
+
+    if (array_key_exists('Filedata', $_FILES)) {
+        $filename = $_FILES['Filedata']['name'];
+        $sourcePath = $_FILES['Filedata']['tmp_name'];
+    } elseif ($request->get('type') == 'base64') {
+        $filename = $request->get('filename');
+        $sourcePath = PIMCORE_SYSTEM_TEMP_DIRECTORY . '/upload-base64' . uniqid() . '.tmp';
+        $data = preg_replace('@^data:[^,]+;base64,@', '', $request->get('data'));
+        $filesystem = new Filesystem();
+        $filesystem->dumpFile($sourcePath, base64_decode($data));
+    } else {
+        throw new \Exception('The filename of the asset is empty');
+    }
+
+    $parentId = $request->query->getInt('parentId');
+    $parentPath = $request->query->get('parentPath');
+
+    if ($request->get('dir') && $request->get('parentId')) {
+        // this is for uploading folders with Drag&Drop
+        // param ""dir"" contains the relative path of the file
+        $parent = Asset::getById((int) $request->get('parentId'));
+        $dir = $request->get('dir');
+        if (strpos($dir, '..') !== false) {
+            throw new \Exception('not allowed');
+        }
+
+        $newPath = $parent->getRealFullPath() . '/' . trim($dir, '/ ');
+
+        $maxRetries = 5;
+        $newParent = null;
+        for ($retries = 0; $retries < $maxRetries; $retries++) {
+            try {
+                $newParent = Asset\Service::createFolderByPath($newPath);
+
+                break;
+            } catch (\Exception $e) {
+                if ($retries < ($maxRetries - 1)) {
+                    $waitTime = rand(100000, 900000); // microseconds
+                    usleep($waitTime); // wait specified time until we restart the transaction
+                } else {
+                    // if the transaction still fail after $maxRetries retries, we throw out the exception
+                    throw $e;
+                }
+            }
+        }
+        if ($newParent) {
+            $parentId = $newParent->getId();
+        }
+    } elseif (!$request->get('parentId') && $parentPath) {
+        $parent = Asset::getByPath($parentPath);
+        if ($parent instanceof Asset\Folder) {
+            $parentId = $parent->getId();
+        } else { //create defined parent folder, if doesn't exist.
+            $parentId = Asset\Service::createFolderByPath($parentPath)->getId();
+        }
+    }
+
+    $filename = Element\Service::getValidKey($filename, 'asset');
+    if (empty($filename)) {
+        throw new \Exception('The filename of the asset is empty');
+    }
+
+    $context = $request->get('context');
+    if ($context) {
+        $context = json_decode($context, true);
+        $context = $context ?: [];
+
+        $this->validateManyToManyRelationAssetType($context, $filename, $sourcePath);
+
+        $event = new ResolveUploadTargetEvent($parentId, $filename, $context);
+        \Pimcore::getEventDispatcher()->dispatch($event, AssetEvents::RESOLVE_UPLOAD_TARGET);
+        $filename = Element\Service::getValidKey($event->getFilename(), 'asset');
+        $parentId = $event->getParentId();
+    }
+
+    if (!$parentId) {
+        $parentId = Asset\Service::createFolderByPath($defaultUploadPath)->getId();
+    }
+
+    $parentAsset = Asset::getById((int)$parentId);
+
+    if (!$request->get('allowOverwrite')) {
+        // check for duplicate filename
+        $filename = $this->getSafeFilename($parentAsset->getRealFullPath(), $filename);
+    }
+
+    if (!$parentAsset->isAllowed('create')) {
+        throw $this->createAccessDeniedHttpException(
+            'Missing the permission to create new assets in the folder: ' . $parentAsset->getRealFullPath()
+        );
+    }
+
+    if (is_file($sourcePath) && filesize($sourcePath) < 1) {
+        throw new \Exception('File is empty!');
+    } elseif (!is_file($sourcePath)) {
+        throw new \Exception('Something went wrong, please check upload_max_filesize and post_max_size in your php.ini as well as the write permissions of your temporary directories.');
+    }
+
+    // check if there is a requested type and if matches the asset type of the uploaded file
+    $uploadAssetType = $request->get('uploadAssetType');
+    if ($uploadAssetType) {
+        $mimetype = MimeTypes::getDefault()->guessMimeType($sourcePath);
+        $assetType = Asset::getTypeFromMimeMapping($mimetype, $filename);
+
+        if ($uploadAssetType !== $assetType) {
+            throw new \Exception(""Mime type $mimetype does not match with asset type: $uploadAssetType"");
+        }
+    }
+
+    if ($request->get('allowOverwrite') && Asset\Service::pathExists($parentAsset->getRealFullPath().'/'.$filename)) {
+        $asset = Asset::getByPath($parentAsset->getRealFullPath().'/'.$filename);
+        $asset->setStream(fopen($sourcePath, 'rb', false, File::getContext()));
+        $asset->save();
+    } else {
+        $asset = Asset::create($parentId, [
+            'filename' => $filename,
+            'sourcePath' => $sourcePath,
+            'userOwner' => $this->getAdminUser()->getId(),
+            'userModification' => $this->getAdminUser()->getId(),
+        ]);
+    }
+
+    @unlink($sourcePath);
+
+    return [
+        'success' => true,
+        'asset' => $asset,
+    ];
+}
+/**
+     * @Route(""/add-asset-compatibility"", name=""pimcore_admin_asset_addassetcompatibility"", methods={""POST""})
+     *
+     * @param Request $request
+     * @param Config $config
+     *
+     * @return JsonResponse
+     */
+    public function addAssetCompatibilityAction(Request $request, Config $config): JsonResponse
+    {
+        try {
+            // this is a special action for the compatibility mode upload (without flash)
+            $res = $this->addAsset($request, $config);
+
+            $response = $this->adminJson([
+                'success' => $res['success'],
+                'msg' => $res['success'] ? 'Success' : 'Error',
+                'id' => $res['asset'] ? $res['asset']->getId() : null,
+                'fullpath' => $res['asset'] ? $res['asset']->getRealFullPath() : null,
+                'type' => $res['asset'] ? $res['asset']->getType() : null,
+            ]);
+            $response->headers->set('Content-Type', 'text/html');
+
+            return $response;
+        } catch (\Exception $e) {
+            return $this->adminJson([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+/**
+ * @Route(""/tree-get-children-by-id"", name=""pimcore_admin_asset_treegetchildrenbyid"", methods={""GET""})
+ *
+ *
+ */
+public function treeGetChildrenByIdAction(Request $request, EventDispatcherInterface $eventDispatcher): JsonResponse
+{
+    $allParams = array_merge($request->request->all(), $request->query->all());
+
+    $assets = [];
+    $cv = [];
+    $asset = Asset::getById((int) $allParams['node']);
+
+    $filter = $request->get('filter');
+    $limit = (int)$allParams['limit'];
+    if (!is_null($filter)) {
+        if (substr($filter, -1) != '*') {
+            $filter .= '*';
+        }
+        $filter = str_replace('*', '%', $filter);
+
+        $limit = 100;
+        $offset = 0;
+    } elseif (!$allParams['limit']) {
+        $limit = 100000000;
+    }
+
+    $offset = isset($allParams['start']) ? (int)$allParams['start'] : 0;
+
+    $filteredTotalCount = 0;
+
+    if ($asset->hasChildren()) {
+        if ($allParams['view']) {
+            $cv = $this->elementService->getCustomViewById($allParams['view']);
+        }
+
+        // get assets
+        $childrenList = new Asset\Listing();
+        $childrenList->addConditionParam('parentId = ?', [$asset->getId()]);
+        $childrenList->filterAccessibleByUser($this->getAdminUser(), $asset);
+
+        if (!is_null($filter)) {
+            $childrenList->addConditionParam('CAST(assets.filename AS CHAR CHARACTER SET utf8) COLLATE utf8_general_ci LIKE ?', [$filter]);
+        }
+
+        $childrenList->setLimit($limit);
+        $childrenList->setOffset($offset);
+        $childrenList->setOrderKey(""FIELD(assets.type, 'folder') DESC, CAST(assets.filename AS CHAR CHARACTER SET utf8) COLLATE utf8_general_ci ASC"", false);
+
+        \Pimcore\Model\Element\Service::addTreeFilterJoins($cv, $childrenList);
+
+        $beforeListLoadEvent = new GenericEvent($this, [
+            'list' => $childrenList,
+            'context' => $allParams,
+        ]);
+        $eventDispatcher->dispatch($beforeListLoadEvent, AdminEvents::ASSET_LIST_BEFORE_LIST_LOAD);
+        /** @var Asset\Listing $childrenList */
+        $childrenList = $beforeListLoadEvent->getArgument('list');
+
+        $children = $childrenList->load();
+
+        $filteredTotalCount = $childrenList->getTotalCount();
+
+        foreach ($children as $childAsset) {
+            $assetTreeNode = $this->getTreeNodeConfig($childAsset);
+            if ($assetTreeNode['permissions']['list'] == 1) {
+                $assets[] = $assetTreeNode;
+            }
+        }
+    }
+
+    //Hook for modifying return value - e.g. for changing permissions based on asset data
+    $event = new GenericEvent($this, [
+        'assets' => $assets,
+    ]);
+    $eventDispatcher->dispatch($event, AdminEvents::ASSET_TREE_GET_CHILDREN_BY_ID_PRE_SEND_DATA);
+    $assets = $event->getArgument('assets');
+
+    if ($allParams['limit']) {
+        return $this->adminJson([
+            'offset' => $offset,
+            'limit' => $limit,
+            'total' => $asset->getChildAmount($this->getAdminUser()),
+            'overflow' => !is_null($filter) && ($filteredTotalCount > $limit),
+            'nodes' => $assets,
+            'filter' => $request->get('filter') ? $request->get('filter') : '',
+            'inSearch' => (int)$request->get('inSearch'),
+        ]);
+    } else {
+        return $this->adminJson($assets);
+    }
+}
+/**
+ * @Route(""/get-data-by-id"", name=""pimcore_admin_asset_getdatabyid"", methods={""GET""})
+ */
+public function getDataByIdAction(Request $request, EventDispatcherInterface $eventDispatcher): JsonResponse
+{
+    $assetId = $request->query->getInt('id');
+    $type = $request->query->get('type');
+
+    $asset = Asset::getById($assetId);
+    if (!$asset instanceof Asset) {
+        return $this->adminJson(['success' => false, 'message' => ""asset doesn't exist""]);
+    }
+
+    // check for lock on non-folder items only.
+    if ($type !== 'folder' && ($asset->isAllowed('publish') || $asset->isAllowed('delete'))) {
+        if (Element\Editlock::isLocked($assetId, 'asset', $request->getSession()->getId())) {
+            return $this->getEditLockResponse($assetId, 'asset');
+        }
+
+        Element\Editlock::lock($assetId, 'asset', $request->getSession()->getId());
+    }
+
+    $asset = clone $asset;
+    $asset->setParent(null);
+
+    $asset->setStream(null);
+    $data = $asset->getObjectVars();
+    $data['locked'] = $asset->isLocked();
+
+    if ($asset instanceof Asset\Text) {
+        if ($asset->getFileSize() < 2000000) {
+            // it doesn't make sense to show a preview for files bigger than 2MB
+            $data['data'] = \ForceUTF8\Encoding::toUTF8($asset->getData());
+        } else {
+            $data['data'] = false;
+        }
+    } elseif ($asset instanceof Asset\Document) {
+        $data['pdfPreviewAvailable'] = (bool)$this->getDocumentPreviewPdf($asset);
+    } elseif ($asset instanceof Asset\Video) {
+        $videoInfo = [];
+
+        if (\Pimcore\Video::isAvailable()) {
+            $config = Asset\Video\Thumbnail\Config::getPreviewConfig();
+            $thumbnail = $asset->getThumbnail($config, ['mp4']);
+            if ($thumbnail) {
+                if ($thumbnail['status'] == 'finished') {
+                    $videoInfo['previewUrl'] = $thumbnail['formats']['mp4'];
+                    $videoInfo['width'] = $asset->getWidth();
+                    $videoInfo['height'] = $asset->getHeight();
+
+                    $metaData = $asset->getSphericalMetaData();
+                    if (isset($metaData['ProjectionType']) && strtolower($metaData['ProjectionType']) == 'equirectangular') {
+                        $videoInfo['isVrVideo'] = true;
+                    }
+                }
+            }
+        }
+
+        $data['videoInfo'] = $videoInfo;
+    } elseif ($asset instanceof Asset\Image) {
+        $imageInfo = [];
+
+        $previewUrl = $this->generateUrl('pimcore_admin_asset_getimagethumbnail', [
+            'id' => $asset->getId(),
+            'treepreview' => true,
+            '_dc' => time(),
+        ]);
+
+        if ($asset->isAnimated()) {
+            $previewUrl = $this->generateUrl('pimcore_admin_asset_getasset', [
+                'id' => $asset->getId(),
+                '_dc' => time(),
+            ]);
+        }
+
+        $imageInfo['previewUrl'] = $previewUrl;
+
+        if ($asset->getWidth() && $asset->getHeight()) {
+            $imageInfo['dimensions'] = [];
+            $imageInfo['dimensions']['width'] = $asset->getWidth();
+            $imageInfo['dimensions']['height'] = $asset->getHeight();
+        }
+
+        $imageInfo['exiftoolAvailable'] = (bool)\Pimcore\Tool\Console::getExecutable('exiftool');
+
+        if (!$asset->getEmbeddedMetaData(false)) {
+            $asset->getEmbeddedMetaData(true, false); // read Exif, IPTC and XPM like in the old days ...
+        }
+
+        $data['imageInfo'] = $imageInfo;
+    }
+
+    $predefinedMetaData = Metadata\Predefined\Listing::getByTargetType('asset', [$asset->getType()]);
+    $predefinedMetaDataGroups = [];
+    /** @var Metadata\Predefined $item */
+    foreach ($predefinedMetaData as $item) {
+        if ($item->getGroup()) {
+            $predefinedMetaDataGroups[$item->getGroup()] = true;
+        }
+    }
+    $data['predefinedMetaDataGroups'] = array_keys($predefinedMetaDataGroups);
+    $data['properties'] = Element\Service::minimizePropertiesForEditmode($asset->getProperties());
+    $data['metadata'] = Asset\Service::expandMetadataForEditmode($asset->getMetadata());
+    $data['versionDate'] = $asset->getModificationDate();
+    $data['filesizeFormatted'] = $asset->getFileSize(true);
+    $data['filesize'] = $asset->getFileSize();
+    $data['fileExtension'] = pathinfo($asset->getFilename(), PATHINFO_EXTENSION);
+    $data['idPath'] = Element\Service::getIdPath($asset);
+    $data['userPermissions'] = $asset->getUserPermissions($this->getAdminUser());
+    $frontendPath = $asset->getFrontendFullPath();
+    $data['url'] = preg_match('/^http(s)?:\\/\\/.+/', $frontendPath) ?
+        $frontendPath :
+        $request->getSchemeAndHttpHost() . $frontendPath;
+
+    $data['scheduledTasks'] = array_map(
+        static function (Task $task) {
+            return $task->getObjectVars();
+        },
+        $asset->getScheduledTasks()
+    );
+
+    $userOwnerName = $this->getUserName($asset->getUserOwner());
+    $userModificationName = ($asset->getUserOwner() == $asset->getUserModification()) ? $userOwnerName : $this->getUserName($asset->getUserModification());
+    $data['userOwnerUsername'] = $userOwnerName['userName'];
+    $data['userOwnerFullname'] = $userOwnerName['fullName'];
+    $data['userModificationUsername'] = $userModificationName['userName'];
+    $data['userModificationFullname'] = $userModificationName['fullName'];
+
+    $this->addAdminStyle($asset, ElementAdminStyleEvent::CONTEXT_EDITOR, $data);
+
+    $data['php'] = [
+        'classes' => array_merge([get_class($asset)], array_values(class_parents($asset))),
+        'interfaces' => array_values(class_implements($asset)),
+    ];
+
+    $event = new GenericEvent($this, [
+        'data' => $data,
+        'asset' => $asset,
+    ]);
+    $eventDispatcher->dispatch($event, AdminEvents::ASSET_GET_PRE_SEND_DATA);
+    $data = $event->getArgument('data');
+
+    if ($asset->isAllowed('view')) {
+        return $this->adminJson($data);
+    }
+
+    throw $this->createAccessDeniedHttpException();
+}
+/**
+ * @Route(""/delete-info"", name=""pimcore_admin_asset_deleteinfo"", methods={""GET""})
+ *
+ * @param Request $request
+ * @param EventDispatcherInterface $eventDispatcher
+ *
+ * @return JsonResponse
+ */
+public function deleteInfoAction(Request $request, EventDispatcherInterface $eventDispatcher): JsonResponse
+{
+    return parent::deleteInfoAction($request, $eventDispatcher);
+}
+?>",176,30065,False,406,0,30000,CWE-89
