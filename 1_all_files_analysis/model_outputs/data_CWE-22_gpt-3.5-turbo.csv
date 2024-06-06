@@ -1,0 +1,636 @@
+file_id,model_output,type
+450,"SE: The 'file' variable is directly concatenated into the $filelocation path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $filelocation = __DIR__ . ""/images/$type/$file.$type"";
+BUG FOUND: YES",buggy
+5260,"SE: The line `File privateFile = new File(cacheDir, uri.getLastPathSegment());` may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as the `uri.getLastPathSegment()` is directly used to construct a file path without proper validation.
+BL: `File privateFile = new File(cacheDir, uri.getLastPathSegment());`
+BUG FOUND: YES",buggy
+8865,"SE: The 'uri' variable is directly used to retrieve a resource without proper validation, which may lead to path traversal vulnerabilities.
+BL: `try (InputStream in = getServletContext().getResourceAsStream(uri))`
+BUG FOUND: YES",buggy
+485,"SE: The 'path' parameter from $_GET is not properly validated for directory traversal vulnerabilities.
+BL: $path = $_GET['path'];
+BUG FOUND: YES",buggy
+8810,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the concatenation of directory separators may lead to path traversal vulnerabilities.
+BL: `$_SERVER['SCRIPT_FILENAME'] = $_SERVER['DOCUMENT_ROOT'] . $grav_basedir .DIRECTORY_SEPARATOR . 'index.php';`
+BUG FOUND: YES",buggy
+5235,"SE: The 'extension' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$path = $WEBCONFIG['sitefusionPath'].'/extensions/'.$extension`
+BUG FOUND: YES",buggy
+476,"SE: The 'filename' variable is directly concatenated with the import directory path without proper validation or sanitization, which may lead to path traversal vulnerabilities.
+BL: `$this->importDirectory . $filename`
+BUG FOUND: YES",buggy
+444,"SE: The 'f.Name' variable is directly used to construct the path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES",buggy
+435,"SE: The 'full' variable is constructed using user-controlled input without proper validation, which may lead to path traversal vulnerabilities.
+BL: `full = os.path.join(directory, filename)`
+BUG FOUND: YES",buggy
+8846,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as the $assetPath variable is directly concatenated with $assetRoot without proper validation or sanitization.
+BL: `$filePath = $assetRoot . DIRECTORY_SEPARATOR . $assetPath;`
+BUG FOUND: YES",buggy
+8840,"SE: The user input from $_GET['file'] is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$file = dirname(__FILE__) . '/USER-FILES/' . $unsafe_file_path;`
+BUG FOUND: YES",buggy
+8830,"SE: The line may contain a bug of type CWE-22 as the path ""./tests/assets/hello-sync-unzip/"" is concatenated without proper validation or restriction.
+BL: `zipper.sync.unzip(""./tests/assets/hello.zip"").save(""./tests/assets/hello-sync-unzip/"");`
+BUG FOUND: YES",buggy
+457,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as the variable $uploadedFileName is directly concatenated into the path without proper validation.
+BL: `$temporaryFileNameAndPath = UploadManager::UPLOAD_FOLDER . '/' . $uploadedFileName;`
+BUG FOUND: YES",buggy
+487,"SE: The line `$id = ROOT_PATH.$_REQUEST['fid'];` may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as the user input `$_REQUEST['fid']` is directly concatenated with `ROOT_PATH` without proper validation or sanitization.
+BL: $id = ROOT_PATH.$_REQUEST['fid'];
+BUG FOUND: YES",buggy
+8807,"SE: The 'filename' variable is directly concatenated into the $file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$file = $docDir.'/'.$filename;`
+BUG FOUND: YES",buggy
+5417,"SE: The line `File entryDestination = path.resolve(entry.getName()).toFile();` may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as the `entry.getName()` value is directly used to resolve a path without proper validation.
+BL: `File entryDestination = path.resolve(entry.getName()).toFile();`
+BUG FOUND: YES",buggy
+8680,"SE: The 'key' variable is directly used in the findByKey method without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `LitemallStorage litemallStorage = litemallStorageService.findByKey(key);`
+BUG FOUND: YES",buggy
+8708,"SE: The 'recording_file_path' variable is directly concatenated into the SQL query without proper validation, which may lead to Path Traversal vulnerability.
+BL: `$sql .= ""where call_recording_uuid = '"".$xml_cdr_uuid.""' "";`
+BUG FOUND: YES",buggy
+5317,"SE: None
+BL: None
+BUG FOUND: NO",buggy
+459,"SE: The 'request.url' is directly concatenated into the 'nowTemp' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `var nowTemp = host.frondend + (request.url.replace('/', '') || host.baseTemp);`
+BUG FOUND: YES",buggy
+8859,"SE: The 'methodName' parameter is not properly sanitized before being used in the 'contains' method, which may lead to a Path Traversal vulnerability.
+BL: `if (Class.class.isAssignableFrom(clazz) && methodName != null && this.secureClassMethods.contains(methodName)) {`
+BUG FOUND: YES",buggy
+8892,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as it directly concatenates the 'path' variable into the file_path without proper validation or restriction.
+BL: `file_path = os.path.join(current_app.template_folder, path)`
+BUG FOUND: YES",buggy
+478,"SE: The 'target_filename' is created by concatenating 'target_directory' and 'zf_info.filename' without proper validation or sanitization, which may lead to path traversal vulnerabilities.
+BL: `target_filename = '%s%s' % (target_directory, zf_info.filename)`
+BUG FOUND: YES",buggy
+5262,"SE: The 'assetsDir' variable is set using user input without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$assetsDir = $this->assets->getAssetsDir();`
+BUG FOUND: YES",buggy
+8854,"SE: The line may contain a bug of type CWE-22 as the user input is directly concatenated into the file path without proper validation or restriction.
+BL: `$userLangFile = $prefix.'lang/'.$user['Language'].'.php';`
+BUG FOUND: YES",buggy
+452,"SE: The 'fileName' variable is directly concatenated into the file path without proper validation.
+BL: `file = new File(destDir, fileName);`
+BUG FOUND: YES",buggy
+8714,"SE: The 'paste' variable is directly concatenated into the 'filename' path without proper validation or sanitization.
+BL: `filename = os.path.join(PASTES_FOLDER, paste)`
+BUG FOUND: YES",buggy
+8845,"SE: The 'file' variable is directly used without proper validation to remove a file, which may lead to path traversal vulnerabilities.
+BL: `$file = $config->private_key;`
+BUG FOUND: YES",buggy
+8749,"SE: The 'entry.getName()' is directly used to create a file without proper validation, which may lead to path traversal vulnerabilities.
+BL: `File file = new File(dir, entry.getName());`
+BUG FOUND: YES",buggy
+471,"SE: The 'url' parameter is directly used in the file_get_contents() function without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `if(!$content = file_get_contents($this->url)) {`
+BUG FOUND: YES",buggy
+8738,"SE: The 'filePath' variable is used without proper validation, which may lead to path traversal vulnerabilities.
+BL: `let fpath = filePath`
+BUG FOUND: YES",buggy
+433,"SE: The 'jeName' variable is directly concatenated into the 'copyFile' path without proper validation or sanitization, which may lead to path traversal vulnerabilities.
+BL: `File copyFile = new File(file, jeName);`
+BUG FOUND: YES",buggy
+8869,"SE: The 'bam_file' key in the individual dictionary may contain a bug of type CWE-22 as it represents a path to a file without proper restriction.
+BL: `bam_file=str,  # Path to bam file`
+BUG FOUND: YES",buggy
+8889,"SE: The 'filename' parameter is directly concatenated into the filepath without proper validation or sanitization.
+BL: `filepath = path.join(app.config.get(""PRIVATE_DIR""), filename)`
+BUG FOUND: YES",buggy
+8812,"SE: The 'rawPath' variable is directly used in path manipulation without proper validation, which may lead to path traversal vulnerabilities.
+BL: `rawPath = _.trim(qs.unescape(rawPath))`
+BUG FOUND: YES",buggy
+8909,"SE: The 'directory' variable is directly concatenated with 'filePath' without proper validation or sanitization, which may lead to path traversal vulnerabilities.
+BL: `filePath = directory + ""/"" + filePath;`
+BUG FOUND: YES",buggy
+486,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the `name` variable is directly used to create a `ZipEntry` without proper validation or sanitization.
+BL: `ZipEntry entry = new ZipEntry(name);`
+BUG FOUND: YES",buggy
+445,"SE: The 'uz.Src' variable is directly concatenated into the command without proper validation, which may lead to path traversal vulnerabilities.
+BL: `cmd = exec.Command(filepath.FromSlash(path.Join(os.TempDir(), ""unzip.exe"")), uz.Src, ""-d"", uz.Dest)`
+BUG FOUND: YES",buggy
+8705,"SE: The 'widgetkey' parameter is directly concatenated into the URL without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `if($user_settings['widgets'][$widgetkey][""picturewidget""] != null){?>`
+BUG FOUND: YES",buggy
+5146,"SE: The 'package_name' variable is directly concatenated into an error message without proper validation.
+BL: `raise Exception(""Version "" + version + "" for package "" + package_name + "" doesn't exist."")`
+BUG FOUND: YES",buggy
+480,"SE: The line that may contain a bug of type CWE-22 is where the filename is concatenated directly into the path without proper validation or sanitization.
+BL: `$file = DIR_LOGS . $filename;`
+BUG FOUND: YES",buggy
+8739,"SE: The 'path' variable is directly concatenated into the 'dest_path' without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `dest_path = sanitized_join(path, pathlib.Path(app.config[""DATA_ROOT""]))`
+BUG FOUND: YES",buggy
+8834,"SE: The 'file_name' variable is generated without proper validation or sanitization, which may lead to path traversal vulnerabilities.
+BL: `file_name = base64.b64encode(str(file_name).encode(""utf-8"")).decode(""utf-8"")`
+BUG FOUND: YES",buggy
+8852,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as it dynamically constructs a file path without proper validation or restriction.
+BL: `aliasedRequire = require; aliasedRequire('./locale/' + name);`
+BUG FOUND: YES",buggy
+446,"SE: The 'te.outputPath' function may not properly limit the pathname to a restricted directory, potentially leading to path traversal.
+BL: `outPath = gopath.Join(te.Path, outPath)`
+BUG FOUND: YES",buggy
+8685,"SE: The line may contain a bug of type CWE-22 because the function does not properly limit the pathname to a restricted directory, which could lead to path traversal vulnerabilities.
+BL: `buffer_copy_buffer(con->physical.basedir, ds->value);`
+BUG FOUND: YES",buggy
+8702,"SE: The 'src' parameter is not properly sanitized before being used to extract files, which may lead to path traversal vulnerabilities.
+BL: None
+BUG FOUND: NO",buggy
+8907,"SE: None
+BL: None
+BUG FOUND: NO",buggy
+472,"SE: The line may contain a bug of type CWE-22 as the variable $toExtract is directly concatenated into the path without proper validation or sanitization.
+BL: `$localArchive = Froxlor::getInstallDir() . '/updates/' . $toExtract;`
+BUG FOUND: YES",buggy
+436,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the `source.getURI().getPath().substring(1)` operation is directly manipulating the path without proper validation or restriction.
+BL: `targetName = source.getURI().getPath().substring(1).replaceAll(""\\/"", ""-"");`
+BUG FOUND: YES",buggy
+5236,"SE: The 'path' variable is directly used in the substring method without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `return prefixLen != 0 ? path.substring(prefixLen) : path;`
+BUG FOUND: YES",buggy
+437,"SE: None
+BL: None
+BUG FOUND: NO",buggy
+430,"SE: The 'modulePathFile' variable is concatenated with the 'assetConfigFolder' variable without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$modulePathFile = $assetConfigFolder . $this->modulePathFile;`
+BUG FOUND: YES",buggy
+8879,"SE: The 'artifact.FilePath' is directly concatenated into the file path without proper validation or restriction.
+BL: `return ioutil.ReadFile(fmt.Sprintf(""%s/%s"", dir, g.artifact.FilePath))`
+BUG FOUND: YES",buggy
+8686,"SE: The 'path' variable is directly concatenated with '/' without proper validation, which may lead to path traversal vulnerabilities.
+BL: `*p = '\0';`
+BUG FOUND: YES",buggy
+8745,"SE: None
+BL: None
+BUG FOUND: NO",buggy
+438,"SE: None
+BL: None
+BUG FOUND: NO",buggy
+484,"SE: The line may contain a bug of type CWE-22 because the `$file` variable is directly concatenated into the file path without proper validation or restriction.
+BL: `$filePath = WWW_ROOT . 'files' . DS . $settings['saveDir'] . DS . $file;`
+BUG FOUND: YES",buggy
+5209,"SE: The 'id' variable is directly concatenated into the path without proper validation.
+BL: `$hooks_class = 'hooks_'.$id;`
+BUG FOUND: YES",buggy
+8890,"SE: The line may contain a bug of type CWE-22 because the path for the image file is directly concatenated without proper validation.
+BL: `return send_file(get_absolute_path(f""./images/{path}""), mimetype='image/png', attachment_filename='snapshot.png', cache_timeout=0)`
+BUG FOUND: YES",buggy
+481,"SE: The 'src' variable is directly concatenated into the 'fz' variable without proper validation.
+BL: `fz = zipfile.ZipFile(src, 'r')`
+BUG FOUND: YES",buggy
+8728,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as it dynamically resolves a path based on user input without proper validation.
+BL: `options.skeleton = require(options.skeleton.charAt(0) === '.' ? path.resolve(process.cwd(), options.skeleton) : options.skeleton)`
+BUG FOUND: YES",buggy
+463,"SE: The 'filePath' variable is directly concatenated into the path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `fileDir := path.Dir(filepath)`
+BUG FOUND: YES",buggy
+439,"SE: The 'path' variable is directly used without proper validation, which may lead to path traversal vulnerabilities.
+BL: `path = (new File(path)).getCanonicalPath();`
+BUG FOUND: YES",buggy
+464,"SE: The 'file' parameter from the POST request is directly used to construct the file path without proper validation or sanitization.
+BL: `$logfile = $_POST['file'];`
+BUG FOUND: YES",buggy
+449,"SE: The 'baseuri' variable is directly concatenated into the 'files' string without proper validation or sanitization, which may lead to Path Traversal vulnerability.
+BL: `files += fmt.Sprintf(`<tr>
+<td><a href=""%s%s"">%s</a></td>
+<td>%s</td>
+<td>%d</td>
+</tr>`, baseuri, base, base, f.ModTime().Format(""2006-01-02T15:04:05Z07:00""), f.Size())`
+BUG FOUND: YES",buggy
+483,"SE: The line may contain a bug of type CWE-22 because the user input ($_GET[""$sf_prefix""]) is directly concatenated into the file path without proper validation or restriction.
+BL: `$downloadfile = $sf_directory . $downloadfile;`
+BUG FOUND: YES",buggy
+442,"SE: The line may contain a bug of type CWE-22 as the variable $folder is directly concatenated into the path without proper validation or restriction.
+BL: `$dir = opendir($folder);`
+BUG FOUND: YES",buggy
+447,"SE: The 'uri' parameter in the downloadOntology method is directly concatenated into the downloadPath without proper validation or sanitization, which may lead to Path Traversal vulnerability.
+BL: `Files.copy(in, Paths.get(downloadPath), StandardCopyOption.REPLACE_EXISTING);`
+BUG FOUND: YES",buggy
+5152,"SE: The 'assetsPath' variable is directly concatenated into the path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `return inStream(context -> {
+			try {
+				return context.getResources().getAssets().open(assetsPath);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
+		});`
+BUG FOUND: YES",buggy
+431,"SE: The 'fileHrefString' is directly concatenated into a URI without proper validation.
+BL: `final File resolvedFile = new File(resolvedFileUri);`
+BUG FOUND: YES",buggy
+8713,"SE: The 'filename' variable is directly concatenated into the path without proper validation or restriction, which may lead to path traversal vulnerabilities.
+BL: `filename = path.normalize(path.join(ROOT_DIR, filename));`
+BUG FOUND: YES",buggy
+8746,"SE: The 'trackingId' is directly concatenated into the 'finalDest' path without proper validation.
+BL: `const finalDest = path.join(workspaceDir, trackingId);`
+BUG FOUND: YES",buggy
+8766,"SE: The line may contain a bug of type CWE-22 as the `$exportFile` variable is directly concatenated into the file path without proper validation or sanitization.
+BL: `$exportFile = PIMCORE_SYSTEM_TEMP_DIRECTORY . '/report-export-' . uniqid() . '.csv';`
+BUG FOUND: YES",buggy
+8884,"SE: The 'path' variable is directly concatenated into the path without proper validation.
+BL: `path = os.path.join(CONFIG['SRV_DIR'], path)`
+BUG FOUND: YES",buggy
+8904,"SE: The 'filename' is directly concatenated into the path without proper validation or sanitization.
+BL: `file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))`
+BUG FOUND: YES",buggy
+5196,"SE: The 'dir' parameter in the filePath function is concatenated directly without proper validation or restriction, which may lead to a Path Traversal vulnerability.
+BL: `$path = $this->_path .'/'. $dir;`
+BUG FOUND: YES",buggy
+8672,"SE: The 'localPath' variable is directly concatenated into the zipPath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `this.addFile(zipPath+p, fs.readFileSync(localPath), """", 0)`
+BUG FOUND: YES",buggy
+8650,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the user input is directly concatenated into the 'relativePath' variable without proper validation or sanitization.
+BL: `var relativePath = vpath && url.indexOf(vpath) == 0 ? path + url.slice(vpath.length + 1, url.length): path + url;`
+BUG FOUND: YES",buggy
+8838,"SE: The 'servletPath' variable is directly concatenated into a file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `File file = new File(filterConfig.getServletContext().getRealPath(servletPath));`
+BUG FOUND: YES",buggy
+493,"SE: The 'file' variable is directly concatenated into the path without proper validation.
+BL: `with open(f""user_images/pfp/{username}.png"", ""wb"") as write_file:`
+BUG FOUND: YES",buggy
+8759,"SE: The line may contain a bug of type CWE-22 because the 'templatePath' variable is directly concatenated into XML content without proper validation.
+BL: `$template = ' template=""' . $templatePath . '""';`
+BUG FOUND: YES",buggy
+440,"SE: The 'warFile' variable is directly concatenated into a file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `File failedMark = new File(deployTarDir, context + DEPLOY_FAILED_EXT);`
+BUG FOUND: YES",buggy
+443,"SE: The 'path' variable is directly concatenated into the filepath without proper validation, which may lead to path traversal vulnerabilities.
+BL: `fname = filepath.Join(filename, m[0])`
+BUG FOUND: YES",buggy
+460,"SE: The 'name' variable is not properly sanitized before being used to create a new directory path.
+BL: `if (!preg_match(self::DIRECTORY_NAME_REGEXP, $name)) {`
+BUG FOUND: YES",buggy
+8754,"SE: The line may contain a bug of type CWE-22 because the input data is directly used to create a block name without proper validation or sanitization.
+BL: `$blockName = (string)$node['name'];`
+BUG FOUND: YES",buggy
+8815,"SE: The 'path' variable is not sanitized before being used in the `send_file` function, which could lead to a Path Traversal vulnerability.
+BL: `return send_file(os.path.join(app.cwd, path))`
+BUG FOUND: YES",buggy
+8734,"SE: The 'relativeFilePath' parameter is directly concatenated into a path without proper validation.
+BL: `return Paths.get(getDataRepositoryPath(dataRepository), relativeFilePath);`
+BUG FOUND: YES",buggy
+5192,"SE: The 'module' variable is directly concatenated into the file path without proper validation.
+BL: `require './func/' . $_GET['a'] . '.php';`
+BUG FOUND: YES",buggy
+8895,"SE: The 'releaseInfo' variable is directly concatenated into the download URL without proper validation.
+BL: `return fmt.Sprintf(""https://dl.min.io/server/minio/release/%s"", releaseInfo)`
+BUG FOUND: YES",buggy
+8855,"SE: The 'file_path' variable is constructed using user-controlled input without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `file_path = msprintf(""%s/%s"", ((struct _u_compressed_inmemory_website_config *)user_data)->files_path, file_requested);`
+BUG FOUND: YES",buggy
+5219,"SE: The 'model_file_path' variable is used to save the model file without proper validation of the path, which could lead to path traversal vulnerabilities.
+BL: `self.model_file_path = os.path.join(self.temp_dir, 'model.onnx')`
+BUG FOUND: YES",buggy
+8724,"SE: The 'fn' variable is directly concatenated into the file path without proper validation.
+BL: `$fn = ""$plugins_dir/$plugin_name/$plugin_name.php"";`
+BUG FOUND: YES",buggy
+8883,"SE: The 'server_id' variable is directly concatenated into the path without proper validation or sanitization.
+BL: `return ""logs/"" + server_id + ""/update.log""`
+BUG FOUND: YES",buggy
+8716,"SE: The 'folder' variable is directly concatenated into the path without proper validation or sanitization, which may lead to path traversal vulnerabilities.
+BL: `$realPath = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . $folder;`
+BUG FOUND: YES",buggy
+8764,"SE: The 'zip_file' parameter is directly concatenated into the target directory path without proper validation or sanitization, which may lead to path traversal vulnerabilities.
+BL: `$this->_target_dir = $target_dir ? $target_dir : dirname($this->_zip_file);`
+BUG FOUND: YES",buggy
+8660,"SE: The 'path' parameter in the imap_expand_path function is directly concatenated into the 'url.path' without proper validation or sanitization, which may lead to improper limitation of a pathname to a restricted directory.
+BL: `url.path = fixedpath;`
+BUG FOUND: YES",buggy
+448,"SE: The 'path' variable is directly concatenated into the path without proper validation or sanitization.
+BL: `String path = localPath + Item.SEPARATOR + item.getPath();`
+BUG FOUND: YES",buggy
+8833,"SE: The line may contain a bug of type CWE-22 because the user input ($_POST['url_' . $key]) is directly concatenated into the file path without proper validation or restriction.
+BL: `$oldFile = $icmsObj->getUploadDir(true) . $icmsObj->getVar($key, 'e');`
+BUG FOUND: YES",buggy
+8709,"SE: The 'file' parameter is directly concatenated into the path without proper validation.
+BL: `$stream_full_path = path_join($stream_path, $stream_file);`
+BUG FOUND: YES",buggy
+8751,"SE: The 'dev_wwn' is directly concatenated into the buffer without proper validation or sanitization.
+BL: `buf[off++] = (0x6 << 4);`
+BUG FOUND: YES",buggy
+473,"SE: The 'path' variable is directly concatenated with the root directory path without proper validation or sanitization.
+BL: `$path = $this->_joinPath($path, $name);`
+BUG FOUND: YES",buggy
+8799,"SE: The 'filename' parameter is directly concatenated into the 'file_path' variable without proper validation or sanitization.
+BL: `file_path = os.path.join(PATH_NOTE_ATTACHMENTS, filename)`
+BUG FOUND: YES",buggy
+432,"SE: The 'tpl' variable is directly concatenated into the file path without proper validation.
+BL: `$file = um_path . ""templates/{$tpl}.php"";`
+BUG FOUND: YES",buggy
+450,"SE: The 'file' variable is directly concatenated into the $filelocation path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$filelocation = __DIR__ . ""/images/$type/$file.$type"";`
+BUG FOUND: YES",not_buggy
+5260,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the input URI is used directly to construct a file path without proper validation.
+BL: `File privateFile = new File(cacheDir, uri.getLastPathSegment());`
+BUG FOUND: YES",not_buggy
+8865,"SE: The 'uri' variable is directly used to retrieve a resource without proper validation, which may lead to path traversal vulnerabilities.
+BL: `try (InputStream in = getServletContext().getResourceAsStream(uri))`
+BUG FOUND: YES",not_buggy
+485,"SE: The 'path' parameter from $_GET is not properly validated for directory traversal vulnerabilities.
+BL: if (!(is_dir($decodedPath) && file_exists($decodedPath) && is_readable($decodedPath)))
+BUG FOUND: YES",not_buggy
+8810,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because it directly concatenates user input into the path without proper validation or restriction.
+BL: `$grav_index = ltrim($grav_basedir, '/') . DIRECTORY_SEPARATOR . $grav_index;`
+BUG FOUND: YES",not_buggy
+5235,"SE: The 'extension' parameter from $_GET is directly concatenated into the $path variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: $path = realpath($allowedRoot.'/'.$extension);
+BUG FOUND: YES",not_buggy
+476,"SE: The 'filename' variable is directly concatenated with the import directory path without proper validation or sanitization, which may lead to a path traversal vulnerability.
+BL: `$this->importDirectory . $filename`
+BUG FOUND: YES",not_buggy
+444,"SE: The 'f.Name' variable is directly used to construct the file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES",not_buggy
+435,"SE: The 'full' variable is constructed using user-controlled input without proper validation, which may lead to path traversal vulnerabilities.
+BL: `full = self.normpath(os.path.join(directory, filename))`
+BUG FOUND: YES",not_buggy
+8846,"SE: The `$filePath` variable is constructed by concatenating `$assetRoot` and `$assetPath` without proper validation or sanitization, which may lead to a path traversal vulnerability.
+BL: `$filePath = $assetRoot . DIRECTORY_SEPARATOR . $assetPath;`
+BUG FOUND: YES",not_buggy
+8840,"SE: The user input from $_GET['file'] is directly concatenated into the file path without proper validation or sanitization, which may lead to a path traversal vulnerability.
+BL: $full_unsafe_file_path = $xerte_toolkits_site->root_file_path . $xerte_toolkits_site->users_file_area_short . $unsafe_file_path;
+BUG FOUND: YES",not_buggy
+8830,"SE: The line may contain a bug of type CWE-22 as the path for unzipping the file is directly concatenated without proper validation.
+BL: `zipper.sync.unzip(""./tests/assets/zip-slip.zip"").save(""./tests/assets/zip-slip-sync"")`
+BUG FOUND: YES",not_buggy
+457,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the uploadedFileName variable is not properly sanitized before being used to construct the $temporaryFileNameAndPath.
+BL: `$temporaryFileNameAndPath = UploadManager::UPLOAD_FOLDER . DIRECTORY_SEPARATOR . $uploadedFileName;`
+BUG FOUND: YES",not_buggy
+487,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the `$_REQUEST['fid']` variable is directly concatenated with `ROOT_PATH` without proper validation or sanitization.
+BL: $id = ROOT_PATH.$_REQUEST['fid'];
+BUG FOUND: YES",not_buggy
+8807,"SE: The 'filename' variable is directly concatenated into the path without proper validation, which may lead to path traversal vulnerability.
+BL: `$file = $docDir.'/'.$filename;`
+BUG FOUND: YES",not_buggy
+5417,"SE: The 'entry.getName()' is directly concatenated into the path without proper validation, which may lead to path traversal vulnerability.
+BL: `File entryDestination = path.resolve(entry.getName()).toFile();`
+BUG FOUND: YES",not_buggy
+8680,"SE: The 'key' variable is directly used in the path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `Resource file = storageService.loadAsResource(key);`
+BUG FOUND: YES",not_buggy
+8708,"SE: The 'xml_cdr_uuid' variable is directly concatenated into the file path without proper validation.
+BL: `$call_recording_path = realpath($row['call_recording_path']);`
+BUG FOUND: YES",not_buggy
+5317,"SE: The 'zipEntry.getName()' is directly concatenated into the error message without proper validation.
+BL: `throw new ZipException(""The file ""+ zipEntry.getName() + "" is trying to leave the target output directory of ""+ destination);`
+BUG FOUND: YES",not_buggy
+459,"SE: The 'request.url' is directly concatenated into the 'nowTemp' variable without proper validation or sanitization, which may lead to a path traversal vulnerability.
+BL: `var nowTemp = (host.frondend + (request.url.replace('/', '') || host.baseTemp)).replace(/\.\./g, '');`
+BUG FOUND: YES",not_buggy
+8859,"SE: The 'badClasses' and 'badPackages' arrays are directly used to initialize the SecureIntrospector class without proper validation or sanitization, which may lead to improper limitation of a pathname to a restricted directory.
+BL: `public SecureIntrospector(String[] badClasses, String[] badPackages, Logger log)`
+BUG FOUND: YES",not_buggy
+8892,"SE: The 'path' variable is directly concatenated into the 'file_path' without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `file_path = safe_join(current_app.template_folder, path)`
+BUG FOUND: YES",not_buggy
+478,"SE: The 'target_filename' is directly concatenated without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `target_filename = '%s%s' % (target_directory, zf_info.filename)`
+BUG FOUND: YES",not_buggy
+5262,"SE: The 'event->settings['custom_less']' variable is used in a regular expression without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `if (preg_match('/@import|data-uri\s*\(/i', $event->settings['custom_less'])) {`
+BUG FOUND: YES",not_buggy
+8854,"SE: The 'userLangFile' variable is constructed using user input without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$userLangFile = $prefix.'lang/'.preg_replace('/[^[:alnum:]_]+/', '', $user['Language']).'.php';`
+BUG FOUND: YES",not_buggy
+452,"SE: The 'fileName' variable is directly concatenated into the file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `file = new File(destDir, fileName);`
+BUG FOUND: YES",not_buggy
+8714,"SE: The 'paste' variable is directly concatenated into the 'filename' path without proper validation.
+BL: `filename = os.path.join(PASTES_FOLDER, paste)`
+BUG FOUND: YES",not_buggy
+8845,"SE: The 'file' variable is directly used in the file_exists() function without proper validation, which may lead to a path traversal vulnerability.
+BL: $file = $config->private_key;
+BUG FOUND: YES",not_buggy
+8749,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because it checks if the extracted file path starts with the canonical path of the destination directory, but it does not fully prevent path traversal attacks.
+BL: `if (!canonicalDestinationFile.startsWith(canonicalDestinationDirPath + File.separator))`
+BUG FOUND: YES",not_buggy
+471,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the URL provided is directly used in the file_get_contents function without proper validation or restriction.
+BL: `if(!$content = file_get_contents($this->url)) {`
+BUG FOUND: YES",not_buggy
+8738,"SE: The 'rawPath' variable is directly used in path manipulation without proper validation, which may lead to path traversal vulnerabilities.
+BL: `rawPath = _.trim(qs.unescape(rawPath))`
+BUG FOUND: YES",not_buggy
+433,"SE: The 'jeName' variable is directly concatenated into the error message without proper validation.
+BL: `throw new IOException(""Bad zip entry"");`
+BUG FOUND: YES",not_buggy
+8869,"SE: The 'bam_file' attribute may contain a bug of type CWE-22 as it represents a path to a file without proper restriction.
+BL: bam_file=str,  # Path to bam file
+BUG FOUND: YES",not_buggy
+8889,"SE: The 'filename' parameter is directly concatenated into the filepath without proper validation.
+BL: `filepath = safe_join(app.config.get(""PRIVATE_DIR""), filename)`
+BUG FOUND: YES",not_buggy
+8812,"SE: The 'rawPath' variable is directly used in path manipulation operations without proper validation, which may lead to path traversal vulnerabilities.
+BL: `rawPath = rawPath.replaceAll('\\', '').replaceAll('//', '').replaceAll(/\.\.+/ig, '')`
+BUG FOUND: YES",not_buggy
+8909,"SE: The 'directory' variable is directly concatenated with the 'filePath' variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `filePath = directory + ""/"" + filePath;`
+BUG FOUND: YES",not_buggy
+486,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the `name` variable is derived from the `entry.getName()` without proper validation or sanitization.
+BL: `String name = entry.getName().substring(entry.getName().indexOf('/') + 1);`
+BUG FOUND: YES",not_buggy
+445,"SE: The 'f.Name' variable is directly used to construct the file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `path := filepath.Join(uz.Dest, f.Name)`
+BUG FOUND: YES",not_buggy
+8705,"SE: The 'widgetkey' parameter is directly used in the file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$wk = basename($_POST['widgetkey']);`
+BUG FOUND: YES",not_buggy
+5146,"SE: The 'package_name' variable is directly concatenated into an error message without proper validation.
+BL: `raise Exception(""Version "" + version + "" for package "" + package_name + "" doesn't exist."")`
+BUG FOUND: YES",not_buggy
+480,"SE: The line that may contain a bug of type CWE-22 is where the filename is concatenated directly into the path without proper validation or sanitization.
+BL: `$file = DIR_LOGS . $filename;`
+BUG FOUND: YES",not_buggy
+8739,"SE: The 'path' variable is directly concatenated into the path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `data_file, metadata_file = get_paths(app.config[""DATA_ROOT""], path)`
+BUG FOUND: YES",not_buggy
+8834,"SE: The line may contain a bug of type CWE-22 because the file path ""all_files"" is directly concatenated without proper validation or restriction.
+BL: `f = open(""all_files"", ""r"")`
+BUG FOUND: YES",not_buggy
+8852,"SE: The 'name' variable is directly concatenated into the file path without proper validation.
+BL: `aliasedRequire('./locale/' + name);`
+BUG FOUND: YES",not_buggy
+446,"SE: The 'tarPath' variable is not properly sanitized before being used to construct the output path, which may lead to path traversal vulnerabilities.
+BL: `outPath = gopath.Join(te.Path, outPath)`
+BUG FOUND: YES",not_buggy
+8685,"SE: The line may contain a bug of type CWE-22 because it checks for path traversal in the URL path following the alias, but it does not properly limit the pathname to a restricted directory.
+BL: `if (uri_ptr[alias_len] == '.') {`
+BUG FOUND: YES",not_buggy
+8702,"SE: The 'src' parameter is not properly sanitized before being used to extract files, which may lead to path traversal vulnerabilities.
+BL: `return extractor(src, tempDir);`
+BUG FOUND: YES",not_buggy
+8907,"SE: None
+BL: None
+BUG FOUND: NO",not_buggy
+472,"SE: The 'toExtract' variable is directly concatenated into a file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `$localArchive = FileDir::makeCorrectFile(Froxlor::getInstallDir() . '/updates/' . $toExtract);`
+BUG FOUND: YES",not_buggy
+436,"SE: The 'source.getName()' is directly concatenated into the file path without proper validation.
+BL: `targetName = source.getName();`
+BUG FOUND: YES",not_buggy
+5236,"SE: The 'path' variable is directly used without proper validation, which may lead to path traversal vulnerabilities.
+BL: `return path.substring(prefixLen)`
+BUG FOUND: YES",not_buggy
+437,"SE: The 'urlString' variable is directly concatenated into the URL without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `zipUrl = new URL(urlString);`
+BUG FOUND: YES",not_buggy
+430,"SE: The 'modulePathFile' variable is directly concatenated into the file path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$modulePathFile = $assetConfigFolder . $this->modulePathFile;`
+BUG FOUND: YES",not_buggy
+8879,"SE: The 'filePath' variable is directly concatenated with the artifact file path without proper validation, which may lead to path traversal vulnerabilities.
+BL: `filePath := fmt.Sprintf(""%s/%s"", dir, g.artifact.FilePath)`
+BUG FOUND: YES",not_buggy
+8686,"SE: None
+BL: None
+BUG FOUND: NO",not_buggy
+8745,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because it checks if the URL starts with 'file:///' without properly restricting the directory traversal.
+BL: `r.url().lastIndexOf('file:///', 0) === 0`
+BUG FOUND: YES",not_buggy
+438,"SE: The 'path' variable is directly concatenated into the 'dent_path' without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `dent_path = os.path.realpath(os.path.join(path, dent_node.name))`
+BUG FOUND: YES",not_buggy
+484,"SE: The line may contain a bug of type CWE-22 because the user input is directly concatenated into the file path without proper validation or restriction.
+BL: `$file = implode('/', $args);`
+BUG FOUND: YES",not_buggy
+5209,"SE: The 'id' variable is directly concatenated into the file path without proper validation or sanitization.
+BL: `if (file_exists($path_to_root.'/modules/'.clean_file_name($id).'/hooks.php')) {`
+BUG FOUND: YES",not_buggy
+8890,"SE: The line may contain a bug of type CWE-22 because the `path` variable is directly concatenated into the path without proper validation or restriction.
+BL: `abs_file_path = safe_join(script_dir, rel_path)`
+BUG FOUND: YES",not_buggy
+481,"SE: The 'src_path' variable is directly concatenated into the 'unzip_playbook' function without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `unzip_playbook(src_path, dest_path)`
+BUG FOUND: YES",not_buggy
+8728,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) as it dynamically resolves a path based on user input without proper validation.
+BL: `options.skeleton = require(options.skeleton.charAt(0) === '.' ? path.resolve(process.cwd(), options.skeleton) : options.skeleton)`
+BUG FOUND: YES",not_buggy
+463,"SE: The 'filepath' variable is directly concatenated into the 'fileDir' variable without proper validation.
+BL: `fileDir := path.Dir(filepath)`
+BUG FOUND: YES",not_buggy
+439,"SE: The 'path' variable is directly used in the `extractRelativeResource` method without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `extractRelativeResource(rootClass, respath, dest);`
+BUG FOUND: YES",not_buggy
+464,"SE: The 'file' parameter from $_POST is directly concatenated into the $logfile variable without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `$logfile = htmlspecialchars($suricatalogdir . basename($_POST['file']));`
+BUG FOUND: YES",not_buggy
+449,"SE: The 'filename' variable is directly concatenated without proper validation, which may lead to Path Traversal vulnerability.
+BL: `filename := filepath.Join(cmd.storage, filepath.FromSlash(path.Clean(""/""+strings.Trim(r.URL.Path, ""/"")))`
+BUG FOUND: YES",not_buggy
+483,"SE: The line may contain a bug of type CWE-22 because the user input ($_GET[""$sf_prefix""]) is directly concatenated into the $downloadfile path without proper validation or restriction.
+BL: `$downloadfile = $sf_directory . basename($downloadfile);`
+BUG FOUND: YES",not_buggy
+442,"SE: The line may contain a bug of type CWE-22 as the variable $name is not properly sanitized before being concatenated with the directory path.
+BL: `$name = preg_replace('(\.\.|\/|\\\\)', '', $name);`
+BUG FOUND: YES",not_buggy
+447,"SE: The 'uri' parameter in the downloadOntology method is directly concatenated into the downloadPath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `Files.copy(in, Paths.get(downloadPath), StandardCopyOption.REPLACE_EXISTING);`
+BUG FOUND: YES",not_buggy
+5152,"SE: The line may contain a bug of type CWE-22 (Improper Limitation of a Pathname to a Restricted Directory: Path Traversal) because the 'assetsPath' variable is directly concatenated into the path without proper validation.
+BL: `return inStream(context -> { try { return context.getResources().getAssets().open(assetsPath); } catch (IOException e) { e.printStackTrace(); return null; } });`
+BUG FOUND: YES",not_buggy
+431,"SE: The 'fileHrefString' is directly concatenated into a URI without proper validation.
+BL: `final File resolvedFile = new File(resolvedFileUri);`
+BUG FOUND: YES",not_buggy
+8713,"SE: The 'filename' variable is directly concatenated into the path without proper validation or restriction.
+BL: `filename = path.normalize(path.join(ROOT_DIR, filename));`
+BUG FOUND: YES",not_buggy
+8746,"SE: The 'trackingId' variable is directly concatenated into the 'finalDest' path without proper validation.
+BL: `const finalDest = path.join(workspaceDir, trackingId);`
+BUG FOUND: YES",not_buggy
+8766,"SE: The 'name' parameter from the request is directly used to fetch a report without proper validation, which may lead to path traversal vulnerabilities.
+BL: `$report = CustomReport\Config::getByName($request->get('name'));`
+BUG FOUND: YES",not_buggy
+8884,"SE: The line may contain a bug of type CWE-22 because the `path` variable is directly concatenated into the `add_url_template` string without proper validation or restriction.
+BL: `add_url_template += '&filename={filename}'`
+BUG FOUND: YES",not_buggy
+8904,"SE: The 'filename' is directly concatenated into the path without proper validation or sanitization.
+BL: `file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))`
+BUG FOUND: YES",not_buggy
+5196,"SE: The 'dir' parameter in the dir() method is not properly sanitized, which may lead to path traversal vulnerabilities.
+BL: `$this->_dir = str_replace([""\0"", '/', '.'], '', $dir);`
+BUG FOUND: YES",not_buggy
+8672,"SE: The 'localPath' variable is directly concatenated into the zipPath without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `zipPath=zipPath.split(""\\"").join(""/"");`
+BUG FOUND: YES",not_buggy
+8650,"SE: The 'url' variable is not properly sanitized before being used to construct the 'relativePath' variable, which may lead to path traversal vulnerabilities.
+BL: `var relativePath = vpath && url.indexOf(vpath) == 0 ? path + url.slice(vpath.length + 1, url.length): path + url;`
+BUG FOUND: YES",not_buggy
+8838,"SE: The 'fullFilePath' variable is constructed using user-controlled input without proper validation, which may lead to path traversal vulnerabilities.
+BL: `fullFilePath = fullFilePath.resolve(httpRequest.getPathInfo());`
+BUG FOUND: YES",not_buggy
+493,"SE: The line may contain a bug of type CWE-22 because the `username` variable is directly concatenated into the file path without proper validation or sanitization.
+BL: `banner_path = f""user_images/pfp/{username}""`
+BUG FOUND: YES",not_buggy
+8759,"SE: The line may contain a bug of type CWE-22 because the `$templatePath` and `$blockReference` variables are not properly sanitized before being used in the `generateLayoutUpdateXml` method.
+BL: `if ($templatePath !== htmlspecialchars($templatePath, ENT_QUOTES | ENT_HTML5) || $blockReference !== htmlspecialchars($blockReference, ENT_QUOTES | ENT_HTML5)) {`
+BUG FOUND: YES",not_buggy
+440,"SE: The 'warFile' variable is used to construct a file path without proper validation, which may lead to a Path Traversal vulnerability.
+BL: `File outFile = new File(deployDir, en);`
+BUG FOUND: YES",not_buggy
+443,"SE: The 'path' parameter in the attemptsPathTraversal function is not properly sanitized, which may lead to path traversal vulnerabilities.
+BL: `if attemptsPathTraversal(req.URL.Path, path) {`
+BUG FOUND: YES",not_buggy
+460,"SE: The 'name' variable is not properly validated before being used to create a new directory.
+BL: `if (!preg_match(self::DIRECTORY_NAME_REGEXP, $name)) {`
+BUG FOUND: YES",not_buggy
+8754,"SE: The line may contain a bug of type CWE-22 because it performs a path traversal vulnerability check.
+BL: `protected $invalidActions`
+BUG FOUND: YES",not_buggy
+8815,"SE: The 'path' variable is directly concatenated into the file path without proper validation.
+BL: `return send_file(safe_join(app.cwd, path))`
+BUG FOUND: YES",not_buggy
+8734,"SE: The 'relativeFilePath' parameter is directly concatenated into a path without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `return Paths.get(getDataRepositoryPath(dataRepository), relativeFilePath);`
+BUG FOUND: YES",not_buggy
+5192,"SE: The line may contain a bug of type CWE-22 because the `$_GET['a']` variable is directly concatenated into the file path without proper validation.
+BL: `require './func/' . $module . '.php';`
+BUG FOUND: YES",not_buggy
+8895,"SE: The 'releaseInfo' variable is directly concatenated into the URL without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `u.Path = path.Dir(u.Path) + slashSeparator + releaseInfo + "".minisig""`
+BUG FOUND: YES",not_buggy
+8855,"SE: The 'file_path' variable is constructed by concatenating user-controlled input 'file_requested' without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `file_path = msprintf(""%s/%s"", ((struct _u_compressed_inmemory_website_config *)user_data)->files_path, file_requested);`
+BUG FOUND: YES",not_buggy
+5219,"SE: The 'location' parameter in the `set_external_data` function may allow path traversal by specifying a path outside the model directory.
+BL: `set_external_data(tensor, location=""../../file.bin"")`
+BUG FOUND: YES",not_buggy
+8724,"SE: The 'plugin_name' variable is not properly validated before being used in a file path, which may lead to path traversal vulnerabilities.
+BL: `fn = ""$plugins_dir/$plugin_name/$plugin_name.php"";`
+BUG FOUND: YES",not_buggy
+8883,"SE: The 'output_file_path' variable is directly concatenated into the path without proper validation or sanitization.
+BL: `output_file = open(output_file_path, ""a+"", buffering=1)`
+BUG FOUND: YES",not_buggy
+8716,"SE: The 'folder' variable is directly concatenated into the path without proper validation or sanitization.
+BL: `$realPath = dirname(Yii::app()->basePath) . DIRECTORY_SEPARATOR . $folder;`
+BUG FOUND: YES",not_buggy
+8764,"SE: The 'compressed_file_name' variable is directly used to construct the target file path without proper validation or sanitization, which may lead to a path traversal vulnerability.
+BL: `$target_file_name = $pathinfo['dirname'] . '/' . $pathinfo['filename_new'] . '.' . ($pathinfo['extension']);`
+BUG FOUND: YES",not_buggy
+8660,"SE: The 'path' parameter in the imap_expand_path function is directly concatenated into the 'url.path' without proper validation or sanitization, which may lead to improper limitation of a pathname to a restricted directory.
+BL: `url.path = fixedpath;`
+BUG FOUND: YES",not_buggy
+448,"SE: The 'path' variable is directly concatenated into the Paths.get() method without proper validation or sanitization, which may lead to a Path Traversal vulnerability.
+BL: `if (exists(Paths.get(path)))`
+BUG FOUND: YES",not_buggy
+8833,"SE: The line may contain a bug of type CWE-22 because the `$_POST['url_' . $key]` variable is directly concatenated into the path without proper validation or sanitization.
+BL: `$_POST['url_' . $key] = preg_replace('|[\.]+\/|', './', $_POST['url_' . $key]);`
+BUG FOUND: YES",not_buggy
+8709,"SE: The line may contain a bug of type CWE-22 because the user input ($_GET['file']) is directly used to construct the file path without proper validation or sanitization.
+BL: `$stream_full_path = path_join($stream_path, $stream_file);`
+BUG FOUND: YES",not_buggy
+8751,"SE: The 'dev_wwn' is directly concatenated into the buffer without proper validation or sanitization.
+BL: `buf[off++] = (0x6 << 4);`
+BUG FOUND: YES",not_buggy
+473,"SE: The 'path' variable is directly concatenated with the 'name' variable to create a new directory path without proper validation or sanitization.
+BL: `$path = $this->_joinPath($path, $name);`
+BUG FOUND: YES",not_buggy
+8799,"SE: The 'filename' parameter is directly concatenated into the 'file_path' variable without proper validation.
+BL: `file_path = os.path.join(PATH_NOTE_ATTACHMENTS, filename)`
+BUG FOUND: YES",not_buggy
+432,"SE: The 'file' variable is directly concatenated into the include statement without proper validation.
+BL: `$file = um_path . ""templates/{$tpl}.php"";`
+BUG FOUND: YES",not_buggy
