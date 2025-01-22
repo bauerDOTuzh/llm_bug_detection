@@ -36,9 +36,15 @@ class Models(enum.Enum):
     MIXTRAL8_22 = 'mixtral-8x22b-65536'
 
 ollama_names = {
-    Models.LLAMA3.value: os.getenv('OLLAMA_llama3-70b_NAME'),
-    Models.MIXTRAL8_7.value: os.getenv('OLLAMA_mixtral-8_7b_NAME'),
-    Models.MIXTRAL8_22.value: os.getenv('OLLAMA_mixtral-8_22b_NAME'),
+    Models.LLAMA3.value: os.getenv('OLLAMA_llama3-70b_NAME', "llama3:70b"),
+    Models.MIXTRAL8_7.value: os.getenv('OLLAMA_mixtral-8_7b_NAME', "mixtral:8x7b"),
+    Models.MIXTRAL8_22.value: os.getenv('OLLAMA_mixtral-8_22b_NAME', "mixtral:8x22b"),
+}
+
+openai_names = {
+    Models.GPT3_5.value: os.getenv('OPENAI_GPT3_5_VERSION', "gpt-3.5-turbo-0125"),
+    Models.GPT4.value: os.getenv('OPENAI_GPT4_turbo_VERSION', "gpt-4-turbo-2024-04-09"),
+    Models.GPT4o.value: os.getenv('OPENAI_GPT4o_VERSION', "gpt-4o-2024-05-13"),
 }
 
 # input names
@@ -290,7 +296,8 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 		if prompt_max_tokens < 1:
 			return missing_prompt, None
 		try:
-			model_name = ollama_names.get(model, model) #if no anyscale name, stick to model name -> gpt has no mapping
+			# get proper fixed name of the model based on the defined version
+			model_name = ollama_names.get(model, model) if model in ollama_names else openai_names.get(model, model)
 			response = chatgpt_client.chat.completions.create(model=model_name,
 				messages=messages,
 				max_tokens=prompt_max_tokens,

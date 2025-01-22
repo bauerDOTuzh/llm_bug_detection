@@ -6,7 +6,7 @@
 # 
 # ## Configuration
 # Set the following variables in the script:
-# - `ENDPOINT`: Choose between `OPENAI` or `ANYSCALE`.
+# - `ENDPOINT`: Choose between `OPENAI` or `OLLAMA`.
 # - `LLM_MODEL`: Select a model such as `GPT4`, `LLAMA3`, or `MIXTRAL8_22`.
 # 
 # ## Key Parameters
@@ -35,7 +35,6 @@
 
 # %%
 # Import required modules
-from langchain_core.prompts import ChatPromptTemplate
 import pandas as pd
 import os
 from dotenv import load_dotenv
@@ -74,10 +73,17 @@ class Models(enum.Enum):
     MIXTRAL8_22 = 'mixtral-8x22b-65536'
 
 ollama_names = {
-    Models.LLAMA3.value: os.getenv('OLLAMA_llama3-70b_NAME'),
-    Models.MIXTRAL8_7.value: os.getenv('OLLAMA_mixtral-8_7b_NAME'),
-    Models.MIXTRAL8_22.value: os.getenv('OLLAMA_mixtral-8_22b_NAME'),
+    Models.LLAMA3.value: os.getenv('OLLAMA_llama3-70b_NAME', "llama3:70b"),
+    Models.MIXTRAL8_7.value: os.getenv('OLLAMA_mixtral-8_7b_NAME', "mixtral:8x7b"),
+    Models.MIXTRAL8_22.value: os.getenv('OLLAMA_mixtral-8_22b_NAME', "mixtral:8x22b"),
 }
+
+openai_names = {
+    Models.GPT3_5.value: os.getenv('OPENAI_GPT3_5_VERSION', "gpt-3.5-turbo-0125"),
+    Models.GPT4.value: os.getenv('OPENAI_GPT4_turbo_VERSION', "gpt-4-turbo-2024-04-09"),
+    Models.GPT4o.value: os.getenv('OPENAI_GPT4o_VERSION', "gpt-4o-2024-05-13"),
+}
+
 
 class Endpoints(enum.Enum):
     OLLAMA = "OLLAMA"
@@ -150,11 +156,12 @@ def get_model_response(prompt, data):
     prompt_whole = prompt.format(**data)
     if ENDPOINT == Endpoints.OLLAMA or ENDPOINT == Endpoints.OPENAI:
         client = openai.OpenAI(api_key=OPENAI_API_KEY)
-        model = LLM_MODEL.value if LLM_MODEL in [Models.GPT3_5, Models.GPT4, Models.GPT4o] else None
-        if not model:
-            model = ollama_names.get(LLM_MODEL)
+        if LLM_MODEL in [Models.GPT3_5, Models.GPT4, Models.GPT4o]:
+            model = openai_names.get(LLM_MODEL.value)
+        else:
+            model = ollama_names.get(LLM_MODEL.value)
             if not model:
-                raise ValueError(f"Model {LLM_MODEL} is not supported by anyscale")
+                raise ValueError(f"Model {LLM_MODEL} is not supported by ollama api")
             
             client = openai.OpenAI(base_url=OLLAMA_ENDPOINT, api_key=OLLAMA_API_KEY)
         resp = client.chat.completions.create(
