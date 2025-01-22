@@ -15,9 +15,12 @@ This repository is tested and recommended on:
 - OS: Windows 11 (version 23H2, build 22631.3593), Linux (Debian 5.10.179 or newer) and macOS (13.2.1 Ventura or newer)
 - Python version: 3.11 or newer
 
-### Installation of GitHub, OpenAI, and AnyScale Keys
+### Installation of GitHub, OpenAI and Ollama
 
-To use this package, you must set up three environment variables: `GITHUB_TOKEN`, `ANYSCALE_API_KEY`, and `OPENAI_API_KEY`. These variables represent your personal access credentials for GitHub, Anyscale, and OpenAI respectively. By setting these environment variables, you ensure that your development environment can securely interact with these services without hardcoding sensitive information into your codebase. This approach enhances security and simplifies configuration management, making it easier to update credentials or share projects without exposing private keys.
+To use this package, you must set up three environment variables: `GITHUB_TOKEN` and `OPENAI_API_KEY`. These variables represent your personal access credentials for GitHub and OpenAI. By setting these environment variables, you ensure that your development environment can securely interact with these services without hardcoding sensitive information into your codebase. This approach enhances security and simplifies configuration management, making it easier to update credentials or share projects without exposing private keys.
+
+To use open-source models, you can use any API compatible with the OpenAI package. However, to minimize changes to your current setup, we recommend using **Ollama**. To install Ollama, follow the installation steps on their [official website](https://ollama.com/). 
+If you prefer to use a different provider, you'll need to adjust environment variables—such as model aliases, endpoint configurations, and the API key—to match your chosen service.
 
 ### Steps to Set Up
 
@@ -28,7 +31,6 @@ To use this package, you must set up three environment variables: `GITHUB_TOKEN`
 2. Open the `.env` file in your favorite text editor and replace the placeholder values with your actual credentials:
     ```bash
     GITHUB_TOKEN=your_github_token
-    ANYSCALE_API_KEY=your_anyscale_api_key
     OPENAI_API_KEY=your_openai_api_key
     ```
     
@@ -36,34 +38,25 @@ Alternatively, you could set up the environment by directly setting environment 
 
 On UNIX-like Operating Systems (Linux, MacOS):
 1. Open your terminal.
-2. To set the `ANYSCALE_API_KEY ` variable, run:
-   ```bash
-   export ANYSCALE_API_KEY ='your_anyscale_api_key'
-   ```
-3. To set the `OPENAI_API_KEY` variable, run:
+2. To set the `OPENAI_API_KEY` variable, run:
    ```bash
    export OPENAI_API_KEY='your_api_key'
    ```
-4. To set the `GITHUB_TOKEN ` variable, run:
+3. To set the `GITHUB_TOKEN ` variable, run:
    ```bash
    export GITHUB_TOKEN ='your_github_key'
    ```
-5. These commands will set the environment variables for your current session. If you want to make them permanent, you can add the above lines to your shell profile (`~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, etc.)
+4. These commands will set the environment variables for your current session. If you want to make them permanent, you can add the above lines to your shell profile (`~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, etc.)
 
 To ensure you've set up the environment variables correctly:
 
 1. In your terminal or command prompt, run:
    ```bash
-   echo $ANYSCALE_API_KEY
-   ```
-   This should display your AnyScale API key.
-   
-2. Similarly, verify the OpenAI API key:
-   ```bash
    echo $OPENAI_API_KEY
    ```
+   This should display your OpenAI API key.
 
-*If you don't have an account with any of these providers, create one and follow the instructions on their respective websites to obtain your API token: [GitHub](https://github.com/), [OpenAI](https://openai.com/), [Anyscale](https://www.anyscale.com/).*
+*If you don't have an account with any of these providers, create one and follow the instructions on their respective websites to obtain your API token: [GitHub](https://github.com/), [OpenAI](https://openai.com/)*
 
 ### Python Environment using Conda
 1. Create a new conda environment using the provided `environment.yml` file:

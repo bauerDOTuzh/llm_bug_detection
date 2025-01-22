@@ -15,7 +15,7 @@ from tabulate import tabulate
 # %%
 cwes = ["CWE-22", "CWE-89", "CWE-79"]
 # cwes = ["CWE-79"]
-models = ['mixtral-8x7b-32768', 'mixtral-8x22b-65536', "llama-3-70b-8192", "gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o"]
+models = ['mixtral-8x7b-32768', 'mixtral-8x22b-65536', "llama3-70b-8192", "gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o"]
 # models = ['mixtral-8x7b-32768']
 # models = ["gpt-3.5-turbo"]
 
@@ -23,7 +23,6 @@ model_renames = {
     "mixtral-8x7b-32768": "mixtral-8x7b",
     "mixtral-8x22b-65536": "mixtral-8x22b",
     "llama3-70b-8192": "llama-3-70b",
-    "llama-3-70b-8192": "llama-3-70b",
 }
 
 # %% [markdown]

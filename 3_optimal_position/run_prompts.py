@@ -22,6 +22,11 @@ from dotenv import load_dotenv
 import enum
 import sys
 
+env_path = Path('..') / '.env'
+if env_path.exists():
+	load_dotenv(env_path)
+
+
 
 class Models(enum.Enum):
     GPT3_5 = "gpt-3.5-turbo"
@@ -31,10 +36,10 @@ class Models(enum.Enum):
     MIXTRAL8_7 = "mixtral-8x7b-32768"
     MIXTRAL8_22 = 'mixtral-8x22b-65536'
 
-anyscale_names = {
-    Models.LLAMA3.value: "meta-llama/Meta-Llama-3-70B-Instruct",
-    Models.MIXTRAL8_7.value: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-    Models.MIXTRAL8_22.value: "mistralai/Mixtral-8x22B-Instruct-v0.1"
+ollama_names = {
+    Models.LLAMA3.value: os.getenv('OLLAMA_llama3-70b_NAME'),
+    Models.MIXTRAL8_7.value: os.getenv('OLLAMA_mixtral-8_7b_NAME'),
+    Models.MIXTRAL8_22.value: os.getenv('OLLAMA_mixtral-8_22b_NAME'),
 }
 
 # input names
@@ -47,15 +52,13 @@ model_mapping = {
     "mixtral8x22": Models.MIXTRAL8_22
 }
 
-env_path = Path('..') / '.env'
-if env_path.exists():
-	load_dotenv(env_path)
 
 openai_api_key = os.getenv('OPENAI_API_KEY')
-anyscale_api_key = os.getenv('ANYSCALE_API_KEY')
+ollama_api_key = os.getenv('OLLAMA_API_KEY')
+ollama_endpoint = os.getenv('OLLAMA_ENDPOINT')
 
 # Check if the environment variables are loaded
-if not all([openai_api_key, anyscale_api_key]):
+if not all([openai_api_key, ollama_api_key, ollama_endpoint]):
     raise EnvironmentError("Some environment variables are missing")
 
 model = model_mapping.get(sys.argv[1])
@@ -78,9 +81,7 @@ bug_window_size_list = [
 ]
 cwe_id_list = ['22', '89', '79']
 
-n_processes = multiprocessing.cpu_count()*20 if model not in anyscale_names else 30 #anyscale supports only 30 concurent processes
-openai_api_key = os.getenv("OPENAI_API_KEY")
-anyscale_api_key = os.getenv("ANYSCALE_API_KEY")
+n_processes = multiprocessing.cpu_count()*20 if model not in ollama_names else 30 #anyscale supports only 30 concurent processes
 temperature = 0
 
 # source_variable = 'Bug Line' # 'Input Length'
@@ -114,9 +115,9 @@ def get_removed_lines(patch):
 	# Remove the leading - character from each line
 	return [line[1:] for line in removed_lines]
 
-if model in anyscale_names:
-	chatgpt_client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=anyscale_api_key)
-	print("anyscale endpoint selected")
+if model in ollama_names:
+	chatgpt_client = openai.OpenAI(base_url=ollama_endpoint, api_key=ollama_api_key)
+	print("ollama endpoint selected")
 else:
 	chatgpt_client = openai.OpenAI(api_key=openai_api_key)
 
@@ -216,7 +217,7 @@ def instruct_model(prompts, model='gpt-4', n=1, temperature=0.5, top_p=1, freque
 		if prompt_max_tokens < 1:
 			return missing_prompt, None
 		try:
-			model_name = anyscale_names.get(model, model) #if no anyscale name, stick to model name -> gpt has no mapping
+			model_name = ollama_names.get(model, model) #if no anyscale name, stick to model name -> gpt has no mapping
 			response = chatgpt_client.chat.completions.create(model=model_name,
 				messages=messages,
 				max_tokens=prompt_max_tokens,

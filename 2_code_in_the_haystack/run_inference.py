@@ -54,11 +54,12 @@ env_path = Path('..') / '.env'
 if env_path.exists():
     load_dotenv(dotenv_path=env_path)
 
-ANYSCALE_API_KEY = os.getenv('ANYSCALE_API_KEY')
+OLLAMA_API_KEY = os.getenv('OLLAMA_API_KEY')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OLLAMA_ENDPOINT = os.getenv('OLLAMA_ENDPOINT')
 
 # Check if the environment variables are loaded
-if not all([ANYSCALE_API_KEY, OPENAI_API_KEY]):
+if not all([OLLAMA_API_KEY, OPENAI_API_KEY, OLLAMA_ENDPOINT]):
     raise EnvironmentError("Some environment variables are missing")
 
 
@@ -72,8 +73,14 @@ class Models(enum.Enum):
     MIXTRAL8_7 = "mixtral-8x7b-32768"
     MIXTRAL8_22 = 'mixtral-8x22b-65536'
 
+ollama_names = {
+    Models.LLAMA3.value: os.getenv('OLLAMA_llama3-70b_NAME'),
+    Models.MIXTRAL8_7.value: os.getenv('OLLAMA_mixtral-8_7b_NAME'),
+    Models.MIXTRAL8_22.value: os.getenv('OLLAMA_mixtral-8_22b_NAME'),
+}
+
 class Endpoints(enum.Enum):
-    ANYSCALE = "ANYSCALE"
+    OLLAMA = "OLLAMA"
     OPENAI = "OPENAI"
 
 # %%
@@ -81,7 +88,7 @@ class Endpoints(enum.Enum):
 # ENDPOINT = Endpoints.OPENAI
 # LLM_MODEL = Models.GPT4
 
-ENDPOINT = Endpoints.ANYSCALE 
+ENDPOINT = Endpoints.OLLAMA
 LLM_MODEL = Models.MIXTRAL8_7 
 
 CWES = ["CWE-22", "CWE-79", "CWE-89"]
@@ -141,20 +148,15 @@ df_selected_files
 # %%
 def get_model_response(prompt, data):
     prompt_whole = prompt.format(**data)
-    if ENDPOINT == Endpoints.ANYSCALE or ENDPOINT == Endpoints.OPENAI:
+    if ENDPOINT == Endpoints.OLLAMA or ENDPOINT == Endpoints.OPENAI:
         client = openai.OpenAI(api_key=OPENAI_API_KEY)
         model = LLM_MODEL.value if LLM_MODEL in [Models.GPT3_5, Models.GPT4, Models.GPT4o] else None
         if not model:
-            anyscale_names = {
-                Models.LLAMA3: "meta-llama/Meta-Llama-3-70B-Instruct",
-                Models.MIXTRAL8_7: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-                Models.MIXTRAL8_22: "mistralai/Mixtral-8x22B-Instruct-v0.1"
-            }
-            model = anyscale_names.get(LLM_MODEL)
+            model = ollama_names.get(LLM_MODEL)
             if not model:
                 raise ValueError(f"Model {LLM_MODEL} is not supported by anyscale")
             
-            client = openai.OpenAI(base_url="https://api.endpoints.anyscale.com/v1", api_key=ANYSCALE_API_KEY)
+            client = openai.OpenAI(base_url=OLLAMA_ENDPOINT, api_key=OLLAMA_API_KEY)
         resp = client.chat.completions.create(
             model=model,
             messages=[{"role": "user", "content": prompt.format(**data)}],

@@ -27,7 +27,6 @@ model_renames = {
     "mixtral-8x7b-32768": "mixtral-8x7b",
     "mixtral-8x22b-65536": "mixtral-8x22b",
     "llama3-70b-8192": "llama-3-70b",
-    "llama-3-70b-8192": "llama-3-70b",
 }
 
 
