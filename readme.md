@@ -1,6 +1,25 @@
 # Large Language Models for In-File Vulnerability Localization are "Lost in the End"
 
-Welcome to the replication package for the ASE 2024 paper titled: Large Language Models for In-File Vulnerability Localization are "Lost in the End".
+Welcome to the replication package for the ASE 2024 paper titled: [Large Language Models for In-File Vulnerability Localization are "Lost in the End"](https://doi.org/10.1145/3715758).
+
+**DOI:** [https://doi.org/10.1145/3715758](https://doi.org/10.1145/3715758)
+
+## Table of Contents
+
+1. [Abstract](#abstract)
+2. [How to Setup this Repository](#how-to-setup-this-repository)
+   - [System Specifications](#system-specifications)
+   - [Installation of GitHub, OpenAI, and Ollama](#installation-of-github-openai-and-ollama)
+   - [Steps to Set Up](#steps-to-set-up)
+   - [Python Environment using Conda](#python-environment-using-conda)
+3. [About this Repository](#about-this-repository)
+   - [Supported LLMs](#supported-llms)
+   - [Folder: `./0_dataset_creation`](#folder-0_dataset_creation)
+   - [Folder: `./1_all_files_analysis`](#folder-1_all_files_analysis)
+   - [Folder: `./2_code_in_the_haystack`](#folder-2_code_in_the_haystack)
+   - [Folder: `./3_optimal_position`](#folder-3_optimal_position)
+4. [Supplementary Information](#supplementary-information)
+   - [RQ2: Statistical Analysis of Vulnerability Detection Performance](#rq2-statistical-analysis-of-vulnerability-detection-performance)
 
 ## Abstract
 
@@ -146,8 +165,11 @@ This folder contains various scripts, data files, and analysis results for evalu
 - **Script**:
   - `run_prompts.py`: It runs the prompts for all the CWE types once provided the model name as a parameter.
 
+## Supplementary information 
 
-## RQ2: Statistical results according to APA guidelines
+Below, we provide the appendix of the paper, which comprises supplementary information that could not be included in the main paper due to page constraints.
+
+### RQ2: Statistical results according to APA guidelines
 
 We hereby follow APA guidelines to report the regression coefficients, 95% confidence intervals, effect sizes (i.e., odds ratios), and p-values for each model term (intercept and predictors). Additionally, we conclude with a paragraph interpreting the statistics in relation to the paper's claims, as recommended by APA guidelines.
 
