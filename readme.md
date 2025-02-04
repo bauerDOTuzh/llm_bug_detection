@@ -145,3 +145,210 @@ This folder contains various scripts, data files, and analysis results for evalu
 - **Purpose**: This folder contains the code to run the experiment of the third research question.
 - **Script**:
   - `run_prompts.py`: It runs the prompts for all the CWE types once provided the model name as a parameter.
+
+
+## RQ2: Statistical results according to APA guidelines
+
+We hereby follow APA guidelines to report the regression coefficients, 95% confidence intervals, effect sizes (i.e., odds ratios), and p-values for each model term (intercept and predictors). Additionally, we conclude with a paragraph interpreting the statistics in relation to the paper's claims, as recommended by APA guidelines.
+
+Below are the tables with the regression results of Fig. 2 (see paper):
+
+Model: mixtral-8x7b
+| CWE    | Term                | B      | 95% CI             | p-value | Odds Ratio |
+|--------|---------------------|--------|--------------------|---------|------------|
+| CWE-22 | intercept           | 0.49   | [-0.21, 1.18]      | 0.173   | 1.632      |
+|   ""   | file_len            | -0.13  | [-0.20, -0.05]     | 0.001   | 0.878      |
+| CWE-22 | intercept           | 0.45   | [-0.16, 1.06]      | 0.144   | 1.568      |
+|   ""   | bug_pos             | -0.52  | [-0.82, -0.21]     | 0.001   | 0.595      |
+| CWE-89 | intercept           | 0.48   | [-0.10, 1.07]      | 0.106   | 1.616      |
+|   ""   | file_len            | -0.14  | [-0.22, -0.07]     | 0.000   | 0.869      |
+| CWE-89 | intercept           | 0.06   | [-0.43, 0.55]      | 0.809   | 1.062      |
+|   ""   | bug_pos             | -0.28  | [-0.45, -0.10]     | 0.002   | 0.756      |
+| CWE-79 | intercept           | -0.90  | [-1.22, -0.58]     | 0.000   | 0.407      |
+|   ""   | file_len            | -0.06  | [-0.09, -0.03]     | 0.000   | 0.942      |
+| CWE-79 | intercept           | -1.03  | [-1.31, -0.75]     | 0.000   | 0.357      |
+|   ""   | bug_pos             | -0.14  | [-0.21, -0.07]     | 0.000   | 0.869      |
+
+Model: mixtral-8x22b
+| CWE    | Term       | B     | 95% CI           | p-value | Odds Ratio |
+|--------|------------|-------|------------------|---------|------------|
+| CWE-22 | intercept  | 0.65  | [0.03, 1.28]     | 0.041   | 1.915      |
+|   ""   | file_len   | -0.07 | [-0.13, -0.02]   | 0.005   | 0.933      |
+| CWE-22 | intercept  | 0.51  | [-0.01, 1.03]    | 0.056   | 1.665      |
+|   ""   | bug_pos    | -0.20 | [-0.34, -0.07]   | 0.003   | 0.818      |
+| CWE-89 | intercept  | 0.48  | [-0.00, 0.96]    | 0.052   | 1.617      |
+|   ""   | file_len   | -0.07 | [-0.10, -0.03]   | 0.000   | 0.933      |
+| CWE-89 | intercept  | 0.25  | [-0.17, 0.67]    | 0.239   | 1.284      |
+|   ""   | bug_pos    | -0.13 | [-0.20, -0.05]   | 0.001   | 0.878      |
+| CWE-79 | intercept  | -0.22 | [-0.54, 0.10]    | 0.176   | 0.802      |
+|   ""   | file_len   | -0.10 | [-0.14, -0.07]   | 0.000   | 0.905      |
+| CWE-79 | intercept  | -0.55 | [-0.81, -0.28]   | 0.000   | 0.577      |
+|   ""   | bug_pos    | -0.20 | [-0.28, -0.12]   | 0.000   | 0.818      |
+
+Model: llama-3-70b
+| CWE    | Term                | B      | 95% CI             | p-value  | Odds Ratio |
+|--------|---------------------|--------|--------------------|----------|------------|
+| CWE-22 | intercept           | 0.57   | [-0.11, 1.24]      | 0.103    | 1.768      |
+|   ""   | file_len            | -0.10  | [-0.17, -0.03]     | 0.004    | 0.905      |
+| CWE-22 | intercept           | 0.09   | [-0.42, 0.60]      | 0.736    | 1.094      |
+|   ""   | bug_pos             | -0.13  | [-0.26, -0.01]     | 0.039    | 0.878      |
+| CWE-89 | intercept           | 0.52   | [0.00, 1.05]       | 0.050    | 1.681      |
+|   ""   | file_len            | -0.07  | [-0.12, -0.02]     | 0.004    | 0.934      |
+| CWE-89 | intercept           | 0.47   | [0.01, 0.92]       | 0.046    | 1.600      |
+|   ""   | bug_pos             | -0.19  | [-0.31, -0.06]     | 0.003    | 0.827      |
+| CWE-79 | intercept           | -0.45  | [-0.78, -0.11]     | 0.010    | 0.638      |
+|   ""   | file_len            | -0.09  | [-0.13, -0.05]     | 0.000    | 0.914      |
+| CWE-79 | intercept           | -0.79  | [-1.07, -0.52]     | 0.000    | 0.454      |
+|   ""   | bug_pos             | -0.12  | [-0.19, -0.06]     | 0.000    | 0.888      |
+
+Model: gpt-3.5-turbo
+| CWE    | Term       | B     | 95% CI            | p-value | Odds Ratio |
+|--------|------------|-------|-------------------|---------|------------|
+| CWE-22 | intercept  | 0.13  | [-0.49, 0.74]     | 0.685   | 1.139      |
+|   ""   | file_len   | -0.05 | [-0.10, -0.00]    | 0.044   | 0.951      |
+| CWE-22 | intercept  | 0.06  | [-0.45, 0.57]     | 0.818   | 1.062      |
+|   ""   | bug_pos    | -0.16 | [-0.29, -0.03]    | 0.017   | 0.852      |
+| CWE-89 | intercept  | 0.84  | [0.32, 1.35]      | 0.001   | 2.320      |
+|   ""   | file_len   | -0.09 | [-0.14, -0.05]    | 0.000   | 0.914      |
+| CWE-89 | intercept  | 0.32  | [-0.09, 0.73]     | 0.131   | 1.378      |
+|   ""   | bug_pos    | -0.11 | [-0.17, -0.04]    | 0.002   | 0.896      |
+| CWE-79 | intercept  | -0.73 | [-1.06, -0.40]    | 0.000   | 0.482      |
+|   ""   | file_len   | -0.08 | [-0.11, -0.04]    | 0.000   | 0.923      |
+| CWE-79 | intercept  | -1.00 | [-1.28, -0.72]    | 0.000   | 0.368      |
+|   ""   | bug_pos    | -0.13 | [-0.20, -0.06]    | 0.000   | 0.878      |
+
+Model: gpt-4-turbo
+| CWE    | Term                | B      | 95% CI             | p-value | Odds Ratio |
+|--------|---------------------|--------|--------------------|---------|------------|
+| CWE-22 | intercept           | 0.95   | [0.34, 1.56]       | 0.002   | 2.585      |
+|   ""   | file_len            | -0.05  | [-0.09, -0.01]     | 0.021   | 0.951      |
+| CWE-22 | intercept           | 1.01   | [0.46, 1.55]       | 0.000   | 2.749      |
+|   ""   | bug_pos             | -0.18  | [-0.29, -0.06]     | 0.002   | 0.835      |
+| CWE-89 | intercept           | 0.77   | [0.27, 1.27]       | 0.002   | 2.160      |
+|   ""   | file_len            | -0.08  | [-0.12, -0.04]     | 0.000   | 0.923      |
+| CWE-89 | intercept           | 0.56   | [0.13, 1.00]       | 0.011   | 1.752      |
+|   ""   | bug_pos             | -0.18  | [-0.28, -0.08]     | 0.000   | 0.835      |
+| CWE-79 | intercept           | -0.54  | [-0.83, -0.25]     | 0.000   | 0.583      |
+|   ""   | file_len            | -0.06  | [-0.08, -0.03]     | 0.000   | 0.941      |
+| CWE-79 | intercept           | -0.52  | [-0.79, -0.26]     | 0.000   | 0.594      |
+|   ""   | bug_pos             | -0.19  | [-0.27, -0.12]     | 0.000   | 0.827      |
+
+Model: gpt-4o
+| CWE    | Term                | B      | 95% CI             | p-value | Odds Ratio |
+|--------|---------------------|--------|--------------------|---------|------------|
+| CWE-22 | intercept           | 0.83   | [0.23, 1.43]       | 0.007   | 2.294      |
+|   ""   | file_len            | -0.05  | [-0.09, -0.01]     | 0.022   | 0.951      |
+| CWE-22 | intercept           | 0.87   | [0.33, 1.40]       | 0.001   | 2.389      |
+|   ""   | bug_pos             | -0.17  | [-0.29, -0.06]     | 0.003   | 0.844      |
+| CWE-89 | intercept           | 0.92   | [0.42, 1.42]       | 0.000   | 2.510      |
+|   ""   | file_len            | -0.07  | [-0.11, -0.04]     | 0.000   | 0.933      |
+| CWE-89 | intercept           | 0.50   | [0.09, 0.91]       | 0.017   | 1.649      |
+|   ""   | bug_pos             | -0.09  | [-0.15, -0.04]     | 0.001   | 0.914      |
+| CWE-79 | intercept           | -0.22  | [-0.49, 0.06]      | 0.121   | 0.802      |
+|   ""   | file_len            | -0.05  | [-0.07, -0.03]     | 0.000   | 0.951      |
+| CWE-79 | intercept           | -0.20  | [-0.44, 0.05]      | 0.112   | 0.819      |
+|   ""   | bug_pos             | -0.18  | [-0.24, -0.12]     | 0.000   | 0.835      |
+
+
+Below are the tables with the regression results of Fig. 4:
+
+Model: mixtral-8x7b
+| CWE    | Term       | B      | 95% CI             | p-value | Odds Ratio |
+|--------|------------|--------|--------------------|---------|-----------------|
+| CWE-22 | intercept  | 0.04   | [-0.17, 0.25]      | 0.706   | 1.041           |
+|   ""   | file_len   | -0.05  | [-0.06, -0.03]     | 0.000   | 0.951           |
+| CWE-22 | intercept  | -0.19  | [-0.32, -0.05]     | 0.006   | 0.827           |
+|   ""   | bug_pos    | -0.07  | [-0.08, -0.06]     | 0.000   | 0.933           |
+| CWE-89 | intercept  | -0.66  | [-0.89, -0.43]     | 0.000   | 0.517           |
+|   ""   | file_len   | -0.04  | [-0.05, -0.03]     | 0.000   | 0.961           |
+| CWE-89 | intercept  | -0.80  | [-0.95, -0.65]     | 0.000   | 0.449           |
+|   ""   | bug_pos    | -0.07  | [-0.08, -0.05]     | 0.000   | 0.933           |
+| CWE-79 | intercept  | -0.34  | [-0.56, -0.13]     | 0.002   | 0.712           |
+|   ""   | file_len   | -0.04  | [-0.05, -0.03]     | 0.000   | 0.961           |
+| CWE-79 | intercept  | -0.87  | [-1.01, -0.73]     | 0.000   | 0.420           |
+|   ""   | bug_pos    | -0.02  | [-0.03, -0.00]     | 0.015   | 0.980           |
+
+Model: mixtral-8x22b
+| CWE    | Term         | B      | 95% CI             | p-value | Odds Ratio |
+|--------|--------------|--------|--------------------|---------|------------|
+| CWE-22 | intercept    | 0.31   | [0.11, 0.52]       | 0.003   | 1.363      |
+|   ""   | file_len     | -0.06  | [-0.07, -0.05]     | 0.000   | 0.942      |
+| CWE-89 | intercept    | 0.01   | [-0.21, 0.23]      | 0.941   | 1.010      |
+|   ""   | file_len     | -0.08  | [-0.09, -0.07]     | 0.000   | 0.923      |
+| CWE-79 | intercept    | 0.14   | [-0.06, 0.35]      | 0.164   | 1.150      |
+|   ""   | file_len     | -0.02  | [-0.03, -0.01]     | 0.001   | 0.980      |
+| CWE-22 | intercept    | -0.28  | [-0.41, -0.15]     | 0.000   | 0.756      |
+|   ""   | bug_pos      | -0.05  | [-0.07, -0.04]     | 0.000   | 0.951      |
+| CWE-89 | intercept    | -0.12  | [-0.27, 0.03]      | 0.113   | 0.887      |
+|   ""   | bug_pos      | -0.18  | [-0.20, -0.16]     | 0.000   | 0.835      |
+| CWE-79 | intercept    | 0.13   | [0.01, 0.26]       | 0.042   | 1.139      |
+|   ""   | bug_pos      | -0.04  | [-0.05, -0.02]     | 0.000   | 0.961      |
+
+Model: llama-3-70b
+| CWE    | Term       | B      | 95% CI             | p-value | Odds Ratio |
+|--------|------------|--------|--------------------|---------|------------|
+| CWE-22 | intercept  | 0.78   | [0.57, 0.99]       | 0.000   | 2.181      |
+|   ""   | file_len   | -0.04  | [-0.05, -0.03]     | 0.000   | 0.961      |
+| CWE-89 | intercept  | 0.20   | [-0.02, 0.43]      | 0.072   | 1.222      |
+|   ""   | file_len   | -0.09  | [-0.11, -0.08]     | 0.000   | 0.914      |
+| CWE-79 | intercept  | -0.16  | [-0.37, 0.05]      | 0.135   | 0.852      |
+|   ""   | file_len   | -0.03  | [-0.04, -0.02]     | 0.000   | 0.971      |
+| CWE-22 | intercept  | 0.29   | [0.16, 0.42]       | 0.000   | 1.336      |
+|   ""   | bug_pos    | -0.03  | [-0.04, -0.02]     | 0.000   | 0.971      |
+| CWE-89 | intercept  | -0.06  | [-0.21, 0.09]      | 0.440   | 0.941      |
+|   ""   | bug_pos    | -0.20  | [-0.22, -0.17]     | 0.000   | 0.819      |
+| CWE-79 | intercept  | -0.49  | [-0.62, -0.36]     | 0.000   | 0.612      |
+|   ""   | bug_pos    | -0.02  | [-0.04, -0.01]     | 0.000   | 0.980      |
+
+Model: gpt-3.5-turbo
+| CWE    | Term      | B     | 95% CI           | p-value | Odds Ratio |
+|--------|-----------|-------|------------------|---------|-------|
+| CWE-22 | intercept | 0.51  | [0.31, 0.72]     | 0.000   | 1.665 |
+| ""     | file_len  | -0.03 | [-0.04, -0.02]   | 0.000   | 0.970 |
+| CWE-89 | intercept | -0.63 | [-0.88, -0.38]   | 0.000   | 0.533 |
+| ""     | file_len  | -0.07 | [-0.08, -0.05]   | 0.000   | 0.932 |
+| CWE-79 | intercept | -1.14 | [-1.39, -0.89]   | 0.000   | 0.320 |
+| ""     | file_len  | -0.02 | [-0.03, -0.01]   | 0.002   | 0.980 |
+| CWE-22 | intercept | -0.00 | [-0.13, 0.12]    | 0.963   | 1.000 |
+| ""     | bug_pos   | -0.01 | [-0.02, -0.00]   | 0.033   | 0.990 |
+| CWE-89 | intercept | -0.71 | [-0.88, -0.54]   | 0.000   | 0.492 |
+| ""     | bug_pos   | -0.16 | [-0.19, -0.14]   | 0.000   | 0.852 |
+| CWE-79 | intercept | -1.50 | [-1.66, -1.33]   | 0.000   | 0.223 |
+| ""     | bug_pos   | -0.00 | [-0.02, 0.01]    | 0.897   | 1.000 |
+
+Model: gpt-4-turbo
+| CWE    | Term                | B      | 95% CI             | p-value  | Odds Ratio |
+|--------|---------------------|--------|--------------------|----------|------------|
+| CWE-22 | intercept           | 1.34   | [1.11, 1.56]       | 0.000    | 3.822      |
+|   ""   | file_len            | -0.04  | [-0.06, -0.03]     | 0.000    | 0.961      |
+| CWE-89 | intercept           | 0.42   | [0.21, 0.62]       | 0.000    | 1.522      |
+|   ""   | file_len            | -0.05  | [-0.06, -0.04]     | 0.000    | 0.951      |
+| CWE-79 | intercept           | 0.21   | [0.01, 0.42]       | 0.040    | 1.233      |
+|   ""   | file_len            | -0.01  | [-0.02, 0.00]      | 0.086    | 0.990      |
+| CWE-22 | intercept           | 1.14   | [1.01, 1.28]       | 0.000    | 3.128      |
+|   ""   | bug_pos             | -0.07  | [-0.08, -0.06]     | 0.000    | 0.933      |
+| CWE-89 | intercept           | 0.04   | [-0.09, 0.16]      | 0.595    | 1.041      |
+|   ""   | bug_pos             | -0.07  | [-0.08, -0.05]     | 0.000    | 0.933      |
+| CWE-79 | intercept           | 0.13   | [0.00, 0.25]       | 0.048    | 1.139      |
+|   ""   | bug_pos             | -0.01  | [-0.02, 0.00]      | 0.123    | 0.990      |
+
+Model: gpt-4o
+| CWE    | Term                | B      | 95% CI             | p-value | Odds Ratio |
+|--------|---------------------|--------|--------------------|---------|------------|
+| CWE-22 | intercept           | 0.53   | [0.32, 0.75]       | 0.000   | 1.699      |
+|   ""   | file_len            | -0.09  | [-0.11, -0.08]     | 0.000   | 0.914      |
+| CWE-89 | intercept           | 0.94   | [0.73, 1.16]       | 0.000   | 2.563      |
+|   ""   | file_len            | -0.11  | [-0.12, -0.10]     | 0.000   | 0.896      |
+| CWE-79 | intercept           | 0.75   | [0.54, 0.96]       | 0.000   | 2.117      |
+|   ""   | file_len            | -0.02  | [-0.03, -0.01]     | 0.000   | 0.980      |
+| CWE-22 | intercept           | 0.42   | [0.27, 0.57]       | 0.000   | 1.521      |
+|   ""   | bug_pos             | -0.23  | [-0.25, -0.20]     | 0.000   | 0.793      |
+| CWE-89 | intercept           | 0.76   | [0.60, 0.91]       | 0.000   | 2.137      |
+|   ""   | bug_pos             | -0.26  | [-0.28, -0.24]     | 0.000   | 0.771      |
+| CWE-79 | intercept           | 0.61   | [0.48, 0.74]       | 0.000   | 1.840      |
+|   ""   | bug_pos             | -0.03  | [-0.04, -0.01]     | 0.000   | 0.970      |
+
+The results indicate a negative association between both bug position and file size with the probability of bug detection. For instance:
+- The significant negative coefficients for bug_pos (e.g., -0.52 for CWE-22 in mixtral-8x7b) suggest that as the bug's position moves further within a file, the likelihood of detection decreases.
+- Similarly, negative coefficients for file_len (e.g., -0.13 for CWE-22 in mixtral-8x7b) indicate that larger files are less likely to have their bugs detected.
+- Bug position generally shows larger coefficients (in absolute terms) than file length. This suggests that bug position has a stronger effect on bug detection probability than file length.
