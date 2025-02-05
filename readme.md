@@ -12,6 +12,7 @@ Welcome to the replication package for the ASE 2024 paper titled: [Large Languag
    - [Installation of GitHub, OpenAI, and Ollama](#installation-of-github-openai-and-ollama)
    - [Steps to Set Up](#steps-to-set-up)
    - [Python Environment using Conda](#python-environment-using-conda)
+   - [Jupyter Notebook Setup](#jupyter-notebook-setup)
    - [Docker setup](#docker-setup)
 3. [About this Repository](#about-this-repository)
    - [Supported LLMs](#supported-llms)
@@ -87,7 +88,26 @@ To ensure you've set up the environment variables correctly:
    ```bash
     conda activate infile_vulnerability_localization
     ```
+    
+### Jupyter Notebook Setup
 
+Many scripts in this repository are Jupyter Notebooks (`.ipynb` files). To install and set up Jupyter Notebook:
+
+1. Install Jupyter Notebook within the conda environment:
+   ```bash
+   conda install -c conda-forge jupyterlab
+   ```
+2. Launch Jupyter Notebook:
+   ```bash
+   jupyter notebook
+   ```
+3. A new browser window should open with the Jupyter Notebook interface, allowing you to run and edit the `.ipynb` files.
+
+To ensure Jupyter is correctly installed, you can check the version:
+   ```bash
+   jupyter --version
+   ```
+   
 ### Docker Setup
 
 For complete control over dependencies, Docker provides an alternative to local conda environments that might be more suitable, be aware that for docker setup you still need local environment file
@@ -133,9 +153,6 @@ docker run --rm -it -v ${PWD}:/app -w /app infile_vulnerability_localization bas
 **Important:**
 
 For file reading, it's recommended to run scripts from their directory within the container.
-
-
-  
   
 ## About this Repository
 
@@ -153,8 +170,8 @@ All the following script are designed to run experiments for these LLMs:
 
 - **Purpose**: This folder contains the code to extract the dataset for the task of bug detection in code.
 - **Files**:
-  - `01gather_data.py`: Contains the code to gather data from the NIST database and save it.
-  - `02create_files.py`: Contains the code to create the files for the dataset via GitHub scraping.
+  - `01gather_data.ipynb`: Jupyter Notebook containing the code to gather data from the NIST database and save it.
+  - `02create_files.ipynb`: Contains the code to create the files for the dataset via GitHub scraping.
 - **Output**: The product of these two scripts are three CSV files containing single commit files of CWE-79, CWE-89, and CWE-22.
 
 ### Folder: `./1_all_files_analysis`
@@ -168,7 +185,7 @@ This folder contains various scripts and data files for analyzing the dataset an
 
 - **Python Scripts**:
   - `run_prompts.py`: Calls all available models based on the input (model, desired CWE number).
-  - `analyse_results.py`: Concatenates all needed results and performs analysis on the data.
+  - `analyse_results.ipynb`: Concatenates all needed results and performs analysis on the data.
   - `count_functions.py`: Computes functions' statistics: number per file and average size.
 
 #### Cached Model Outputs
@@ -185,7 +202,7 @@ This folder contains various scripts, data files, and analysis results for evalu
 - **Subfolder: `runs`**
   - Contains all runs performed for each model.
 
-- **Python Script: `create_files_with_padding.py`**
+- **Python Script: `create_files_with_padding.ipynb`**
   - Deploys an algorithm that creates files given source files, adding necessary padding.
 
 - **Subfolder: `source_files`**
@@ -197,11 +214,11 @@ This folder contains various scripts, data files, and analysis results for evalu
     - **modifiedFile**: The modified file without the bug. If the buggy function was extracted, it includes a refactored main function and added comments for clear separation.
     - **additional_padding**: A complete gathering of files to add for padding from the same repository, separated by function with clear separation comments.
 
-- **Python Script: `analyse_data.py`**
+- **Python Script: `analyse_data.ipynb`**
   - Gathers all important information across all models and visualizes the data through graphics.
   - Classifies the results to provide comprehensive insights.
 
-- **Python Script: `run_inference.py`**
+- **Python Script: `run_inference.ipynb`**
   - Allows the user to define the model, provider, and desired output.
   - Runs the inference file based on the defined parameters.
 
@@ -219,7 +236,7 @@ This folder contains various scripts, data files, and analysis results for evalu
 
 Below, we provide the appendix of the paper, which comprises supplementary information that could not be included in the main paper due to page constraints.
 
-### RQ2: Statistical results according to APA guidelines
+### RQ2: Statistical Analysis of Vulnerability Detection Performance
 
 We hereby follow APA guidelines to report the regression coefficients, 95% confidence intervals, effect sizes (i.e., odds ratios), and p-values for each model term (intercept and predictors). Additionally, we conclude with a paragraph interpreting the statistics in relation to the paper's claims, as recommended by APA guidelines.
 
@@ -424,3 +441,116 @@ The results indicate a negative association between both bug position and file s
 - The significant negative coefficients for bug_pos (e.g., -0.52 for CWE-22 in mixtral-8x7b) suggest that as the bug's position moves further within a file, the likelihood of detection decreases.
 - Similarly, negative coefficients for file_len (e.g., -0.13 for CWE-22 in mixtral-8x7b) indicate that larger files are less likely to have their bugs detected.
 - Bug position generally shows larger coefficients (in absolute terms) than file length. This suggests that bug position has a stronger effect on bug detection probability than file length.
+
+Additionally, we also include the results of a *multiple logistic regression* (i.e., combining both predictors), which remain consistent with those obtained from *simple logistic regression* above.
+
+### Processing CWE-22 with mixtral-8x7b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.05, **95% CI** [0.85, 1.29], **p** = 0.678
+- **Regression term:** target_length, **Odds Ratio** = 0.98, **95% CI** [0.97, 0.99], **p** = 0.005
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.94, **95% CI** [0.93, 0.96], **p** = 0.000
+
+### Processing CWE-89 with mixtral-8x7b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 0.52, **95% CI** [0.41, 0.66], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.99, **95% CI** [0.97, 1.00], **p** = 0.098
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.94, **95% CI** [0.92, 0.96], **p** = 0.000
+
+### Processing CWE-79 with mixtral-8x7b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 0.71, **95% CI** [0.57, 0.88], **p** = 0.002
+- **Regression term:** target_length, **Odds Ratio** = 0.96, **95% CI** [0.94, 0.97], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 1.01, **95% CI** [1.00, 1.03], **p** = 0.174
+
+### Processing CWE-22 with mixtral-8x22b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.36, **95% CI** [1.11, 1.68], **p** = 0.003
+- **Regression term:** target_length, **Odds Ratio** = 0.95, **95% CI** [0.94, 0.97], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.98, **95% CI** [0.96, 0.99], **p** = 0.003
+
+### Processing CWE-89 with mixtral-8x22b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.16, **95% CI** [0.92, 1.45], **p** = 0.219
+- **Regression term:** target_length, **Odds Ratio** = 0.98, **95% CI** [0.96, 0.99], **p** = 0.003
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.85, **95% CI** [0.83, 0.87], **p** = 0.000
+
+### Processing CWE-79 with mixtral-8x22b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.15, **95% CI** [0.94, 1.41], **p** = 0.184
+- **Regression term:** target_length, **Odds Ratio** = 1.00, **95% CI** [0.99, 1.01], **p** = 0.937
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.97, **95% CI** [0.95, 0.98], **p** = 0.000
+
+### Processing CWE-22 with llama-3-70b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 2.17, **95% CI** [1.76, 2.67], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.96, **95% CI** [0.95, 0.98], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.99, **95% CI** [0.98, 1.00], **p** = 0.137
+
+### Processing CWE-89 with llama-3-70b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.44, **95% CI** [1.14, 1.81], **p** = 0.002
+- **Regression term:** target_length, **Odds Ratio** = 0.97, **95% CI** [0.95, 0.98], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.84, **95% CI** [0.82, 0.86], **p** = 0.000
+
+### Processing CWE-79 with llama-3-70b
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 0.85, **95% CI** [0.69, 1.05], **p** = 0.131
+- **Regression term:** target_length, **Odds Ratio** = 0.97, **95% CI** [0.96, 0.99], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.99, **95% CI** [0.98, 1.01], **p** = 0.373
+
+### Processing CWE-22 with gpt-3.5-turbo
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.67, **95% CI** [1.36, 2.05], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.96, **95% CI** [0.95, 0.97], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 1.01, **95% CI** [1.00, 1.03], **p** = 0.092
+
+### Processing CWE-89 with gpt-3.5-turbo
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 0.59, **95% CI** [0.46, 0.77], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.98, **95% CI** [0.97, 1.00], **p** = 0.058
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.86, **95% CI** [0.83, 0.88], **p** = 0.000
+
+### Processing CWE-79 with gpt-3.5-turbo
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 0.32, **95% CI** [0.25, 0.41], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.97, **95% CI** [0.96, 0.99], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 1.02, **95% CI** [1.00, 1.04], **p** = 0.059
+
+### Processing CWE-22 with gpt-4o
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 3.76, **95% CI** [2.99, 4.71], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.99, **95% CI** [0.97, 1.00], **p** = 0.047
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.94, **95% CI** [0.93, 0.95], **p** = 0.000
+
+### Processing CWE-89 with gpt-4o
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.52, **95% CI** [1.23, 1.86], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.97, **95% CI** [0.96, 0.98], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.95, **95% CI** [0.94, 0.97], **p** = 0.000
+
+### Processing CWE-79 with gpt-4o
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 1.24, **95% CI** [1.01, 1.51], **p** = 0.041
+- **Regression term:** target_length, **Odds Ratio** = 0.99, **95% CI** [0.98, 1.01], **p** = 0.297
+- **Regression term:** target_bug_position, **Odds Ratio** = 1.00, **95% CI** [0.98, 1.01], **p** = 0.469
+
+### Processing CWE-22 with gpt-4-turbo
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 2.14, **95% CI** [1.70, 2.69], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.97, **95% CI** [0.96, 0.99], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.81, **95% CI** [0.79, 0.83], **p** = 0.000
+
+### Processing CWE-89 with gpt-4-turbo
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 3.53, **95% CI** [2.79, 4.47], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.96, **95% CI** [0.95, 0.97], **p** = 0.000
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.79, **95% CI** [0.77, 0.81], **p** = 0.000
+
+### Processing CWE-79 with gpt-4-turbo
+**Predictors:** `target_length`, `target_bug_position`
+- **Regression term:** const, **Odds Ratio** = 2.10, **95% CI** [1.70, 2.59], **p** = 0.000
+- **Regression term:** target_length, **Odds Ratio** = 0.99, **95% CI** [0.98, 1.00], **p** = 0.127
+- **Regression term:** target_bug_position, **Odds Ratio** = 0.98, **95% CI** [0.97, 0.99], **p** = 0.004
+
+
+
