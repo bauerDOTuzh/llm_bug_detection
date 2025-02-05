@@ -69,15 +69,13 @@ if not all([openai_api_key, ollama_api_key, ollama_endpoint]):
     raise EnvironmentError("Some environment variables are missing")
 
 model = model_mapping.get(sys.argv[1])
-
-
 #cwe_id = sys.argv[2]
 #bug_window_size = int(sys.argv[3]) # 6500 # characters
-
 if not model:
 	raise ValueError(f"Model {sys.argv[1]} is not supported")
 else:
 	model = model.value #cast model to string
+print("Running prompts with", ollama_names.get(model, model) if model in ollama_names else openai_names.get(model, model))
 
 bug_window_size_list = [
 	# 13000, 
@@ -88,7 +86,7 @@ bug_window_size_list = [
 ]
 cwe_id_list = ['22', '89', '79']
 
-n_processes = multiprocessing.cpu_count()*20 if model not in ollama_names else 30 #anyscale supports only 30 concurent processes
+n_processes = multiprocessing.cpu_count()*5 if model not in ollama_names else 30 #anyscale supports only 30 concurent processes
 temperature = 0
 
 # source_variable = 'Bug Line' # 'Input Length'
