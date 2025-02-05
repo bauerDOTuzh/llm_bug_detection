@@ -12,6 +12,7 @@ Welcome to the replication package for the ASE 2024 paper titled: [Large Languag
    - [Installation of GitHub, OpenAI, and Ollama](#installation-of-github-openai-and-ollama)
    - [Steps to Set Up](#steps-to-set-up)
    - [Python Environment using Conda](#python-environment-using-conda)
+   - [Docker setup](#docker-setup)
 3. [About this Repository](#about-this-repository)
    - [Supported LLMs](#supported-llms)
    - [Folder: `./0_dataset_creation`](#folder-0_dataset_creation)
@@ -86,6 +87,55 @@ To ensure you've set up the environment variables correctly:
    ```bash
     conda activate infile_vulnerability_localization
     ```
+
+### Docker Setup
+
+For complete control over dependencies, Docker provides an alternative to local conda environments that might be more suitable, be aware that for docker setup you still need local environment file
+
+Our repository contains both Jupyter notebooks and standard Python scripts, requiring different execution approaches. Follow the instructions below:
+
+#### Jupyter Notebooks
+
+- Launch the Jupyter endpoint:
+
+  ```bash
+  docker run -p 8888:8888 -v ${PWD}:/app infile_vulnerability_localization
+  ```
+
+- Connect to the Jupyter environment at [http://localhost:8888](http://localhost:8888).
+
+#### Python Script Execution
+
+Two methods for executing Python scripts:
+
+**Method 1: One-Time Execution**
+
+- Launch a container and run a specific script:
+
+  ```bash
+  docker run --rm -it -v ${PWD}:/app -w /app infile_vulnerability_localization bash -c "cd 1_all_files_analysis && python count_functions.py 79"
+  ```
+
+**Method 2: Interactive Session**
+
+- Create a container for interactive use:
+```bash
+docker run --rm -it -v ${PWD}:/app -w /app infile_vulnerability_localization bash -c "source activate infile_vulnerability_localization && bash"
+```
+
+-  Then, execute scripts as needed:
+
+  ```bash
+  cd 1_all_files_analysis
+  python count_functions.py 79
+  ```
+
+**Important:**
+
+For file reading, it's recommended to run scripts from their directory within the container.
+
+
+  
   
 ## About this Repository
 
