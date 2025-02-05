@@ -2,7 +2,7 @@
 
 Welcome to the replication package for the ASE 2024 paper titled: [Large Language Models for In-File Vulnerability Localization are "Lost in the End"](https://doi.org/10.1145/3715758).
 
-**DOI:** [https://doi.org/10.1145/3715758](https://doi.org/10.1145/3715758)
+**Paper Link:** [https://doi.org/10.1145/3715758](https://doi.org/10.1145/3715758)
 
 ## Table of Contents
 
@@ -21,6 +21,8 @@ Welcome to the replication package for the ASE 2024 paper titled: [Large Languag
    - [Folder: `./3_optimal_position`](#folder-3_optimal_position)
 4. [Supplementary Information](#supplementary-information)
    - [RQ2: Statistical Analysis of Vulnerability Detection Performance](#rq2-statistical-analysis-of-vulnerability-detection-performance)
+5. [Citations](#citations)
+6. [Support](#support)
 
 ## Abstract
 
@@ -505,5 +507,21 @@ Additionally, we also include the results of a *multiple logistic regression* (i
 - **Regression term:** target_length, **Odds Ratio** = 0.99, **95% CI** [0.98, 1.00], **p** = 0.127
 - **Regression term:** target_bug_position, **Odds Ratio** = 0.98, **95% CI** [0.97, 0.99], **p** = 0.004
 
+## Citations
+This code is free. So, if you use this code anywhere, please cite us:
+```
+@inproceedings{sovrano2025llms,
+  title={Large Language Models for In-File Vulnerability Localization Can Be “Lost in the End”},
+  author={Sovrano, Francesco and Bauer, Adam and Bacchelli, Alberto},
+  booktitle={Proceedings of ACM International Conference on the Foundations of Software Engineering 2025 (FSE’25)},
+  year={2025},
+  doi={10.1145/3715758},
+  organization={ACM}
+}
+```
 
+Thank you!
 
+## Support
+
+For any problem or question, please contact me at `cesco.sovrano@gmail.com`
