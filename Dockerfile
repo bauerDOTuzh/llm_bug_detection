@@ -24,6 +24,9 @@ COPY 1_all_files_analysis /app/1_all_files_analysis
 COPY 2_code_in_the_haystack /app/2_code_in_the_haystack
 COPY 3_optimal_position /app/3_optimal_position
 
+# Copy .env.example to .env as a stub
+COPY .env.example /app/.env
+
 # Expose Jupyter port
 EXPOSE 8888
 

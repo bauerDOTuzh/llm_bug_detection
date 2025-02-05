@@ -133,14 +133,14 @@ Two methods for executing Python scripts:
 - Launch a container and run a specific script:
 
   ```bash
-  docker run --rm -it -v ${PWD}:/app -w /app infile_vulnerability_localization bash -c "cd 1_all_files_analysis && python count_functions.py 79"
+  docker run --rm -it -w /app infile_vulnerability_localization bash -c "cd 1_all_files_analysis && python count_functions.py 79"
   ```
 
 **Method 2: Interactive Session**
 
 - Create a container for interactive use:
 ```bash
-docker run --rm -it -v ${PWD}:/app -w /app infile_vulnerability_localization bash -c "source activate infile_vulnerability_localization && bash"
+docker run --rm -it -w /app infile_vulnerability_localization bash -c "source activate infile_vulnerability_localization && bash"
 ```
 
 -  Then, execute scripts as needed:
