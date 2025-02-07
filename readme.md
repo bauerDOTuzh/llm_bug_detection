@@ -137,7 +137,7 @@ This folder contains the scripts, data files, and analysis results for the first
 - **Data Folder: `cve_data`** 
   - `files_CWE-22.csv`, `files_CWE-79.csv`, `files_CWE-89.csv`: Contain the vulnerabilities (and their patches) we extracted for each CWE from the CVE catalog.
 
-- **Python Scripts**:
+- **Notebooks and Other Python Scripts**:
   - `run_prompts.py`: Sends the bug localization prompts for a given LLM and CWE number (provided as parameters), saving the results in the `model_outputs` subfolder. The subfolder `cache` also contains other intermediate results obtained by prompting the GPT models.
   - `analyse_results.ipynb`: For each LLM it computes the accuracy, precision, recall, and other statistics (i.e., logistic regressions) to answer RQ1 and RQ2.1 and understand the impact of bug position and file size on in-file vulnerability localisation. The visualisations are saved in the subfolder `results`.
   - `count_functions.py`: Computes functions' statistics (number per file and average size) on the data provided in the subfolder `cve_data`.
