@@ -123,45 +123,31 @@ All the following script are designed to run experiments for these LLMs:
 
 ### Folder: `./0_dataset_creation`
 
-- **Purpose**: This folder contains the code to extract the dataset for the task of bug detection in code.
-- **Files**:
-  - `01gather_data.ipynb`: Jupyter Notebook containing the code to gather data from the NIST database and save it.
+This folder contains the code to extract the dataset for the task of bug detection in code.
+
+- **Notebooks**:
+  - `01gather_data.ipynb`: Jupyter Notebook containing the code to gather data from the CVE catalog (NIST database).
   - `02create_files.ipynb`: Contains the code to create the files for the dataset via GitHub scraping.
-- **Output**: The product of these two scripts are three CSV files containing single commit files of CWE-79, CWE-89, and CWE-22.
+- **Output**: The product of these two scripts are three CSV files containing single commit files of CWE-79, CWE-89, and CWE-22. These files are saved in `1_all_files_analysis/cve_data`.
 
 ### Folder: `./1_all_files_analysis`
 
-This folder contains various scripts and data files for analyzing the dataset and evaluating different models for bug detection.
+This folder contains the scripts, data files, and analysis results for the first experiment of RQ2 (RQ2.1) and the RQ1 experiments.
 
-#### Key Files and Scripts
-
-- **Data Folder**: `cve_data`: 
-  - `files_CWE-22.csv`, `files_CWE-79.csv`, `files_CWE-89.csv`: Contain the vulnerabilities (and their patches) we extracted for each CWE.
+- **Data Folder: `cve_data`** 
+  - `files_CWE-22.csv`, `files_CWE-79.csv`, `files_CWE-89.csv`: Contain the vulnerabilities (and their patches) we extracted for each CWE from the CVE catalog.
 
 - **Python Scripts**:
-  - `run_prompts.py`: Calls all available models based on the input (model, desired CWE number).
-  - `analyse_results.ipynb`: Concatenates all needed results and performs analysis on the data.
-  - `count_functions.py`: Computes functions' statistics: number per file and average size.
-
-#### Cached Model Outputs
-
-- **Data Folder**: `model_outputs`
-  - Contains results across all models.
+  - `run_prompts.py`: Sends the bug localization prompts for a given LLM and CWE number (provided as parameters), saving the results in the `model_outputs` subfolder. The subfolder `cache` also contains other intermediate results obtained by prompting the GPT models.
+  - `analyse_results.ipynb`: For each LLM it computes the accuracy, precision, recall, and other statistics (i.e., logistic regressions) to answer RQ1 and RQ2.1 and understand the impact of bug position and file size on in-file vulnerability localisation. The visualisations are saved in the subfolder `results`.
+  - `count_functions.py`: Computes functions' statistics (number per file and average size) on the data provided in the subfolder `cve_data`.
 
 ### Folder: `./2_code_in_the_haystack`
 
-This folder contains various scripts, data files, and analysis results for evaluating different models for bug detection and performing comprehensive analysis on the dataset.
-
-#### Subfolders and Key Files
-
-- **Subfolder: `runs`**
-  - Contains all runs performed for each model.
-
-- **Python Script: `create_files_with_padding.ipynb`**
-  - Deploys an algorithm that creates files given source files, adding necessary padding.
+This folder contains the scripts, data files, and analysis results for the second (code-in-the-haystack) experiment of RQ2 (RQ2.2).
 
 - **Subfolder: `source_files`**
-  - Contains 15 source files organized by programming languages.
+  - Contains 15 source files organised by programming languages.
   - Each file has an assigned ID and contains multiple versions:
     - **originalFile**: The original, unmodified file.
     - **originalBuggy**: The smallest buggy snippet identified (on the function level).
@@ -169,23 +155,17 @@ This folder contains various scripts, data files, and analysis results for evalu
     - **modifiedFile**: The modified file without the bug. If the buggy function was extracted, it includes a refactored main function and added comments for clear separation.
     - **additional_padding**: A complete gathering of files to add for padding from the same repository, separated by function with clear separation comments.
 
-- **Python Script: `analyse_data.ipynb`**
-  - Gathers all important information across all models and visualizes the data through graphics.
-  - Classifies the results to provide comprehensive insights.
-
-- **Python Script: `run_inference.ipynb`**
-  - Allows the user to define the model, provider, and desired output.
-  - Runs the inference file based on the defined parameters.
-
-#### Other Key Files
-
-- `data_to_process/files.csv`: Main data file generated via the padding algorithm used for LLM calls.
+- **Notebooks**:
+  - `create_files_with_padding.ipynb`: Using the source files in the subfolder `source_files`, this script creates the code-in-the-haystack files used for RQ2.2. The resulting code-in-the-haystack files are saved in `data_to_process/files.csv`,
+  - `run_inference.ipynb`: Runs RQ2.2 on the code-in-the-haystack files extracted by the previous script. The results of the bug localisation tasks are saved in the subfolder `runs`.
+  - `analyse_data.ipynb`: For each LLM it computes the accuracy, precision, recall, and other statistics (i.e., logistic regressions) to answer RQ2.2 and understand the impact of bug position and file size on in-file vulnerability localisation. The visualisations are saved in the subfolder `results`.
 
 ### Folder: `./3_optimal_position`
 
-- **Purpose**: This folder contains the code to run the experiment of the third research question.
-- **Script**:
-  - `run_prompts.py`: It runs the prompts for all the CWE types once provided the model name as a parameter.
+This folder contains the scripts, data files, and analysis results for the  RQ3 experiments.
+
+- **Python Scripts**:
+  - `run_prompts.py`: It chunks the files used for RQ1 using different chunk sizes and then sends the bug localization prompts for all the CWE types once provided the LLM name as a parameter. The results are stored in the subfolder `results`, which contains a CSV table per LLM providing the results of the RQ3 experiments in terms of accuracy, precision, recall, f1_score.
 
 ## Supplementary information 
 
