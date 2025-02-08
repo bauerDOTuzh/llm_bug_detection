@@ -13,6 +13,7 @@ Welcome to the replication package for the ASE 2024 paper titled: [Large Languag
    - [Steps to Set Up](#steps-to-set-up)
    - [Python Environment using Conda](#python-environment-using-conda)
    - [Jupyter Notebook Setup](#jupyter-notebook-setup)
+   - [Docker setup](#docker-setup)
 3. [About this Repository](#about-this-repository)
    - [Supported LLMs](#supported-llms)
    - [Folder: `./0_dataset_creation`](#folder-0_dataset_creation)
@@ -108,6 +109,53 @@ To ensure Jupyter is correctly installed, you can check the version:
    ```bash
    jupyter --version
    ```
+   
+### Docker Setup
+
+For complete control over dependencies and research files, we provide a fully configured Docker image that includes all necessary dependencies and fixed cache files. This allows you to reproduce our research without needing to re-execute all LLM calls. The Docker container mirrors the structure of the cloned repository.
+
+If you prefer to rerun all scripts with fresh LLM analysis while using Docker, you can do so by adding `-v ${PWD}:/app`. In this case, some caches will be ignored, and you will need to create a .env file, which will be copied into the container.
+
+Our repository includes both Jupyter notebooks and standard Python scripts, requiring different execution approaches. Follow the instructions below:
+#### Jupyter Notebooks
+
+- Launch the Jupyter endpoint:
+
+  ```bash
+  docker run -p 8888:8888 baueradam/infile_vulnerability_localization
+  ```
+
+- Connect to the Jupyter environment at [http://localhost:8888](http://localhost:8888).
+
+#### Python Script Execution
+
+Two methods for executing Python scripts:
+
+**Method 1: One-Time Execution**
+
+- Launch a container and run a specific script:
+
+  ```bash
+  docker run --rm -it -w /app baueradam/infile_vulnerability_localization bash -c "cd 1_all_files_analysis && python count_functions.py 79"
+  ```
+
+**Method 2: Interactive Session**
+
+- Create a container for interactive use:
+```bash
+docker run --rm -it -w /app baueradam/infile_vulnerability_localization bash
+```
+
+-  Then, execute scripts as needed:
+
+  ```bash
+  cd 1_all_files_analysis
+  python count_functions.py 79
+  ```
+
+**Important:**
+
+To ensure proper file working, it's recommended to run scripts from their directory within the container.
   
 ## About this Repository
 
