@@ -11,10 +11,6 @@ COPY environment_docker.yml /app/
 # Create Conda environment
 RUN conda env create -f /app/environment_docker.yml && conda clean --all -y
 
-# Install Jupyter and register kernel (use `--prefix` to target the environment)
-RUN conda install -n infile_vulnerability_localization -y jupyter ipykernel && \
-    /opt/conda/envs/infile_vulnerability_localization/bin/python -m ipykernel install --user --name=infile_vulnerability_localization
-
 # Ensure Conda environment is activated for all subsequent commands
 ENV PATH=/opt/conda/envs/infile_vulnerability_localization/bin:$PATH
 
@@ -26,9 +22,15 @@ COPY 3_optimal_position /app/3_optimal_position
 
 # Copy .env.example to .env as a stub
 COPY .env.example /app/.env
+# rename .env.example to .env
+# RUN cp /app/.env.example /app/.env
+
+SHELL ["/bin/bash", "--login", "-c"]
+ENV PATH=/opt/conda/envs/infile_vulnerability_localization/bin:$PATH
+RUN echo "source activate infile_vulnerability_localization" >> ~/.bashrc
 
 # Expose Jupyter port
 EXPOSE 8888
 
 # Start Jupyter (now uses the correct PATH)
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser"]
+CMD ["bash", "-c", "source activate infile_vulnerability_localization && jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --no-browser"]
