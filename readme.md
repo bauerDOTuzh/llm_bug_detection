@@ -20,7 +20,8 @@ Welcome to the replication package for the ASE 2024 paper titled: [Large Languag
    - [Folder: `./1_all_files_analysis`](#folder-1_all_files_analysis)
    - [Folder: `./2_code_in_the_haystack`](#folder-2_code_in_the_haystack)
    - [Folder: `./3_optimal_position`](#folder-3_optimal_position)
-4. [Supplementary Information](#supplementary-information)
+4. [Cached Files for RQ3](#cached-files-for-rq3)
+5. [Supplementary Information](#supplementary-information)
    - [RQ2: Statistical Analysis of Vulnerability Detection Performance](#rq2-statistical-analysis-of-vulnerability-detection-performance)
 5. [Citations](#citations)
 6. [Support](#support)
@@ -214,6 +215,22 @@ This folder contains the scripts, data files, and analysis results for the  RQ3 
 
 - **Python Scripts**:
   - `run_prompts.py`: It chunks the files used for RQ1 using different chunk sizes and then sends the bug localization prompts for all the CWE types once provided the LLM name as a parameter. The results are stored in the subfolder `results`, which contains a CSV table per LLM providing the results of the RQ3 experiments in terms of accuracy, precision, recall, f1_score.
+
+## Cached Files for RQ3
+
+The pre-generated cache files required for the experiments in the `./3_optimal_position` folder are **not** included in this repository. To facilitate reproducibility and save time, these cache files have been made available separately. 
+
+**Action Required:**  
+Please download the cache files from Zenodo using the following DOI: [10.5281/zenodo.14840311](https://doi.org/10.5281/zenodo.14840311).
+
+**Instructions:**
+
+1. Click on the DOI link above or visit it directly in your browser.
+2. Download the provided archive containing the cache files.
+3. Extract the contents of the archive.
+4. Place the extracted files into the `./3_optimal_position/cache` directory, ensuring that the folder structure remains unchanged so that the scripts can locate the cache files correctly.
+
+By following these steps, you will have all the necessary cache data to reproduce the RQ3 experiments without needing to re-run the computationally expensive LLM calls.
 
 ## Supplementary information 
 
